@@ -64,6 +64,8 @@ La consola oficial emite un par **Access Key + Secret Key** y exige un JWT firma
 
 **Recomendación:** no contratar Kling oficial (mínimo enterprise ~USD 1.400/mes) hasta validar. Probar primero vía Qingyun, que expone endpoints Kling (`/kling/v1/videos/...`) con key simple.
 
+**Decisión Arco 3:** fallback documentado — el código ya degrada FLF a Minimax I2V automáticamente; la evaluación de Qingyun se difiere al gate previo a `a3-a5` (ver [arco-3-roadmap.md](arco-3-roadmap.md) §Gate Kling).
+
 ### vectorengine
 
 URL no confirmada al 100% (fila 6 de la tabla). No asumir `api.vectorengine.ai` como válida sin probarla.

@@ -55,6 +55,14 @@ Se embebe **literal** en los prompts de quiebre poético:
 wide aerial establishing shot, golden dusk light, immense scale, stillness, photorealistic documentary realism, natural atmospheric haze, no illustration, no silhouette, no paper texture, vertical 9:16
 ```
 
+### Recurso híbrido cuaderno-naturalista (catalogado, NO canon)
+
+Del primer e2e real quedó un híbrido "cuaderno naturalista semi-realista" (ni silueta Reiniger ni quiebre fotorrealista): imágenes `assets/arco-3/madre/a3-m01-madre-ornitorrinco-hibrid-N.png` y clips `assets/arco-3/clips/a3-a3-madre-ritual-hibrid-N.mp4`. Se conserva como **recurso de transición/quiebre suave**, con la misma lógica de dosificación que los quiebres de realidad:
+
+- Máximo **1–2 apariciones en todo el arco**; nunca como lock de consistencia ni firstFrame de clips canónicos.
+- Los archivos llevan sufijo `-hibrid-N`: jamás ocupan el path canónico de una imagen madre o clip (`a3-m01-madre-ornitorrinco.png` queda reservado a la silueta Reiniger).
+- Contador de uso en el [roadmap del Arco 3](arco-3-roadmap.md).
+
 #### Guardas anti-error de IA (obligatorias en todo quiebre)
 
 El caos se diseña **alrededor** de las debilidades de los modelos, no a pesar de ellas:

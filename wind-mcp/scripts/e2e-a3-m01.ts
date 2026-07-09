@@ -1,6 +1,9 @@
 /**
  * E2E Arco 3 — a3-m01 madre ornitorrinco → clip a3-a3 (5s, locked-tripod) → montaje.
  *
+ * Los prompts se leen de la fuente de verdad (docs/produccion/arco-3-planos.md)
+ * vía src/lib/planos.ts — acá no se hardcodea ningún prompt.
+ *
  * Uso:
  *   npm run e2e:mock   (requiere wind-comic con MOCK_ENGINES=1)
  *   npm run e2e:real   (requiere wind-comic sin mock + MINIMAX_API_KEY)
@@ -8,15 +11,10 @@
 import { formatEstado, getEstado } from '../src/lib/estado.js';
 import { generarImagen } from '../src/lib/image.js';
 import { montarSecuencia } from '../src/lib/montaje.js';
+import { getClip, getMadre } from '../src/lib/planos.js';
 import { generarVideoI2V } from '../src/lib/video.js';
 import { PROJECT_ROOT } from '../src/config.js';
 import path from 'node:path';
-
-const PROMPT_MADRE =
-  'A realistic yet endearing platypus, mother figure, resting on the ground of a lush Pangea landscape, soft natural light, illustrated documentary style, reconstructed-notebook aesthetic, aged paper texture with faint ink lines, earthy red and prehistoric green palette, sepia edges, vertical 9:16';
-
-const MOTION_A3 =
-  'The mother platypus calmly grooming and moving by a Pangea stream, tender everyday ritual, soft natural light, documentary illustration style.';
 
 async function main() {
   const mode = process.argv.includes('--real') ? 'real' : 'mock';
@@ -39,12 +37,16 @@ async function main() {
     );
   }
 
+  const madre = await getMadre('a3-m01');
+  const ficha = await getClip('a3-a3');
+  if (!ficha.motionPrompt) throw new Error('a3-a3 sin motion prompt en arco-3-planos.md');
+
   console.log('\n--- 1. generar_imagen a3-m01 ---');
   const img = await generarImagen({
-    prompt: PROMPT_MADRE,
+    prompt: madre.prompt,
     arco: 3,
-    id: 'a3-m01',
-    slug: 'madre-ornitorrinco',
+    id: madre.id,
+    slug: madre.slug,
     aspect: '9:16',
   });
   console.log('OK:', img.localPath, img.provider);
@@ -53,12 +55,12 @@ async function main() {
   const clip = await generarVideoI2V({
     imagen: img.localPath,
     imageUrl: img.imageUrl,
-    motionPrompt: MOTION_A3,
+    motionPrompt: ficha.motionPrompt,
     arco: 3,
     id: 'a3-a3',
     slug: 'madre-ritual',
-    duration: 5,
-    cameraPreset: 'locked-tripod',
+    duration: (ficha.duration as 5 | 6 | 10 | 15) ?? 5,
+    cameraPreset: ficha.cameraPreset,
   });
   console.log('OK:', clip.localPath, clip.provider);
 
