@@ -14,19 +14,19 @@ Estados: `pendiente` → `generado` (existe el archivo) → `aprobado` (pasó el
 3. **Montaje reels** — A, B, C (con inserts de montaje: m-mano en a3-a5, foto real en a3-c4).
 4. **Stories** — S1–S5 derivadas por recorte, cero generación.
 
-### Paso 1 del end-to-end (próxima acción)
+### Próxima acción
 
-Prerequisito: wind-comic arriba en modo real (`.env.local` ya tiene `MOCK_ENGINES=0` y `MINIMAX_API_KEY`; `PLAN_GATE_DISABLED` va explícito porque está comentado en `.env.local`):
-
-```bash
-cd wind-comic && PLAN_GATE_DISABLED=1 npm run dev
-```
+Lock `a3-m01` y establishing `a3-m05` **aprobados** (paths canónicos). Siguiente: generar las 13 madres restantes.
 
 ```bash
-cd wind-mcp && npm run madres:a3 -- --id a3-m01
+cd wind-mcp && npm run madres:a3 -- --id a3-m02
 ```
 
-Nota: ya existe un candidato manual `a3-m01-madre-ornitorrinco-reiniger.png` (y `a3-m05-pangea-reiniger.png`). Si el candidato pasa el criterio de aprobación de madres, alcanza con renombrarlo al path canónico en lugar de regenerar; si no, se regenera con el comando de arriba.
+O en lote (salta las que ya existen aprobadas; hoy conviene ir de a una para revisar contornos de personajes):
+
+```bash
+cd wind-mcp && npm run madres:a3 -- --todas
+```
 
 ---
 
@@ -47,11 +47,11 @@ Nota: ya existe un candidato manual `a3-m01-madre-ornitorrinco-reiniger.png` (y 
 
 | ID | Título | Estado | Costo real | Nota |
 |---|---|---|---|---|
-| a3-m01 | Madre ornitorrinco | generado (candidato `-reiniger`, sin aprobar) | — | Lock de consistencia: aprobar PRIMERO |
+| a3-m01 | Madre ornitorrinco | aprobado | ~¥0.3 | Lock de consistencia ✓ |
 | a3-m02 | Cría de ornitorrinco | pendiente | — | |
 | a3-m03 | Padre ornitorrinco | pendiente | — | |
 | a3-m04 | Huevo | pendiente | — | |
-| a3-m05 | Paisaje Pangea | generado (candidato `-reiniger`, sin aprobar) | — | |
+| a3-m05 | Paisaje Pangea | aprobado | ~¥0.3 | |
 | a3-m06 | Pangea partida | pendiente | — | lastFrame de a3-a5 (FLF) |
 | a3-m07 | Rocas Coloradas | pendiente | — | |
 | a3-m08 | Australia próspera | pendiente | — | |
@@ -103,10 +103,10 @@ Nota: ya existe un candidato manual `a3-m01-madre-ornitorrinco-reiniger.png` (y 
 
 | Etapa | Estimado | Real acumulado |
 |---|---|---|
-| Madres (15 × ¥0.3) | ~¥4.5 | ¥0 |
+| Madres (15 × ¥0.3) | ~¥4.5 | ~¥0.6 |
 | Clips U2V (13 × ¥0.5) | ~¥6.5 | ¥0 |
 | Clips FLF (2 × ~¥1) | ~¥2 | ¥0 |
-| **Total** | **~¥13** | **¥0** |
+| **Total** | **~¥13** | **~¥0.6** |
 
 Los retries de madres rechazadas suman ~¥0.3 c/u: por eso el gate de aprobación de a3-m01 antes de generar en lote.
 
