@@ -25,6 +25,47 @@ Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater
 
 **Regla de tinte (color por plano):** la paleta NO vive en el STYLE-BLOCK. Cada prompt agrega su propia línea de tinte según el guion de color del arco (ej. `warm amber and green tinted background`). Referencia: los fondos tintados de *El príncipe Achmed* — el color del fondo carga la narrativa; las siluetas siempre son negras.
 
+### Quiebres de realidad (la realidad como recurso)
+
+Recurso **transversal y escaso**: en momentos de ruptura o verdad, el registro cuaderno/silueta se rompe A PROPÓSITO y la pieza salta a registro fotorrealista. No está ligado a ningún personaje. Dosificación: si se usa seguido pierde impacto — máximo un quiebre (o un par caos→respiro) por reel.
+
+Tres variantes del mismo recurso, cada una con su momento:
+
+| Variante | Registro | Momento de uso | Ejemplo |
+|---|---|---|---|
+| **Clínico** | documental forense, quieto, revelador | la verdad/evidencia (cierres) | `a3-m13` fósil en el yacimiento actual |
+| **Caótico (Revenant)** | cámara inestable, violencia física, visceral | rupturas del mundo | la grieta partiendo Pangea (`a3-m14`) |
+| **Poético** | aéreo amplio, contemplativo, elegíaco | el respiro después del caos | zoom-out de los continentes separados (`a3-m15`) |
+
+Estructura dramática canónica del par caos→respiro: **silueta → caos Revenant → zoom-out poético → vuelta a silueta**. El caos necesita el respiro posterior para significar algo; el respiro es la traducción "real" de la poética de las imágenes madre de paisaje (ref. `a3-m05`).
+
+#### REALITY-BLOCK-CHAOS (bloque canónico, en inglés)
+
+Se embebe **literal** en los prompts de quiebre caótico (misma regla de propagación que el STYLE-BLOCK):
+
+```
+handheld unstable camera, violent motion, heavy motion blur, dust and debris in the air, natural overcast light, cold muted earth tones, photorealistic, gritty documentary realism inspired by The Revenant, no illustration, no silhouette, no paper texture, vertical 9:16
+```
+
+#### REALITY-BLOCK-POETIC (bloque canónico, en inglés)
+
+Se embebe **literal** en los prompts de quiebre poético:
+
+```
+wide aerial establishing shot, golden dusk light, immense scale, stillness, photorealistic documentary realism, natural atmospheric haze, no illustration, no silhouette, no paper texture, vertical 9:16
+```
+
+#### Guardas anti-error de IA (obligatorias en todo quiebre)
+
+El caos se diseña **alrededor** de las debilidades de los modelos, no a pesar de ellas:
+
+| Guarda | Motivo |
+|---|---|
+| Sin manos en interacción ni dedos en primer plano en movimiento | Las manos son el punto más frágil de la generación de imagen/video |
+| Charles solo de espaldas, lejos o parcial | Ya es canon ("nunca de frente"); además evita rostro y manos nítidas |
+| Animales solo de lejos, integrados al paisaje | Evita detalle anatómico exigido (pico, patas) donde los modelos fallan |
+| El propio caos como escudo: motion blur, grano, contraluz | Disimula artefactos que un plano fijo delataría |
+
 ---
 
 ## 2. Imágenes madre por arco

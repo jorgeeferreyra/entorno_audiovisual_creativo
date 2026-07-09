@@ -140,6 +140,26 @@ An old diary page with handwritten annotations, crossed-out notes, a hand-drawn 
 A platypus fossil embedded in reddish rock at a present-day paleontological site in the Patagonian badlands, photographic documentary realism, natural daylight, fine mineral detail, realistic stone textures, no illustration, no silhouette, no paper texture, vertical 9:16
 ```
 
+### Quiebre de realidad — la grieta (rompe la estética silueta A PROPÓSITO)
+
+> Par caos→respiro del recurso "quiebres de realidad" ([biblia-visual.md](biblia-visual.md) §1). Guardas anti-error aplicadas: sin personas ni animales en cuadro, el motion blur y el polvo como escudo de artefactos.
+
+**a3-m14 — Grieta Revenant caótica**
+- `style: Photographic documentary` (sin STYLE-BLOCK: embebe el REALITY-BLOCK-CHAOS)
+- Archivo destino: `assets/arco-3/madre/a3-m14-grieta-revenant.png`
+- Prompt (EN):
+```
+Real earth tearing apart into a massive widening rift seen from ground level, cracked ground collapsing, rocks falling into the chasm, no people, no animals, handheld unstable camera, violent motion, heavy motion blur, dust and debris in the air, natural overcast light, cold muted earth tones, photorealistic, gritty documentary realism inspired by The Revenant, no illustration, no silhouette, no paper texture, vertical 9:16
+```
+
+**a3-m15 — Zoom-out aéreo poético (continentes separados)**
+- `style: Photographic documentary` (sin STYLE-BLOCK: embebe el REALITY-BLOCK-POETIC)
+- Archivo destino: `assets/arco-3/madre/a3-m15-zoomout-poetico.png`
+- Prompt (EN):
+```
+Two vast green landmasses already separated by a calm sea channel seen from very high above, lush vegetation fading into haze, wide aerial establishing shot, golden dusk light, immense scale, stillness, photorealistic documentary realism, natural atmospheric haze, no illustration, no silhouette, no paper texture, vertical 9:16
+```
+
 ### Material de origen real (NO se genera)
 
 - **rocas-coloradas-real** — foto real de la locación: `assets/fuentes/rocas-coloradas-real.jpg` (16:9 apaisada). Remate del Reel C (clip `a3-c4`); reencuadrar a 9:16 en montaje.
@@ -151,7 +171,7 @@ A platypus fossil embedded in reddish rock at a present-day paleontological site
 
 Regla del [pipeline](pipeline-wind-comic.md): **un personaje por clip**, cruces por corte. Herramienta: `/dashboard/u2v` (U2V con 5/6s va por Minimax I2V ~¥0.1/s; U2V-FLF va por Kling ~¥0.2/s y **solo acepta 5 o 10s**). Audio por defecto de todo el arco: **off documental (Attenborough) grabado propio** + música suave sin percusión.
 
-### Reel A — "La grieta" (~35s)
+### Reel A — "La grieta" (~45s)
 
 **Clip a3-a1 — Apertura: página de cuaderno**
 - Herramienta: U2V
@@ -217,7 +237,33 @@ The layered cutout Pangea landscape trembles like shaken paper, the black cutout
 ```
 - Vision-Audit (EN): sceneDescription: `the layered cutout Pangea landscape breaking apart, tint shifting to red` · action: `the cutout ground trembles and rips in two, water floods the chasm` · mood: `dramatic, ominous`
 - Audio: off documental (el quiebre) + rumble grave
-- Montaje: insertar 1–2 frames subliminales de m-mano (mano con cadenita, Arco 1) en el pico del temblor; corta a a3-a6
+- Montaje: insertar 1–2 frames subliminales de m-mano (mano con cadenita, Arco 1) en el pico del temblor; corte DURO a a3-a5b (quiebre de realidad)
+
+**Clip a3-a5b — Quiebre de realidad: el caos (Revenant)**
+- Herramienta: U2V
+- firstFrame: a3-m14 (`assets/arco-3/madre/a3-m14-grieta-revenant.png`)
+- cameraPreset: — (la cámara en mano inestable va descripta en el prompt, no hay preset equivalente)
+- duration: 5
+- Motion prompt (EN):
+```
+Real earth ripping apart violently, rocks and soil collapsing into the widening chasm, dust bursting into the air, handheld unstable camera shaking, heavy motion blur, no people, no animals, photorealistic gritty documentary realism.
+```
+- Vision-Audit (EN): sceneDescription: `real cracked earth splitting into a massive rift, dust and falling rocks` · action: `the ground tears apart violently, debris collapses into the chasm` · mood: `chaotic, violent, overwhelming`
+- Audio: SIN off (el caos habla solo); rumble fuerte, crujidos de tierra
+- Montaje: viene de a3-a5 con corte duro (silueta → real); corta a a3-a5c
+
+**Clip a3-a5c — Quiebre de realidad: el respiro (zoom-out poético)**
+- Herramienta: U2V
+- firstFrame: a3-m15 (`assets/arco-3/madre/a3-m15-zoomout-poetico.png`)
+- cameraPreset: `pull-out`
+- duration: 5
+- Motion prompt (EN):
+```
+Slow aerial drift high above two vast landmasses separated by a calm sea channel, golden dusk light, atmospheric haze, immense stillness after the catastrophe, photorealistic documentary realism.
+```
+- Vision-Audit (EN): sceneDescription: `aerial view of two landmasses separated by a sea channel at golden dusk` · action: `slow wide drift revealing the water between the lands` · mood: `elegiac, serene, immense`
+- Audio: off documental (la escala de lo ocurrido) + música mínima
+- Montaje: el respiro después del caos; corta de vuelta a silueta en a3-a6
 
 **Clip a3-a6 — La separación**
 - Herramienta: U2V
@@ -230,7 +276,7 @@ The mother platypus silhouette stands at the edge of the cutout chasm in profile
 ```
 - Vision-Audit (EN): sceneDescription: `the edge of the cutout chasm on a deep red tinted background, far shore in the distance` · action: `the mother platypus silhouette stands still in profile, head slowly lowering` · mood: `grief, restrained sorrow`
 - Audio: off documental (la despedida)
-- Montaje: corta contra el padre con el huevo (a3-m03 + a3-m04) al otro lado de la grieta; cierra el Reel A
+- Montaje: viene de a3-a5c (vuelta a silueta tras el quiebre de realidad); corta contra el padre con el huevo (a3-m03 + a3-m04) al otro lado de la grieta; cierra el Reel A
 
 ### Reel B — "Vidas paralelas" (~30s, pantalla partida por montaje)
 
@@ -358,10 +404,10 @@ Las stories del [calendario](../redes/calendario-publicacion.md) (Semana 1) se a
 
 | Etapa | Cálculo | Total aprox. |
 |---|---|---|
-| Imágenes madre | 13 generadas × ¥0.3 | ~¥3.9 |
-| Clips U2V (Minimax I2V, 5s) | 11 × ¥0.5 | ~¥5.5 |
+| Imágenes madre | 15 generadas × ¥0.3 | ~¥4.5 |
+| Clips U2V (Minimax I2V, 5s) | 13 × ¥0.5 | ~¥6.5 |
 | Clips U2V-FLF (Kling, 5s) | 2 × ~¥1 | ~¥2 |
-| **Total** | | **~¥11.4** |
+| **Total** | | **~¥13** |
 
 Dentro del presupuesto del [pipeline](pipeline-wind-comic.md) §3. Kling (FLF) se reserva a las dos transiciones-gancho; el resto va por Minimax.
 
@@ -374,3 +420,4 @@ Dentro del presupuesto del [pipeline](pipeline-wind-comic.md) §3. Kling (FLF) s
 - El **fósil final ES el del Ep.1** (canon), pero NO existe plano de archivo del rodaje: el remate se resuelve con a3-m13 (fósil en registro fotográfico) + la foto real de la locación (`assets/fuentes/rocas-coloradas-real.jpg`). El corte silueta → foto es el "salto a la realidad".
 - **CFJ no aparece** en este arco, pero el estilo silueta deja alineado el Arco 2: "CFJ nunca de frente" se cumple por diseño (Charles ES una silueta).
 - Anacronismos: no se fuerzan en este arco por su registro emocional; quedan disponibles como recurso si hiciera falta.
+- **Quiebre de realidad en la grieta** (a3-a5b + a3-a5c): par caos→respiro del recurso transversal de [biblia-visual.md](biblia-visual.md) §1. Guardas anti-error respetadas: sin personas ni animales en cuadro, motion blur y polvo como escudo de artefactos; después del respiro se vuelve a silueta (a3-a6). Único quiebre del Reel A (dosificación).
