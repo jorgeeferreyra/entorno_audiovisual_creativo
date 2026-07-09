@@ -4,6 +4,7 @@
 >
 > - Flujo de producción, estrategia "un personaje por clip" y presupuesto del proyecto: [pipeline-wind-comic.md](pipeline-wind-comic.md).
 > - Anclas de estilo y prompts madre del proyecto: [biblia-visual.md](biblia-visual.md).
+> - Grado de aprovechamiento de este alcance ("brillo") y cómo se mide: [brillo-wind-comic.md](brillo-wind-comic.md).
 > - Fuente canónica de cada proveedor (parámetros, ejemplos): `wind-comic/docs/{llm,image,video,tts}-providers.md`.
 > - `wind-comic/` es solo herramienta; este documento no la modifica, solo la describe.
 
