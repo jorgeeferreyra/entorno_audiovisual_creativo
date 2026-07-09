@@ -55,7 +55,7 @@ El video es el mayor costo; usar Kling (~¥0.2/s) o Veo (~¥0.6/s) solo en los p
 ## 4. Notas de configuración (instancia local)
 
 - **`PLAN_GATE_DISABLED=1`** en `.env.local` desbloquea todas las funciones sin pago a la app (los gates son de la versión SaaS).
-- **`MOCK_ENGINES=1`** genera salidas fake sin llamar APIs: útil para probar el flujo de montaje antes de gastar.
+- **`MOCK_ENGINES=0`** (default en `.env.local`) usa motores reales. `MOCK_ENGINES=1` genera salidas fake sin llamar APIs: útil solo para dry-run de montaje.
 - Keys reales necesarias según motor: `MINIMAX_API_KEY` (imagen+video+TTS), `KELING_API_KEY` (Kling), etc. Inventario priorizado con links y estado actual: [inventario-api-keys.md](inventario-api-keys.md). Variables completas: `wind-comic/.env.example`.
 
 ---

@@ -25,7 +25,7 @@ async function main() {
   const estado = await getEstado();
   console.log(formatEstado(estado));
   if (!estado.serverUp) {
-    throw new Error('wind-comic no está arriba. Levantá: cd wind-comic && MOCK_ENGINES=1 PLAN_GATE_DISABLED=1 npm run dev');
+    throw new Error('wind-comic no está arriba. Levantá: cd wind-comic && MOCK_ENGINES=0 PLAN_GATE_DISABLED=1 npm run dev');
   }
   if (mode === 'mock' && !estado.mockEngines) {
     throw new Error('Para e2e:mock, wind-comic debe correr con MOCK_ENGINES=1');

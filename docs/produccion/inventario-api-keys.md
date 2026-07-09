@@ -81,7 +81,7 @@ En modo real (sin `MOCK_ENGINES=1`), `resolveFrameUrlForVideo()` de [`wind-mcp/s
 ## Orden de acción sugerido
 
 1. Registrarse en [MiniMax](https://platform.minimax.io), cargar saldo mínimo, crear key + copiar GroupID → pegar en `wind-comic/.env.local`.
-2. Correr el e2e real de a3-m01 (mismo flujo que el dry-run, **sin** `MOCK_ENGINES`).
+2. Correr el e2e real de a3-m01 (mismo flujo que el dry-run, con `MOCK_ENGINES=0` en `wind-comic/.env.local`).
 3. Si el resultado I2V de los planos gancho no alcanza: registrarse en [Qingyun](https://api.qingyuntop.top/register) y evaluar Kling vía ese gateway.
 
 ---

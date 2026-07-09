@@ -7,7 +7,7 @@
   "scripts": {
     "start": "tsx --tsconfig tsconfig.json src/index.ts",
     "e2e:mock": "MOCK_ENGINES=1 PLAN_GATE_DISABLED=1 tsx --tsconfig tsconfig.json scripts/e2e-a3-m01.ts --mock",
-    "e2e:real": "tsx --tsconfig tsconfig.json scripts/e2e-a3-m01.ts --real"
+    "e2e:real": "MOCK_ENGINES=0 PLAN_GATE_DISABLED=1 tsx --tsconfig tsconfig.json scripts/e2e-a3-m01.ts --real"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.12.1",
