@@ -25,6 +25,8 @@ export interface MadrePlano {
 export interface ClipPlano {
   id: string;
   titulo: string;
+  /** Derivado del título, ej. pagina-cuaderno */
+  slug: string;
   herramienta: 'U2V' | 'U2V-FLF' | 'ninguna';
   /** Relativo a PROJECT_ROOT (imagen madre). */
   firstFrame?: string;
@@ -32,6 +34,20 @@ export interface ClipPlano {
   cameraPreset?: CameraPreset;
   duration?: number;
   motionPrompt?: string;
+}
+
+/** Slug de archivo para clips: título sin prefijo "Foo: " → kebab-case ASCII. */
+export function tituloToClipSlug(titulo: string): string {
+  const core = titulo.includes(':') ? titulo.split(':').slice(1).join(':').trim() : titulo;
+  return core
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/\p{M}/gu, '')
+    .replace(/^(la|el|los|las)\s+/i, '')
+    .replace(/\s+(de|del|en|su|la|el)\s+/gi, ' ')
+    .trim()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
 }
 
 export interface PlanosArco3 {
@@ -82,6 +98,7 @@ function parseClips(md: string): ClipPlano[] {
     clips.push({
       id,
       titulo,
+      slug: tituloToClipSlug(titulo),
       herramienta: herr,
       firstFrame: frame('firstFrame'),
       lastFrame: frame('lastFrame'),
