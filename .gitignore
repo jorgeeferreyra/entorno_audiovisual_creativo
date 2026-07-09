@@ -21,11 +21,3 @@ coverage/
 *.log
 *.pem
 *.bak
-
-# Artefactos de iteración del pipeline (no canónicos)
-assets/**/madre/*-hybrid.png
-assets/**/madre/*-hibrid-*.png
-assets/**/madre/*-reiniger.png
-assets/**/clips/*-hibrid-*.mp4
-assets/**/reels/*-e2e-test.mp4
-assets/**/reels/*-e2e-test-hibrid-*.mp4
