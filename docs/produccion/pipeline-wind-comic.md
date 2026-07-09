@@ -29,7 +29,7 @@ flowchart TD
     D --> E["5. Export 9:16 + subtitulos"]
 ```
 
-1. **Imágenes madre primero** (~¥0.3 c/u): retrato de Charles de espaldas, mano con cadenita, un ornitorrinco por animal, paisajes Pangea. Son la biblia visual; todo parte de acá.
+1. **Imágenes madre primero** (~¥0.3 c/u): retrato de Charles de espaldas, mano con cadenita, un ornitorrinco por animal, paisajes Pangea. Son la biblia visual; todo parte de acá. Los clips de **transformación/transición** piden un **par de madres** (first/last frame para U2V-FLF), no una sola — regla de coherencia y keyframes en [biblia-visual.md](biblia-visual.md) §3.
 2. **Clips de 5–6s por personaje aislado**: la duración barata. En la instancia local con `PLAN_GATE_DISABLED=1` no aplican los gates de plan de pago.
 3. **Montaje**: los cruces (mano ↔ ornitorrincos, Charles ↔ familia) se resuelven por **corte**, no generando personajes juntos. La pantalla partida Argentina/Australia del Arco 3 = dos clips independientes montados. El montaje de reels se hace con `wind-mcp` (`montarSecuencia()` en [`wind-mcp/src/lib/montaje.ts`](../../wind-mcp/src/lib/montaje.ts): concat ffmpeg + pad 9:16 + off opcional), **no** con el timeline de wind-comic (que opera sobre proyectos del pipeline de 9 agentes, no sobre clips U2V sueltos — usarlo sería overkill).
 4. **Voz**: off documental (Attenborough). Recomendado grabarla propia (es la voz del proyecto y es gratis); alternativas: TTS Minimax (~¥0.02/s) o **clonar la voz propia** vía `POST /api/voice-clone` (MiniMax, ya configurado) — misma decisión de "voz del proyecto", pero permite iterar el off sin regrabar.

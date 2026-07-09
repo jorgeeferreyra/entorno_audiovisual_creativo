@@ -162,6 +162,26 @@ Real earth tearing apart into a massive widening rift seen from ground level, cr
 Two vast green landmasses already separated by a calm sea channel seen from very high above, lush vegetation fading into haze, wide aerial establishing shot, golden dusk light, immense scale, stillness, photorealistic documentary realism, natural atmospheric haze, no illustration, no silhouette, no paper texture, vertical 9:16
 ```
 
+### Pares de keyframes agregados (regla de secuencia multi-madre, [biblia-visual.md](biblia-visual.md) §3)
+
+> Cada madre nueva forma **par** con una existente (mismo encuadre y composición, solo cambia el estado) para dar al clip FLF sus dos keyframes aprobados.
+
+**a3-m16 — Ornitorrinco caminando hacia la roca** — primer frame del clip FLF `a3-c1`; par con a3-m10 (último frame).
+- Archivo destino: `assets/arco-3/madre/a3-m16-ornitorrinco-caminando.png`
+- Nota: misma composición y encuadre que a3-m10 (la roca en la misma posición); el ornitorrinco de pie caminando, todavía no recostado.
+- Prompt (EN):
+```
+Black paper cutout silhouette of an old platypus walking slowly in profile toward a silhouetted red rock formation, weary deliberate posture, head low, the rock formation in the same position and framing as the resting scene, deep red dusk tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+```
+
+**a3-m17 — Argentina seca (estado final)** — último frame del clip FLF `a3-b4`; par con a3-m09 (primer frame).
+- Archivo destino: `assets/arco-3/madre/a3-m17-argentina-seca.png`
+- Nota: misma composición y capas que a3-m09; el mismo paisaje totalmente seco, más agrietado y oscuro.
+- Prompt (EN):
+```
+The same layered paper cutout arid plain now fully parched, dense deep crack lines spread across the cutout ground, the paper plants wilted and folded down, the cold desaturated grey tinted background darker and dimmer, almost lightless, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+```
+
 ### Material de origen real (NO se genera)
 
 - **rocas-coloradas-real** — foto real de la locación: `assets/fuentes/rocas-coloradas-real.jpg` (16:9 apaisada). Remate del Reel C (clip `a3-c4`); reencuadrar a 9:16 en montaje.
@@ -324,13 +344,14 @@ The mother platypus silhouette moving slowly across a silhouetted cracked plain,
 - Montaje: mitad de pantalla partida con a3-b1 (Argentina abajo)
 
 **Clip a3-b4 — El ambiente argentino secándose**
-- Herramienta: U2V
+- Herramienta: U2V-FLF
 - firstFrame: a3-m09 (`assets/arco-3/madre/a3-m09-argentina-declive.png`)
-- cameraPreset: `pull-out`
-- duration: 5
+- lastFrame: a3-m17 (`assets/arco-3/madre/a3-m17-argentina-seca.png`)
+- cameraPreset: `locked-tripod` (el frame final debe calzar 1:1 con a3-m17: sin movimiento de cámara que cambie el encuadre; la transformación pone todo el movimiento)
+- duration: 5 (FLF no acepta 6s)
 - Motion prompt (EN):
 ```
-Silhouetted crack lines spreading across the cutout plain, paper plants slowly wilting and folding down, time-lapse feel, flat 2D silhouette animation, the grey tinted background growing colder and dimmer.
+Silhouetted crack lines spreading across the cutout plain, paper plants slowly wilting and folding down until fully parched, time-lapse feel, flat 2D silhouette animation, the grey tinted background growing colder and dimmer.
 ```
 - Vision-Audit (EN): sceneDescription: `arid cutout Patagonian plain on a cold grey tinted background` · action: `crack lines spread and paper vegetation wilts, time-lapse feel` · mood: `cold, desolate`
 - Audio: off documental (el ecosistema cambia)
@@ -339,17 +360,18 @@ Silhouetted crack lines spreading across the cutout plain, paper plants slowly w
 ### Reel C — "El último" (PIEZA ESTRELLA, ~30s)
 
 **Clip a3-c1 — El último llega a las rocas coloradas**
-- Herramienta: U2V
-- firstFrame: a3-m10 (`assets/arco-3/madre/a3-m10-ornitorrinco-roca.png`; establishing opcional con a3-m07 si se abre con locación)
-- cameraPreset: `tracking`
-- duration: 5
+- Herramienta: U2V-FLF
+- firstFrame: a3-m16 (`assets/arco-3/madre/a3-m16-ornitorrinco-caminando.png`; establishing opcional con a3-m07 si se abre con locación)
+- lastFrame: a3-m10 (`assets/arco-3/madre/a3-m10-ornitorrinco-roca.png`)
+- cameraPreset: `locked-tripod` (el frame final debe calzar 1:1 con a3-m10: sin movimiento de cámara que cambie el encuadre)
+- duration: 5 (FLF no acepta 6s)
 - Motion prompt (EN):
 ```
 The last old platypus silhouette slowly walks in profile across silhouetted red rock formations and curls down to rest, deliberate weary steps, hinged paper puppet movement, flat 2D silhouette animation, deep red dusk tinted background, calm acceptance.
 ```
 - Vision-Audit (EN): sceneDescription: `silhouetted rock formations on a deep red dusk tinted background` · action: `the old platypus silhouette walks slowly and lies down to rest` · mood: `calm acceptance, solemn`
 - Audio: off documental (el final del linaje argentino)
-- Montaje: viene de a3-b4; corta a a3-c2
+- Montaje: viene de a3-b4; termina exactamente en a3-m10 (el primer frame de a3-c2) — corte invisible a a3-c2
 
 **Clip a3-c2 — La fosilización (transición-gancho)**
 - Herramienta: U2V-FLF
@@ -406,12 +428,12 @@ Las stories del [calendario](../redes/calendario-publicacion.md) (Semana 1) se a
 
 | Etapa | Cálculo | Total aprox. |
 |---|---|---|
-| Imágenes madre | 15 generadas × ¥0.3 | ~¥4.5 |
-| Clips U2V (Minimax I2V, 5s) | 13 × ¥0.5 | ~¥6.5 |
-| Clips U2V-FLF (Kling, 5s) | 2 × ~¥1 | ~¥2 |
-| **Total** | | **~¥13** |
+| Imágenes madre | 17 generadas × ¥0.3 | ~¥5.1 |
+| Clips U2V (Minimax I2V, 5s) | 11 × ¥0.5 | ~¥5.5 |
+| Clips U2V-FLF (Kling, 5s) | 4 × ~¥1 | ~¥4 |
+| **Total** | | **~¥14.6** |
 
-Dentro del presupuesto del [pipeline](pipeline-wind-comic.md) §3. Kling (FLF) se reserva a las dos transiciones-gancho; el resto va por Minimax.
+Dentro del presupuesto del [pipeline](pipeline-wind-comic.md) §3. Kling (FLF) se reserva a las transiciones-gancho (a3-a5, a3-c2) y a los dos clips de transformación con par de keyframes (a3-b4, a3-c1); el resto va por Minimax.
 
 ---
 

@@ -16,7 +16,7 @@ Estados: `pendiente` → `generado` (existe el archivo) → `aprobado` (pasó el
 
 ### Próxima acción
 
-**Las 15 madres están aprobadas** (paths canónicos en `assets/arco-3/madre/`). **Reel A:** a3-a1…a3-a3 aprobados; **siguiente = a3-a4** (U2V con firstFrame `a3-m02` recién reaprobada). **Gate Kling resuelto** (FLF real vía gateway qingyuntop, ver abajo): a3-a5 y a3-c2 pueden usar el morph primer→último frame.
+**Las 15 madres originales están aprobadas** (paths canónicos en `assets/arco-3/madre/`); quedan **pendientes m16 y m17** (pares de keyframes para a3-c1 y a3-b4, se generan al encarar Reel B/C). **Reel A:** a3-a1…a3-a3 aprobados; **siguiente = a3-a4** (U2V con firstFrame `a3-m02` recién reaprobada). **Gate Kling resuelto** (FLF real vía gateway qingyuntop, ver abajo): a3-a5, a3-b4, a3-c1 y a3-c2 pueden usar el morph primer→último frame.
 
 ```bash
 cd wind-comic && PLAN_GATE_DISABLED=1 npm run dev
@@ -29,7 +29,7 @@ cd wind-comic && PLAN_GATE_DISABLED=1 npm run dev
 
 | Etapa | Criterio |
 |---|---|
-| Madres | Silueta 100% negra (sin pelaje/semi-realismo), fondo tintado del beat correcto (guion de color de [arco-3-planos.md](arco-3-planos.md)), STYLE-BLOCK respetado (salvo m12–m15 que rompen a propósito), 9:16. Personajes distinguibles por contorno. |
+| Madres | Silueta 100% negra (sin pelaje/semi-realismo), fondo tintado del beat correcto (guion de color de [arco-3-planos.md](arco-3-planos.md)), STYLE-BLOCK respetado (salvo m12–m15 que rompen a propósito), 9:16. Personajes distinguibles por contorno. **Madres emparejadas** (par first/last de un FLF: m05/m06, m10/m11, m16/m10, m09/m17): mismo encuadre y composición base, solo cambia el estado — el par se aprueba junto, no cada madre suelta ([biblia-visual.md](biblia-visual.md) §3). |
 | Clips | Arranca 1:1 de su imagen madre, movimiento tipo títere de papel plano (no 3D), tinte estable durante el clip, duración correcta. |
 | Reels | Continuidad de tinte entre clips, dosificación de quiebres respetada (ver abajo), audio off sincero sin chistes. |
 | Stories | 15s, legibles sin audio, sin generación extra. |
@@ -38,7 +38,7 @@ cd wind-comic && PLAN_GATE_DISABLED=1 npm run dev
 
 ---
 
-## Checklist — Imágenes madre (15 × ~¥0.3 ≈ ¥4.5)
+## Checklist — Imágenes madre (17 × ~¥0.3 ≈ ¥5.1)
 
 | ID | Título | Estado | Costo real | Nota |
 |---|---|---|---|---|
@@ -57,8 +57,10 @@ cd wind-comic && PLAN_GATE_DISABLED=1 npm run dev
 | a3-m13 | Fósil en yacimiento | aprobado | ~¥0.3 | Salto realidad clínico ✓ |
 | a3-m14 | Grieta Revenant | aprobado | ~¥0.3 | REALITY-BLOCK-CHAOS ✓ |
 | a3-m15 | Zoom-out poético | aprobado | ~¥0.6 | Retry ×1; aéreo poético atardecer ✓ |
+| a3-m16 | Ornitorrinco caminando hacia la roca | pendiente | — | Par de keyframes con m10 (firstFrame de a3-c1); aprobar el par junto |
+| a3-m17 | Argentina seca (estado final) | pendiente | — | Par de keyframes con m09 (lastFrame de a3-b4); aprobar el par junto |
 
-## Checklist — Clips (13 U2V ≈ ¥6.5 + 2 FLF ≈ ¥2)
+## Checklist — Clips (11 U2V ≈ ¥5.5 + 4 FLF ≈ ¥4)
 
 | ID | Reel | Herramienta | Estado | Costo real | Nota |
 |---|---|---|---|---|---|
@@ -73,8 +75,8 @@ cd wind-comic && PLAN_GATE_DISABLED=1 npm run dev
 | a3-b1 | B | U2V | pendiente | — | Pantalla partida con a3-b3 |
 | a3-b2 | B | U2V | pendiente | — | |
 | a3-b3 | B | U2V | pendiente | — | |
-| a3-b4 | B | U2V | pendiente | — | |
-| a3-c1 | C | U2V | pendiente | — | |
+| a3-b4 | B | U2V-FLF | pendiente | — | Par de keyframes m09→m17 (requiere m17 aprobada) |
+| a3-c1 | C | U2V-FLF | pendiente | — | Par de keyframes m16→m10 (requiere m16 aprobada); termina 1:1 en el primer frame de a3-c2 |
 | a3-c2 | C | U2V-FLF | pendiente | — | **Gate Kling** (ver abajo) |
 | a3-c3 | C | U2V | pendiente | — | |
 | a3-c4 | C | ninguna | pendiente | — | Solo montaje (foto real) |
@@ -115,10 +117,10 @@ Formaliza el QC que ya se hace informalmente (carpetas `_candidates`/`_audit`). 
 
 | Etapa | Estimado | Real acumulado |
 |---|---|---|
-| Madres (15 × ¥0.3) | ~¥4.5 | ~¥6.0 |
-| Clips U2V (13 × ¥0.5) | ~¥6.5 | ~¥1.5 |
-| Clips FLF (2 × ~¥1) | ~¥2 | ¥0 |
-| **Total** | **~¥13** | **~¥7.5** |
+| Madres (17 × ¥0.3) | ~¥5.1 | ~¥6.0 |
+| Clips U2V (11 × ¥0.5) | ~¥5.5 | ~¥1.5 |
+| Clips FLF (4 × ~¥1) | ~¥4 | ¥0 |
+| **Total** | **~¥14.6** | **~¥7.5** |
 
 Los retries de madres rechazadas suman ~¥0.3 c/u: por eso el gate de aprobación de a3-m01 antes de generar en lote.
 
