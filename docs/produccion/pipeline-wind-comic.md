@@ -93,7 +93,7 @@ Personaje: [nombre ES]
 - name: [nombre]
 - description (EN): [quién es, rol narrativo]
 - appearance (EN): [aspecto físico + vestuario, autocontenido]
-- styleKeywords (EN): [estilo visual, ej. "illustrated documentary, reconstructed notebook"]
+- styleKeywords (EN): [estilo visual, ej. "paper cutout silhouette, shadow puppet theater"]
 - visualTags (EN): [tag1, tag2, ...]
 - imageUrls: [archivo(s) de assets/; se sube la imagen y se pega la URL resultante]
 - Voz: routing [género/nombre] · override: [voz elegida o —]
@@ -103,8 +103,8 @@ Personaje: [nombre ES]
 
 ```
 [id] — [título ES]
-- idea / prompt (EN): [con el STYLE-BLOCK de biblia-visual.md §1 embebido literal]
-- style: Illustrated documentary   (u otro si rompe la estética a propósito)
+- idea / prompt (EN): [con el STYLE-BLOCK de biblia-visual.md §1 embebido literal + la línea de tinte del guion de color del arco]
+- style: Woodcut Print   (preset más cercano al look silueta; u otro si rompe la estética a propósito)
 - aspect: 9:16
 - Archivo destino: assets/arco-N/madre/[id]-[slug].png
 ```

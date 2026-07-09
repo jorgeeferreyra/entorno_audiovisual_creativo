@@ -9,8 +9,8 @@
 | Ancla | Valor | Motivo |
 |---|---|---|
 | **Formato** | 9:16 vertical | Stories/reels/feed móvil |
-| **Registro visual** | "Cuaderno reconstruido de Charles": textura de papel, tinta, ilustración con movimiento | Justifica la estética IA (canon: diarios caóticos) |
-| **Paleta base** | Tierras rojas/naranjas (rocas coloradas), verdes prehistóricos, sepia de cuaderno | Une Pangea con la locación real del Ep.1 |
+| **Registro visual** | "Teatro de sombras de los cuadernos de Charles": siluetas recortadas estilo Lotte Reiniger sobre papel envejecido tintado (ref. *El príncipe Achmed*) | Estilización dura = dirección de arte deliberada (evita el semi-realismo IA); justifica la estética (canon: diarios caóticos) y alinea con "CFJ nunca de frente" y la Mano Negra |
+| **Paleta base** | Siluetas negras + **fondos tintados narrativos por beat** (ámbar/verde → rojo → gris; rojos de rocas coloradas en el cierre) | El tinte carga la emoción de cada plano y une Pangea con la locación real del Ep.1 |
 | **Época** | Mesozoico/paleógeno estilizado, no fotorrealista estricto | Tolera inconsistencias, refuerza tono |
 | **Anacronismos** | Permitidos y buscados (mandarina, reloj, cadenita) | Canon |
 | **Rostro de CFJ** | NUNCA de frente | Regla dura del canon |
@@ -20,8 +20,10 @@
 Única definición del bloque que los prompts finales de producción embeben **literal** (duplicación aceptada para que cada prompt sea copiable tal cual; si este bloque cambia, propagarlo a los prompts finales de los arcos):
 
 ```
-illustrated documentary style, reconstructed-notebook aesthetic, aged paper texture with faint ink lines, earthy red and prehistoric green palette, sepia edges, vertical 9:16
+Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
 ```
+
+**Regla de tinte (color por plano):** la paleta NO vive en el STYLE-BLOCK. Cada prompt agrega su propia línea de tinte según el guion de color del arco (ej. `warm amber and green tinted background`). Referencia: los fondos tintados de *El príncipe Achmed* — el color del fondo carga la narrativa; las siluetas siempre son negras.
 
 ---
 
@@ -30,8 +32,8 @@ illustrated documentary style, reconstructed-notebook aesthetic, aged paper text
 > Prompts base para pegar/adaptar en wind-comic. Generar cada una, elegir la mejor, y reutilizarla como referencia o primer frame.
 
 ### Transversales
-- **Paisaje Pangea**: "supercontinente Pangea visto desde una colina, cielo prehistórico, vegetación exuberante, estilo ilustración de cuaderno de explorador, textura de papel, 9:16".
-- **Rocas Coloradas**: "formaciones de roca rojiza tipo marciano, lagunas naranjas, Patagonia, estilo documental ilustrado, 9:16".
+- **Paisaje Pangea**: "paisaje de Pangea en capas de siluetas recortadas visto desde una colina, vegetación exuberante silueteada, fondo tintado ámbar/verde, teatro de sombras, 9:16".
+- **Rocas Coloradas**: "formaciones de roca tipo marciano en capas de silueta recortada, lagunas silueteadas, Patagonia, fondo tintado rojo profundo, teatro de sombras, 9:16".
 - **Página de cuaderno**: "página de diario antiguo con anotaciones manuscritas, tachones, mapa dibujado a mano, sepia, 9:16".
 
 ### Arco 1 — Mano Negra
@@ -48,9 +50,9 @@ illustrated documentary style, reconstructed-notebook aesthetic, aged paper text
 
 > Prompts finales de producción (en inglés, plano a plano) en [arco-3-planos.md](arco-3-planos.md). Acá quedan solo los conceptos base.
 
-- **Familia de ornitorrincos**: generar una imagen madre POR animal (madre, cría, padre) + el huevo, para lockear cada uno como primer frame de sus clips. "ornitorrinco realista pero tierno, estilo documental ilustrado, fondo Pangea, 9:16".
-- **Pantalla partida Australia/Argentina**: dos ambientes contrastados (próspero/árido) — se arma en montaje, pero conviene una imagen madre por ambiente.
-- **Fosilización**: "un ornitorrinco recostado sobre roca colorada que se transforma en fósil de piedra, transición, 9:16".
+- **Familia de ornitorrincos**: generar una imagen madre POR animal (madre, cría, padre) + el huevo, para lockear cada uno como primer frame de sus clips. "silueta negra recortada de ornitorrinco de perfil expresivo, teatro de sombras, fondo de papel tintado, 9:16". La distinción entre animales es por contorno (tamaño, postura, muescas del recorte), no por pelaje.
+- **Pantalla partida Australia/Argentina**: dos ambientes contrastados por **tinte de fondo** (verde saturado próspero / gris frío desaturado) — se arma en montaje, pero conviene una imagen madre por ambiente.
+- **Fosilización**: "silueta de ornitorrinco recostada sobre roca colorada que se congela y se rellena de textura de piedra, transición, 9:16".
 - **Salto a la realidad (remate)**: no existe plano de archivo del fósil del Ep.1. El fósil en el yacimiento actual se genera en registro fotográfico (`a3-m13` en [arco-3-planos.md](arco-3-planos.md)) y el corte final es la foto real de la locación (`assets/fuentes/rocas-coloradas-real.jpg`).
 
 ---
