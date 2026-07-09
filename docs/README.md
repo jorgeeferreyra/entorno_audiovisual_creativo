@@ -2,7 +2,7 @@
 
 Documentación del proyecto de ficción y del contenido para redes derivado del guion. Todo en español, en Markdown.
 
-> `wind-comic/` y `MoneyPrinterTurbo/` son **herramientas** de generación, no forman parte de esta documentación creativa. Fuentes primarias (raíz): `Contexto del Proyecto.pdf`, `guion_episodio_1.pdf` y `prompt_charles_jones.txt` (aspecto/vestuario de CFJ; su referencia visual vive en `assets/fuentes/charles-jones-referencia.jpeg`).
+> `wind-comic/` es **herramienta** de generación, no forma parte de esta documentación creativa. Fuentes primarias (raíz): `Contexto del Proyecto.pdf`, `guion_episodio_1.pdf` y `prompt_charles_jones.txt` (aspecto/vestuario de CFJ; su referencia visual vive en `assets/fuentes/charles-jones-referencia.jpeg`).
 
 ---
 

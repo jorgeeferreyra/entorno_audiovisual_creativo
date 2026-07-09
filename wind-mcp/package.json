@@ -1,0 +1,22 @@
+{
+  "name": "wind-mcp",
+  "version": "1.0.0",
+  "description": "MCP wrapper for wind-comic — Charles Jones production pipeline",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "tsx --tsconfig tsconfig.json src/index.ts",
+    "e2e:mock": "MOCK_ENGINES=1 PLAN_GATE_DISABLED=1 tsx --tsconfig tsconfig.json scripts/e2e-a3-m01.ts --mock",
+    "e2e:real": "tsx --tsconfig tsconfig.json scripts/e2e-a3-m01.ts --real"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "dotenv": "^16.4.7",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
+  }
+}

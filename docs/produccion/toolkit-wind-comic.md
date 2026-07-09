@@ -5,7 +5,7 @@
 > - Flujo de producción, estrategia "un personaje por clip" y presupuesto del proyecto: [pipeline-wind-comic.md](pipeline-wind-comic.md).
 > - Anclas de estilo y prompts madre del proyecto: [biblia-visual.md](biblia-visual.md).
 > - Fuente canónica de cada proveedor (parámetros, ejemplos): `wind-comic/docs/{llm,image,video,tts}-providers.md`.
-> - `wind-comic/` y `MoneyPrinterTurbo/` son solo herramientas; este documento no las modifica, solo las describe.
+> - `wind-comic/` es solo herramienta; este documento no la modifica, solo la describe.
 
 **Cómo leer las tablas:** la columna **Acceso** distingue **UI** (una página del dashboard, operable sin código) de **API/interno** (solo se llama por API o corre automático dentro del pipeline, sin botón dedicado).
 
@@ -389,7 +389,7 @@ flowchart TD
 | **Workflow Studio** | Editor visual de DAG de agentes: agregar/quitar nodos, dependencias, guardar y ejecutar workflows propios | UI: `/workflow-studio` (fuera del sidebar del dashboard) |
 | **Pull-sheet / pull-replicate** | "拉片": descompone un video (propio o externo) toma a toma en tabla de narrativa/tiempo/cámara/imagen/sonido; permite replicar la estructura de un video con otro contenido | UI: pestaña **拉片** en `/projects/[id]` |
 | **Backend dual SQLite/Postgres** | SQLite por defecto; Postgres opcional vía `DB_DRIVER=pg`, mismo esquema | Configuración de entorno, no UI |
-| **Short-video planner** | "极速分镜台": planificador de estructura de video corto (15/30/60s) en 3 actos (hook/cuerpo/clímax); **no** es una integración de MoneyPrinterTurbo, es una herramienta propia de wind-comic | UI: `/dashboard/short-video` |
+| **Short-video planner** | "极速分镜台": planificador de estructura de video corto (15/30/60s) en 3 actos (hook/cuerpo/clímax); herramienta propia de wind-comic | UI: `/dashboard/short-video` |
 
 ---
 

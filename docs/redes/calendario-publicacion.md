@@ -23,7 +23,7 @@
 | Mar | Story set | S1 familia feliz + S2 la grieta | Goteo |
 | Mié | Reel A | "La grieta" | Alcance |
 | Jue | Story set | S3 despedida + S4 declive | Goteo |
-| Vie | Reel C | "El último" (fosilización → fósil real Ep.1) | **GANCHO DE LA SEMANA** |
+| Vie | Reel C | "El último" (fosilización → fósil generado en pipeline) | **GANCHO DE LA SEMANA** |
 | Sáb/Dom | Feed | Recap + pregunta al público | Comunidad |
 
 ### Semana 2 — Arco 1: La Mano Negra (resignifica: no fue natural)
