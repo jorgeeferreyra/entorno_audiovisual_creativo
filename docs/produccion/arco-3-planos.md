@@ -47,16 +47,18 @@ Black paper cutout silhouette of a mother platypus in expressive side profile, r
 
 **a3-m02 — Cría de ornitorrinco**
 - Archivo destino: `assets/arco-3/madre/a3-m02-cria-ornitorrinco.png`
+- Nota: anatomía = pico de pato + cuerpo de nutria + cola plana; `subject_reference` de m01 tiende a meter un segundo animal — preferir T2I puro.
 - Prompt (EN):
 ```
-Black paper cutout silhouette of the same platypus character as the reference image, smaller baby in playful side profile, tail curled upward mid-hop, among silhouetted Pangea plants, warm amber and saturated green tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+Black paper cutout silhouette of one small baby platypus sleeping alone, warmly curled in a twig nest resting on a green riverbank, calm water beside the bank, clear duck-bill snout, otter-like rounded body, broad flat paddle tail, eyes closed peaceful, solid opaque black single silhouette, no second animal, warm amber and saturated green tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
 ```
 
 **a3-m03 — Padre ornitorrinco**
 - Archivo destino: `assets/arco-3/madre/a3-m03-padre-ornitorrinco.png`
+- Ref obligatoria: a3-m01 (mismo personaje / anatomía / estilo; subject_reference)
 - Prompt (EN):
 ```
-Black paper cutout silhouette of the same platypus character as the reference image, adult male in side profile, larger and more angular, distinctive notch cut into the brow outline, standing alert among silhouetted Pangea plants, warm amber and saturated green tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+Same platypus character as the reference image, black paper cutout silhouette, adult male in side profile, same duck bill and flat paddle tail and woodcut etched details, larger and more angular, distinctive notch cut into the brow outline, standing alert among silhouetted Pangea ferns, warm amber and saturated green tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
 ```
 
 **a3-m04 — Huevo de ornitorrinco**
@@ -219,9 +221,9 @@ The mother platypus silhouette calmly grooming by a silhouetted stream, head til
 - duration: 5
 - Motion prompt (EN):
 ```
-The baby platypus silhouette with flat duck-bill and broad beaver tail hopping and playing near the silhouetted water, tail bouncing, small paper splashes, hinged paper puppet movement, flat 2D silhouette animation, warm amber and green tinted background.
+The tiny baby platypus silhouette sleeping warmly curled in the twig nest, soft breathing rise and fall, occasional gentle nestle, flat paddle tail still, hinged paper puppet movement, flat 2D silhouette animation, warm amber and green tinted background.
 ```
-- Vision-Audit (EN): sceneDescription: `silhouetted water's edge on a warm tinted background` · action: `the baby platypus silhouette hops and plays, paper splashes` · mood: `joyful, curious`
+- Vision-Audit (EN): sceneDescription: `baby platypus silhouette sleeping in a twig nest on a warm tinted background` · action: `the baby sleeps and nestles gently` · mood: `warm, peaceful`
 - Audio: off documental (continúa)
 - Montaje: intercut con a3-a3; cierra el bloque "unidad" y corta a a3-a5
 

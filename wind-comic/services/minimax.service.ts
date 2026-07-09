@@ -684,14 +684,18 @@ export class MinimaxService {
    */
   async generateImageWithRefs(prompt: string, refs: string[], options?: {
     aspectRatio?: string;
+    /** Default true; set false when the prompt must be followed literally (e.g. "one animal only"). */
+    promptOptimizer?: boolean;
     _retryCount?: number;
   }): Promise<string> {
     if (!this.imageEndpointAvailable) {
       throw new Error(`Minimax image endpoint unavailable on baseURL "${this.baseURL}"`);
     }
+    // Official schema: subject_reference[].image_file is a STRING (URL or data URI), not an array.
+    // Arrays / `image:[]` → 2013 invalid params or "disallowed image url".
     const validRefs = (refs || [])
       .filter((u) => typeof u === 'string' && (u.startsWith('http') || u.startsWith('data:image/')))
-      .slice(0, 4);
+      .slice(0, 1);
     if (validRefs.length === 0) {
       // 没有效 refs — 直接降级到普通 generateImage, 不浪费一个 multi-ref 请求
       return this.generateImage(prompt, options);
@@ -711,24 +715,15 @@ export class MinimaxService {
     }
 
     try {
-      const subjectArr = validRefs.map((url) => ({ type: 'character', image: [url] }));
+      const subjectArr = validRefs.map((url) => ({ type: 'character', image_file: url }));
       const body: Record<string, any> = {
         model: 'image-01',
         prompt: effectivePrompt,
-        prompt_optimizer: true,
+        prompt_optimizer: options?.promptOptimizer !== false,
         subject_reference: subjectArr,
       };
       if (options?.aspectRatio) {
-        const ratioMap: Record<string, { width: number; height: number }> = {
-          '1:1': { width: 1024, height: 1024 },
-          '16:9': { width: 1344, height: 768 },
-          '9:16': { width: 768, height: 1344 },
-          '4:3': { width: 1152, height: 896 },
-          '3:4': { width: 896, height: 1152 },
-        };
-        const size = ratioMap[options.aspectRatio] || ratioMap['1:1'];
-        body.width = size.width;
-        body.height = size.height;
+        body.aspect_ratio = options.aspectRatio;
       }
 
       console.log(`[Minimax-multi] generating with ${validRefs.length} subject refs, prompt ${effectivePrompt.length}chars`);

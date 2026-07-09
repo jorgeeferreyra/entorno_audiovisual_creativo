@@ -16,17 +16,11 @@ Estados: `pendiente` → `generado` (existe el archivo) → `aprobado` (pasó el
 
 ### Próxima acción
 
-**Las 15 madres están aprobadas** (paths canónicos en `assets/arco-3/madre/`). **Clips Reel A en curso:** a3-a1 aprobado; siguiente a3-a2…a3-a4 (gate Kling solo en a3-a5).
+**Las 15 madres están aprobadas** (paths canónicos en `assets/arco-3/madre/`). **Reel A:** a3-a1…a3-a3 aprobados; **siguiente = a3-a4** (U2V con firstFrame `a3-m02` recién reaprobada). Gate Kling solo en a3-a5.
 
 ```bash
 cd wind-comic && PLAN_GATE_DISABLED=1 npm run dev
-# Luego: /dashboard/u2v → primera ficha a3-a1
-```
-
-O en lote (salta las que ya existen aprobadas; hoy conviene ir de a una para revisar contornos de personajes):
-
-```bash
-cd wind-mcp && npm run madres:a3 -- --todas
+# Luego: /dashboard/u2v → ficha a3-a4 (firstFrame: a3-m02-cria-ornitorrinco.png)
 ```
 
 ---
@@ -49,7 +43,7 @@ cd wind-mcp && npm run madres:a3 -- --todas
 | ID | Título | Estado | Costo real | Nota |
 |---|---|---|---|---|
 | a3-m01 | Madre ornitorrinco | aprobado | ~¥0.3 | Lock de consistencia ✓ |
-| a3-m02 | Cría de ornitorrinco | aprobado | ~¥0.3 | Contorno más pequeño, cola en arco ✓ |
+| a3-m02 | Cría de ornitorrinco | aprobado | ~¥1.2 | Regenerada (STYLE-BLOCK fix); pick c2 — dormida sola en nido, pico/cola/nutria ✓ |
 | a3-m03 | Padre ornitorrinco | aprobado | ~¥0.3 | Más angular, muesca en ceja ✓ |
 | a3-m04 | Huevo | aprobado | ~¥0.3 | Close-up nido en tronco ✓ |
 | a3-m05 | Paisaje Pangea | aprobado | ~¥0.3 | |
@@ -69,9 +63,9 @@ cd wind-mcp && npm run madres:a3 -- --todas
 | ID | Reel | Herramienta | Estado | Costo real | Nota |
 |---|---|---|---|---|---|
 | a3-a1 | A | U2V | aprobado | ~¥0.5 | Intro transversal; manos abren cuaderno ✓ |
-| a3-a2 | A | U2V | pendiente | — | |
-| a3-a3 | A | U2V | pendiente | — | El clip híbrido previo NO cuenta como a3-a3 |
-| a3-a4 | A | U2V | pendiente | — | |
+| a3-a2 | A | U2V | aprobado | ~¥0.5 | Establishing Pangea ✓ |
+| a3-a3 | A | U2V | aprobado | ~¥0.5 | Ritual madre; el clip híbrido previo NO cuenta |
+| a3-a4 | A | U2V | pendiente | — | Regenerar con m02 nueva (archivo viejo obsoleto) |
 | a3-a5 | A | U2V-FLF | pendiente | — | **Gate Kling** (ver abajo) |
 | a3-a5b | A | U2V | pendiente | — | Quiebre caos (único del reel) |
 | a3-a5c | A | U2V | pendiente | — | Quiebre respiro |
@@ -104,10 +98,10 @@ cd wind-mcp && npm run madres:a3 -- --todas
 
 | Etapa | Estimado | Real acumulado |
 |---|---|---|
-| Madres (15 × ¥0.3) | ~¥4.5 | ~¥5.1 |
-| Clips U2V (13 × ¥0.5) | ~¥6.5 | ~¥0.5 |
+| Madres (15 × ¥0.3) | ~¥4.5 | ~¥6.0 |
+| Clips U2V (13 × ¥0.5) | ~¥6.5 | ~¥1.5 |
 | Clips FLF (2 × ~¥1) | ~¥2 | ¥0 |
-| **Total** | **~¥13** | **~¥5.6** |
+| **Total** | **~¥13** | **~¥7.5** |
 
 Los retries de madres rechazadas suman ~¥0.3 c/u: por eso el gate de aprobación de a3-m01 antes de generar en lote.
 
@@ -115,10 +109,7 @@ Los retries de madres rechazadas suman ~¥0.3 c/u: por eso el gate de aprobació
 
 ## Gate Kling (resolver ANTES de generar a3-a5)
 
-`KELING_API_KEY` no está configurada. Decisión tomada: **fallback documentado, se decide al llegar acá** (no bloquea madres ni clips U2V).
-
-- El fallback ya es automático en código (`generateFlfViaKling()` en `wind-mcp/src/lib/video.ts`): sin key, degrada a Minimax I2V con warning — se pierde el morph primer→último frame, que es el efecto clave de las dos transiciones-gancho (a3-a5 grieta, a3-c2 fosilización).
-- Opciones al llegar al gate: (a) aceptar el clip degradado si el resultado I2V convence, o (b) conseguir `QINGYUNTOP_API_KEY` (gateway con endpoints Kling, key simple) — ver [inventario-api-keys.md](inventario-api-keys.md), que desaconseja Kling oficial.
+`KELING_API_KEY` y `QINGYUNTOP_API_KEY` están presentes en el entorno. Decisión tomada: **probar Kling al llegar a a3-a5**; si falla, el fallback a Minimax I2V ya es automático en `generateFlfViaKling()` (`wind-mcp/src/lib/video.ts`) — se pierde el morph primer→último frame (efecto clave de a3-a5 grieta y a3-c2 fosilización). No bloquea madres ni clips U2V previos.
 
 ---
 
