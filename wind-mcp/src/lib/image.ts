@@ -137,5 +137,6 @@ export async function resolveFrameUrlForVideo(
   if (process.env.MOCK_ENGINES === '1') {
     return uploadImageToWindComic(localPath);
   }
-  return uploadImageToMinimax(localPath);
+  // MiniMax I2V acepta data URL Base64 en first_frame_image (sin subir a /v1/files/upload).
+  return fileToDataUri(localPath);
 }

@@ -83,7 +83,7 @@ El caos se diseña **alrededor** de las debilidades de los modelos, no a pesar d
 ### Transversales
 - **Paisaje Pangea**: "paisaje de Pangea en capas de siluetas recortadas visto desde una colina, vegetación exuberante silueteada, fondo tintado ámbar/verde, teatro de sombras, 9:16".
 - **Rocas Coloradas**: "formaciones de roca tipo marciano en capas de silueta recortada, lagunas silueteadas, Patagonia, fondo tintado rojo profundo, teatro de sombras, 9:16".
-- **Página de cuaderno**: "página de diario antiguo con anotaciones manuscritas, tachones, mapa dibujado a mano, sepia, 9:16".
+- **Apertura cuaderno (intro transversal)**: subjetiva POV, manos abriendo cuaderno de tapa dura áspera (piel/pelos), título "Charles Francis Jones" en la tapa, sepia, 9:16. Imagen madre `a3-m12`, clip `a3-a1`. Abre TODOS los reels.
 
 ### Arco 1 — Mano Negra
 - **Mano con cadenita**: "primer plano de una mano masculina con una cadenita de oro en la muñeca, sobre un mapa antiguo, iluminación dramática, sombra, 9:16" (varias poses: trazando, firmando, apoyada).

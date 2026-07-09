@@ -16,7 +16,7 @@ Estados: `pendiente` → `generado` (existe el archivo) → `aprobado` (pasó el
 
 ### Próxima acción
 
-**Las 15 madres están aprobadas** (paths canónicos en `assets/arco-3/madre/`). Siguiente etapa: clips U2V en wind-comic (`/dashboard/u2v`, fichas en [arco-3-planos.md](arco-3-planos.md) §2). Gate Kling pendiente solo para `a3-a5` y `a3-c2`.
+**Las 15 madres están aprobadas** (paths canónicos en `assets/arco-3/madre/`). **Clips Reel A en curso:** a3-a1 aprobado; siguiente a3-a2…a3-a4 (gate Kling solo en a3-a5).
 
 ```bash
 cd wind-comic && PLAN_GATE_DISABLED=1 npm run dev
@@ -59,7 +59,7 @@ cd wind-mcp && npm run madres:a3 -- --todas
 | a3-m09 | Argentina en declive | aprobado | ~¥0.3 | Gris frío, tierra agrietada ✓ |
 | a3-m10 | Ornitorrinco sobre roca | aprobado | ~¥0.3 | Recostado, rojo atardecer ✓ |
 | a3-m11 | Fósil de piedra | aprobado | ~¥0.3 | Relieve fósil, gris piedra ✓ |
-| a3-m12 | Página de cuaderno | aprobado | ~¥0.3 | Marco cuaderno, siluetas pin ✓ |
+| a3-m12 | Apertura cuaderno Charles | aprobado | ~¥0.3 | Intro transversal POV; tapa con pelos ✓ |
 | a3-m13 | Fósil en yacimiento | aprobado | ~¥0.3 | Salto realidad clínico ✓ |
 | a3-m14 | Grieta Revenant | aprobado | ~¥0.3 | REALITY-BLOCK-CHAOS ✓ |
 | a3-m15 | Zoom-out poético | aprobado | ~¥0.6 | Retry ×1; aéreo poético atardecer ✓ |
@@ -68,7 +68,7 @@ cd wind-mcp && npm run madres:a3 -- --todas
 
 | ID | Reel | Herramienta | Estado | Costo real | Nota |
 |---|---|---|---|---|---|
-| a3-a1 | A | U2V | pendiente | — | |
+| a3-a1 | A | U2V | aprobado | ~¥0.5 | Intro transversal; manos abren cuaderno ✓ |
 | a3-a2 | A | U2V | pendiente | — | |
 | a3-a3 | A | U2V | pendiente | — | El clip híbrido previo NO cuenta como a3-a3 |
 | a3-a4 | A | U2V | pendiente | — | |
@@ -105,9 +105,9 @@ cd wind-mcp && npm run madres:a3 -- --todas
 | Etapa | Estimado | Real acumulado |
 |---|---|---|
 | Madres (15 × ¥0.3) | ~¥4.5 | ~¥5.1 |
-| Clips U2V (13 × ¥0.5) | ~¥6.5 | ¥0 |
+| Clips U2V (13 × ¥0.5) | ~¥6.5 | ~¥0.5 |
 | Clips FLF (2 × ~¥1) | ~¥2 | ¥0 |
-| **Total** | **~¥13** | **~¥5.1** |
+| **Total** | **~¥13** | **~¥5.6** |
 
 Los retries de madres rechazadas suman ~¥0.3 c/u: por eso el gate de aprobación de a3-m01 antes de generar en lote.
 

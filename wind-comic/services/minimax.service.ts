@@ -199,13 +199,12 @@ export class MinimaxService {
     const effectivePrompt = retryCount === 0 ? prompt : sanitizePromptForMinimax(prompt);
 
     try {
-      // 判断是否有有效的图片 URL（非 data URI mock）
-      // v2.13.5 修复: 之前只接受 startsWith('http') 的绝对 URL,
-      // 但 /api/u2v 端点把本地上传转成的相对 URL "/api/serve-file?key=xxx"
-      // 不满足该条件 → hasRealImage=false → 模型选成 Hailuo-2.3 文生视频,
-      // 用户上传的参考图被静默丢掉。这里改成"非 data:、非空"即认为有图,
-      // 让本地上传也能走 I2V-01 真图生视频。
-      const hasRealImage = !!imageUrl && !imageUrl.startsWith('data:') && imageUrl.length > 0;
+      // v2.13.5 修: 本地上传 /api/serve-file、http(s) 外链、以及 data: Base64
+      // (MiniMax I2V 官方支持 data URL) 均视为有效首帧。
+      const hasRealImage =
+        !!imageUrl &&
+        imageUrl.length > 0 &&
+        (imageUrl.startsWith('http') || imageUrl.startsWith('data:image/'));
 
       // v2.22 fix: I2V-01 已被当前套餐 EOL (实测 2061 "your current token plan
       // not support model"). 改成统一用 Hailuo 2.3 — T2V 和 I2V 同一个模型,

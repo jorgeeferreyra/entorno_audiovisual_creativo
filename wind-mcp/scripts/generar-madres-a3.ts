@@ -8,11 +8,13 @@
  *
  * Por defecto (sin flags) solo lista las madres y sus prompts, sin generar.
  */
+import path from 'node:path';
+import { PROJECT_ROOT } from '../src/config.js';
 import { formatEstado, getEstado } from '../src/lib/estado.js';
-import { generarImagen } from '../src/lib/image.js';
+import { generarImagen, uploadImageToWindComic } from '../src/lib/image.js';
 import { leerPlanosArco3, validarStyleBlock, type MadrePlano } from '../src/lib/planos.js';
 
-async function generar(madre: MadrePlano) {
+async function generar(madre: MadrePlano, refUrls?: string[]) {
   console.log(`\n--- generar_imagen ${madre.id} (${madre.titulo}) ---`);
   const img = await generarImagen({
     prompt: madre.prompt,
@@ -20,6 +22,7 @@ async function generar(madre: MadrePlano) {
     id: madre.id,
     slug: madre.slug,
     aspect: '9:16',
+    refs: refUrls,
   });
   console.log('OK:', img.localPath, `[${img.provider}]`, img.estCostCny ? `~¥${img.estCostCny}` : '');
 }
@@ -28,6 +31,7 @@ async function main() {
   const args = process.argv.slice(2);
   const idFlag = args.indexOf('--id');
   const id = idFlag !== -1 ? args[idFlag + 1] : undefined;
+  const refM01 = args.includes('--ref-m01');
   const todas = args.includes('--todas');
 
   const { madres } = await leerPlanosArco3();
@@ -53,7 +57,14 @@ async function main() {
   const seleccion = id ? madres.filter((m) => m.id === id) : madres;
   if (!seleccion.length) throw new Error(`Madre ${id} no encontrada en arco-3-planos.md`);
 
-  for (const m of seleccion) await generar(m);
+  let refUrls: string[] | undefined;
+  if (refM01) {
+    const m01Path = path.join(PROJECT_ROOT, 'assets/arco-3/madre/a3-m01-madre-ornitorrinco.png');
+    refUrls = [await uploadImageToWindComic(m01Path)];
+    console.log('Ref m01:', refUrls[0].slice(0, 80));
+  }
+
+  for (const m of seleccion) await generar(m, refUrls);
   console.log(`\n=== ${seleccion.length} madre(s) generada(s) ===\n`);
 }
 

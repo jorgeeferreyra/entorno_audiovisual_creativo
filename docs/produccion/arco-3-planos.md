@@ -49,14 +49,14 @@ Black paper cutout silhouette of a mother platypus in expressive side profile, r
 - Archivo destino: `assets/arco-3/madre/a3-m02-cria-ornitorrinco.png`
 - Prompt (EN):
 ```
-Black paper cutout silhouette of a small baby platypus in playful side profile, tiny rounded contour clearly smaller than an adult, tail curled upward mid-hop, silhouetted Pangea plants around, warm amber and saturated green tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+Black paper cutout silhouette of a small baby platypus in playful side profile, duck-billed monotreme with flat wide bill and broad flat paddle tail, webbed feet, no visible ears, tiny rounded contour clearly smaller than an adult, tail curled upward mid-hop, among silhouetted Pangea plants, warm amber and saturated green tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
 ```
 
 **a3-m03 — Padre ornitorrinco**
 - Archivo destino: `assets/arco-3/madre/a3-m03-padre-ornitorrinco.png`
 - Prompt (EN):
 ```
-Black paper cutout silhouette of an adult male platypus in side profile, larger and more angular contour than the mother, a distinctive notch cut into the outline of its brow, standing alert among silhouetted Pangea plants, warm amber and saturated green tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+Black paper cutout silhouette of an adult male platypus in side profile, duck-billed monotreme with flat wide bill and broad flat paddle tail, webbed feet, no visible ears, larger and more angular contour than the mother, distinctive notch cut into the brow outline, standing alert among silhouetted Pangea plants, warm amber and saturated green tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
 ```
 
 **a3-m04 — Huevo de ornitorrinco**
@@ -121,13 +121,13 @@ Black paper cutout silhouette of an old platypus lying down to rest on a silhoue
 The same platypus silhouette now frozen and filled with stone texture, a fossil relief embedded in the silhouetted red rock, fine cut-out bone detail inside the contour, the red tint of the background fading to stone grey, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
 ```
 
-### Recurso de marco (transversal)
+### Recurso de marco (transversal — intro de TODOS los reels)
 
-**a3-m12 — Página de cuaderno**
+**a3-m12 — Apertura: cuaderno de Charles**
 - Archivo destino: `assets/arco-3/madre/a3-m12-pagina-cuaderno.png`
 - Prompt (EN):
 ```
-An old diary page with handwritten annotations, crossed-out notes, a hand-drawn map, small black paper cutout silhouettes of animals pinned among the notes, sepia tones, aged paper texture, vertical 9:16
+First-person subjective POV looking down, weathered explorer hands gripping and beginning to open a rugged hardbound field journal, cover made of worn animal hide with bristly hair-like texture, embossed title clearly reading Charles Francis Jones, warm sepia expedition light, aged yellowed pages barely visible inside, intimate mysterious mood, vertical 9:16
 ```
 
 ### Salto a la realidad (rompe la estética silueta A PROPÓSITO)
@@ -173,18 +173,18 @@ Regla del [pipeline](pipeline-wind-comic.md): **un personaje por clip**, cruces 
 
 ### Reel A — "La grieta" (~45s)
 
-**Clip a3-a1 — Apertura: página de cuaderno**
+**Clip a3-a1 — Apertura: página de cuaderno (intro transversal)**
 - Herramienta: U2V
 - firstFrame: a3-m12 (`assets/arco-3/madre/a3-m12-pagina-cuaderno.png`)
 - cameraPreset: `push-in`
 - duration: 5
 - Motion prompt (EN):
 ```
-An old diary page, handwritten annotations and a hand-drawn map slowly coming into focus, small pinned paper silhouettes trembling slightly, subtle paper grain movement, sepia tones.
+Weathered explorer hands open the rugged hairy hardbound journal titled Charles Francis Jones, camera pushes in tight onto the aged yellowed pages inside, a brilliant golden-white light floods the paper growing brighter and brighter until the frame washes out to pure white for a transition.
 ```
-- Vision-Audit (EN): sceneDescription: `close-up of an aged diary page with handwritten notes, a hand-drawn map and small pinned paper silhouettes` · action: `annotations and map gradually come into focus` · mood: `intimate, mysterious`
+- Vision-Audit (EN): sceneDescription: `subjective POV opening a rugged field journal then pushing into its aged pages` · action: `hands open the cover, camera zooms into pages, blinding light overexposes to white` · mood: `intimate, mysterious, luminous transition`
 - Audio: off documental (intro) + música tenue
-- Montaje: abre el reel; corta a a3-a2 con fade suave
+- Montaje: intro transversal — abre TODOS los reels; el white-out final enmascara el corte al primer plano del reel (sin fade extra)
 
 **Clip a3-a2 — Establishing Pangea**
 - Herramienta: U2V
@@ -219,7 +219,7 @@ The mother platypus silhouette calmly grooming by a silhouetted stream, head til
 - duration: 5
 - Motion prompt (EN):
 ```
-The baby platypus silhouette hopping and playing near the silhouetted water, tail bouncing, small paper splashes, hinged paper puppet movement, flat 2D silhouette animation, warm amber and green tinted background.
+The baby platypus silhouette with flat duck-bill and broad beaver tail hopping and playing near the silhouetted water, tail bouncing, small paper splashes, hinged paper puppet movement, flat 2D silhouette animation, warm amber and green tinted background.
 ```
 - Vision-Audit (EN): sceneDescription: `silhouetted water's edge on a warm tinted background` · action: `the baby platypus silhouette hops and plays, paper splashes` · mood: `joyful, curious`
 - Audio: off documental (continúa)
