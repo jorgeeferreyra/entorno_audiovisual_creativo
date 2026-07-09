@@ -689,7 +689,9 @@ export class MinimaxService {
     if (!this.imageEndpointAvailable) {
       throw new Error(`Minimax image endpoint unavailable on baseURL "${this.baseURL}"`);
     }
-    const validRefs = (refs || []).filter((u) => typeof u === 'string' && u.startsWith('http')).slice(0, 4);
+    const validRefs = (refs || [])
+      .filter((u) => typeof u === 'string' && (u.startsWith('http') || u.startsWith('data:image/')))
+      .slice(0, 4);
     if (validRefs.length === 0) {
       // 没有效 refs — 直接降级到普通 generateImage, 不浪费一个 multi-ref 请求
       return this.generateImage(prompt, options);
@@ -709,7 +711,7 @@ export class MinimaxService {
     }
 
     try {
-      const subjectArr = validRefs.map((url) => ({ type: 'character', image_file: [url] }));
+      const subjectArr = validRefs.map((url) => ({ type: 'character', image: [url] }));
       const body: Record<string, any> = {
         model: 'image-01',
         prompt: effectivePrompt,

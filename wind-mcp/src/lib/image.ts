@@ -7,6 +7,7 @@ import { ensureDirFor } from './paths.js';
 export interface GenerarImagenInput {
   prompt: string;
   aspect?: '16:9' | '9:16' | '1:1' | '2.35:1' | '4:3' | '3:4';
+  /** Rutas locales o URLs http(s) de imágenes de referencia (ej. lock m01). */
   refs?: string[];
   arco: number;
   id: string;
@@ -27,7 +28,15 @@ export async function generarImagen(input: GenerarImagenInput): Promise<GenerarI
   const { dispatchImageGenerate } = await import('@/lib/image-providers/registry');
 
   const aspect = input.aspect ?? '9:16';
-  const refUrls = (input.refs ?? []).filter((u) => /^https?:\/\//.test(u));
+  const refUrls: string[] = [];
+  for (const ref of input.refs ?? []) {
+    if (/^https?:\/\//.test(ref)) {
+      refUrls.push(ref);
+    } else {
+      const local = path.isAbsolute(ref) ? ref : path.join(PROJECT_ROOT, ref);
+      refUrls.push(await fileToDataUri(local));
+    }
+  }
 
   const { result, tried } = await dispatchImageGenerate(
     {
@@ -36,7 +45,7 @@ export async function generarImagen(input: GenerarImagenInput): Promise<GenerarI
       referenceImages: refUrls.length ? refUrls : undefined,
       label: input.id,
     },
-    { refCount: refUrls.length },
+    { refCount: refUrls.length, prefer: refUrls.length ? 'minimax-multi' : undefined },
   );
 
   if (!result?.imageUrl) {

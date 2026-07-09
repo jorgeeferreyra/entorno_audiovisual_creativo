@@ -49,14 +49,14 @@ Black paper cutout silhouette of a mother platypus in expressive side profile, r
 - Archivo destino: `assets/arco-3/madre/a3-m02-cria-ornitorrinco.png`
 - Prompt (EN):
 ```
-Black paper cutout silhouette of a small baby platypus in playful side profile, duck-billed monotreme with flat wide bill and broad flat paddle tail, webbed feet, no visible ears, tiny rounded contour clearly smaller than an adult, tail curled upward mid-hop, among silhouetted Pangea plants, warm amber and saturated green tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+Black paper cutout silhouette of the same platypus character as the reference image, smaller baby in playful side profile, tail curled upward mid-hop, among silhouetted Pangea plants, warm amber and saturated green tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
 ```
 
 **a3-m03 — Padre ornitorrinco**
 - Archivo destino: `assets/arco-3/madre/a3-m03-padre-ornitorrinco.png`
 - Prompt (EN):
 ```
-Black paper cutout silhouette of an adult male platypus in side profile, duck-billed monotreme with flat wide bill and broad flat paddle tail, webbed feet, no visible ears, larger and more angular contour than the mother, distinctive notch cut into the brow outline, standing alert among silhouetted Pangea plants, warm amber and saturated green tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+Black paper cutout silhouette of the same platypus character as the reference image, adult male in side profile, larger and more angular, distinctive notch cut into the brow outline, standing alert among silhouetted Pangea plants, warm amber and saturated green tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
 ```
 
 **a3-m04 — Huevo de ornitorrinco**

@@ -1,26 +1,32 @@
 /**
- * Regenera m02/m03 y clip a3-a4 (sin tocar m01).
+ * Regenera m02/m03 con ref obligatoria de m01 (lock) y luego clip a3-a4.
  * Uso: npx tsx --tsconfig tsconfig.json scripts/regenerar-familia-a3.ts
  */
+import path from 'node:path';
+import { PROJECT_ROOT } from '../src/config.js';
 import { formatEstado, getEstado } from '../src/lib/estado.js';
 import { generarImagen } from '../src/lib/image.js';
 import { getClip, getMadre } from '../src/lib/planos.js';
 import { generarVideoI2V } from '../src/lib/video.js';
 
+const M01_REF = path.join(PROJECT_ROOT, 'assets/arco-3/madre/a3-m01-madre-ornitorrinco.png');
+
 async function main() {
   const estado = await getEstado();
   console.log(formatEstado(estado));
   if (!estado.serverUp) throw new Error('wind-comic no está arriba');
+  console.log('Ref lock m01:', M01_REF);
 
   for (const id of ['a3-m02', 'a3-m03'] as const) {
     const m = await getMadre(id);
-    console.log(`\n--- ${id} ---`);
+    console.log(`\n--- ${id} (ref m01) ---`);
     const img = await generarImagen({
       prompt: m.prompt,
       arco: 3,
       id: m.id,
       slug: m.slug,
       aspect: '9:16',
+      refs: [M01_REF],
     });
     console.log('OK:', img.localPath, `[${img.provider}]`);
   }
@@ -28,7 +34,7 @@ async function main() {
   const clip = await getClip('a3-a4');
   const m02 = await getMadre('a3-m02');
   if (!clip.motionPrompt) throw new Error('a3-a4 sin motion prompt');
-  console.log('\n--- a3-a4 clip ---');
+  console.log('\n--- a3-a4 clip (firstFrame m02) ---');
   const out = await generarVideoI2V({
     imagen: m02.archivoDestino,
     motionPrompt: clip.motionPrompt,
@@ -39,7 +45,7 @@ async function main() {
     cameraPreset: clip.cameraPreset,
   });
   console.log('OK:', out.localPath, `[${out.provider}]`);
-  console.log('\n=== familia regenerada ===\n');
+  console.log('\n=== familia regenerada (ref m01) ===\n');
 }
 
 main().catch((e) => {

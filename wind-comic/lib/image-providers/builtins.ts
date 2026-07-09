@@ -86,7 +86,7 @@ registerImageProvider({
       ...(input.referenceImages || []),
       ...(input.cref ? [input.cref] : []),
       ...(input.sref ? [input.sref] : []),
-    ].filter((u) => u && u.startsWith('http'));
+    ].filter((u) => u && (u.startsWith('http') || u.startsWith('data:image/')));
     const dedupedRefs = Array.from(new Set(refs)).slice(0, 4);
     if (dedupedRefs.length === 0) throw new Error('Minimax multi-ref needs at least 1 ref');
     const url = await svc.generateImageWithRefs(input.prompt, dedupedRefs, {
