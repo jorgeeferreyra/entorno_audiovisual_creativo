@@ -85,7 +85,7 @@ function parseClips(md: string): ClipPlano[] {
     if (!herr) continue;
 
     const frame = (campo: string): string | undefined =>
-      bloque.match(new RegExp(`- ${campo}: a3-m\\d{2} \\(\`([^\`]+)\`\\)`))?.[1];
+      bloque.match(new RegExp(`- ${campo}: a3-m\\d{2} \\(\`([^\`]+)\`[^)]*\\)`))?.[1];
 
     const presetRaw = bloque.match(/- cameraPreset: `([^`]+)`/)?.[1];
     const cameraPreset = CAMERA_PRESETS.includes(presetRaw as CameraPreset)

@@ -5,7 +5,7 @@ import { z } from 'zod';
 import { CAMERA_PRESETS } from './config.js';
 import { formatEstado, getEstado } from './lib/estado.js';
 import { generarImagen } from './lib/image.js';
-import { montarSecuencia } from './lib/montaje.js';
+import { montarPantallaPartida, montarSecuencia } from './lib/montaje.js';
 import { generarVideoFLF, generarVideoI2V } from './lib/video.js';
 
 const server = new McpServer({
@@ -159,6 +159,31 @@ server.tool(
       content: [{
         type: 'text',
         text: `Reel montado: ${result.localPath} (${result.clipCount} clips${result.hasAudio ? ', con audio' : ''})`,
+      }],
+    };
+  },
+);
+
+server.tool(
+  'montar_pantalla_partida',
+  'Pantalla partida 9:16: apila clip superior + inferior (Reel B).',
+  {
+    top: z.string().describe('Clip mitad superior (ej. a3-b1)'),
+    bottom: z.string().describe('Clip mitad inferior (ej. a3-b3)'),
+    salida: z.string().describe('Ruta de salida .mp4'),
+    audio: z.string().optional().describe('Ruta de audio (off grabado)'),
+  },
+  async (args) => {
+    const result = await montarPantallaPartida({
+      top: args.top,
+      bottom: args.bottom,
+      salida: args.salida,
+      audio: args.audio,
+    });
+    return {
+      content: [{
+        type: 'text',
+        text: `Pantalla partida montada: ${result.localPath}${result.hasAudio ? ' (con audio)' : ''}`,
       }],
     };
   },

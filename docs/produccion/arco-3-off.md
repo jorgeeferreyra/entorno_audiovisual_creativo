@@ -64,13 +64,13 @@ Pasar este off por Polish Pro para validar gancho y naturalidad antes de grabar:
 
 - **UI:** `/dashboard/polish` · **API:** `POST /api/polish-script`
 - **Config:** modo **pro**, estilo **documental**, intensidad **ligera** (el registro ya está definido; solo pulir, no reescribir el tono).
-- **Qué mirar:** score de hook (primeros 3s de cada reel — líneas marcadas **HOOK**), diálogos "on the nose", y consistencia de registro sincero.
+- **Qué mirar:** `hook.strength` (weak/ok/strong) en los primeros 3s de cada reel (líneas **HOOK**), `aigcReadiness.score` (0–100), diálogos "on the nose", y consistencia de registro sincero.
 - El LLM creativo ya está configurado (`OPENAI_CREATIVE_MODEL` en `.env.local`), así que corre sin keys extra.
 
 ### Registro de resultados (completar tras correr)
 
-| Reel | Hook score (0–100) | Notas de Polish Pro | Estado |
-|---|---|---|---|
-| A | — | — | pendiente |
-| B | — | — | pendiente |
-| C | — | — | pendiente |
+| Reel | hook.strength | aigcReadiness.score | Notas de Polish Pro | Estado |
+|---|---|---|---|---|
+| A | — | — | — | pendiente |
+| B | — | — | — | pendiente |
+| C | — | — | — | pendiente |

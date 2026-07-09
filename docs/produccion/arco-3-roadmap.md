@@ -65,11 +65,11 @@ cd wind-comic && PLAN_GATE_DISABLED=1 npm run dev
 | a3-a1 | A | U2V | aprobado | ~¥0.5 | Intro transversal; manos abren cuaderno ✓ |
 | a3-a2 | A | U2V | aprobado | ~¥0.5 | Establishing Pangea ✓ |
 | a3-a3 | A | U2V | aprobado | ~¥0.5 | Ritual madre; el clip híbrido previo NO cuenta |
-| a3-a4 | A | U2V | pendiente | — | Regenerar con m02 nueva (archivo viejo obsoleto) |
-| a3-a5 | A | U2V-FLF | pendiente | — | **Gate Kling** (ver abajo) |
-| a3-a5b | A | U2V | pendiente | — | Quiebre caos (único del reel) |
-| a3-a5c | A | U2V | pendiente | — | Quiebre respiro |
-| a3-a6 | A | U2V | pendiente | — | |
+| a3-a4 | A | U2V | aprobado | ~¥0.5 | Regenerado con m02 nueva (--force) ✓ |
+| a3-a5 | A | U2V-FLF | aprobado | ~¥0.5 | I2V fallback (Kling: quota insufficient); fix HTTP URLs aplicado para futuros FLF |
+| a3-a5b | A | U2V | aprobado | ~¥0.5 | Quiebre caos Revenant ✓ |
+| a3-a5c | A | U2V | aprobado | ~¥0.5 | Quiebre respiro crane-up ✓ |
+| a3-a6 | A | U2V | aprobado | ~¥0.5 | |
 | a3-b1 | B | U2V | pendiente | — | Pantalla partida con a3-b3 |
 | a3-b2 | B | U2V | pendiente | — | |
 | a3-b3 | B | U2V | pendiente | — | |
@@ -90,7 +90,11 @@ Formaliza el QC que ya se hace informalmente (carpetas `_candidates`/`_audit`). 
 | a3-a1 | — | ✓ | ✓ | aprobado |
 | a3-a2 | — | ✓ | ✓ | aprobado |
 | a3-a3 | — | ✓ | ✓ | aprobado |
-| a3-a4…a3-c4 | — | — | — | pendiente |
+| a3-a4 | baby platypus silhouette sleeping in nest / nestles gently | ✓ | ✓ | aprobado |
+| a3-a5b | real earth splitting, debris | ✓ | ✓ | aprobado |
+| a3-a5c | aerial two landmasses, golden dusk | ✓ | ✓ | aprobado |
+| a3-a6 | mother at chasm edge, head lowering | ✓ | ✓ | aprobado |
+| a3-b1…a3-c4 | — | — | — | pendiente |
 
 ## Checklist — Reels y stories (montaje, sin costo de generación)
 

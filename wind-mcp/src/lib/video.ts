@@ -1,7 +1,7 @@
 import path from 'node:path';
 import { loadWindComicEnv, PROJECT_ROOT, type CameraPreset } from '../config.js';
 import { downloadToFile } from './download.js';
-import { resolveFrameUrlForVideo } from './image.js';
+import { resolveFrameUrlForVideo, uploadImageToWindComic } from './image.js';
 import { ensureDirFor } from './paths.js';
 
 export interface GenerarVideoI2VInput {
@@ -105,9 +105,18 @@ async function generateViaMinimax(
   return { videoUrl, provider: 'Minimax-I2V' };
 }
 
+async function resolveFrameUrlForKling(localPath: string, remoteUrl?: string): Promise<string> {
+  if (remoteUrl && /^https?:\/\//.test(remoteUrl) && !remoteUrl.startsWith('data:')) {
+    return remoteUrl;
+  }
+  return uploadImageToWindComic(localPath);
+}
+
 async function generateFlfViaKling(
-  firstUrl: string,
-  lastUrl: string,
+  firstLocal: string,
+  lastLocal: string,
+  firstRemote: string | undefined,
+  lastRemote: string | undefined,
   prompt: string,
   duration: 5 | 10,
 ): Promise<{ videoUrl: string; provider: string; warning?: string }> {
@@ -118,8 +127,10 @@ async function generateFlfViaKling(
 
   if (klingReady) {
     try {
+      const klingFirst = await resolveFrameUrlForKling(firstLocal, firstRemote);
+      const klingLast = await resolveFrameUrlForKling(lastLocal, lastRemote);
       const k = new KlingService();
-      const videoUrl = await k.generateFirstLastFrame(firstUrl, lastUrl, prompt, {
+      const videoUrl = await k.generateFirstLastFrame(klingFirst, klingLast, prompt, {
         duration,
         mode: 'professional',
       });
@@ -129,7 +140,8 @@ async function generateFlfViaKling(
     }
   }
 
-  const { videoUrl, provider } = await generateViaMinimax(firstUrl, prompt, duration === 10 ? 6 : 5);
+  const minimaxUrl = await resolveFrameUrlForVideo(firstLocal, firstRemote);
+  const { videoUrl, provider } = await generateViaMinimax(minimaxUrl, prompt, duration === 10 ? 6 : 5);
   return {
     videoUrl,
     provider: `${provider}-fallback`,
@@ -182,14 +194,13 @@ export async function generarVideoFLF(input: GenerarVideoFLFInput): Promise<Gene
   const prompt = await enhanceMotionPrompt(input.motionPrompt, input.cameraPreset);
   const mock = process.env.MOCK_ENGINES === '1';
 
-  const firstUrl = await resolveFrameUrlForVideo(firstLocal, input.firstFrameUrl);
-  const lastUrl = await resolveFrameUrlForVideo(lastLocal, input.lastFrameUrl);
-
   let videoUrl: string;
   let provider: string;
   let warning: string | undefined;
 
   if (mock) {
+    const firstUrl = await resolveFrameUrlForKling(firstLocal, input.firstFrameUrl);
+    const lastUrl = await resolveFrameUrlForKling(lastLocal, input.lastFrameUrl);
     const out = await generateViaRegistry(prompt, {
       firstFrameUrl: firstUrl,
       lastFrameUrl: lastUrl,
@@ -198,7 +209,14 @@ export async function generarVideoFLF(input: GenerarVideoFLFInput): Promise<Gene
     videoUrl = out.videoUrl;
     provider = out.provider;
   } else {
-    const out = await generateFlfViaKling(firstUrl, lastUrl, prompt, duration);
+    const out = await generateFlfViaKling(
+      firstLocal,
+      lastLocal,
+      input.firstFrameUrl,
+      input.lastFrameUrl,
+      prompt,
+      duration,
+    );
     videoUrl = out.videoUrl;
     provider = out.provider;
     warning = out.warning;
