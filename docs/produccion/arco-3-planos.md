@@ -45,20 +45,22 @@ Campos fijos de todas las fichas (salvo indicación): `style: Woodcut Print` (pr
 Black paper cutout silhouette of a mother platypus in expressive side profile, rounded gentle contour, head slightly tilted, resting among silhouetted Pangea ferns, warm amber and saturated green tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
 ```
 
-**a3-m02 — Cría de ornitorrinco**
-- Archivo destino: `assets/arco-3/madre/a3-m02-cria-ornitorrinco.png`
-- Nota: anatomía = pico de pato + cuerpo de nutria + cola plana; `subject_reference` de m01 tiende a meter un segundo animal — preferir T2I puro.
+**a3-m02 — Ornitorrinco joven**
+- Archivo destino: `assets/arco-3/madre/a3-m02-ornitorrinco-joven.png`
+- Ref: a3-m01 (misma silueta/anatomía/estilo; más chico y esbelto; subject_reference)
+- Nota: reemplaza el concepto "cría bebé" (eliminado). Misma silueta que m01, escala joven. En Reel A el huevo a3-m04 ocupa el beat familiar (clip a3-a4); m02 alimenta Reel B (a3-b2).
 - Prompt (EN):
 ```
-Black paper cutout silhouette of one small baby platypus sleeping alone, warmly curled in a twig nest resting on a green riverbank, calm water beside the bank, clear duck-bill snout, otter-like rounded body, broad flat paddle tail, eyes closed peaceful, solid opaque black single silhouette, no second animal, warm amber and saturated green tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+Same platypus character as the reference image, black paper cutout silhouette, younger and smaller, same duck bill and flat paddle tail and woodcut etched delicate cut-out inner details, slender lighter body, same side-profile contour scaled down, standing alert among silhouetted Pangea ferns, flat 2D paper cutout not felt not 3D not plush, warm amber and saturated green tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
 ```
 
 **a3-m03 — Padre ornitorrinco**
 - Archivo destino: `assets/arco-3/madre/a3-m03-padre-ornitorrinco.png`
 - Ref: a3-m01 (mismo personaje / anatomía / estilo; subject_reference)
+- Nota: regenerar — matar drift a fieltro/3D; heredar lenguaje de m01 (helechos, delicate cut-out, flat 2D, woodcut etched).
 - Prompt (EN):
 ```
-Same platypus character as the reference image, black paper cutout silhouette, adult male in side profile, same duck bill and flat paddle tail and woodcut etched details, larger and more angular, distinctive notch cut into the brow outline, standing alert among silhouetted Pangea ferns, warm amber and saturated green tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+Same platypus character as the reference image, black paper cutout silhouette, adult male in side profile, same duck bill and flat paddle tail and woodcut etched delicate cut-out inner details, larger and more angular, distinctive notch cut into the brow outline, standing alert among silhouetted Pangea ferns, flat 2D paper cutout not felt not 3D not plush, warm amber and saturated green tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
 ```
 
 **a3-m04 — Huevo de ornitorrinco**
@@ -110,16 +112,20 @@ Layered black paper cutout landscape of an arid drying plain, silhouetted cracke
 
 ### Par de fosilización (primer + último frame del clip FLF `a3-c2`)
 
+> Dirección de referencia invertida: **m11 (aprobada) es la madre padre**; m10 se regenera heredando su encuadre. Así el FLF a3-c2 queda garantizado sin tocar m11.
+
 **a3-m10 — Ornitorrinco recostado sobre roca colorada**
 - Archivo destino: `assets/arco-3/madre/a3-m10-ornitorrinco-roca.png`
+- Ref: a3-m11 (mismo encuadre/composición del fósil aprobado; solo cambia el estado a vivo; subject_reference)
+- Nota: regenerar — ornitorrinco VIVO recostado en el encuadre de m11; mezcla detalle grabado de m01 con el mundo rojo de m07.
 - Prompt (EN):
 ```
-Black paper cutout silhouette of an old platypus lying down to rest on a silhouetted red rock formation, calm curled profile, deep red dusk tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+Same framing and composition as the reference fossil image, but the platypus is alive — black paper cutout silhouette of an old platypus lying down to rest on the silhouetted red rock formation, calm curled profile matching the fossil pose exactly, woodcut etched delicate cut-out inner details like the mother platypus character, flat 2D paper cutout not felt not 3D, deep red dusk tinted background of the Coloradas rock world, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
 ```
 
 **a3-m11 — Fósil de piedra**
 - Archivo destino: `assets/arco-3/madre/a3-m11-fosil-piedra.png`
-- Ref: a3-m10 (mismo encuadre/composición base; solo cambia el estado; subject_reference)
+- Nota: aprobada y querida — NO regenerar. Es la madre padre del par; m10 hereda su encuadre vía Ref.
 - Prompt (EN):
 ```
 The same platypus silhouette now frozen and filled with stone texture, a fossil relief embedded in the silhouetted red rock, fine cut-out bone detail inside the contour, the red tint of the background fading to stone grey, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
@@ -167,20 +173,12 @@ Two vast green landmasses already separated by a calm sea channel seen from very
 ### Pares de keyframes agregados (regla de secuencia multi-madre, [biblia-visual.md](biblia-visual.md) §3)
 
 > Cada madre nueva forma **par** con una existente (mismo encuadre y composición, solo cambia el estado) para dar al clip FLF sus dos keyframes aprobados.
-
-**a3-m16 — Ornitorrinco caminando hacia la roca** — primer frame del clip FLF `a3-c1`; par con a3-m10 (último frame).
-- Archivo destino: `assets/arco-3/madre/a3-m16-ornitorrinco-caminando.png`
-- Ref: a3-m10 (mismo encuadre/composición base; solo cambia el estado; subject_reference)
-- Nota: misma composición y encuadre que a3-m10 (la roca en la misma posición); el ornitorrinco de pie caminando, todavía no recostado.
-- Prompt (EN):
-```
-Black paper cutout silhouette of an old platypus walking slowly in profile toward a silhouetted red rock formation, weary deliberate posture, head low, the rock formation in the same position and framing as the resting scene, deep red dusk tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
-```
+> `a3-m16` (caminata hacia la roca) **eliminada**: con m10 reencuadrada al fósil, un plano de caminata no comparte encuadre; a3-c1 pasa a U2V simple sobre m07.
 
 **a3-m17 — Argentina seca (estado final)** — último frame del clip FLF `a3-b4`; par con a3-m09 (primer frame).
 - Archivo destino: `assets/arco-3/madre/a3-m17-argentina-seca.png`
 - Ref: a3-m09 (mismo encuadre/composición base; solo cambia el estado; subject_reference)
-- Nota: misma composición y capas que a3-m09; el mismo paisaje totalmente seco, más agrietado y oscuro.
+- Nota: misma composición y capas que a3-m09; el mismo paisaje totalmente seco, más agrietado y oscuro. Pendiente — generar para el FLF a3-b4.
 - Prompt (EN):
 ```
 The same layered paper cutout arid plain now fully parched, dense deep crack lines spread across the cutout ground, the paper plants wilted and folded down, the cold desaturated grey tinted background darker and dimmer, almost lightless, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
@@ -238,18 +236,18 @@ The mother platypus silhouette calmly grooming by a silhouetted stream, head til
 - Audio: off documental (presenta la familia)
 - Montaje: intercut con a3-a4 para dar "familia unida" sin generarlos juntos
 
-**Clip a3-a4 — La cría jugando**
+**Clip a3-a4 — El huevo (beat familiar)**
 - Herramienta: U2V
-- firstFrame: a3-m02 (`assets/arco-3/madre/a3-m02-cria-ornitorrinco.png`)
+- firstFrame: a3-m04 (`assets/arco-3/madre/a3-m04-huevo.png`)
 - cameraPreset: `locked-tripod`
 - duration: 5
 - Motion prompt (EN):
 ```
-The tiny baby platypus silhouette sleeping warmly curled in the twig nest, soft breathing rise and fall, occasional gentle nestle, flat paddle tail still, hinged paper puppet movement, flat 2D silhouette animation, warm amber and green tinted background.
+The single egg silhouette rests in the small nest on the mossy log, soft breathing of the nest twigs, faint warm light shift across the cutout, hinged paper puppet stillness, flat 2D silhouette animation, warm amber and green tinted background.
 ```
-- Vision-Audit (EN): sceneDescription: `baby platypus silhouette sleeping in a twig nest on a warm tinted background` · action: `the baby sleeps and nestles gently` · mood: `warm, peaceful`
+- Vision-Audit (EN): sceneDescription: `egg silhouette resting in a twig nest on a warm tinted background` · action: `the nest breathes softly, light shifts gently` · mood: `warm, expectant, peaceful`
 - Audio: off documental (continúa)
-- Montaje: intercut con a3-a3; cierra el bloque "unidad" y corta a a3-a5
+- Montaje: intercut con a3-a3; cierra el bloque "unidad" (madre + huevo) y corta a a3-a5. El concepto cría bebé quedó eliminado; el joven aparece en Reel B.
 
 **Clip a3-a5 — La grieta (transición-gancho)**
 - Herramienta: U2V-FLF
@@ -263,9 +261,9 @@ The layered cutout Pangea landscape trembles like shaken paper, the black cutout
 ```
 - Vision-Audit (EN): sceneDescription: `the layered cutout Pangea landscape breaking apart, tint shifting to red` · action: `the cutout ground trembles and rips in two, water floods the chasm` · mood: `dramatic, ominous`
 - Audio: off documental (el quiebre) + rumble grave
-- Montaje: insertar 1–2 frames subliminales de m-mano (mano con cadenita, Arco 1) en el pico del temblor; corte DURO a a3-a5b (quiebre de realidad)
+- Montaje: insertar 1–2 frames subliminales de m-mano (mano con cadenita, Arco 1) en el pico del temblor; corte DURO a a3-a5b (switch cuento→real). **Regen pendiente:** hoy aprobado como I2V degradado; regenerar como FLF real (m05→m06).
 
-**Clip a3-a5b — Quiebre de realidad: el caos (Revenant)**
+**Clip a3-a5b — Switch cuento→real: el caos (Revenant)**
 - Herramienta: U2V
 - firstFrame: a3-m14 (`assets/arco-3/madre/a3-m14-grieta-revenant.png`)
 - cameraPreset: `handheld` (el preset de cámara en mano ES parte del REALITY-BLOCK-CHAOS; el temblor va acá, no duplicado en el prompt)
@@ -278,7 +276,7 @@ Real earth ripping apart violently, rocks and soil collapsing into the widening 
 - Audio: SIN off (el caos habla solo); rumble fuerte, crujidos de tierra
 - Montaje: viene de a3-a5 con corte duro (silueta → real); corta a a3-a5c
 
-**Clip a3-a5c — Quiebre de realidad: el respiro (zoom-out poético)**
+**Clip a3-a5c — Switch real (respiro): zoom-out poético**
 - Herramienta: U2V
 - firstFrame: a3-m15 (`assets/arco-3/madre/a3-m15-zoomout-poetico.png`)
 - cameraPreset: `crane-up` (grúa ascendente = el respiro se eleva sobre la catástrofe; preset expresivo habilitado por ser quiebre fotorrealista, ver paleta de cámara en biblia-visual.md §1)
@@ -289,7 +287,35 @@ Slow aerial drift high above two vast landmasses separated by a calm sea channel
 ```
 - Vision-Audit (EN): sceneDescription: `aerial view of two landmasses separated by a sea channel at golden dusk` · action: `slow wide drift revealing the water between the lands` · mood: `elegiac, serene, immense`
 - Audio: off documental (la escala de lo ocurrido) + música mínima
-- Montaje: el respiro después del caos; corta de vuelta a silueta en a3-a6
+- Montaje: el respiro después del caos; corta a a3-a5x (puente FLF experimental m06→m14) o, si el gate experimental falla, corte duro a a3-a6
+
+**Clip a3-a5x — Puente FLF experimental: cuento→real (m06→m14)**
+- Herramienta: U2V-FLF
+- firstFrame: a3-m06 (`assets/arco-3/madre/a3-m06-pangea-partida.png`)
+- lastFrame: a3-m14 (`assets/arco-3/madre/a3-m14-grieta-revenant.png`)
+- cameraPreset: `locked-tripod` (ambas grietas comparten composición; el morph pone el movimiento)
+- duration: 5 (FLF no acepta 6s)
+- Motion prompt (EN):
+```
+The torn paper-cutout Pangea rift morphs into a real earth chasm, silhouette layers dissolving into photoreal cracked ground and falling rocks, tinted aged paper giving way to cold muted earth tones, dust rising, no people, no animals, the same rift composition held steady.
+```
+- Vision-Audit (EN): sceneDescription: `cutout Pangea rift becoming a real earth chasm, same composition` · action: `silhouette world morphs into photoreal Revenant rift` · mood: `violent, uncanny, transitional`
+- Audio: rumble continuo (puente a5→a5b)
+- Montaje: **gate de la estrategia de morphs cruzados** — si el morph salta feo, descartar y mantener el corte duro a5→a5b actual. Si aprueba, insertar entre a5 y a5b (o sustituir el corte duro).
+
+**Clip a3-a5y — Puente FLF: real próspero → cuento próspero (m15→m08)**
+- Herramienta: U2V-FLF
+- firstFrame: a3-m15 (`assets/arco-3/madre/a3-m15-zoomout-poetico.png`)
+- lastFrame: a3-m08 (`assets/arco-3/madre/a3-m08-australia-prospera.png`)
+- cameraPreset: `locked-tripod`
+- duration: 5 (FLF no acepta 6s)
+- Motion prompt (EN):
+```
+The wide aerial view of two separated landmasses softens into layered black paper cutout wetland, photoreal haze becoming tinted aged paper, saturated lush green tint emerging, reeds and water plants resolving as delicate cut-out silhouette layers, flat 2D silhouette animation.
+```
+- Vision-Audit (EN): sceneDescription: `aerial real continents morphing into cutout Australian wetland` · action: `photoreal world settles into silhouette prosperity` · mood: `hopeful, bridging`
+- Audio: off documental (la línea que sobrevive) + música tenue
+- Montaje: cierra Reel A / abre Reel B; cubre el hueco de m08 (hoy sin clip). Tras el morph, corta a a3-a6 o entra directo a b1 según montaje final.
 
 **Clip a3-a6 — La separación**
 - Herramienta: U2V
@@ -302,7 +328,7 @@ The mother platypus silhouette stands at the edge of the cutout chasm in profile
 ```
 - Vision-Audit (EN): sceneDescription: `the edge of the cutout chasm on a deep red tinted background, far shore in the distance` · action: `the mother platypus silhouette stands still in profile, head slowly lowering` · mood: `grief, restrained sorrow`
 - Audio: off documental (la despedida)
-- Montaje: viene de a3-a5c (vuelta a silueta tras el quiebre de realidad); corta contra el padre con el huevo (a3-m03 + a3-m04) al otro lado de la grieta; cierra el Reel A
+- Montaje: vuelve a silueta tras los switches; corta contra el padre con el huevo (a3-m03 + a3-m04) al otro lado de la grieta; cierra el Reel A
 
 ### Reel B — "Vidas paralelas" (~30s, pantalla partida por montaje)
 
@@ -321,14 +347,14 @@ The male platypus silhouette gliding actively through silhouetted reeds and wate
 - Audio: off documental (adaptación)
 - Montaje: mitad de pantalla partida con a3-b3 (Australia arriba)
 
-**Clip a3-b2 — La cría eclosionada, creciendo**
+**Clip a3-b2 — El joven explorando (línea próspera)**
 - Herramienta: U2V
-- firstFrame: a3-m02 (`assets/arco-3/madre/a3-m02-cria-ornitorrinco.png`; el prompt la describe crecida)
+- firstFrame: a3-m02 (`assets/arco-3/madre/a3-m02-ornitorrinco-joven.png`)
 - cameraPreset: `tracking`
 - duration: 5
 - Motion prompt (EN):
 ```
-The young platypus silhouette exploring confidently among silhouetted wetland plants, taller and steadier than before, hinged paper puppet movement, flat 2D silhouette animation, saturated lush green tinted background.
+The young platypus silhouette exploring confidently among silhouetted wetland plants, slender lighter body matching the mother contour scaled down, hinged paper puppet movement, flat 2D silhouette animation, saturated lush green tinted background.
 ```
 - Vision-Audit (EN): sceneDescription: `silhouetted wetland on a saturated green tinted background` · action: `the young platypus silhouette explores confidently, growing stronger` · mood: `hopeful, thriving`
 - Audio: off documental (la línea que prospera)
@@ -363,19 +389,32 @@ Silhouetted crack lines spreading across the cutout plain, paper plants slowly w
 
 ### Reel C — "El último" (PIEZA ESTRELLA, ~30s)
 
-**Clip a3-c1 — El último llega a las rocas coloradas**
+**Clip a3-c0 — Puente FLF: grieta real → cuento rojo (m14→m07)**
 - Herramienta: U2V-FLF
-- firstFrame: a3-m16 (`assets/arco-3/madre/a3-m16-ornitorrinco-caminando.png`; establishing opcional con a3-m07 si se abre con locación)
-- lastFrame: a3-m10 (`assets/arco-3/madre/a3-m10-ornitorrinco-roca.png`)
-- cameraPreset: `locked-tripod` (el frame final debe calzar 1:1 con a3-m10: sin movimiento de cámara que cambie el encuadre)
+- firstFrame: a3-m14 (`assets/arco-3/madre/a3-m14-grieta-revenant.png`)
+- lastFrame: a3-m07 (`assets/arco-3/madre/a3-m07-rocas-coloradas.png`)
+- cameraPreset: `locked-tripod`
 - duration: 5 (FLF no acepta 6s)
 - Motion prompt (EN):
 ```
-The last old platypus silhouette slowly walks in profile across silhouetted red rock formations and curls down to rest, deliberate weary steps, hinged paper puppet movement, flat 2D silhouette animation, deep red dusk tinted background, calm acceptance.
+The real earth rift freezes and resolves into layered black paper cutout Martian rock formations, photoreal dust settling into tinted aged paper, deep red and orange dusk tint locking in, flat 2D silhouette animation, the chasm becoming the Coloradas badlands.
 ```
-- Vision-Audit (EN): sceneDescription: `silhouetted rock formations on a deep red dusk tinted background` · action: `the old platypus silhouette walks slowly and lies down to rest` · mood: `calm acceptance, solemn`
+- Vision-Audit (EN): sceneDescription: `real rift morphing into cutout Coloradas rock landscape` · action: `photoreal chasm freezes into silhouette red world` · mood: `solemn, locking into fate`
+- Audio: rumble que se apaga + off documental breve
+- Montaje: abre el Reel C — la grieta real se congela en el cuento rojo; corta a a3-c1
+
+**Clip a3-c1 — Establishing Rocas Coloradas (push-in hacia la roca)**
+- Herramienta: U2V
+- firstFrame: a3-m07 (`assets/arco-3/madre/a3-m07-rocas-coloradas.png`)
+- cameraPreset: `push-in`
+- duration: 5
+- Motion prompt (EN):
+```
+Slow push-in across the layered paper cutout Coloradas rock formations and lagoons, cutout layers sliding in gentle parallax, settling toward a silhouetted red rock where the last platypus will rest, flat 2D silhouette animation, deep red dusk tinted background.
+```
+- Vision-Audit (EN): sceneDescription: `layered cutout Coloradas badlands on a deep red dusk tinted background` · action: `slow push-in toward the resting rock` · mood: `calm acceptance, solemn`
 - Audio: off documental (el final del linaje argentino)
-- Montaje: viene de a3-b4; termina exactamente en a3-m10 (el primer frame de a3-c2) — corte invisible a a3-c2
+- Montaje: viene de a3-c0 (o de a3-b4 si se salta el puente); **NO es FLF** — m07 y m10' no comparten encuadre; corte a a3-c2 (m10' ya en pose de reposo)
 
 **Clip a3-c2 — La fosilización (transición-gancho)**
 - Herramienta: U2V-FLF
@@ -394,7 +433,7 @@ The resting platypus silhouette slowly freezes and fills with stone texture, its
 **Clip a3-c3 — El fósil hoy (salto a la realidad)**
 - Herramienta: U2V
 - firstFrame: a3-m13 (`assets/arco-3/madre/a3-m13-fosil-yacimiento.png`)
-- cameraPreset: `pull-out` (el zoom-out que abre el plano y prepara el corte a la foto real)
+- cameraPreset: `pull-out` (el zoom-out que abre el plano y prepara el eco de m09 y el corte a la foto real)
 - duration: 5
 - Motion prompt (EN):
 ```
@@ -402,7 +441,14 @@ A platypus fossil embedded in red rock at a present-day excavation site, motionl
 ```
 - Vision-Audit (EN): sceneDescription: `present-day paleontological site in red rock badlands` · action: `the fossil rests motionless as the view widens` · mood: `real, quiet, revelatory`
 - Audio: off documental (remate: la tumba del protagonista de la trilogía)
-- Montaje: viene de a3-c2 con corte duro (silueta → foto); el pull-out termina abriendo el plano y corta a a3-c4
+- Montaje: viene de a3-c2 con corte duro (silueta → foto); tras el pull-out, **eco breve (1–2s) de a3-m09** (Argentina en declive, solo montaje, sin generación) y corta a a3-c4
+
+**Clip a3-c3e — Eco m09 (montaje, sin generación)**
+- Herramienta: ninguna (montaje; NO se genera)
+- Fuente: a3-m09 (`assets/arco-3/madre/a3-m09-argentina-declive.png`)
+- duration: 1–2s
+- Audio: silencio o cola del off de c3
+- Montaje: eco breve tras el pull-out de a3-c3, antes de la foto real c4 — puente emocional declive→yacimiento; SOLO montaje
 
 **Clip a3-c4 — Foto real de Rocas Coloradas (remate final)**
 - Herramienta: ninguna (montaje; NO se genera)
@@ -410,7 +456,7 @@ A platypus fossil embedded in red rock at a present-day excavation site, motionl
 - duration: 3–4s
 - Sobreimpreso (opcional): "La Fundación protege hoy este yacimiento" — humor negro (el criminal custodiando la escena del crimen)
 - Audio: silencio u off breve
-- Montaje: cierra el "salto a la realidad" a3-c2 → a3-c3 → a3-c4; es el pago emocional del arco
+- Montaje: cierra el "salto a la realidad" a3-c2 → a3-c3 → eco m09 → a3-c4; es el pago emocional del arco
 
 ---
 
@@ -420,11 +466,11 @@ Las stories del [calendario](../redes/calendario-publicacion.md) (Semana 1) se a
 
 | Story | Beat | Fuente (clips) | Nota de montaje |
 |---|---|---|---|
-| S1 | La familia feliz | a3-a3 + a3-a4 | Recorte a 15s; abrir con a3-m12 si se quiere marco |
+| S1 | La familia feliz | a3-a3 + a3-a4 | Recorte a 15s (madre + huevo); abrir con a3-m12 si se quiere marco |
 | S2 | La grieta | a3-a5 | 15s; sticker/encuesta según calendario |
 | S3 | La despedida | a3-a6 | 15s; texto sobrio |
 | S4 | El declive | a3-b3 | 15s; puede sumar a3-b4 de cierre |
-| S5 | El fósil | a3-c2 + a3-c3 + a3-c4 | 15s; remate con la foto real de la locación |
+| S5 | El fósil | a3-c2 + a3-c3 + eco m09 + a3-c4 | 15s; remate con la foto real de la locación |
 
 ---
 
@@ -432,12 +478,25 @@ Las stories del [calendario](../redes/calendario-publicacion.md) (Semana 1) se a
 
 | Etapa | Cálculo | Total aprox. |
 |---|---|---|
-| Imágenes madre | 17 generadas × ¥0.3 | ~¥5.1 |
+| Imágenes madre | 16 generadas × ¥0.3 (m16 eliminada; retries m02/m03/m10 aparte) | ~¥4.8 |
 | Clips U2V (Minimax I2V, 5s) | 11 × ¥0.5 | ~¥5.5 |
-| Clips U2V-FLF (Kling, 5s) | 4 × ~¥1 | ~¥4 |
-| **Total** | | **~¥14.6** |
+| Clips U2V-FLF (Kling, 5s) | 6 × ~¥1 (a5, a5x, a5y, b4, c0, c2) | ~¥6 |
+| **Total** | | **~¥16.3** (+ retries madres ≈ **¥19–20** techo operativo) |
 
-Dentro del presupuesto del [pipeline](pipeline-wind-comic.md) §3. Kling (FLF) se reserva a las transiciones-gancho (a3-a5, a3-c2) y a los dos clips de transformación con par de keyframes (a3-b4, a3-c1); el resto va por Minimax.
+Dentro del presupuesto del [pipeline](pipeline-wind-comic.md) §3. Kling (FLF) se reserva a la cadena de transiciones (a3-a5, a3-a5x experimental, a3-a5y, a3-b4, a3-c0, a3-c2); el resto va por Minimax. a3-c1 es U2V simple (push-in sobre m07), no FLF.
+
+---
+
+## Cadena de transiciones (sub-clips FLF de 5s, límite duro 2 keyframes)
+
+| Eslabón | Clip | Tipo | Nota |
+|---|---|---|---|
+| m05→m06 | a3-a5 | FLF | Regenerar (hoy I2V degradado) |
+| m06→m14 | a3-a5x | FLF experimental | Gate morphs cruzados cuento→real; si salta feo → corte duro |
+| m15→m08 | a3-a5y | FLF | Cierra Reel A / abre Reel B; cubre hueco de m08 |
+| m14→m07 | a3-c0 | FLF | Abre Reel C: grieta real se congela en cuento rojo |
+| m07→m10' | a3-c1 | U2V + corte | Push-in; NO FLF (no comparten encuadre) |
+| m13→m09 | a3-c3e | Solo montaje | Eco 1–2s de m09 tras pull-out de m13, antes de c4 |
 
 ---
 
@@ -445,7 +504,7 @@ Dentro del presupuesto del [pipeline](pipeline-wind-comic.md) §3. Kling (FLF) s
 
 - Registro Attenborough **sincero**, sin chistes verbales (tesis del arco).
 - La **mano negra** aparece solo como frame subliminal en a3-a5, reutilizando su imagen madre del Arco 1 (no se genera nada nuevo). En el lenguaje de teatro de sombras, la mano negra es **nativa del estilo**: una silueta más dentro del mundo, no un elemento ajeno.
-- El **fósil final ES el del Ep.1** (canon), pero NO existe plano de archivo del rodaje: el remate se resuelve con a3-m13 (fósil en registro fotográfico) + la foto real de la locación (`assets/fuentes/rocas-coloradas-real.jpg`). El corte silueta → foto es el "salto a la realidad".
+- El **fósil final ES el del Ep.1** (canon), pero NO existe plano de archivo del rodaje: el remate se resuelve con a3-m13 (fósil en registro fotográfico) + eco breve de m09 (montaje) + la foto real de la locación (`assets/fuentes/rocas-coloradas-real.jpg`). El corte silueta → foto es el "salto a la realidad".
 - **CFJ no aparece** en este arco, pero el estilo silueta deja alineado el Arco 2: "CFJ nunca de frente" se cumple por diseño (Charles ES una silueta).
 - Anacronismos: no se fuerzan en este arco por su registro emocional; quedan disponibles como recurso si hiciera falta.
-- **Quiebre de realidad en la grieta** (a3-a5b + a3-a5c): par caos→respiro del recurso transversal de [biblia-visual.md](biblia-visual.md) §1. Guardas anti-error respetadas: sin personas ni animales en cuadro, motion blur y polvo como escudo de artefactos; después del respiro se vuelve a silueta (a3-a6). Único quiebre del Reel A (dosificación).
+- **Switches cuento/real** (a3-a5b/a5c, puentes a5x/a5y/c0, salto c3/c4): recurso **estructural** del arco — ver dosificación en [biblia-visual.md](biblia-visual.md) §1. Guardas anti-error respetadas en quiebres fotorrealistas: sin personas ni animales en cuadro, motion blur y polvo como escudo de artefactos.
