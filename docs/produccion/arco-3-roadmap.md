@@ -16,10 +16,11 @@ Estados: `pendiente` → `generado` (existe el archivo) → `aprobado` (pasó el
 
 ### Próxima acción
 
-Lock `a3-m01` y establishing `a3-m05` **aprobados** (paths canónicos). Siguiente: generar las 13 madres restantes.
+**Las 15 madres están aprobadas** (paths canónicos en `assets/arco-3/madre/`). Siguiente etapa: clips U2V en wind-comic (`/dashboard/u2v`, fichas en [arco-3-planos.md](arco-3-planos.md) §2). Gate Kling pendiente solo para `a3-a5` y `a3-c2`.
 
 ```bash
-cd wind-mcp && npm run madres:a3 -- --id a3-m02
+cd wind-comic && PLAN_GATE_DISABLED=1 npm run dev
+# Luego: /dashboard/u2v → primera ficha a3-a1
 ```
 
 O en lote (salta las que ya existen aprobadas; hoy conviene ir de a una para revisar contornos de personajes):
@@ -48,20 +49,20 @@ cd wind-mcp && npm run madres:a3 -- --todas
 | ID | Título | Estado | Costo real | Nota |
 |---|---|---|---|---|
 | a3-m01 | Madre ornitorrinco | aprobado | ~¥0.3 | Lock de consistencia ✓ |
-| a3-m02 | Cría de ornitorrinco | pendiente | — | |
-| a3-m03 | Padre ornitorrinco | pendiente | — | |
-| a3-m04 | Huevo | pendiente | — | |
+| a3-m02 | Cría de ornitorrinco | aprobado | ~¥0.3 | Contorno más pequeño, cola en arco ✓ |
+| a3-m03 | Padre ornitorrinco | aprobado | ~¥0.3 | Más angular, muesca en ceja ✓ |
+| a3-m04 | Huevo | aprobado | ~¥0.3 | Close-up nido en tronco ✓ |
 | a3-m05 | Paisaje Pangea | aprobado | ~¥0.3 | |
-| a3-m06 | Pangea partida | pendiente | — | lastFrame de a3-a5 (FLF) |
-| a3-m07 | Rocas Coloradas | pendiente | — | |
-| a3-m08 | Australia próspera | pendiente | — | |
-| a3-m09 | Argentina en declive | pendiente | — | |
-| a3-m10 | Ornitorrinco sobre roca | pendiente | — | firstFrame de a3-c2 (FLF) |
-| a3-m11 | Fósil de piedra | pendiente | — | lastFrame de a3-c2 (FLF) |
-| a3-m12 | Página de cuaderno | pendiente | — | Sin STYLE-BLOCK (marco) |
-| a3-m13 | Fósil en yacimiento | pendiente | — | Fotográfico (salto a la realidad) |
-| a3-m14 | Grieta Revenant | pendiente | — | REALITY-BLOCK-CHAOS |
-| a3-m15 | Zoom-out poético | pendiente | — | REALITY-BLOCK-POETIC |
+| a3-m06 | Pangea partida | aprobado | ~¥0.3 | Grieta roja, agua en el gap ✓ |
+| a3-m07 | Rocas Coloradas | aprobado | ~¥0.6 | Retry ×1; capas recorte rojo/naranja ✓ |
+| a3-m08 | Australia próspera | aprobado | ~¥0.3 | Verde saturado, humedal ✓ |
+| a3-m09 | Argentina en declive | aprobado | ~¥0.3 | Gris frío, tierra agrietada ✓ |
+| a3-m10 | Ornitorrinco sobre roca | aprobado | ~¥0.3 | Recostado, rojo atardecer ✓ |
+| a3-m11 | Fósil de piedra | aprobado | ~¥0.3 | Relieve fósil, gris piedra ✓ |
+| a3-m12 | Página de cuaderno | aprobado | ~¥0.3 | Marco cuaderno, siluetas pin ✓ |
+| a3-m13 | Fósil en yacimiento | aprobado | ~¥0.3 | Salto realidad clínico ✓ |
+| a3-m14 | Grieta Revenant | aprobado | ~¥0.3 | REALITY-BLOCK-CHAOS ✓ |
+| a3-m15 | Zoom-out poético | aprobado | ~¥0.6 | Retry ×1; aéreo poético atardecer ✓ |
 
 ## Checklist — Clips (13 U2V ≈ ¥6.5 + 2 FLF ≈ ¥2)
 
@@ -103,10 +104,10 @@ cd wind-mcp && npm run madres:a3 -- --todas
 
 | Etapa | Estimado | Real acumulado |
 |---|---|---|
-| Madres (15 × ¥0.3) | ~¥4.5 | ~¥0.6 |
+| Madres (15 × ¥0.3) | ~¥4.5 | ~¥5.1 |
 | Clips U2V (13 × ¥0.5) | ~¥6.5 | ¥0 |
 | Clips FLF (2 × ~¥1) | ~¥2 | ¥0 |
-| **Total** | **~¥13** | **~¥0.6** |
+| **Total** | **~¥13** | **~¥5.1** |
 
 Los retries de madres rechazadas suman ~¥0.3 c/u: por eso el gate de aprobación de a3-m01 antes de generar en lote.
 
