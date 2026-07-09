@@ -1,6 +1,6 @@
 # Pipeline de producción con wind-comic
 
-> Cómo producir el contenido. Qué producir está en los arcos; la consistencia visual en [biblia-visual.md](biblia-visual.md).
+> Cómo producir el contenido. Qué producir está en los arcos; la consistencia visual en [biblia-visual.md](biblia-visual.md). El alcance completo de la caja de herramientas (todo lo que wind-comic puede hacer, más allá de este flujo recomendado) está en [toolkit-wind-comic.md](toolkit-wind-comic.md).
 > Herramienta: instancia local de `wind-comic` (en la raíz del proyecto). Es BYO (bring your own keys): el costo es de las APIs, no de la app.
 
 ---
