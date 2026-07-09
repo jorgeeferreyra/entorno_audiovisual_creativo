@@ -106,6 +106,7 @@ Personaje: [nombre ES]
 - idea / prompt (EN): [con el STYLE-BLOCK de biblia-visual.md §1 embebido literal + la línea de tinte del guion de color del arco]
 - style: Woodcut Print   (preset más cercano al look silueta; u otro si rompe la estética a propósito)
 - aspect: 9:16
+- Ref: [id de la madre padre a usar como referencia de imagen | —] (coherencia entre madres, biblia-visual.md §3)
 - Archivo destino: assets/arco-N/madre/[id]-[slug].png
 ```
 

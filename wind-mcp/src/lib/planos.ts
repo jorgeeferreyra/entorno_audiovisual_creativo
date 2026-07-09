@@ -20,6 +20,8 @@ export interface MadrePlano {
   /** Derivado del archivo destino, ej. madre-ornitorrinco */
   slug: string;
   prompt: string;
+  /** Id de la madre padre a usar como referencia de imagen (subject_reference), si declarada con `- Ref:`. */
+  ref?: string;
 }
 
 export interface ClipPlano {
@@ -69,7 +71,8 @@ function parseMadres(md: string): MadrePlano[] {
     const prompt = primerFence(bloque);
     if (!destino || !prompt) continue;
     const slug = path.basename(destino, path.extname(destino)).replace(`${id}-`, '');
-    madres.push({ id, titulo, archivoDestino: destino, slug, prompt });
+    const ref = bloque.match(/- Ref(?: obligatoria)?: (a3-m\d{2})/)?.[1];
+    madres.push({ id, titulo, archivoDestino: destino, slug, prompt, ref });
   }
   return madres;
 }
@@ -138,12 +141,27 @@ export async function leerStyleBlock(): Promise<string> {
 }
 
 /**
- * Validación blanda: toda madre debe embeber el STYLE-BLOCK literal,
- * salvo las que rompen la estética a propósito (m12–m15).
+ * Validación blanda de coherencia de madres (solo warnings, no bloquea):
+ * - STYLE-BLOCK literal, salvo las que rompen la estética a propósito (m12–m15).
+ * - Línea de tinte presente (guion de color), mismas excepciones.
+ * - Integridad de `- Ref:`: el id referenciado debe existir en el set.
  */
-export async function validarStyleBlock(madres: MadrePlano[]): Promise<string[]> {
+export async function validarMadres(madres: MadrePlano[]): Promise<string[]> {
   const styleBlock = await leerStyleBlock();
-  return madres
-    .filter((m) => !MADRES_SIN_STYLE_BLOCK.has(m.id) && !m.prompt.includes(styleBlock))
-    .map((m) => `${m.id}: el prompt no contiene el STYLE-BLOCK literal de biblia-visual.md`);
+  const ids = new Set(madres.map((m) => m.id));
+  const warnings: string[] = [];
+
+  for (const m of madres) {
+    const rompeEstetica = MADRES_SIN_STYLE_BLOCK.has(m.id);
+    if (!rompeEstetica && !m.prompt.includes(styleBlock)) {
+      warnings.push(`${m.id}: el prompt no contiene el STYLE-BLOCK literal de biblia-visual.md`);
+    }
+    if (!rompeEstetica && !/\btint/i.test(m.prompt)) {
+      warnings.push(`${m.id}: el prompt no menciona tinte de fondo del guion de color`);
+    }
+    if (m.ref && !ids.has(m.ref)) {
+      warnings.push(`${m.id}: Ref declarada a ${m.ref}, que no existe en arco-3-planos.md`);
+    }
+  }
+  return warnings;
 }

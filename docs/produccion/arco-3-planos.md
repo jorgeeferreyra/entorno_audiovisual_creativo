@@ -55,7 +55,7 @@ Black paper cutout silhouette of one small baby platypus sleeping alone, warmly 
 
 **a3-m03 — Padre ornitorrinco**
 - Archivo destino: `assets/arco-3/madre/a3-m03-padre-ornitorrinco.png`
-- Ref obligatoria: a3-m01 (mismo personaje / anatomía / estilo; subject_reference)
+- Ref: a3-m01 (mismo personaje / anatomía / estilo; subject_reference)
 - Prompt (EN):
 ```
 Same platypus character as the reference image, black paper cutout silhouette, adult male in side profile, same duck bill and flat paddle tail and woodcut etched details, larger and more angular, distinctive notch cut into the brow outline, standing alert among silhouetted Pangea ferns, warm amber and saturated green tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
@@ -81,6 +81,7 @@ Layered black paper cutout landscape of the supercontinent Pangea seen from a hi
 
 **a3-m06 — Paisaje Pangea partido (la grieta abierta)** — último frame del clip FLF `a3-a5`.
 - Archivo destino: `assets/arco-3/madre/a3-m06-pangea-partida.png`
+- Ref: a3-m05 (mismo encuadre/composición base; solo cambia el estado; subject_reference)
 - Prompt (EN):
 ```
 The same layered paper cutout Pangea landscape now torn apart by a deep widening rift, the black cutout land split in two like ripped paper, silhouetted water rising in the gap, dramatic deep red tinted background sky, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
@@ -118,6 +119,7 @@ Black paper cutout silhouette of an old platypus lying down to rest on a silhoue
 
 **a3-m11 — Fósil de piedra**
 - Archivo destino: `assets/arco-3/madre/a3-m11-fosil-piedra.png`
+- Ref: a3-m10 (mismo encuadre/composición base; solo cambia el estado; subject_reference)
 - Prompt (EN):
 ```
 The same platypus silhouette now frozen and filled with stone texture, a fossil relief embedded in the silhouetted red rock, fine cut-out bone detail inside the contour, the red tint of the background fading to stone grey, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
@@ -168,6 +170,7 @@ Two vast green landmasses already separated by a calm sea channel seen from very
 
 **a3-m16 — Ornitorrinco caminando hacia la roca** — primer frame del clip FLF `a3-c1`; par con a3-m10 (último frame).
 - Archivo destino: `assets/arco-3/madre/a3-m16-ornitorrinco-caminando.png`
+- Ref: a3-m10 (mismo encuadre/composición base; solo cambia el estado; subject_reference)
 - Nota: misma composición y encuadre que a3-m10 (la roca en la misma posición); el ornitorrinco de pie caminando, todavía no recostado.
 - Prompt (EN):
 ```
@@ -176,6 +179,7 @@ Black paper cutout silhouette of an old platypus walking slowly in profile towar
 
 **a3-m17 — Argentina seca (estado final)** — último frame del clip FLF `a3-b4`; par con a3-m09 (primer frame).
 - Archivo destino: `assets/arco-3/madre/a3-m17-argentina-seca.png`
+- Ref: a3-m09 (mismo encuadre/composición base; solo cambia el estado; subject_reference)
 - Nota: misma composición y capas que a3-m09; el mismo paisaje totalmente seco, más agrietado y oscuro.
 - Prompt (EN):
 ```

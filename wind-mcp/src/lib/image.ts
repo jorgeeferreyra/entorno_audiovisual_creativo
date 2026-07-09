@@ -12,6 +12,8 @@ export interface GenerarImagenInput {
   arco: number;
   id: string;
   slug: string;
+  /** Override del destino (absoluto o relativo a PROJECT_ROOT); por defecto assets/arco-N/madre/{id}-{slug}.png. Usado para candidatos. */
+  destOverride?: string;
 }
 
 export interface GenerarImagenResult {
@@ -53,13 +55,9 @@ export async function generarImagen(input: GenerarImagenInput): Promise<GenerarI
     throw new Error(`generar_imagen falló. Intentos: ${errors || 'ninguno'}`);
   }
 
-  const destPath = path.join(
-    PROJECT_ROOT,
-    'assets',
-    `arco-${input.arco}`,
-    'madre',
-    `${input.id}-${input.slug}.png`,
-  );
+  const destPath = input.destOverride
+    ? (path.isAbsolute(input.destOverride) ? input.destOverride : path.join(PROJECT_ROOT, input.destOverride))
+    : path.join(PROJECT_ROOT, 'assets', `arco-${input.arco}`, 'madre', `${input.id}-${input.slug}.png`);
   await ensureDirFor(destPath);
 
   if (result.imageUrl.startsWith('data:')) {
