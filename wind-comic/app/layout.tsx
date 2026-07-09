@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 // v8.3 P1: Plus Jakarta Sans (Taste Skill 推荐, 非 Inter) 自托管, 0 运行时 Google Fonts 请求
 import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
@@ -10,6 +11,7 @@ import { ErrorBoundary } from "@/components/error-boundary";
 import { AuthProvider } from "@/components/auth-provider";
 import { MotionProvider } from "@/components/motion-provider";
 import { SkipLink } from "@/components/skip-link";
+import { getTranslations, resolveLocaleFromHeader } from "@/lib/i18n";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -25,18 +27,24 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "青枫漫剧 · AI Animation Agent Studio",
-  description: "你的 AI 动画/漫剧团队，从灵感到成片一步到位",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = resolveLocaleFromHeader((await headers()).get('accept-language'));
+  const t = getTranslations(locale);
+  return {
+    title: t.meta.title,
+    description: t.meta.description,
+  };
+}
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = resolveLocaleFromHeader((await headers()).get('accept-language'));
+
   return (
-    <html lang="zh-CN" className={`${jakarta.variable} ${jetbrainsMono.variable}`}>
+    <html lang={locale} className={`${jakarta.variable} ${jetbrainsMono.variable}`}>
       <body className="antialiased">
         {/* v10.3.5 a11y: 跳到主内容 —— 键盘第一个可聚焦元素,平时 sr-only,聚焦才显形 */}
         <SkipLink />

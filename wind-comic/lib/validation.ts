@@ -1,5 +1,7 @@
 // 输入验证和清理工具
 
+import { t, type Locale } from './i18n';
+
 export function sanitizeInput(input: string): string {
   return input
     .replace(/[<>]/g, '') // 移除 < >
@@ -8,19 +10,17 @@ export function sanitizeInput(input: string): string {
     .trim();
 }
 
-export function validateIdea(idea: string): { valid: boolean; error?: string } {
+export function validateIdea(idea: string, locale: Locale = 'zh-CN'): { valid: boolean; error?: string } {
   if (!idea || idea.trim().length === 0) {
-    return { valid: false, error: '请输入创作想法' };
+    return { valid: false, error: t(locale, 'validation.ideaRequired') };
   }
 
   if (idea.length < 10) {
-    return { valid: false, error: '创作想法至少需要 10 个字符' };
+    return { valid: false, error: t(locale, 'validation.ideaTooShort') };
   }
 
-  // 支持完整剧本输入：真实剧本通常 5000-50000 字符
-  // 短创意上限 2000，完整剧本上限 100000
   if (idea.length > 100000) {
-    return { valid: false, error: '输入内容不能超过 100000 个字符' };
+    return { valid: false, error: t(locale, 'validation.ideaTooLong') };
   }
 
   return { valid: true };
@@ -31,21 +31,21 @@ export function validateEmail(email: string): boolean {
   return emailRegex.test(email);
 }
 
-export function validatePassword(password: string): { valid: boolean; error?: string } {
+export function validatePassword(password: string, locale: Locale = 'zh-CN'): { valid: boolean; error?: string } {
   if (password.length < 8) {
-    return { valid: false, error: '密码至少需要 8 个字符' };
+    return { valid: false, error: t(locale, 'validation.passwordTooShort') };
   }
 
   if (!/[A-Z]/.test(password)) {
-    return { valid: false, error: '密码需要包含至少一个大写字母' };
+    return { valid: false, error: t(locale, 'validation.passwordNeedsUppercase') };
   }
 
   if (!/[a-z]/.test(password)) {
-    return { valid: false, error: '密码需要包含至少一个小写字母' };
+    return { valid: false, error: t(locale, 'validation.passwordNeedsLowercase') };
   }
 
   if (!/[0-9]/.test(password)) {
-    return { valid: false, error: '密码需要包含至少一个数字' };
+    return { valid: false, error: t(locale, 'validation.passwordNeedsNumber') };
   }
 
   return { valid: true };

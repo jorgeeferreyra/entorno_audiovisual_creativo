@@ -72,11 +72,15 @@ Orden: 0 → 1 → 2 → 3 → 4 → 5 → 6 → 7.
 
 - **Objetivo:** Cerrar texto suelto en pantallas que ya usan `useLocale`.
 - **Criterio de hecho:**
-  - [ ] `lib/home-data.ts` → i18n o `getHomeData(locale)`
-  - [ ] Metadata `app/layout.tsx`
-  - [ ] `app/auth/page.tsx`, footer, skip-link, `error.tsx`, `loading.tsx`
-  - [ ] `lib/validation.ts` con mensajes traducibles
+  - [x] `lib/home-data.ts` → i18n o `getHomeData(locale)`
+  - [x] Metadata `app/layout.tsx`
+  - [x] `app/auth/page.tsx`, footer, skip-link, `error.tsx`, `loading.tsx`
+  - [x] `lib/validation.ts` con mensajes traducibles
 - **Archivos:** los anteriores + nuevas keys en `i18n.ts`
+- **Notas:**
+  - `home-data`: `getHomeData(locale)` combina `t.homeData.*` + imágenes locales; exports legacy para tests.
+  - Metadata SSR: `generateMetadata` + `<html lang>` vía `Accept-Language` (`resolveLocaleFromHeader`). Limitación: si el usuario cambia idioma manualmente en el selector, `<title>`/meta del primer render siguen el header hasta próxima navegación SSR.
+  - `validation.ts`: `validateIdea`/`validatePassword` aceptan `locale` opcional (default `zh-CN`); middleware sin cookie de locale hasta Fase 6.
 
 ### Fase 2: Flujo core
 
@@ -128,7 +132,7 @@ Orden: 0 → 1 → 2 → 3 → 4 → 5 → 6 → 7.
 | Fase | Estado | Fecha | Notas |
 |------|--------|-------|-------|
 | 0 | completada | 2026-07-08 | Locale es-ES: tipo, ~230 keys, LOCALES/LOCALE_LABELS, normalizeLocale, resolveLocaleFromHeader, selector settings |
-| 1 | pendiente | | |
+| 1 | completada | 2026-07-09 | homeData/getHomeData, meta SSR (Accept-Language), auth/footer/a11y/routeError/validation, ~70 keys nuevas en 7 secciones |
 | 2 | pendiente | | |
 | 3 | pendiente | | |
 | 4 | pendiente | | |

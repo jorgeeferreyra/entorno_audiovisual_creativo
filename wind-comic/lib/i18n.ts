@@ -239,6 +239,71 @@ export interface Translations {
     ctaDesc: string;
     ctaButton: string;
   };
+  homeData: {
+    heroStats: { value: string; label: string }[];
+    featureHighlights: { title: string; desc: string }[];
+    agentCards: { title: string; desc: string }[];
+    vibeShots: { title: string }[];
+  };
+  a11y: {
+    skipToMain: string;
+  };
+  footer: {
+    tagline: string;
+    colProduct: string;
+    linkFeatures: string;
+    linkPricing: string;
+    linkCases: string;
+    colCompany: string;
+    linkAbout: string;
+    linkCareers: string;
+    linkPrivacy: string;
+    colResources: string;
+    linkDocs: string;
+    linkSupport: string;
+  };
+  auth: {
+    loginTitle: string;
+    registerTitle: string;
+    loginSubtitle: string;
+    registerSubtitle: string;
+    nameLabel: string;
+    namePlaceholder: string;
+    emailLabel: string;
+    emailPlaceholder: string;
+    passwordLabel: string;
+    passwordPlaceholder: string;
+    demoHint: string;
+    loginButton: string;
+    registerButton: string;
+    submitting: string;
+    toggleToRegisterPrompt: string;
+    toggleToRegisterAction: string;
+    toggleToLoginPrompt: string;
+    toggleToLoginAction: string;
+    toastLoginSuccess: string;
+    toastRegisterSuccess: string;
+    genericError: string;
+  };
+  routeError: {
+    title: string;
+    fallbackMessage: string;
+    retry: string;
+    backToDashboard: string;
+  };
+  meta: {
+    title: string;
+    description: string;
+  };
+  validation: {
+    ideaRequired: string;
+    ideaTooShort: string;
+    ideaTooLong: string;
+    passwordTooShort: string;
+    passwordNeedsUppercase: string;
+    passwordNeedsLowercase: string;
+    passwordNeedsNumber: string;
+  };
 }
 
 const zhCN: Translations = {
@@ -493,6 +558,87 @@ const zhCN: Translations = {
     ctaTitle: '准备好创作你的作品了吗？',
     ctaDesc: '加入数千位创作者，开始你的 AI 漫剧创作之旅',
     ctaButton: '立即开始创作',
+  },
+  homeData: {
+    heroStats: [
+      { value: '8', label: '协作智能体' },
+      { value: '7', label: '视频引擎' },
+      { value: '3', label: '一致性守护' },
+    ],
+    featureHighlights: [
+      { title: 'Cameo 主角锁脸', desc: '上传一张人脸, S2V 主体锁定 + Cameo 全片保持同一个人, 跨镜不漂移' },
+      { title: 'Keyframes 镜头衔接', desc: 'Luma Ray 3 首尾帧 + Seedance 多参考, 上一镜末帧 = 下一镜首帧' },
+      { title: 'Writer-Editor 自进化闭环', desc: '成片后 Editor 打分, Writer 下一轮针对弱项自动改写, 越练越准' },
+    ],
+    agentCards: [
+      { title: 'AI 导演', desc: '总控节奏 · 审核返工 · McKee 11 维人设' },
+      { title: 'AI 编剧', desc: '剧本结构 · 对白打磨 · 依 Editor 反馈自我迭代' },
+      { title: 'AI 角色设计 / 分镜', desc: '角色视觉锚点 · 分镜拆解 · 跨镜动作钩子' },
+      { title: 'AI 剪辑 / 制片', desc: '成片拼接 · 三维评分(连贯/光影/脸) · 最终审核' },
+    ],
+    vibeShots: [
+      { title: '雾森晨光' },
+      { title: '霓虹夜航' },
+    ],
+  },
+  a11y: {
+    skipToMain: '跳到主内容',
+  },
+  footer: {
+    tagline: 'AI Animation Agent Studio',
+    colProduct: '产品',
+    linkFeatures: '功能概览',
+    linkPricing: '价格计划',
+    linkCases: '案例库',
+    colCompany: '公司',
+    linkAbout: '关于我们',
+    linkCareers: '加入我们',
+    linkPrivacy: '隐私政策',
+    colResources: '资源',
+    linkDocs: '使用文档',
+    linkSupport: '支持中心',
+  },
+  auth: {
+    loginTitle: '欢迎回到青枫漫剧',
+    registerTitle: '创建账户',
+    loginSubtitle: '使用账号进入创作工作台',
+    registerSubtitle: '注册开始你的创作之旅',
+    nameLabel: '用户名',
+    namePlaceholder: '输入用户名',
+    emailLabel: '邮箱',
+    emailPlaceholder: '输入邮箱地址',
+    passwordLabel: '密码',
+    passwordPlaceholder: '输入密码',
+    demoHint: '演示：demo@qfmanju.ai / Qfmanju123',
+    loginButton: '登录',
+    registerButton: '注册',
+    submitting: '...',
+    toggleToRegisterPrompt: '还没有账户？',
+    toggleToRegisterAction: '立即注册',
+    toggleToLoginPrompt: '已有账户？',
+    toggleToLoginAction: '立即登录',
+    toastLoginSuccess: '登录成功',
+    toastRegisterSuccess: '注册成功',
+    genericError: '操作失败',
+  },
+  routeError: {
+    title: '页面出错了',
+    fallbackMessage: '发生了未知错误,请重试。',
+    retry: '重试',
+    backToDashboard: '回工作台',
+  },
+  meta: {
+    title: '青枫漫剧 · AI Animation Agent Studio',
+    description: '你的 AI 动画/漫剧团队，从灵感到成片一步到位',
+  },
+  validation: {
+    ideaRequired: '请输入创作想法',
+    ideaTooShort: '创作想法至少需要 10 个字符',
+    ideaTooLong: '输入内容不能超过 100000 个字符',
+    passwordTooShort: '密码至少需要 8 个字符',
+    passwordNeedsUppercase: '密码需要包含至少一个大写字母',
+    passwordNeedsLowercase: '密码需要包含至少一个小写字母',
+    passwordNeedsNumber: '密码需要包含至少一个数字',
   },
 };
 
@@ -749,6 +895,87 @@ const en: Translations = {
     ctaDesc: 'Join thousands of creators and start your AI comic journey',
     ctaButton: 'Start Creating Now',
   },
+  homeData: {
+    heroStats: [
+      { value: '8', label: 'Collaborating agents' },
+      { value: '7', label: 'Video engines' },
+      { value: '3', label: 'Consistency guards' },
+    ],
+    featureHighlights: [
+      { title: 'Cameo face lock', desc: 'Upload one face — S2V subject lock + Cameo keeps the same person across every shot' },
+      { title: 'Keyframes shot continuity', desc: 'Luma Ray 3 first/last frames + Seedance multi-ref — last frame of shot N = first frame of shot N+1' },
+      { title: 'Writer-Editor self-evolving loop', desc: 'After export, Editor scores; Writer rewrites weak spots next round — gets sharper over time' },
+    ],
+    agentCards: [
+      { title: 'AI Director', desc: 'Pacing control · rework review · McKee 11-dimension character design' },
+      { title: 'AI Writer', desc: 'Script structure · dialogue polish · self-iterates from Editor feedback' },
+      { title: 'AI Character / Storyboard', desc: 'Visual character anchors · shot breakdown · cross-shot action hooks' },
+      { title: 'AI Editor / Producer', desc: 'Final assembly · 3D scoring (continuity/lighting/face) · final approval' },
+    ],
+    vibeShots: [
+      { title: 'Misty forest dawn' },
+      { title: 'Neon night voyage' },
+    ],
+  },
+  a11y: {
+    skipToMain: 'Skip to main content',
+  },
+  footer: {
+    tagline: 'AI Animation Agent Studio',
+    colProduct: 'Product',
+    linkFeatures: 'Features',
+    linkPricing: 'Pricing',
+    linkCases: 'Showcase',
+    colCompany: 'Company',
+    linkAbout: 'About us',
+    linkCareers: 'Careers',
+    linkPrivacy: 'Privacy policy',
+    colResources: 'Resources',
+    linkDocs: 'Documentation',
+    linkSupport: 'Support center',
+  },
+  auth: {
+    loginTitle: 'Welcome back to QingFeng',
+    registerTitle: 'Create account',
+    loginSubtitle: 'Sign in to enter the creation workbench',
+    registerSubtitle: 'Register and start your creative journey',
+    nameLabel: 'Username',
+    namePlaceholder: 'Enter username',
+    emailLabel: 'Email',
+    emailPlaceholder: 'Enter email address',
+    passwordLabel: 'Password',
+    passwordPlaceholder: 'Enter password',
+    demoHint: 'Demo: demo@qfmanju.ai / Qfmanju123',
+    loginButton: 'Sign in',
+    registerButton: 'Register',
+    submitting: '...',
+    toggleToRegisterPrompt: "Don't have an account?",
+    toggleToRegisterAction: 'Register now',
+    toggleToLoginPrompt: 'Already have an account?',
+    toggleToLoginAction: 'Sign in now',
+    toastLoginSuccess: 'Signed in successfully',
+    toastRegisterSuccess: 'Registered successfully',
+    genericError: 'Operation failed',
+  },
+  routeError: {
+    title: 'Something went wrong',
+    fallbackMessage: 'An unknown error occurred. Please try again.',
+    retry: 'Retry',
+    backToDashboard: 'Back to workbench',
+  },
+  meta: {
+    title: 'QingFeng Manju · AI Animation Agent Studio',
+    description: 'Your AI animation team — from idea to finished film in one flow',
+  },
+  validation: {
+    ideaRequired: 'Please enter your story idea',
+    ideaTooShort: 'Story idea must be at least 10 characters',
+    ideaTooLong: 'Input cannot exceed 100,000 characters',
+    passwordTooShort: 'Password must be at least 8 characters',
+    passwordNeedsUppercase: 'Password must include at least one uppercase letter',
+    passwordNeedsLowercase: 'Password must include at least one lowercase letter',
+    passwordNeedsNumber: 'Password must include at least one number',
+  },
 };
 
 const esES: Translations = {
@@ -1004,6 +1231,87 @@ const esES: Translations = {
     ctaDesc: 'Únete a miles de creadores y empieza tu viaje de cómics con IA',
     ctaButton: 'Empezar a crear ahora',
   },
+  homeData: {
+    heroStats: [
+      { value: '8', label: 'Agentes colaborativos' },
+      { value: '7', label: 'Motores de vídeo' },
+      { value: '3', label: 'Guardianes de consistencia' },
+    ],
+    featureHighlights: [
+      { title: 'Bloqueo facial Cameo', desc: 'Sube un rostro — bloqueo S2V + Cameo mantiene la misma persona en todo el metraje' },
+      { title: 'Continuidad Keyframes', desc: 'Primer/último fotograma Luma Ray 3 + Seedance multiref — último fotograma del plano N = primero del N+1' },
+      { title: 'Bucle Writer-Editor autoevolutivo', desc: 'Tras el export, Editor puntúa; Writer reescribe debilidades en la siguiente ronda — mejora con el uso' },
+    ],
+    agentCards: [
+      { title: 'Director IA', desc: 'Control de ritmo · revisión de retrabajos · personajes McKee 11D' },
+      { title: 'Guionista IA', desc: 'Estructura del guion · pulido de diálogos · autoiteración según feedback del Editor' },
+      { title: 'Diseño de personaje / Storyboard IA', desc: 'Anclas visuales · desglose de planos · ganchos de acción entre planos' },
+      { title: 'Montaje / Producción IA', desc: 'Ensamblaje final · puntuación 3D (continuidad/luz/rostro) · aprobación final' },
+    ],
+    vibeShots: [
+      { title: 'Amanecer en bosque brumoso' },
+      { title: 'Travesía nocturna neón' },
+    ],
+  },
+  a11y: {
+    skipToMain: 'Saltar al contenido principal',
+  },
+  footer: {
+    tagline: 'AI Animation Agent Studio',
+    colProduct: 'Producto',
+    linkFeatures: 'Funciones',
+    linkPricing: 'Precios',
+    linkCases: 'Galería',
+    colCompany: 'Empresa',
+    linkAbout: 'Sobre nosotros',
+    linkCareers: 'Únete al equipo',
+    linkPrivacy: 'Política de privacidad',
+    colResources: 'Recursos',
+    linkDocs: 'Documentación',
+    linkSupport: 'Centro de soporte',
+  },
+  auth: {
+    loginTitle: 'Bienvenido de nuevo a QingFeng',
+    registerTitle: 'Crear cuenta',
+    loginSubtitle: 'Inicia sesión para entrar al espacio de trabajo',
+    registerSubtitle: 'Regístrate y empieza tu viaje creativo',
+    nameLabel: 'Nombre de usuario',
+    namePlaceholder: 'Introduce tu nombre de usuario',
+    emailLabel: 'Correo electrónico',
+    emailPlaceholder: 'Introduce tu correo electrónico',
+    passwordLabel: 'Contraseña',
+    passwordPlaceholder: 'Introduce tu contraseña',
+    demoHint: 'Demo: demo@qfmanju.ai / Qfmanju123',
+    loginButton: 'Iniciar sesión',
+    registerButton: 'Registrarse',
+    submitting: '...',
+    toggleToRegisterPrompt: '¿No tienes cuenta?',
+    toggleToRegisterAction: 'Regístrate ahora',
+    toggleToLoginPrompt: '¿Ya tienes cuenta?',
+    toggleToLoginAction: 'Inicia sesión ahora',
+    toastLoginSuccess: 'Sesión iniciada correctamente',
+    toastRegisterSuccess: 'Registro completado',
+    genericError: 'La operación ha fallado',
+  },
+  routeError: {
+    title: 'Ha ocurrido un error',
+    fallbackMessage: 'Se ha producido un error desconocido. Inténtalo de nuevo.',
+    retry: 'Reintentar',
+    backToDashboard: 'Volver al espacio de trabajo',
+  },
+  meta: {
+    title: 'QingFeng Manju · AI Animation Agent Studio',
+    description: 'Tu equipo de animación con IA — de la idea al vídeo terminado en un solo flujo',
+  },
+  validation: {
+    ideaRequired: 'Introduce tu idea de historia',
+    ideaTooShort: 'La idea debe tener al menos 10 caracteres',
+    ideaTooLong: 'El contenido no puede superar los 100.000 caracteres',
+    passwordTooShort: 'La contraseña debe tener al menos 8 caracteres',
+    passwordNeedsUppercase: 'La contraseña debe incluir al menos una mayúscula',
+    passwordNeedsLowercase: 'La contraseña debe incluir al menos una minúscula',
+    passwordNeedsNumber: 'La contraseña debe incluir al menos un número',
+  },
 };
 
 // v5.0: 繁体中文 (之前是 zhCN 占位)
@@ -1233,6 +1541,87 @@ const zhTW: Translations = {
     ctaDesc: '加入數千位創作者，開始你的 AI 漫劇創作之旅',
     ctaButton: '立即開始創作',
   },
+  homeData: {
+    heroStats: [
+      { value: '8', label: '協作智能體' },
+      { value: '7', label: '影片引擎' },
+      { value: '3', label: '一致性守護' },
+    ],
+    featureHighlights: [
+      { title: 'Cameo 主角鎖臉', desc: '上傳一張人臉, S2V 主體鎖定 + Cameo 全片保持同一個人, 跨鏡不漂移' },
+      { title: 'Keyframes 鏡頭銜接', desc: 'Luma Ray 3 首尾幀 + Seedance 多參考, 上一鏡末幀 = 下一鏡首幀' },
+      { title: 'Writer-Editor 自進化閉環', desc: '成片後 Editor 打分, Writer 下一輪針對弱項自動改寫, 越練越準' },
+    ],
+    agentCards: [
+      { title: 'AI 導演', desc: '總控節奏 · 審核返工 · McKee 11 維人設' },
+      { title: 'AI 編劇', desc: '劇本結構 · 對白打磨 · 依 Editor 回饋自我迭代' },
+      { title: 'AI 角色設計 / 分鏡', desc: '角色視覺錨點 · 分鏡拆解 · 跨鏡動作鉤子' },
+      { title: 'AI 剪輯 / 製片', desc: '成片拼接 · 三維評分(連貫/光影/臉) · 最終審核' },
+    ],
+    vibeShots: [
+      { title: '霧森晨光' },
+      { title: '霓虹夜航' },
+    ],
+  },
+  a11y: {
+    skipToMain: '跳到主內容',
+  },
+  footer: {
+    tagline: 'AI Animation Agent Studio',
+    colProduct: '產品',
+    linkFeatures: '功能概覽',
+    linkPricing: '價格方案',
+    linkCases: '案例庫',
+    colCompany: '公司',
+    linkAbout: '關於我們',
+    linkCareers: '加入我們',
+    linkPrivacy: '隱私政策',
+    colResources: '資源',
+    linkDocs: '使用文件',
+    linkSupport: '支援中心',
+  },
+  auth: {
+    loginTitle: '歡迎回到青楓漫劇',
+    registerTitle: '建立帳戶',
+    loginSubtitle: '使用帳號進入創作工作台',
+    registerSubtitle: '註冊開始你的創作之旅',
+    nameLabel: '使用者名稱',
+    namePlaceholder: '輸入使用者名稱',
+    emailLabel: '電子郵件',
+    emailPlaceholder: '輸入電子郵件地址',
+    passwordLabel: '密碼',
+    passwordPlaceholder: '輸入密碼',
+    demoHint: '示範：demo@qfmanju.ai / Qfmanju123',
+    loginButton: '登入',
+    registerButton: '註冊',
+    submitting: '...',
+    toggleToRegisterPrompt: '還沒有帳戶？',
+    toggleToRegisterAction: '立即註冊',
+    toggleToLoginPrompt: '已有帳戶？',
+    toggleToLoginAction: '立即登入',
+    toastLoginSuccess: '登入成功',
+    toastRegisterSuccess: '註冊成功',
+    genericError: '操作失敗',
+  },
+  routeError: {
+    title: '頁面出錯了',
+    fallbackMessage: '發生了未知錯誤,請重試。',
+    retry: '重試',
+    backToDashboard: '回工作台',
+  },
+  meta: {
+    title: '青楓漫劇 · AI Animation Agent Studio',
+    description: '你的 AI 動畫/漫劇團隊，從靈感到成片一步到位',
+  },
+  validation: {
+    ideaRequired: '請輸入創作想法',
+    ideaTooShort: '創作想法至少需要 10 個字元',
+    ideaTooLong: '輸入內容不能超過 100000 個字元',
+    passwordTooShort: '密碼至少需要 8 個字元',
+    passwordNeedsUppercase: '密碼需要包含至少一個大寫字母',
+    passwordNeedsLowercase: '密碼需要包含至少一個小寫字母',
+    passwordNeedsNumber: '密碼需要包含至少一個數字',
+  },
 };
 
 // v5.0: 日本語 (之前是 zhCN 占位)
@@ -1461,6 +1850,87 @@ const ja: Translations = {
     ctaTitle: '自分の作品を作る準備はできましたか？',
     ctaDesc: '数千人のクリエイターに加わり、AIコミック制作の旅を始めよう',
     ctaButton: '今すぐ作成を始める',
+  },
+  homeData: {
+    heroStats: [
+      { value: '8', label: '協調エージェント' },
+      { value: '7', label: '動画エンジン' },
+      { value: '3', label: '一貫性ガード' },
+    ],
+    featureHighlights: [
+      { title: 'Cameo 顔ロック', desc: '顔を1枚アップロード — S2V主体ロック + Cameoで全ショット同一人物を維持' },
+      { title: 'Keyframes ショット接続', desc: 'Luma Ray 3 首尾フレーム + Seedance マルチ参照 — Nショット末フレーム = N+1先頭フレーム' },
+      { title: 'Writer-Editor 自己進化ループ', desc: '完成後 Editor が採点、Writer が弱点を次ラウンドで自動改稿 — 使うほど精度向上' },
+    ],
+    agentCards: [
+      { title: 'AI ディレクター', desc: 'テンポ統括 · 差し戻し審査 · McKee 11次元キャラ設計' },
+      { title: 'AI ライター', desc: '脚本構成 · 台詞推敲 · Editor フィードバックで自己反復' },
+      { title: 'AI キャラ / 絵コンテ', desc: 'ビジュアルアンカー · ショット分解 · クロスショットアクションフック' },
+      { title: 'AI 編集 / プロデューサー', desc: '最終組み立て · 3D採点(連続性/光/顔) · 最終承認' },
+    ],
+    vibeShots: [
+      { title: '霧の森の朝' },
+      { title: 'ネオンの夜航' },
+    ],
+  },
+  a11y: {
+    skipToMain: 'メインコンテンツへスキップ',
+  },
+  footer: {
+    tagline: 'AI Animation Agent Studio',
+    colProduct: 'プロダクト',
+    linkFeatures: '機能概要',
+    linkPricing: '料金プラン',
+    linkCases: '事例ライブラリ',
+    colCompany: '会社',
+    linkAbout: '私たちについて',
+    linkCareers: '採用情報',
+    linkPrivacy: 'プライバシーポリシー',
+    colResources: 'リソース',
+    linkDocs: 'ドキュメント',
+    linkSupport: 'サポートセンター',
+  },
+  auth: {
+    loginTitle: '青楓へようこそ',
+    registerTitle: 'アカウント作成',
+    loginSubtitle: 'サインインして制作ワークベンチへ',
+    registerSubtitle: '登録して創作の旅を始めましょう',
+    nameLabel: 'ユーザー名',
+    namePlaceholder: 'ユーザー名を入力',
+    emailLabel: 'メール',
+    emailPlaceholder: 'メールアドレスを入力',
+    passwordLabel: 'パスワード',
+    passwordPlaceholder: 'パスワードを入力',
+    demoHint: 'デモ: demo@qfmanju.ai / Qfmanju123',
+    loginButton: 'ログイン',
+    registerButton: '登録',
+    submitting: '...',
+    toggleToRegisterPrompt: 'アカウントをお持ちでないですか？',
+    toggleToRegisterAction: '今すぐ登録',
+    toggleToLoginPrompt: 'すでにアカウントをお持ちですか？',
+    toggleToLoginAction: '今すぐログイン',
+    toastLoginSuccess: 'ログインしました',
+    toastRegisterSuccess: '登録が完了しました',
+    genericError: '操作に失敗しました',
+  },
+  routeError: {
+    title: 'ページでエラーが発生しました',
+    fallbackMessage: '不明なエラーが発生しました。もう一度お試しください。',
+    retry: '再試行',
+    backToDashboard: 'ワークベンチに戻る',
+  },
+  meta: {
+    title: '青楓漫劇 · AI Animation Agent Studio',
+    description: 'AIアニメーション/コミックチーム — アイデアから完成作品まで一気通貫',
+  },
+  validation: {
+    ideaRequired: '創作アイデアを入力してください',
+    ideaTooShort: '創作アイデアは10文字以上必要です',
+    ideaTooLong: '入力は100000文字を超えられません',
+    passwordTooShort: 'パスワードは8文字以上必要です',
+    passwordNeedsUppercase: 'パスワードに大文字を1つ以上含めてください',
+    passwordNeedsLowercase: 'パスワードに小文字を1つ以上含めてください',
+    passwordNeedsNumber: 'パスワードに数字を1つ以上含めてください',
   },
 };
 

@@ -3,6 +3,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { AppError, handleApiError, logError } from './error-handler';
 import { validateIdea, sanitizeInput } from './validation';
+import type { Locale } from './i18n';
 
 export function withErrorHandler(
   handler: (req: NextRequest) => Promise<Response>
@@ -22,12 +23,12 @@ export function withErrorHandler(
   };
 }
 
-export function validateCreateRequest(body: any) {
+export function validateCreateRequest(body: any, locale: Locale = 'zh-CN') {
   if (!body.idea) {
     throw new AppError('请提供故事创意', 'MISSING_IDEA', 400);
   }
 
-  const validation = validateIdea(body.idea);
+  const validation = validateIdea(body.idea, locale);
   if (!validation.valid) {
     throw new AppError(validation.error || '输入无效', 'INVALID_IDEA', 400);
   }

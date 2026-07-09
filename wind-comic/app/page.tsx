@@ -6,7 +6,7 @@ import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
 import { SectionTitle } from '@/components/ui/section-title';
 import { GlassCard } from '@/components/ui/glass-card';
-import { heroStats, featureHighlights, agentCards, vibeShots } from '@/lib/home-data';
+import { getHomeData } from '@/lib/home-data';
 import { IMG_FEATURE_MAIN, IMG_LENS_MAIN, IMG_BG_TEXTURE } from '@/lib/placeholder-images';
 import { useEffect, useRef, useState } from 'react';
 import { useReducedMotion } from 'framer-motion';
@@ -14,7 +14,8 @@ import { Play } from '@phosphor-icons/react';
 import { useLocale } from '@/hooks/use-locale';
 
 export default function Home() {
-  const { t } = useLocale();
+  const { locale, t } = useLocale();
+  const { heroStats, featureHighlights, agentCards, vibeShots } = getHomeData(locale);
   // v10.3.4 a11y: 系统「减少动态效果」时,英雄循环视频不自动播放(露静态封面),装饰预览同理
   const reduce = useReducedMotion();
   const heroVideoRef = useRef<HTMLVideoElement>(null);

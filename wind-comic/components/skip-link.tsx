@@ -6,7 +6,11 @@
  * 真实浏览器里键盘 Enter 会对链接派发 click,故直接在 onClick 里接管:阻止默认跳转 +
  * 显式把焦点/视口移到 #main-content。平时 sr-only,键盘聚焦才显形(全站第一个可聚焦元素)。
  */
+import { useLocale } from '@/hooks/use-locale';
+
 export function SkipLink() {
+  const { t } = useLocale();
+
   return (
     <a
       href="#main-content"
@@ -20,7 +24,7 @@ export function SkipLink() {
       }}
       className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100000] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-[var(--primary)] focus:text-black focus:font-semibold focus:shadow-lg"
     >
-      跳到主内容
+      {t.a11y.skipToMain}
     </a>
   );
 }

@@ -33,6 +33,12 @@ export function useLocale() {
     return () => window.removeEventListener(EVT, onChange);
   }, []);
 
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      document.documentElement.lang = locale;
+    }
+  }, [locale]);
+
   const setLocale = useCallback((next: Locale) => {
     const norm = normalizeLocale(next);
     if (typeof window !== 'undefined') {
