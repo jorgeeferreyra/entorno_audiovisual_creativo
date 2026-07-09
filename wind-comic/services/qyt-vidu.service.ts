@@ -7,24 +7,38 @@
  *   - POST /ent/v2/img2video   {model, images:[url], prompt, duration, aspect_ratio}
  *   - GET  /ent/v2/tasks/{id}/creations → {state: created|queueing|processing|success|failed, creations:[{url}]}
  * 探测实录:路径正确(429 saturated=通道瞬时饱和,而非 Invalid URL/禁止调用)。
- * 复用 OPENAI_API_KEY/OPENAI_BASE_URL 的 origin;QYT_VIDU_DISABLE=1 可关。
+ * 凭据:优先 QINGYUNTOP_API_KEY/QINGYUNTOP_BASE_URL;否则复用 OPENAI_API_KEY/OPENAI_BASE_URL
+ * 的 origin —— 但仅当该 origin 不是 OpenAI 官方(官方不转发 /ent/v2,必 404)。
+ * QYT_VIDU_DISABLE=1 可关。
  */
 import { API_CONFIG } from '@/lib/config';
 
 const POLL_INTERVAL_MS = 8_000;
 const POLL_TIMEOUT_MS = Number(process.env.QYT_VIDU_POLL_TIMEOUT_MS) || 6 * 60_000;
 
-function gatewayOrigin(): string {
-  try { return new URL(API_CONFIG.openai.baseURL).origin; } catch { return 'https://api.qingyuntop.top'; }
+function toOrigin(url: string): string {
+  try { return new URL(url).origin; } catch { return 'https://api.qingyuntop.top'; }
+}
+
+function gatewayCreds(): { key: string; base: string } {
+  if (process.env.QINGYUNTOP_API_KEY) {
+    return {
+      key: process.env.QINGYUNTOP_API_KEY,
+      base: toOrigin(process.env.QINGYUNTOP_BASE_URL || 'https://api.qingyuntop.top'),
+    };
+  }
+  return { key: API_CONFIG.openai.apiKey, base: toOrigin(API_CONFIG.openai.baseURL) };
 }
 
 export function hasQytVidu(): boolean {
-  return !!API_CONFIG.openai.apiKey && process.env.QYT_VIDU_DISABLE !== '1';
+  if (process.env.QYT_VIDU_DISABLE === '1') return false;
+  const { key, base } = gatewayCreds();
+  return !!key && !base.includes('api.openai.com');
 }
 
 export class QytViduService {
-  private key = API_CONFIG.openai.apiKey;
-  private base = gatewayOrigin();
+  private key = gatewayCreds().key;
+  private base = gatewayCreds().base;
   private model = process.env.QYT_VIDU_MODEL || 'viduq3';
 
   async generateVideo(imageUrl: string, prompt: string, options?: {

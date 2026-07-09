@@ -30,12 +30,25 @@ export async function generarImagen(input: GenerarImagenInput): Promise<GenerarI
   const { dispatchImageGenerate } = await import('@/lib/image-providers/registry');
 
   const aspect = input.aspect ?? '9:16';
+  const mock = process.env.MOCK_ENGINES === '1';
   const refUrls: string[] = [];
   for (const ref of input.refs ?? []) {
     if (/^https?:\/\//.test(ref)) {
       refUrls.push(ref);
-    } else {
-      const local = path.isAbsolute(ref) ? ref : path.join(PROJECT_ROOT, ref);
+      continue;
+    }
+    const local = path.isAbsolute(ref) ? ref : path.join(PROJECT_ROOT, ref);
+    if (mock) {
+      refUrls.push(await fileToDataUri(local));
+      continue;
+    }
+    // Modo real: URL http vía upload a Minimax — el fallback kontext (Qingyun) descarta
+    // data-URIs y perdería la consistencia. Si el upload falla, degradamos a data-URI
+    // (Minimax multi-ref lo acepta igual).
+    try {
+      refUrls.push(await uploadImageToMinimax(local));
+    } catch (e) {
+      console.warn('[wind-mcp] upload ref a Minimax falló, uso data-URI (solo Minimax la verá):', e instanceof Error ? e.message : e);
       refUrls.push(await fileToDataUri(local));
     }
   }
@@ -72,7 +85,7 @@ export async function generarImagen(input: GenerarImagenInput): Promise<GenerarI
     imageUrl: result.imageUrl,
     provider: result.provider,
     estCostCny: result.estCostCny,
-    mock: process.env.MOCK_ENGINES === '1',
+    mock,
   };
 }
 

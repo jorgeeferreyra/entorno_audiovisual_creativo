@@ -15,7 +15,7 @@
 | 2 (ya resuelta) | `OPENAI_API_KEY` | OpenAI | Guion/director/polish (LLM) y fallback de imagen (flux-kontext vía gateway) | [platform.openai.com/api-keys](https://platform.openai.com/api-keys) | Sí |
 | 3 (planos gancho A3) | `KELING_API_KEY` | Kling vía gateway Qingyun | FLF (first-last-frame) recomendado para los ornitorrincos del Arco 3; también lip-sync y 4K. Con fallback automático a Minimax I2V si falla | Configurada con `KELING_BASE_URL=https://api.qingyuntop.top/kling` (gateway, key simple) — no la consola oficial. Ver caveat abajo | **Sí** (vía Qingyun) |
 | 4 (fallback video+imagen) | `QINGYUNTOP_API_KEY` | Qingyun (agregador chino) | Gateway unificado de fallback: Sora-2/Veo-3 para video, MJ/kontext para imagen. Misma key que `KELING_API_KEY` | [api.qingyuntop.top/register](https://api.qingyuntop.top/register) → consola → "API令牌" → añadir token ([docs](https://qingyuntop.apifox.cn/)) | **Sí** |
-| 5 (opcional, mismo gateway) | `VEO_API_KEY` | Qingyun | Sora/Veo cinematográfico para finales; usa el mismo gateway que la fila anterior — la misma key de Qingyun sirve para ambas variables | Igual que `QINGYUNTOP_API_KEY` | No |
+| 5 (opcional, mismo gateway) | `VEO_API_KEY` | Qingyun | Sora/Veo cinematográfico para finales; usa el mismo gateway que la fila anterior — la misma key de Qingyun sirve para ambas variables | Igual que `QINGYUNTOP_API_KEY` | **Sí** (misma key Qingyun copiada; activa el provider `veo` prioridad 60, primer fallback de video) |
 | 6 (opcional, storyboards) | `MJ_API_KEY` | vectorengine (agregador MJ) | Midjourney para storyboards/refs de personaje (mejor calidad de imagen fija) | **No confirmado con certeza:** el `.env.example` apunta a `api.vectorengine.ai`, pero lo único verificable en la web es [api.vectorengine.cn](https://api.vectorengine.cn/) (mismo agregador, dominio `.cn`) con base URL `www.vectronode.com/v1`. Alternativa confirmada: la misma `QINGYUNTOP_API_KEY` cubre MJ | No |
 | 7 (opcional, T2V alternativo) | `VIDU_API_KEY` | Vidu | Motor T2V alternativo (clips largos 16s) | [platform.vidu.com](https://platform.vidu.com) → dashboard → API Keys (login con Google) | No |
 | 8 (opcional, consistencia) | `FAL_KEY` | fal.ai | FLUX Kontext para consistencia por imagen de referencia | [fal.ai/dashboard/keys](https://fal.ai/dashboard/keys) | No |
@@ -52,7 +52,7 @@
 2. Kling vía Qingyun (`KELING_API_KEY` + `KELING_BASE_URL=…/kling`) — FLF real en planos gancho ✓
 3. Qingyun (`QINGYUNTOP_API_KEY`, misma key que Kling) — fallback Sora/Veo + MJ para storyboards sin depender de vectorengine ✓
 
-Opcionalmente copiar la misma key de Qingyun en `VEO_API_KEY` (hoy vacía) si se quiere explícito en el fallback de video cinematográfico.
+La misma key de Qingyun ya está copiada en `VEO_API_KEY` — el provider `veo` (Veo 3.1 vía qingyuntop, prioridad 60) queda activo como primer fallback de video en el registry. El canal `qyt-vidu` (Vidu Q3 vía qingyuntop) también usa `QINGYUNTOP_API_KEY`/`QINGYUNTOP_BASE_URL` desde el fix en [`wind-comic/services/qyt-vidu.service.ts`](../../wind-comic/services/qyt-vidu.service.ts) (antes derivaba la base de `OPENAI_BASE_URL` y moría en 404 contra OpenAI real).
 
 ---
 

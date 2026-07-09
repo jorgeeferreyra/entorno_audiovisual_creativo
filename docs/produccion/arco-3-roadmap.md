@@ -68,7 +68,7 @@ cd wind-comic && PLAN_GATE_DISABLED=1 npm run dev
 | a3-a2 | A | U2V | aprobado | ~¥0.5 | Establishing Pangea ✓ |
 | a3-a3 | A | U2V | aprobado | ~¥0.5 | Ritual madre; el clip híbrido previo NO cuenta |
 | a3-a4 | A | U2V | aprobado | ~¥0.5 | Regenerado con m02 nueva (--force) ✓ |
-| a3-a5 | A | U2V-FLF | aprobado | ~¥0.5 | I2V fallback (Kling: quota insufficient); fix HTTP URLs aplicado para futuros FLF |
+| a3-a5 | A | U2V-FLF | aprobado (regen FLF pendiente) | ~¥0.5 | I2V fallback (Kling: quota insufficient en su momento); **con créditos Qingyun cargados, regenerar vía FLF real** — ver §Gate Kling |
 | a3-a5b | A | U2V | aprobado | ~¥0.5 | Quiebre caos Revenant ✓ |
 | a3-a5c | A | U2V | aprobado | ~¥0.5 | Quiebre respiro crane-up ✓ |
 | a3-a6 | A | U2V | aprobado | ~¥0.5 | |
@@ -132,6 +132,16 @@ Los retries de madres rechazadas suman ~¥0.3 c/u: por eso el gate de aprobació
 
 - Si la llamada a Kling falla, el fallback a Minimax I2V ya es automático en `generateFlfViaKling()` ([`wind-mcp/src/lib/video.ts`](../../wind-mcp/src/lib/video.ts)) — degrada a solo primer frame con warning.
 - Validación pendiente: el FLF de Kling nunca se corrió con key real (ver caveat del inventario). Aprobar a3-a5 mirando que el morph efectivamente ocurra; si el gateway no lo soporta, se acepta el I2V degradado o se evalúa otro motor.
+
+### Regeneración pendiente de a3-a5 (créditos Qingyun ya cargados)
+
+a3-a5 salió por I2V fallback cuando Kling devolvió "quota insufficient"; ahora hay saldo en el gateway. Regenerar con:
+
+```bash
+cd wind-mcp && npm run clips:a3 -- --id a3-a5 --force
+```
+
+Requiere wind-comic arriba en modo real (`MOCK_ENGINES=0`). Criterio de aceptación: el log debe mostrar provider `Kling-FLF` (no `Minimax-I2V-fallback`) y el morph primer→último frame de la grieta debe ocurrir. Costo estimado ~¥1. Al aprobar, actualizar la fila de a3-a5 en el checklist de clips.
 
 ---
 

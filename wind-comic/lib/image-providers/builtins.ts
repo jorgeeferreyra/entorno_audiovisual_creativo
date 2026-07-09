@@ -122,6 +122,22 @@ registerImageProvider({
   },
 });
 
+/** aspectRatio → size del endpoint /v1/images/generations (override con IMAGE_SIZE). */
+export function kontextSizeFromAspect(aspectRatio?: string): string {
+  if (process.env.IMAGE_SIZE) return process.env.IMAGE_SIZE;
+  switch (aspectRatio) {
+    case '9:16':
+    case '3:4':
+      return '1024x1792';
+    case '16:9':
+    case '4:3':
+    case '2.35:1':
+      return '1792x1024';
+    default:
+      return '1024x1024';
+  }
+}
+
 // ─── Provider 4: flux.1-kontext-pro (via OpenAI-compat gateway) ──────────
 registerImageProvider({
   id: 'kontext',
@@ -154,7 +170,7 @@ registerImageProvider({
         model,
         prompt: input.prompt + refHint,
         n: 1,
-        size: '1024x1024',
+        size: kontextSizeFromAspect(input.aspectRatio),
       }),
       signal: AbortSignal.timeout(90_000),
     });
