@@ -2,7 +2,7 @@
 
 Documentación del proyecto de ficción y del contenido para redes derivado del guion. Todo en español, en Markdown.
 
-> `wind-comic/` y `MoneyPrinterTurbo/` son **herramientas** de generación, no forman parte de esta documentación creativa. Fuentes primarias: `Contexto del Proyecto.pdf` y `guion_episodio_1.pdf` (raíz).
+> `wind-comic/` y `MoneyPrinterTurbo/` son **herramientas** de generación, no forman parte de esta documentación creativa. Fuentes primarias (raíz): `Contexto del Proyecto.pdf`, `guion_episodio_1.pdf` y `prompt_charles_jones.txt` (aspecto/vestuario de CFJ; su referencia visual vive en `assets/fuentes/charles-jones-referencia.jpeg`).
 
 ---
 
@@ -19,10 +19,14 @@ docs/
 │   ├── arco-3-ornitorrincos.md      El drama; final en fosilización
 │   └── calendario-publicacion.md    Cadencia y secuencia de piezas
 └── produccion/
-    ├── biblia-visual.md             Imágenes madre + anclas de estilo
-    ├── pipeline-wind-comic.md       Motores, costos y flujo técnico
-    └── arco-3-planos.md             Arco 3 plano-a-plano (prompts finales)
+    ├── biblia-visual.md             Anclas de estilo + STYLE-BLOCK + conceptos de imágenes madre
+    ├── personajes-studio.md         Fichas Character Studio (ingesta directa en wind-comic)
+    ├── pipeline-wind-comic.md       Motores, costos, plantillas de ingesta y convención de IDs/archivos
+    ├── toolkit-wind-comic.md        Mapa de alcance completo de wind-comic
+    └── arco-3-planos.md             Arco 3 en fichas de ingesta (prompts finales)
 ```
+
+Los archivos binarios de producción viven fuera de `docs/`, en `assets/` (raíz): `assets/fuentes/` (material de origen real, no generado) y `assets/arco-{N}/` (imágenes madre y clips generados). Convención en [produccion/pipeline-wind-comic.md](produccion/pipeline-wind-comic.md) §5.
 
 ---
 
@@ -32,7 +36,7 @@ docs/
 2. **[redes/estrategia-contenido.md](redes/estrategia-contenido.md)** — el marco "cuadernos de Charles", los 3 arcos, el orden y las conexiones con el episodio 1.
 3. **Los tres arcos** — [1: Mano Negra](redes/arco-1-mano-negra.md) · [2: Charles y la palanca](redes/arco-2-charles-palanca.md) · [3: Ornitorrincos](redes/arco-3-ornitorrincos.md).
 4. **[redes/calendario-publicacion.md](redes/calendario-publicacion.md)** — cuándo publicar cada pieza.
-5. **Producción** — [biblia-visual.md](produccion/biblia-visual.md) (qué generar primero) y [pipeline-wind-comic.md](produccion/pipeline-wind-comic.md) (cómo y a qué costo).
+5. **Producción** — [biblia-visual.md](produccion/biblia-visual.md) (qué generar primero), [pipeline-wind-comic.md](produccion/pipeline-wind-comic.md) (cómo, a qué costo y con qué plantillas de ingesta) y [personajes-studio.md](produccion/personajes-studio.md) (fichas de personaje para wind-comic).
 
 ---
 
@@ -45,7 +49,8 @@ El contenido de redes es **precuela canónica** del episodio 1: la familia de or
 ## Estado y próximos pasos
 
 - [x] Canon consolidado, estrategia, 3 arcos (nivel beats macro), calendario, biblia visual y pipeline.
-- [x] **Arco 3** bajado a **plano-a-plano con prompts** en [arco-3-planos.md](produccion/arco-3-planos.md).
-- [ ] Bajar los **arcos 1 y 2** a plano-a-plano con prompts (plantilla en [pipeline-wind-comic.md](produccion/pipeline-wind-comic.md)).
-- [ ] Generar las **imágenes madre** (biblia visual) antes de cualquier clip.
+- [x] **Arco 3** bajado a **fichas de ingesta con prompts finales** en [arco-3-planos.md](produccion/arco-3-planos.md).
+- [x] Producción reestructurada a **ingesta 1:1 con la UI de wind-comic**: plantillas y convención de IDs/archivos en [pipeline-wind-comic.md](produccion/pipeline-wind-comic.md) §5–6, fichas de personaje en [personajes-studio.md](produccion/personajes-studio.md), material de origen real en `assets/fuentes/`.
+- [ ] Bajar los **arcos 1 y 2** a fichas de ingesta (plantillas en [pipeline-wind-comic.md](produccion/pipeline-wind-comic.md) §6).
+- [ ] Generar las **imágenes madre** del Arco 3 (`a3-m01`…`a3-m13`) antes de cualquier clip.
 - [ ] Producir el bloque del **Arco 3** (primer arco a publicar).

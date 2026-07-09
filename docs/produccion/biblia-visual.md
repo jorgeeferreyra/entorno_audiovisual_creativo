@@ -15,6 +15,14 @@
 | **Anacronismos** | Permitidos y buscados (mandarina, reloj, cadenita) | Canon |
 | **Rostro de CFJ** | NUNCA de frente | Regla dura del canon |
 
+### STYLE-BLOCK (bloque de estilo canónico, en inglés)
+
+Única definición del bloque que los prompts finales de producción embeben **literal** (duplicación aceptada para que cada prompt sea copiable tal cual; si este bloque cambia, propagarlo a los prompts finales de los arcos):
+
+```
+illustrated documentary style, reconstructed-notebook aesthetic, aged paper texture with faint ink lines, earthy red and prehistoric green palette, sepia edges, vertical 9:16
+```
+
 ---
 
 ## 2. Imágenes madre por arco
@@ -32,7 +40,7 @@
 - **Logo de la Fundación**: "emblema de una fundación conservacionista ficticia, aspecto institucional y siniestro, 9:16".
 
 ### Arco 2 — Charles y la palanca
-- **Charles de espaldas con sombrero**: "silueta de un explorador de espaldas con sombrero tipo Indiana Jones, en un paisaje de Pangea, nunca se ve el rostro, luz de atardecer, 9:16" (varias poses: de pie, meditando, empujando).
+- **Charles de espaldas con sombrero**: silueta del explorador de espaldas en un paisaje de Pangea, luz de atardecer, nunca se ve el rostro (varias poses: de pie, meditando, empujando). Aspecto y vestuario canónicos en la ficha CFJ de [personajes-studio.md](personajes-studio.md) (no se duplican acá).
 - **El tronco con el huevo**: "un tronco flotando con un huevo de ornitorrinco encima, entre dos masas de tierra que se separan, agua en el medio, 9:16".
 - **El lugar blanco**: "espacio completamente blanco, un banquito blanco, alguien de espaldas tirando maíz a palomas que no están, onírico, 9:16" (cruce con el Ep.1).
 
@@ -43,7 +51,7 @@
 - **Familia de ornitorrincos**: generar una imagen madre POR animal (madre, cría, padre) + el huevo, para lockear cada uno como primer frame de sus clips. "ornitorrinco realista pero tierno, estilo documental ilustrado, fondo Pangea, 9:16".
 - **Pantalla partida Australia/Argentina**: dos ambientes contrastados (próspero/árido) — se arma en montaje, pero conviene una imagen madre por ambiente.
 - **Fosilización**: "un ornitorrinco recostado sobre roca colorada que se transforma en fósil de piedra, transición, 9:16".
-- **Fósil real del Ep.1**: usar el plano real del fósil del episodio 1 para el corte final (no se genera; es material de archivo del rodaje).
+- **Salto a la realidad (remate)**: no existe plano de archivo del fósil del Ep.1. El fósil en el yacimiento actual se genera en registro fotográfico (`a3-m13` en [arco-3-planos.md](arco-3-planos.md)) y el corte final es la foto real de la locación (`assets/fuentes/rocas-coloradas-real.jpg`).
 
 ---
 

@@ -60,17 +60,66 @@ El video es el mayor costo; usar Kling (~¥0.2/s) o Veo (~¥0.6/s) solo en los p
 
 ---
 
-## 5. Plantilla de "plano-a-plano" (pendiente por arco)
+## 5. Convención de IDs y archivos de assets
 
-Cuando se baje cada arco a producción, completar por clip:
+IDs con prefijo de arco, en minúsculas:
+
+| Unidad | Formato de ID | Ejemplo |
+|---|---|---|
+| Imagen madre | `a{arco}-m{nn}` | `a3-m01` |
+| Clip | `a{arco}-{reel}{n}` | `a3-a1`, `a3-c2` |
+
+Archivos (en la raíz del proyecto, fuera de `docs/`):
+
+- **Generados**: `assets/arco-{N}/madre/{id}-{slug}.png` y `assets/arco-{N}/clips/{id}-{slug}.mp4`. Ej.: `assets/arco-3/madre/a3-m01-madre-ornitorrinco.png`.
+- **Material de origen real** (no generado, aportado a mano): `assets/fuentes/{slug}.{ext}`. Ej.: `assets/fuentes/rocas-coloradas-real.jpg`, `assets/fuentes/charles-jones-referencia.jpeg`.
+
+El nombre de archivo es la referencia única: es lo que se sube como `firstFrame`/`lastFrame` en la UI y lo que citan las fichas de clip.
+
+---
+
+## 6. Plantillas de ingesta (campos 1:1 con la UI de wind-comic)
+
+Campos exactos que consume cada página (verificados en [toolkit-wind-comic.md](toolkit-wind-comic.md)). Prompts e inputs de modelo **en inglés**; títulos, audio y montaje en español.
+
+**Regla de cámara:** los 12 presets operativos de `/dashboard/u2v` y `/dashboard/create` (`push-in`, `pull-out`, `orbit`, `dolly-zoom`, `whip-pan`, `crash-zoom`, `handheld`, `locked-tripod`, `crane-up`, `tilt-down`, `tracking`, `arc`) van SIEMPRE en el campo `cameraPreset`, nunca duplicados en el texto del prompt. Si el movimiento no tiene preset equivalente (ej. "gentle aerial drift"), se describe en el prompt y el preset queda vacío. Si el prompt no trae ningún término de cámara y no se elige preset, el motor agrega por defecto un push-in sutil.
+
+**Aspect ratio:** U2V no tiene campo de aspect; el clip hereda el de la imagen fuente. Por eso toda imagen madre se genera en 9:16.
+
+### Personaje → Character Studio (`/dashboard/characters`)
 
 ```
-Clip N — [nombre]
-- Duración: 5s
-- Imagen madre / primer frame: [archivo]
-- Motor: [minimax / kling / ...]
-- Prompt: [texto exacto para wind-comic]
-- Aspect ratio: 9:16
-- Audio: [off / música / ninguno]
-- Montaje: [con qué se corta antes/después]
+Personaje: [nombre ES]
+- name: [nombre]
+- description (EN): [quién es, rol narrativo]
+- appearance (EN): [aspecto físico + vestuario, autocontenido]
+- styleKeywords (EN): [estilo visual, ej. "illustrated documentary, reconstructed notebook"]
+- visualTags (EN): [tag1, tag2, ...]
+- imageUrls: [archivo(s) de assets/; se sube la imagen y se pega la URL resultante]
+- Voz: routing [género/nombre] · override: [voz elegida o —]
+```
+
+### Imagen madre / locación → generación o preview-shot (`/dashboard/create`)
+
+```
+[id] — [título ES]
+- idea / prompt (EN): [con el STYLE-BLOCK de biblia-visual.md §1 embebido literal]
+- style: Illustrated documentary   (u otro si rompe la estética a propósito)
+- aspect: 9:16
+- Archivo destino: assets/arco-N/madre/[id]-[slug].png
+```
+
+### Clip → U2V / U2V-FLF (`/dashboard/u2v`)
+
+```
+Clip [id] — [título ES]
+- Herramienta: U2V | U2V-FLF
+- firstFrame: [id de imagen madre] (archivo)
+- lastFrame: [solo FLF: id + archivo]
+- cameraPreset: [1 de los 12 | —]
+- duration: 5 | 6 | 10 | 15   (FLF: solo 5 | 10)
+- Motion prompt (EN, ≤500 caracteres, sin lenguaje de cámara duplicado): [...]
+- Vision-Audit (EN): sceneDescription: [...] · action: [...] · mood: [...]
+- Audio (ES): [off / música / ninguno]
+- Montaje (ES): [con qué se corta antes/después]
 ```
