@@ -8,7 +8,7 @@ Convenciones de este archivo:
 
 - Prompts e inputs de modelo **en inglés**; títulos, audio y montaje en español.
 - El STYLE-BLOCK de [biblia-visual.md](biblia-visual.md) §1 va embebido literal en cada prompt de imagen (duplicación aceptada para copiar-pegar).
-- El movimiento de cámara va en el campo **cameraPreset** (12 presets operativos de `/dashboard/u2v`), nunca repetido en el motion prompt; si no hay preset equivalente, se describe en el prompt y el preset queda vacío (el motor agrega un push-in sutil por defecto, compatible).
+- El movimiento de cámara va en el campo **cameraPreset** (12 presets operativos de `/dashboard/u2v`), nunca repetido en el motion prompt; si no hay preset equivalente, se describe en el prompt y el preset queda vacío (el motor agrega un push-in sutil por defecto, compatible). Qué preset se permite según el registro (silueta plana vs. quiebre fotorrealista): [paleta de cámara](biblia-visual.md) §1.
 - Registro del arco: **Attenborough sincero**, sin chistes verbales. El humor es estructural (solemnidad extrema aplicada a ornitorrincos… ahora en teatro de sombras).
 - Estilo del arco: **siluetas recortadas estilo Lotte Reiniger sobre fondos tintados** (ref. *El príncipe Achmed*). Las siluetas siempre son negras; el color vive en el tinte del fondo según el guion de color de abajo.
 
@@ -171,7 +171,7 @@ Two vast green landmasses already separated by a calm sea channel seen from very
 
 ## Sección 2 — Desglose plano a plano (fichas U2V / U2V-FLF)
 
-Regla del [pipeline](pipeline-wind-comic.md): **un personaje por clip**, cruces por corte. Herramienta: `/dashboard/u2v` (U2V con 5/6s va por Minimax I2V ~¥0.1/s; U2V-FLF va por Kling ~¥0.2/s y **solo acepta 5 o 10s**). Audio por defecto de todo el arco: **off documental (Attenborough) grabado propio** + música suave sin percusión.
+Regla del [pipeline](pipeline-wind-comic.md): **un personaje por clip**, cruces por corte. Herramienta: `/dashboard/u2v` (U2V con 5/6s va por Minimax I2V ~¥0.1/s; U2V-FLF va por Kling ~¥0.2/s y **solo acepta 5 o 10s**). Audio por defecto de todo el arco: **off documental (Attenborough) grabado propio** + música suave sin percusión. El texto literal del off por clip vive en [arco-3-off.md](arco-3-off.md) (fuente única de la locución).
 
 ### Reel A — "La grieta" (~45s)
 
@@ -244,11 +244,11 @@ The layered cutout Pangea landscape trembles like shaken paper, the black cutout
 **Clip a3-a5b — Quiebre de realidad: el caos (Revenant)**
 - Herramienta: U2V
 - firstFrame: a3-m14 (`assets/arco-3/madre/a3-m14-grieta-revenant.png`)
-- cameraPreset: — (la cámara en mano inestable va descripta en el prompt, no hay preset equivalente)
+- cameraPreset: `handheld` (el preset de cámara en mano ES parte del REALITY-BLOCK-CHAOS; el temblor va acá, no duplicado en el prompt)
 - duration: 5
 - Motion prompt (EN):
 ```
-Real earth ripping apart violently, rocks and soil collapsing into the widening chasm, dust bursting into the air, handheld unstable camera shaking, heavy motion blur, no people, no animals, photorealistic gritty documentary realism.
+Real earth ripping apart violently, rocks and soil collapsing into the widening chasm, dust bursting into the air, heavy motion blur, no people, no animals, photorealistic gritty documentary realism.
 ```
 - Vision-Audit (EN): sceneDescription: `real cracked earth splitting into a massive rift, dust and falling rocks` · action: `the ground tears apart violently, debris collapses into the chasm` · mood: `chaotic, violent, overwhelming`
 - Audio: SIN off (el caos habla solo); rumble fuerte, crujidos de tierra
@@ -257,7 +257,7 @@ Real earth ripping apart violently, rocks and soil collapsing into the widening 
 **Clip a3-a5c — Quiebre de realidad: el respiro (zoom-out poético)**
 - Herramienta: U2V
 - firstFrame: a3-m15 (`assets/arco-3/madre/a3-m15-zoomout-poetico.png`)
-- cameraPreset: `pull-out`
+- cameraPreset: `crane-up` (grúa ascendente = el respiro se eleva sobre la catástrofe; preset expresivo habilitado por ser quiebre fotorrealista, ver paleta de cámara en biblia-visual.md §1)
 - duration: 5
 - Motion prompt (EN):
 ```

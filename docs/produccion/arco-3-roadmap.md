@@ -16,7 +16,7 @@ Estados: `pendiente` → `generado` (existe el archivo) → `aprobado` (pasó el
 
 ### Próxima acción
 
-**Las 15 madres están aprobadas** (paths canónicos en `assets/arco-3/madre/`). **Reel A:** a3-a1…a3-a3 aprobados; **siguiente = a3-a4** (U2V con firstFrame `a3-m02` recién reaprobada). Gate Kling solo en a3-a5.
+**Las 15 madres están aprobadas** (paths canónicos en `assets/arco-3/madre/`). **Reel A:** a3-a1…a3-a3 aprobados; **siguiente = a3-a4** (U2V con firstFrame `a3-m02` recién reaprobada). **Gate Kling resuelto** (FLF real vía gateway qingyuntop, ver abajo): a3-a5 y a3-c2 pueden usar el morph primer→último frame.
 
 ```bash
 cd wind-comic && PLAN_GATE_DISABLED=1 npm run dev
@@ -79,6 +79,19 @@ cd wind-comic && PLAN_GATE_DISABLED=1 npm run dev
 | a3-c3 | C | U2V | pendiente | — | |
 | a3-c4 | C | ninguna | pendiente | — | Solo montaje (foto real) |
 
+## Continuidad y QC (vision-audit por clip)
+
+Formaliza el QC que ya se hace informalmente (carpetas `_candidates`/`_audit`). Cada clip aprobado registra acá su chequeo contra los criterios de la etapa Clips (arranca 1:1 de la madre, movimiento títere plano, tinte estable, duración correcta).
+
+**Character Studio (`/dashboard/characters`):** fichas listas en [personajes-studio.md](personajes-studio.md); madres a3-m01/m02/m03 aprobadas. Pendiente: subir los 3 archivos y pegar `imageUrls` (habilita retakes consistentes y reutilización cross-arco).
+
+| Clip | Vision-audit (scene/action/mood) | Contorno OK | Tinte estable | Estado |
+|---|---|---|---|---|
+| a3-a1 | — | ✓ | ✓ | aprobado |
+| a3-a2 | — | ✓ | ✓ | aprobado |
+| a3-a3 | — | ✓ | ✓ | aprobado |
+| a3-a4…a3-c4 | — | — | — | pendiente |
+
 ## Checklist — Reels y stories (montaje, sin costo de generación)
 
 | Pieza | Fuente | Estado |
@@ -107,9 +120,12 @@ Los retries de madres rechazadas suman ~¥0.3 c/u: por eso el gate de aprobació
 
 ---
 
-## Gate Kling (resolver ANTES de generar a3-a5)
+## Gate Kling — RESUELTO
 
-`KELING_API_KEY` y `QINGYUNTOP_API_KEY` están presentes en el entorno. Decisión tomada: **probar Kling al llegar a a3-a5**; si falla, el fallback a Minimax I2V ya es automático en `generateFlfViaKling()` (`wind-mcp/src/lib/video.ts`) — se pierde el morph primer→último frame (efecto clave de a3-a5 grieta y a3-c2 fosilización). No bloquea madres ni clips U2V previos.
+`KELING_API_KEY` está configurada y `KELING_BASE_URL` apunta al **gateway qingyuntop** (`https://api.qingyuntop.top/kling`), que expone los endpoints Kling con key simple `Bearer` — exactamente la vía recomendada en [inventario-api-keys.md](inventario-api-keys.md) §Caveats (evita el contrato enterprise de Kling oficial). La misma key sirve para `QINGYUNTOP_API_KEY`. Por lo tanto **FLF real está disponible** para las dos transiciones-gancho (a3-a5 grieta, a3-c2 fosilización), donde el morph primer→último frame es el efecto clave.
+
+- Si la llamada a Kling falla, el fallback a Minimax I2V ya es automático en `generateFlfViaKling()` ([`wind-mcp/src/lib/video.ts`](../../wind-mcp/src/lib/video.ts)) — degrada a solo primer frame con warning.
+- Validación pendiente: el FLF de Kling nunca se corrió con key real (ver caveat del inventario). Aprobar a3-a5 mirando que el morph efectivamente ocurra; si el gateway no lo soporta, se acepta el I2V degradado o se evalúa otro motor.
 
 ---
 

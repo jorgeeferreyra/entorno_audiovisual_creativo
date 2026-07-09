@@ -27,7 +27,7 @@
 
 ## Arco 3 — Familia de ornitorrincos
 
-Las imágenes madre (`a3-m01`–`a3-m03`) se generan primero con los prompts de [arco-3-planos.md](arco-3-planos.md) §1; recién entonces se completa `imageUrls`. Ninguno habla: la voz del arco es el off documental.
+Las imágenes madre (`a3-m01`–`a3-m03`) ya están **generadas y aprobadas** ([arco-3-roadmap.md](arco-3-roadmap.md) §Checklist madres): las fichas están listas para cargar en Character Studio (`/dashboard/characters`) — subir el archivo y pegar la URL resultante en `imageUrls`. Ninguno habla: la voz del arco es el off documental.
 
 ### Madre ornitorrinco
 
@@ -37,7 +37,7 @@ Las imágenes madre (`a3-m01`–`a3-m03`) se generan primero con los prompts de 
 - appearance (EN): Black paper cutout silhouette of an adult female platypus, rounded gentle contour in expressive side profile, calm gentle movements, delicate cut-out inner details.
 - styleKeywords (EN): paper cutout silhouette, shadow puppet theater
 - visualTags (EN): platypus, mother, tender, prehistoric
-- imageUrls: assets/arco-3/madre/a3-m01-madre-ornitorrinco.png (pendiente de generar)
+- imageUrls: assets/arco-3/madre/a3-m01-madre-ornitorrinco.png (generada ✓ — subir a Character Studio y pegar la URL)
 - Voz: — (no habla)
 ```
 
@@ -49,7 +49,7 @@ Las imágenes madre (`a3-m01`–`a3-m03`) se generan primero con los prompts de 
 - appearance (EN): Black paper cutout silhouette of a small baby platypus, tiny rounded contour clearly smaller than an adult, playful side profile with tail curled upward.
 - styleKeywords (EN): paper cutout silhouette, shadow puppet theater
 - visualTags (EN): platypus, baby, playful, prehistoric
-- imageUrls: assets/arco-3/madre/a3-m02-cria-ornitorrinco.png (pendiente de generar)
+- imageUrls: assets/arco-3/madre/a3-m02-cria-ornitorrinco.png (generada ✓ — subir a Character Studio y pegar la URL)
 - Voz: — (no habla)
 ```
 
@@ -61,7 +61,7 @@ Las imágenes madre (`a3-m01`–`a3-m03`) se generan primero con los prompts de 
 - appearance (EN): Black paper cutout silhouette of an adult male platypus, larger and more angular contour than the mother, with a distinctive notch cut into the outline of its brow.
 - styleKeywords (EN): paper cutout silhouette, shadow puppet theater
 - visualTags (EN): platypus, father, scar, prehistoric
-- imageUrls: assets/arco-3/madre/a3-m03-padre-ornitorrinco.png (pendiente de generar)
+- imageUrls: assets/arco-3/madre/a3-m03-padre-ornitorrinco.png (generada ✓ — subir a Character Studio y pegar la URL)
 - Voz: — (no habla)
 ```
 

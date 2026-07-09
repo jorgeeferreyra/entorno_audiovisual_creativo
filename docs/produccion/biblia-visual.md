@@ -25,6 +25,17 @@ Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater
 
 **Regla de tinte (color por plano):** la paleta NO vive en el STYLE-BLOCK. Cada prompt agrega su propia línea de tinte según el guion de color del arco (ej. `warm amber and green tinted background`). Referencia: los fondos tintados de *El príncipe Achmed* — el color del fondo carga la narrativa; las siluetas siempre son negras.
 
+### Paleta de cámara (qué preset se permite según el registro)
+
+Los 12 `cameraPreset` operativos de wind-comic ([pipeline-wind-comic.md](pipeline-wind-comic.md) §6) NO se usan todos por igual: el teatro de sombras es **plano por diseño** (títeres de papel 2D), así que el movimiento de cámara agresivo pelea contra la estética. Regla de asignación:
+
+| Registro | Presets permitidos | Motivo |
+|---|---|---|
+| **Silueta Reiniger** (la mayoría del arco) | `locked-tripod`, `tracking`, `push-in`, `pull-out` | Movimientos planos/laterales compatibles con un mundo 2D de recortes; el `push-in` por defecto del motor también entra |
+| **Quiebres de realidad** (fotorrealista: caos Revenant, respiro poético, clínico) e **intro POV** (`a3-a1`, que ya no es silueta pura) | `handheld`, `crash-zoom`, `crane-up`, `arc`, `dolly-zoom`, `whip-pan`, `orbit`, `tilt-down` | Acá el 3D/la inestabilidad SUMAN: el `handheld` es parte del REALITY-BLOCK-CHAOS, el `crane-up`/`arc` traducen el aéreo poético, el `dolly-zoom` sirve a la fosilización si se decide romper |
+
+Los 8 presets "expresivos" estaban dormidos; su lugar natural es el quiebre fotorrealista, no la silueta. Subir el brillo de cámara = activarlos **ahí**, no meterlos en planos de silueta (donde rompen el registro).
+
 ### Quiebres de realidad (la realidad como recurso)
 
 Recurso **transversal y escaso**: en momentos de ruptura o verdad, el registro cuaderno/silueta se rompe A PROPÓSITO y la pieza salta a registro fotorrealista. No está ligado a ningún personaje. Dosificación: si se usa seguido pierde impacto — máximo un quiebre (o un par caos→respiro) por reel.
