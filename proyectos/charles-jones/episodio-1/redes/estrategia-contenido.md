@@ -1,0 +1,75 @@
+# Estrategia de contenido para redes
+
+> Qué contamos y en qué formato. El "cómo producirlo" vive en [produccion/pipeline-wind-comic.md](../../../../metodo/pipeline.md). El canon está en [biblia-serie.md](../../biblia-serie.md).
+
+---
+
+## 1. Marco narrativo: "Los cuadernos reconstruidos de Charles Jones"
+
+Todo el contenido generado con IA se presenta como **reconstrucciones de los diarios de CFJ**: material "recuperado" e ilustrado/animado a partir de sus cuadernos caóticos.
+
+Por qué este marco resuelve todo:
+
+- **Coherencia con el canon**: los diarios de CFJ son "caóticos e imposibles de verificar" → cualquier inconsistencia visual de la IA queda justificada dentro de la ficción.
+- **Permite a Charles estar en Pangea** sin explicación literal: es el disparate solemne del personaje. "¿Cómo llegó ahí? Eso no es lo importante."
+- **Habilita la voz en off documental** (registro Attenborough) sobre imágenes prehistóricas: es literalmente el formato del proyecto.
+
+Cada pieza puede abrir con un recurso de "página de cuaderno" (papel, anotaciones manuscritas, tachones) antes de entrar a la animación.
+
+---
+
+## 2. El hallazgo que ancla todo
+
+El arco de Pangea **ya está plantado en el guion del episodio 1**: el fósil de ornitorrinco de Rocas Coloradas, datado en ~62M años, que "demuestra la antigua conexión entre dos continentes: extinguiéndose en Patagonia pero sobreviviendo en Australia".
+
+Consecuencia: **la familia de ornitorrincos de las historias de redes ES el fósil del episodio 1.** El contenido de redes no es material suelto: es **precuela canónica** del episodio. Quien vea las redes y luego el episodio (o viceversa) recibe una recompensa narrativa.
+
+---
+
+## 3. Los tres arcos
+
+Resumen; el detalle está en cada archivo.
+
+1. **La Mano Negra** — La Fundación es eterna y planifica las extinciones a escala geológica. [arco-1-mano-negra.md](arco-1-mano-negra.md)
+2. **Charles y la palanca** — CFJ interviene en puntos mínimos de apalancamiento con consecuencias enormes. [arco-2-charles-palanca.md](arco-2-charles-palanca.md)
+3. **La familia de ornitorrincos** — El drama emocional; los divididos por la grieta y el final en fosilización. [arco-3-ornitorrincos.md](arco-3-ornitorrincos.md)
+
+---
+
+## 4. Orden de publicación (y por qué)
+
+**Arco 3 → Arco 1 → Arco 2.** Cada arco resignifica al anterior (regla de 3 estructural del proyecto):
+
+```mermaid
+flowchart LR
+    a3["Arco 3: Ornitorrincos"] -->|"emociona, funciona solo"| a1["Arco 1: Mano Negra"]
+    a1 -->|"resignifica: no fue natural"| a2["Arco 2: Charles / palanca"]
+    a2 -->|"esperanza + puente al Ep.1"| ep1["Episodio 1"]
+```
+
+- **Arco 3 primero**: es autoconclusivo y golpea emocionalmente. Instala a los ornitorrincos y el yacimiento.
+- **Arco 1 después**: revela que la separación no fue natural → resignifica la muerte del Arco 3 como un crimen.
+- **Arco 2 al final**: introduce a Charles interviniendo → esperanza, y conecta directamente con el sueño del episodio 1.
+
+---
+
+## 5. Formatos
+
+| Formato | Duración | Contenido | Uso |
+|---|---|---|---|
+| **Story** | 15s | 1 beat por pieza, en series de 3–5 | Goteo diario, encuestas, "página del cuaderno" |
+| **Reel** | 30–45s | 2–3 reels cubren un arco entero | Pieza principal de alcance |
+| **Feed (carrusel)** | estático | "Páginas del cuaderno de Charles" (imágenes madre + anotaciones) | Lore, costo casi nulo, fija identidad visual |
+
+Pieza estrella: el **reel del final del Arco 3** (fosilización → corte al plano real del fósil del episodio 1).
+
+---
+
+## 6. Conexiones explícitas con el episodio 1
+
+Puntos de contacto que premian al espectador atento:
+
+- **El fósil**: el ornitorrinco del Arco 3 termina siendo el fósil que Jorgito manosea en Rocas Coloradas.
+- **El sueño del lugar blanco**: en el Arco 2, Charles medita en Pangea y el plano se funde al banquito blanco del episodio 1, donde le dice a Jorgito "es en Rocas Coloradas". Reinterpreta el sueño: no fue un sueño de Jorgito, fue Charles transmitiendo desde otra era.
+- **La Fundación**: cierre del Arco 1 con la frase textual de Fran sobre "los animales que tenemos planeado extinguir".
+- **La cadenita de oro**: firma de la Mano Negra = el detalle de vestuario de Fran.
