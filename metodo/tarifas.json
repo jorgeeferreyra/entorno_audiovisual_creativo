@@ -1,7 +1,7 @@
 {
   "moneda": "CNY",
   "simbolo": "¥",
-  "revisado": "2026-07-09",
+  "revisado": "2026-07-10",
   "nota": "Fuente única de tarifas unitarias del framework. Documentado en providers.md (glosario, fórmulas por capa y método de actualización). La calculadora (canvas) y el presupuesto de cada TECH.md deben derivar sus números de acá; ante un cambio de precios se actualiza este archivo y la fecha 'revisado'.",
   "operaciones": [
     {
@@ -55,6 +55,17 @@
       "pricing": "https://platform.minimax.io"
     },
     {
+      "id": "edge-tts",
+      "provider": "Edge TTS (Microsoft Read Aloud)",
+      "modelo": "es-AR-TomasNeural / es-AR-ElenaNeural",
+      "operacion": "tts",
+      "unidad": "segundo",
+      "tarifa": 0,
+      "revisado": "2026-07-10",
+      "nota": "TTS gratuito sin API key (msedge-tts). Default del animatic con --off. MiniMax speech queda para voz final/clonada si hace falta.",
+      "pricing": "https://www.npmjs.com/package/msedge-tts"
+    },
+    {
       "id": "openrouter-imagen",
       "provider": "OpenRouter",
       "modelo": "google/gemini-2.5-flash-image (Nano Banana)",
@@ -71,7 +82,7 @@
     "notaCandidatos": "Las madres se generan con --candidates N y se aprueba 1 con --pick; el costo por madre aprobada = N × tarifa imagen."
   },
   "capasGratis": {
-    "operaciones": ["animatic", "montaje", "export", "destacadas"],
-    "nota": "Puro ffmpeg local en wind-mcp; no llaman APIs. Su costo real es el de los assets aún sin generar que consumen (madres/clips)."
+    "operaciones": ["animatic", "montaje", "export", "destacadas", "edge-tts"],
+    "nota": "Puro ffmpeg local en wind-mcp + Edge TTS (sin key). Su costo real es el de los assets aún sin generar que consumen (madres/clips)."
   }
 }

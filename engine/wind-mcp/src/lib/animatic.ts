@@ -17,6 +17,12 @@ import { WORK_DIR, resolveReadPath, resolveWritePath } from '../config.js';
 import { runFfmpeg } from './montaje.js';
 import { ensureDirFor } from './paths.js';
 import { leerPlanos, resolveAssetRef, type AssetSpec } from './specs.js';
+import {
+  DEFAULT_VOZ,
+  duracionAudio,
+  rutaCacheOff,
+  sintetizarOff,
+} from './tts.js';
 
 const W = 1080;
 const H = 1920;
@@ -48,6 +54,13 @@ export interface MontarAnimaticInput {
    * unicidad: las repeticiones son esperadas en esta pasada.
    */
   borrador?: boolean;
+  /**
+   * Sintetiza la voz en off (Edge TTS, gratis) y la muxea sobre el animatic.
+   * Opt-in: sin el flag el MP4 sigue mudo (solo subtítulos quemados).
+   */
+  off?: boolean;
+  /** Voz Edge TTS. Default: es-AR-TomasNeural. */
+  voz?: string;
 }
 
 /** Slot cuyo frame de variación se resolvió a la madre base (solo modo borrador). */
@@ -57,11 +70,28 @@ export interface Degradado {
   base: string;
 }
 
+/** Locución cuyo audio supera la duración del slot (señal para afinar durs). */
+export interface OffAviso {
+  id: string;
+  durOff: number;
+  durSlot: number;
+}
+
 export interface MontarAnimaticResult {
   localPath: string;
   segmentCount: number;
   omitidos: { id: string; motivo: string }[];
   degradados: Degradado[];
+  /** Locuciones sintetizadas o cacheadas (0 si `--off` no está activo). */
+  offLocuciones: number;
+  /** Offs que no entran en su slot. */
+  offAvisos: OffAviso[];
+}
+
+export interface MontarAnimaticReelOpts {
+  borrador?: boolean;
+  off?: boolean;
+  voz?: string;
 }
 
 async function existe(p: string): Promise<boolean> {
@@ -84,6 +114,8 @@ async function resolveFont(): Promise<string | undefined> {
 function limpiarOff(cell: string): string | undefined {
   const clean = cell.replace(/\*/g, '').trim();
   if (!clean || /SIN off/i.test(clean)) return undefined;
+  // "(silencio)" / "silencio" = sin locución (no sintetizar la palabra).
+  if (/^\(?\s*silencio\s*\)?$/i.test(clean)) return undefined;
   const quoted = clean.match(/"([^"]+)"/);
   return (quoted ? quoted[1] : clean).trim() || undefined;
 }
@@ -291,8 +323,136 @@ function colapsarKeyframesCompartidos(segmentos: Segmento[]): Segmento[] {
   return out;
 }
 
+/** Evento de voz: un off hablado una sola vez al inicio de su run de segmentos. */
+interface OffEvento {
+  id: string;
+  texto: string;
+  /** Offset de inicio en segundos desde el arranque del animatic. */
+  start: number;
+  /** Duración acumulada del slot (suma de segmentos consecutivos con el mismo off). */
+  durSlot: number;
+}
+
+/**
+ * Agrupa segmentos consecutivos con el mismo subtítulo en un solo evento de TTS.
+ * Los FLF parten el off en first/last: se habla una vez y `durSlot` suma ambas mitades.
+ */
+function eventosOff(segmentos: Segmento[]): OffEvento[] {
+  const events: OffEvento[] = [];
+  let t = 0;
+  let i = 0;
+  while (i < segmentos.length) {
+    const seg = segmentos[i];
+    if (!seg.subtitulo) {
+      t += seg.duracion;
+      i++;
+      continue;
+    }
+    const texto = seg.subtitulo;
+    const id = seg.id.replace(/-[ab]$/, '');
+    const start = t;
+    let durSlot = 0;
+    while (i < segmentos.length && segmentos[i].subtitulo === texto) {
+      durSlot += segmentos[i].duracion;
+      t += segmentos[i].duracion;
+      i++;
+    }
+    events.push({ id, texto, start, durSlot });
+  }
+  return events;
+}
+
+/**
+ * Sintetiza cada off, arma una pista única (silencio + adelay + amix) y la muxea
+ * sobre el video. Devuelve avisos cuando la locución no entra en su slot.
+ */
+async function muxearOff(
+  videoPath: string,
+  segmentos: Segmento[],
+  cacheDir: string,
+  voz: string,
+): Promise<{ locuciones: number; avisos: OffAviso[] }> {
+  const events = eventosOff(segmentos);
+  if (!events.length) return { locuciones: 0, avisos: [] };
+
+  await fs.mkdir(cacheDir, { recursive: true });
+
+  const avisos: OffAviso[] = [];
+  const audioPaths: string[] = [];
+  const delaysMs: number[] = [];
+
+  for (const ev of events) {
+    const dest = rutaCacheOff(cacheDir, ev.id, ev.texto, voz);
+    await sintetizarOff(ev.texto, dest, voz);
+    const durOff = await duracionAudio(dest);
+    if (durOff > ev.durSlot + 0.05) {
+      avisos.push({
+        id: ev.id,
+        durOff: Math.round(durOff * 100) / 100,
+        durSlot: Math.round(ev.durSlot * 100) / 100,
+      });
+    }
+    audioPaths.push(dest);
+    delaysMs.push(Math.round(ev.start * 1000));
+  }
+
+  const totalDur = segmentos.reduce((s, seg) => s + seg.duracion, 0);
+  const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), 'wind-off-'));
+  const trackPath = path.join(tmpDir, 'off-track.m4a');
+  // Mismo directorio que el video: rename atómico (evita EXDEV entre /tmp y el proyecto).
+  const muxedPath = `${videoPath}.off-tmp.mp4`;
+
+  try {
+    // [0] silencio de la duración total; [1..] cada off con adelay al offset del slot.
+    const inputs: string[] = [
+      '-f', 'lavfi', '-t', String(totalDur), '-i', 'anullsrc=channel_layout=mono:sample_rate=24000',
+    ];
+    for (const p of audioPaths) inputs.push('-i', p);
+
+    const labels: string[] = [];
+    const filters: string[] = [];
+    for (let i = 0; i < audioPaths.length; i++) {
+      const ms = delaysMs[i];
+      filters.push(`[${i + 1}:a]adelay=${ms}|${ms}[o${i}]`);
+      labels.push(`[o${i}]`);
+    }
+    const n = audioPaths.length + 1;
+    filters.push(
+      `[0:a]${labels.join('')}amix=inputs=${n}:duration=first:dropout_transition=0:normalize=0[aout]`,
+    );
+
+    await runFfmpeg([
+      ...inputs,
+      '-filter_complex', filters.join(';'),
+      '-map', '[aout]',
+      '-c:a', 'aac', '-b:a', '192k',
+      trackPath,
+    ]);
+
+    await runFfmpeg([
+      '-i', videoPath,
+      '-i', trackPath,
+      '-c:v', 'copy',
+      '-c:a', 'aac', '-b:a', '192k',
+      '-shortest',
+      muxedPath,
+    ]);
+
+    await fs.rename(muxedPath, videoPath);
+  } finally {
+    await fs.rm(tmpDir, { recursive: true, force: true });
+    await fs.rm(muxedPath, { force: true }).catch(() => undefined);
+  }
+
+  return { locuciones: events.length, avisos };
+}
+
 /** Renderiza cada segmento y concatena en el MP4 de salida. */
-async function renderYConcat(segmentos: Segmento[], salida: string): Promise<string> {
+async function renderYConcat(
+  segmentos: Segmento[],
+  salida: string,
+  offOpts?: { cacheDir: string; voz: string },
+): Promise<{ localPath: string; offLocuciones: number; offAvisos: OffAviso[] }> {
   const outPath = resolveWritePath(salida);
   await ensureDirFor(outPath);
 
@@ -314,7 +474,10 @@ async function renderYConcat(segmentos: Segmento[], salida: string): Promise<str
   } finally {
     await fs.rm(tmpDir, { recursive: true, force: true });
   }
-  return outPath;
+
+  if (!offOpts) return { localPath: outPath, offLocuciones: 0, offAvisos: [] };
+  const { locuciones, avisos } = await muxearOff(outPath, colapsados, offOpts.cacheDir, offOpts.voz);
+  return { localPath: outPath, offLocuciones: locuciones, offAvisos: avisos };
 }
 
 /**
@@ -322,7 +485,7 @@ async function renderYConcat(segmentos: Segmento[], salida: string): Promise<str
  * documento. Útil para aprobar la fuente y las destacadas de ese arco.
  */
 export async function montarAnimatic(input: MontarAnimaticInput): Promise<MontarAnimaticResult> {
-  const { arco, specs, offMap, borrador } = input;
+  const { arco, specs, offMap, borrador, off, voz } = input;
 
   const clips = specs.filter(
     (s) => s.kind === 'video-i2v' || s.kind === 'video-flf' || s.kind === 'montaje',
@@ -344,8 +507,21 @@ export async function montarAnimatic(input: MontarAnimaticInput): Promise<Montar
     );
   }
 
-  const localPath = await renderYConcat(segmentos, input.salida);
-  return { localPath, segmentCount: segmentos.length, omitidos, degradados };
+  const offOpts = off
+    ? {
+        cacheDir: resolveWritePath(path.join('assets', `arco-${arco}`, 'audio', '_off-tts')),
+        voz: voz ?? DEFAULT_VOZ,
+      }
+    : undefined;
+  const rendered = await renderYConcat(segmentos, input.salida, offOpts);
+  return {
+    localPath: rendered.localPath,
+    segmentCount: segmentos.length,
+    omitidos,
+    degradados,
+    offLocuciones: rendered.offLocuciones,
+    offAvisos: rendered.offAvisos,
+  };
 }
 
 export interface CutlistItem {
@@ -380,12 +556,15 @@ export async function parseCutlist(reel: string): Promise<CutlistItem[]> {
  * madre no está en disco, se reportan como omitidos (animatic parcial).
  * En modo `borrador`, las variaciones aún no generadas degradan a su madre base
  * para aprobar ritmo/orden antes de pagarlas (ver MontarAnimaticInput.borrador).
+ * Con `off`, sintetiza la voz en off (Edge TTS) y la muxea sobre el MP4.
  */
 export async function montarAnimaticReel(
   reel: string,
   salida: string,
-  borrador = false,
+  opts: MontarAnimaticReelOpts | boolean = {},
 ): Promise<MontarAnimaticResult> {
+  // Compat: firma vieja `montarAnimaticReel(reel, salida, borrador: boolean)`.
+  const { borrador, off, voz } = typeof opts === 'boolean' ? { borrador: opts } : opts;
   const items = await parseCutlist(reel);
 
   // Carga perezosa por arco: null = el arco aún no tiene planos.
@@ -424,8 +603,8 @@ export async function montarAnimaticReel(
       omitidos.push({ id: item.clip, motivo: 'es una imagen madre, no un clip' });
       continue;
     }
-    const off = offCache.get(arco) ?? new Map<string, string>();
-    const r = await segmentosDeSpec(spec, arco, specs, off, item.dur, { borrador, degradados });
+    const offMap = offCache.get(arco) ?? new Map<string, string>();
+    const r = await segmentosDeSpec(spec, arco, specs, offMap, item.dur, { borrador, degradados });
     if (r.omitido) omitidos.push(r.omitido);
     segmentos.push(...r.segmentos);
   }
@@ -436,6 +615,19 @@ export async function montarAnimaticReel(
     );
   }
 
-  const localPath = await renderYConcat(segmentos, salida);
-  return { localPath, segmentCount: segmentos.length, omitidos, degradados };
+  const offOpts = off
+    ? {
+        cacheDir: resolveWritePath(path.join('reels', reel, '_off-tts')),
+        voz: voz ?? DEFAULT_VOZ,
+      }
+    : undefined;
+  const rendered = await renderYConcat(segmentos, salida, offOpts);
+  return {
+    localPath: rendered.localPath,
+    segmentCount: segmentos.length,
+    omitidos,
+    degradados,
+    offLocuciones: rendered.offLocuciones,
+    offAvisos: rendered.offAvisos,
+  };
 }

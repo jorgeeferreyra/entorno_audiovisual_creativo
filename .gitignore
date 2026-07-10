@@ -19,3 +19,5 @@ coverage/
 *.log
 *.pem
 *.bak
+# Caché local de voz en off del animatic (Edge TTS, regenerable)
+**/_off-tts/

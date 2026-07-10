@@ -18,7 +18,8 @@ Qué motor expone cada provider, sus capacidades relevantes para el pipeline y s
 |---|---|---|---|---|
 | MiniMax | image-01 | Imagen madre | imagen → ¥0.3 | `MINIMAX_API_KEY` |
 | MiniMax | Hailuo / I2V-01 | Video I2V (primer frame), S2V (1 sujeto) | video-i2v → ¥0.1/s | `MINIMAX_API_KEY` |
-| MiniMax | speech-2.8-hd | TTS / clonado de voz | tts → ¥0.02/s | `MINIMAX_API_KEY` |
+| MiniMax | speech-2.8-hd | TTS / clonado de voz (final) | tts → ¥0.02/s | `MINIMAX_API_KEY` |
+| Edge TTS | es-AR-TomasNeural / ElenaNeural | TTS gratis del animatic (`--off`) | tts → ¥0 | *(ninguna)* |
 | Kling (vía qingyuntop) | Kling FLF | Morph first→last frame, lip-sync, 4K | video-flf → ¥0.2/s | `KELING_API_KEY` |
 | Veo (vía qingyuntop) | Veo 3.1 | Video cinematográfico (finales) | video → ¥0.6/s | `VEO_API_KEY` |
 | OpenRouter | gemini-2.5-flash-image (Nano Banana) | Imagen con multi-ref (Ref + anatomía) | imagen → a confirmar (proxy ¥0.3) | `OPENROUTER_API_KEY` |
@@ -38,8 +39,8 @@ El tarifario da el costo por operación; cada capa de producción es una fórmul
 | Clip U2V (I2V) | `duración(s) × tarifa video-i2v` | 5s Minimax ≈ **¥0.5** |
 | Clip U2V-FLF | `duración(s) × tarifa video-flf` | 5s Kling ≈ **¥1** |
 | Clip cinematográfico | `duración(s) × tarifa video` | 5s Veo ≈ **¥3** |
-| Voz off (TTS) | `duración(s) × tarifa tts` | grabada propia = **¥0** |
-| Animatic / montaje / export / destacadas | `0` (ffmpeg local) | **¥0 marginal** |
+| Voz off (TTS) | `duración(s) × tarifa tts` | Edge TTS en animatic = **¥0**; MiniMax speech (final/clon) = ¥0.02/s; grabada propia = **¥0** |
+| Animatic / montaje / export / destacadas | `0` (ffmpeg local; Edge TTS si `--off`) | **¥0 marginal** |
 
 Regla rápida: **~¥0.5–1 por cada 5s de video terminado**, más ~¥0.9 por cada madre nueva que ese output exija. El **video es el mayor costo**: reservar los motores caros (Kling, Veo) para los planos-gancho y usar Minimax para el resto.
 

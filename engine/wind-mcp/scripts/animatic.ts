@@ -3,29 +3,35 @@
  *
  * Arma un MP4 9:16 donde cada clip es su imagen madre fija durante su duración
  * (default 5s) con el subtítulo (off ES) quemado; los FLF muestran first→last.
- * NO llama a wind-comic ni a APIs: es puro ffmpeg local sobre las madres en disco.
+ * NO llama a wind-comic ni a APIs de imagen/video: es puro ffmpeg local sobre
+ * las madres en disco. Con `--off` sintetiza la voz en off vía Edge TTS (gratis).
  *
  * Dos modos:
  *   --arco N   animatic del hilo (todas las fichas de planos/arco-N.md, en orden).
  *   --reel S   animatic del reel transversal (intercut de la cut-list del
  *              front-matter de reels/S/README.md; cruza varios arcos).
  *
- * Flag transversal:
+ * Flags transversales:
  *   --borrador  las variaciones aún no generadas degradan a su madre base, para
  *               aprobar ritmo/orden ANTES de pagar las variaciones. No valida
  *               unicidad (las repeticiones son esperadas en esta pasada).
+ *   --off       sintetiza la voz en off (Edge TTS, es-AR) y la muxea al MP4.
+ *   --voz NAME  voz Edge TTS (default: es-AR-TomasNeural).
  *
  * Uso:
  *   npm run animatic                                 (arco 3 → animatic-arco-3.mp4)
  *   npm run animatic -- --arco 3
  *   npm run animatic -- --reel la-grieta             (→ animatic-la-grieta.mp4)
  *   npm run animatic -- --reel la-grieta --borrador  (bases en vez de variaciones)
+ *   npm run animatic -- --reel la-grieta --borrador --off
+ *   npm run animatic -- --reel la-grieta --off --voz es-AR-ElenaNeural
  *   npm run animatic -- --reel la-grieta --out reels/la-grieta/animatic-v2.mp4
  *   npm run animatic -- --project charles-jones/redes --arco 3
  */
 import path from 'node:path';
 import { WORK_DIR } from '../src/config.js';
 import { montarAnimatic, montarAnimaticReel, parseOff, type MontarAnimaticResult } from '../src/lib/animatic.js';
+import { DEFAULT_VOZ } from '../src/lib/tts.js';
 import { leerPlanos, validarUnicidad } from '../src/lib/specs.js';
 
 function flag(args: string[], name: string): string | undefined {
@@ -52,18 +58,33 @@ function reportar(titulo: string, r: MontarAnimaticResult, borrador: boolean): v
     console.log(`\n${r.omitidos.length} clip(s) omitido(s):`);
     for (const o of r.omitidos) console.log(`  · ${o.id}: ${o.motivo}`);
   }
+  if (r.offLocuciones > 0) {
+    console.log(`\n${r.offLocuciones} locución(es) de off (Edge TTS).`);
+  }
+  if (r.offAvisos.length) {
+    console.log(`\n⚠ ${r.offAvisos.length} off(s) que no entran en su slot (afinar durs):`);
+    for (const a of r.offAvisos) {
+      console.log(`  · ${a.id}: off ${a.durOff}s > slot ${a.durSlot}s`);
+    }
+  }
   console.log('');
 }
 
 async function main() {
   const args = process.argv.slice(2);
   const borrador = hasFlag(args, '--borrador');
+  const off = hasFlag(args, '--off');
+  const voz = flag(args, '--voz') ?? DEFAULT_VOZ;
   const reel = flag(args, '--reel');
 
   if (reel) {
     const salida = flag(args, '--out') ?? `reels/${reel}/animatic-${reel}.mp4`;
-    const r = await montarAnimaticReel(reel, salida, borrador);
-    reportar(`Animatic reel ${reel}${borrador ? ' (borrador)' : ''}`, r, borrador);
+    const r = await montarAnimaticReel(reel, salida, { borrador, off, voz });
+    reportar(
+      `Animatic reel ${reel}${borrador ? ' (borrador)' : ''}${off ? ' +off' : ''}`,
+      r,
+      borrador,
+    );
     return;
   }
 
@@ -75,9 +96,13 @@ async function main() {
   if (!borrador) for (const w of validarUnicidad(specs)) console.warn(`⚠ ${w}`);
   const offMap = await parseOff(arco);
 
-  const r = await montarAnimatic({ arco, specs, offMap, salida, borrador });
+  const r = await montarAnimatic({ arco, specs, offMap, salida, borrador, off, voz });
 
-  reportar(`Animatic Arco ${arco}${borrador ? ' (borrador)' : ''}`, r, borrador);
+  reportar(
+    `Animatic Arco ${arco}${borrador ? ' (borrador)' : ''}${off ? ' +off' : ''}`,
+    r,
+    borrador,
+  );
 }
 
 main().catch((e) => {
