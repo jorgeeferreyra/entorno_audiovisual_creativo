@@ -863,7 +863,8 @@ Kling (FLF) se reserva a la cadena de transiciones (a3-a5, a3-a5x experimental, 
 
 ## Cadena de transiciones (sub-clips FLF de 5s, límite duro 2 keyframes por eslabón)
 
-> Columna **Keyframes**: cuántas madres pide cada escena (taxonomía 1/2/N del [pipeline](../../../../metodo/pipeline.md) §2 paso 1). Hoy ninguna escena del arco supera 2 keyframes; una eventual cadena N>2 se declararía como eslabones FLF consecutivos que comparten el keyframe intermedio (`a3-mNN`→`a3-mNNa`→…).
+> **Artefacto de la capa Madres keyframes** (instancia del [pipeline](../../../../metodo/pipeline.md) §2 paso 1.75 / Stage 2.7 de [TECH.md](../TECH.md)): esta tabla es el plan de keyframes del arco. Cada par emparejado (mismo encuadre exacto, solo cambia el estado) y cada cadena FLF (keyframe compartido) se aprueba **junto**, sobre las variaciones (§Variaciones), ANTES del animatic. Solo entran escenas de 2 o N keyframes; las de 1 keyframe (U2V simple) se listan como referencia pero no pasan por el gate.
+> Columna **Keyframes**: cuántas madres pide cada escena (taxonomía 1/2/N del [pipeline](../../../../metodo/pipeline.md) §2 paso 1.75). Hoy ninguna escena del arco supera 2 keyframes; una eventual cadena N>2 se declararía como eslabones FLF consecutivos que comparten el keyframe intermedio (`a3-mNN`→`a3-mNNa`→…).
 
 | Eslabón | Clip | Tipo | Keyframes | Nota |
 |---|---|---|---|---|
@@ -871,7 +872,9 @@ Kling (FLF) se reserva a la cadena de transiciones (a3-a5, a3-a5x experimental, 
 | m06→m14 | a3-a5x | FLF experimental | 2 (par) | Gate morphs cruzados cuento→real; si salta feo → corte duro |
 | m15v1→m08 | a3-a5y | FLF | 2 (par) | firstFrame variado (unicidad); cierra Bloque A / abre Bloque B; cubre hueco de m08 |
 | m14v1→m07 | a3-c0 | FLF | 2 (par) | firstFrame variado (unicidad); abre Bloque C: grieta real se congela en cuento rojo |
-| m07→m10' | a3-c1 | U2V + corte | 1 | Push-in; NO FLF (no comparten encuadre) |
+| m09→m17 | a3-b4 | FLF | 2 (par) | Par declive: Argentina en declive → Argentina seca; mismo encuadre, solo cambia el estado |
+| m10'→m11 | a3-c2 | FLF | 2 (par) | Par fosilización: ornitorrinco sobre roca → fósil de piedra; Ref hereda de m11 (madre aprobada) |
+| m07→m10' | a3-c1 | U2V + corte | 1 | Push-in; NO FLF (no comparten encuadre) — no pasa por el gate de keyframes |
 | m13→m09 | a3-c3e | Solo montaje | — | Eco 1–2s de m09 tras pull-out de m13, antes de c4 (eco deliberado, exento de variación) |
 
 ---

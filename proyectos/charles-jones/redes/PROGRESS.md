@@ -19,6 +19,7 @@ Espejo del roadmap de [TECH.md](TECH.md) § 5. Un stage se marca `[x]` solo cuan
 - [x] **Stage 1.5 — Cadena narrativa** — cadena del reel aprobada 2026-07-10 ([reels/la-grieta/cadena-narrativa.md](reels/la-grieta/cadena-narrativa.md)); gate previo a imágenes
 - [ ] **Stage 2 — Imágenes madre en cascada** — 17 madres aprobadas (todas generadas/aprobadas; ver checklist)
 - [ ] **Stage 2.6 — Madres variations (unicidad por escena)** — 5 variaciones generadas/aprobadas; cero reutilización de firstFrame no exenta
+- [ ] **Stage 2.7 — Madres keyframes** — cada par/cadena FLF de la §Cadena de transiciones aprobado junto (sobre las variaciones); solo escenas de 2/N keyframes
 - [ ] **Stage 2.5 — Animatic (gate previo a video)** — animatic transversal `la-grieta` aprobado (ritmo/orden/subtítulos) antes de gastar en clips, corrido con las madres variadas
 - [ ] **Stage 3 — Clips** — bloques A/B/C generados y aprobados (Bloque A casi completo; B/C pendientes)
 - [ ] **Stage 4 — Montaje del reel transversal** — la-grieta montado desde los bloques
@@ -27,6 +28,18 @@ Espejo del roadmap de [TECH.md](TECH.md) § 5. Un stage se marca `[x]` solo cuan
 ## 2. Session Log
 
 Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
+
+### 2026-07-10 — Capa madres keyframes (paso 1.75, gate propio)
+
+- **Stage in flight:** nuevo Stage 2.7 (entre Stage 2.6 variations y Stage 2.5 animatic).
+- **Done this session:**
+  - **Capa formalizada** en el método: paso 1.75 en [pipeline.md](../../../metodo/pipeline.md) §2 — se **movió** la taxonomía 1/2/N (criterios + regla anti-inflación) desde el paso 1 (una sola fuente, DRY) y se le dio **gate propio**: cada par emparejado y cada cadena FLF se aprueba junto, sobre las variaciones del paso 1.5, ANTES del animatic. El paso 1 quedó con una línea de referencia; el paso 2 (animatic) deja de ser el primer lugar donde se valida el plan de keyframes (ahora lo **integra** en secuencia real).
+  - **Espejos actualizados:** Stage 2.7 en [TECH.md](TECH.md) §5 (Stage 2 pierde "pares FLF aprobados juntos"; Stage 2.5 ahora depende de 2.7); regla 5 de [biblia-visual.md](../biblia-visual.md) §3 apunta al paso 1.75; fila de criterio **Madres keyframes** + Stage Status + orden de ejecución acá.
+  - **Artefacto de la capa:** la tabla §Cadena de transiciones de [planos/arco-3.md](planos/arco-3.md) — citada como instancia del paso 1.75 y completada con los pares de bloque `m09→m17` (`a3-b4`) y `m10'→m11` (`a3-c2`).
+- **Sin tooling nuevo:** el gate es aprobación de dirección sobre fichas/tablas que ya existen (no cambia `validarUnicidad()` ni el animatic).
+- **Retroactividad (patrón Stage 1.5):** los pares ya aprobados juntos antes de formalizar (m05/m06, m10/m11, m09/m17) quedan cubiertos; el gate rige para los pares con firstFrame variado pendiente (m05v1, m14v1, m15v1) y todo par futuro.
+- **Next step:** resolver el Stage 2.6 (variaciones) y luego correr el gate 2.7 sobre la tabla de transiciones antes del animatic.
+- **New blockers / questions raised:** ninguno.
 
 ### 2026-07-10 — Capa madres variations (unicidad por escena)
 
@@ -101,11 +114,12 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 
 1. **Docs** — planos / biblia / progreso alineados a las decisiones de dirección.
 2. **Cadena narrativa (gate)** — [reels/la-grieta/cadena-narrativa.md](reels/la-grieta/cadena-narrativa.md): mapa de beats en lenguaje de historia aprobado ANTES de generar imágenes; gobierna la cutlist.
-3. **Madres en cascada** — regenerar/generar con `--candidates 3` y aprobar con `--pick`, en orden: **m03' → m02' joven → m10' → m17**. Pares FLF se aprueban juntos (mismo encuadre).
-4. **Animatic (gate)** — `npm run animatic -- --reel la-grieta` → aprobar ritmo/orden/subtítulos del intercut ANTES de gastar en video.
-5. **Clips** — solo lo que el reel aprobado necesita: regen `a3-a4` (huevo) y `a3-c1` (push-in m07), generar `a3-c3`, re-auditar `b1`–`c2`, y las madres+clips de A1/A2. Puentes FLF (`a5x`/`a5y`/`c0`) y regen FLF de `a3-a5` **diferidos a destacadas**.
-6. **Montaje del reel transversal** — desde la cut-list (inserts: eco m09 tras c3, foto real en a3-c4).
-7. **Destacadas** — S1–S5 derivadas por recorte, cero generación.
+3. **Madres en cascada** — regenerar/generar con `--candidates 3` y aprobar con `--pick`, en orden: **m03' → m02' joven → m10' → m17**.
+4. **Madres keyframes (gate)** — cada par/cadena FLF de la [§Cadena de transiciones](planos/arco-3.md) aprobado junto (mismo encuadre, solo cambia el estado), sobre las variaciones; ANTES del animatic.
+5. **Animatic (gate)** — `npm run animatic -- --reel la-grieta` → aprobar ritmo/orden/subtítulos del intercut ANTES de gastar en video.
+6. **Clips** — solo lo que el reel aprobado necesita: regen `a3-a4` (huevo) y `a3-c1` (push-in m07), generar `a3-c3`, re-auditar `b1`–`c2`, y las madres+clips de A1/A2. Puentes FLF (`a5x`/`a5y`/`c0`) y regen FLF de `a3-a5` **diferidos a destacadas**.
+7. **Montaje del reel transversal** — desde la cut-list (inserts: eco m09 tras c3, foto real en a3-c4).
+8. **Destacadas** — S1–S5 derivadas por recorte, cero generación.
 
 ### Próxima acción
 
@@ -131,7 +145,8 @@ cd engine/wind-mcp && npm run animatic -- --reel la-grieta
 
 | Etapa | Criterio |
 |---|---|
-| Madres | Silueta 100% negra recorte plano (NO fieltro/3D/plush), fondo tintado del beat correcto (guion de color de [arco-3-planos.md](planos/arco-3.md)), STYLE-BLOCK respetado (salvo m12–m15 que rompen a propósito), 9:16. Personajes distinguibles por contorno. **Madres emparejadas** (par first/last de un FLF: m05/m06, m10/m11, m09/m17): mismo encuadre y composición base, solo cambia el estado — el par se aprueba junto ([biblia-visual.md](../biblia-visual.md) §3). Dirección de Ref: hereda de la madre ya aprobada/querida (hoy m10←m11). |
+| Madres | Silueta 100% negra recorte plano (NO fieltro/3D/plush), fondo tintado del beat correcto (guion de color de [arco-3-planos.md](planos/arco-3.md)), STYLE-BLOCK respetado (salvo m12–m15 que rompen a propósito), 9:16. Personajes distinguibles por contorno. Dirección de Ref: hereda de la madre ya aprobada/querida (hoy m10←m11). |
+| Madres keyframes (Stage 2.7) | Solo escenas de 2 o N keyframes. **Par emparejado** (par first/last de un FLF: m05v1/m06, m06/m14, m15v1/m08, m14v1/m07, m09/m17, m10'/m11): mismo encuadre y composición base, solo cambia el estado — el par se aprueba **junto** ([biblia-visual.md](../biblia-visual.md) §3, [pipeline.md](../../../metodo/pipeline.md) §2 paso 1.75). **Cadena** (N>2): eslabones aprobados juntos, `lastFrame` de un eslabón = `firstFrame` del siguiente (keyframe compartido). Sobre las variaciones del Stage 2.6, no sobre las madres base. |
 | Clips | Arranca 1:1 de su imagen madre, movimiento tipo títere de papel plano (no 3D), tinte estable durante el clip, duración correcta. FLF: morph real primer→último (provider `Kling-FLF`, no fallback I2V). |
 | Reels | Continuidad de tinte entre clips, switches cuento↔real solo en la cadena de transiciones aprobada (ver abajo), audio off sincero sin chistes. |
 | Stories | 15s, legibles sin audio, sin generación extra. |
