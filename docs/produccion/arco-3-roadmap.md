@@ -48,15 +48,15 @@ cd wind-mcp && npm run clips:a3 -- # (o el script/U2V que toque por clip)
 | ID | Título | Estado | Costo real | Nota |
 |---|---|---|---|---|
 | a3-m01 | Madre ornitorrinco | aprobado | ~¥0.3 | Lock de consistencia ✓ — no tocar |
-| a3-m02 | Ornitorrinco joven | aprobado | OpenRouter | Nano Banana multi-ref (m01 + foto + lámina); pick c2; path `a3-m02-ornitorrinco-joven.png` |
-| a3-m03 | Padre ornitorrinco | aprobado | OpenRouter | Nano Banana multi-ref; pick c3; muesca ceja + 5 rasgos ✓ |
+| a3-m02 | Ornitorrinco joven | aprobado | OpenRouter | Nano Banana multi-ref; pick c1 (más chico, panza arriba); path `a3-m02-ornitorrinco-joven.png` |
+| a3-m03 | Padre ornitorrinco | aprobado | OpenRouter | Nano Banana multi-ref; pick c3 (fornido, 4 patas, orilla de lago) |
 | a3-m04 | Huevo | aprobado | ~¥0.3 | Close-up nido; ahora firstFrame de a3-a4 ✓ |
 | a3-m05 | Paisaje Pangea | aprobado | ~¥0.3 | |
 | a3-m06 | Pangea partida | aprobado | ~¥0.3 | Grieta roja, agua en el gap ✓ |
 | a3-m07 | Rocas Coloradas | aprobado | ~¥0.6 | Retry ×1; firstFrame de a3-c1 (U2V) ✓ |
 | a3-m08 | Australia próspera | aprobado | ~¥0.3 | lastFrame de puente a3-a5y ✓ |
 | a3-m09 | Argentina en declive | aprobado | ~¥0.3 | firstFrame a3-b4 + eco montaje c3e ✓ |
-| a3-m10 | Ornitorrinco sobre roca | aprobado | OpenRouter | Nano Banana: Ref m11 + AnatomyRef m01 + foto; pick c2; vivo en marco fósil ✓ |
+| a3-m10 | Ornitorrinco sobre roca | aprobado | OpenRouter | Nano Banana: Ref m01 + mundo m07 + foto; pick c3; MADRE muriendo junto al agua ✓ |
 | a3-m11 | Fósil de piedra | aprobado | ~¥0.3 | NO tocar — madre padre del par fosilización ✓ |
 | a3-m12 | Apertura cuaderno Charles | aprobado | ~¥0.3 | Intro transversal POV ✓ |
 | a3-m13 | Fósil en yacimiento | aprobado | ~¥0.3 | Salto realidad clínico ✓ |
@@ -64,6 +64,7 @@ cd wind-mcp && npm run clips:a3 -- # (o el script/U2V que toque por clip)
 | a3-m15 | Zoom-out poético | aprobado | ~¥0.6 | Retry ×1; firstFrame de a3-a5y ✓ |
 | ~~a3-m16~~ | ~~Ornitorrinco caminando~~ | **ELIMINADA** | — | Con m10 reencuadrada no comparte encuadre; a3-c1 = U2V sobre m07 |
 | a3-m17 | Argentina seca (estado final) | aprobado | OpenRouter | Par m09→m17; pick c2; mismo encuadre más seco/oscuro ✓ |
+| a3-m18 | Joven muriendo sobre roca | aprobado | OpenRouter | Nueva: Ref m02 + mundo m07 + foto; pick c2; JOVEN muriendo en cornisa (escena hermana de m10) ✓ |
 
 > **Switch provider (2026-07-09):** madres con Ref/AnatomyRef pasan por `openrouter` (Nano Banana) en vez de Minimax. Minimax se queda como `--provider minimax` (composite 1-slot) por si hace falta.
 
