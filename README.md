@@ -11,7 +11,8 @@ Framework para producir contenido audiovisual generado por IA, organizado en tre
 │   ├── pipeline.md            Estrategia de generación, convención de IDs/archivos.
 │   ├── toolkit-wind-comic.md  Mapa del alcance completo de wind-comic.
 │   ├── brillo.md              Grado de aprovechamiento del toolkit y cómo se mide.
-│   ├── inventario-api-keys.md Credenciales del pipeline y en qué orden conseguirlas.
+│   ├── providers.md           Glosario de providers, tarifas, fórmulas de costo por capa y credenciales.
+│   ├── tarifas.json           Tarifas unitarias machine-readable (fuente única de costos).
 │   └── insights.md            Aprendizajes destilados de la producción (crece con cada proyecto).
 └── proyectos/         CONTENIDO — qué se produce
     └── charles-jones/         Una SERIE (canon, biblia visual, personajes, fuentes reales).

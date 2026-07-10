@@ -22,13 +22,13 @@ Qué lockear y con qué motor, según el tipo de contenido de cada arco (relocad
 | 2 · Charles | 1 sujeto | Minimax S2V o Kling | S2V lockea 1 protagonista; silueta de espaldas = poca cara = fácil |
 | 3 · Ornitorrincos | Referencia de imagen por animal | Kling FLF o Seedance multi-ref | Consistencia desde imagen madre como primer frame (I2V) |
 
-Referencia de motores/capacidades/costos: `engine/wind-comic/docs/{video,image}-providers.md`.
+Referencia de motores/capacidades/tarifas: [../../../metodo/providers.md](../../../metodo/providers.md).
 
 **Decisión de imagen (Arco 3):** madres con Ref/AnatomyRef se generan por defecto con **OpenRouter / Nano Banana** (`google/gemini-2.5-flash-image`), multi-ref (lock m01 + anatomía en `assets/fuentes/ornitorrincos/`). Fallback: `--provider minimax` (composite 1-slot).
 
 ## 3. Servicios y keys
 
-BYO keys en `engine/wind-comic/.env.local`. Inventario priorizado y estado: [../../../metodo/inventario-api-keys.md](../../../metodo/inventario-api-keys.md).
+BYO keys en `engine/wind-comic/.env.local`. Inventario priorizado y estado: [../../../metodo/providers.md](../../../metodo/providers.md) §4.
 
 | Servicio | Uso | Estado |
 |---|---|---|
@@ -39,7 +39,7 @@ BYO keys en `engine/wind-comic/.env.local`. Inventario priorizado y estado: [../
 
 ## 4. Presupuesto estimado (techo operativo ~¥19–20)
 
-Relocado desde el pipeline; es el costeo específico de este episodio. El detalle real acumulado se lleva en [PROGRESS.md](PROGRESS.md) §Presupuesto.
+Relocado desde el pipeline; es el costeo específico de este episodio (cantidades × tarifa unitaria). Las tarifas por operación y las fórmulas por capa están en [../../../metodo/providers.md](../../../metodo/providers.md) §2; el detalle real acumulado, en [PROGRESS.md](PROGRESS.md) §Presupuesto.
 
 | Etapa | Estimado |
 |---|---|
@@ -48,7 +48,7 @@ Relocado desde el pipeline; es el costeo específico de este episodio. El detall
 | Clips FLF **del reel** (b4, c2; `a5`/`a5x`/`a5y`/`c0` diferidos a destacadas) | ~¥2 |
 | **Total reel** | **~¥14.9 (techo ¥19–20 con retries)** |
 
-El video es el mayor costo; Kling (~¥0.2/s) y Veo (~¥0.6/s) se reservan a los planos-gancho.
+El video es el mayor costo; los motores caros (Kling, Veo) se reservan a los planos-gancho.
 
 ## 5. Roadmap (stages)
 
