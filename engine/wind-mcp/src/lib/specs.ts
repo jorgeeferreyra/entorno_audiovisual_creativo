@@ -49,6 +49,8 @@ export interface VideoI2VSpec {
   motionPrompt: string;
   cameraPreset?: CameraPreset;
   duration: 5 | 6 | 10 | 15;
+  /** Provider preferido del registry (ej. minimax-video, kling, veo). Se pasa como prefer. */
+  provider?: string;
 }
 
 export interface VideoFlfSpec {
@@ -61,6 +63,8 @@ export interface VideoFlfSpec {
   motionPrompt: string;
   cameraPreset?: CameraPreset;
   duration: 5 | 10;
+  /** Provider preferido del registry (ej. kling). Se pasa como prefer. */
+  provider?: string;
 }
 
 export interface MontajeSpec {
@@ -97,6 +101,7 @@ const videoI2VYaml = z
     firstFrame: z.string(),
     cameraPreset: cameraPresetSchema.optional(),
     duration: z.union([z.literal(5), z.literal(6), z.literal(10), z.literal(15)]).optional(),
+    provider: z.string().optional(),
   })
   .strict();
 
@@ -107,6 +112,7 @@ const videoFlfYaml = z
     lastFrame: z.string(),
     cameraPreset: cameraPresetSchema.optional(),
     duration: z.union([z.literal(5), z.literal(10)]).optional(),
+    provider: z.string().optional(),
   })
   .strict();
 
@@ -221,6 +227,7 @@ function construirSpec(ficha: FichaRaw): AssetSpec {
       motionPrompt: ficha.prompt,
       cameraPreset: y.cameraPreset,
       duration: y.duration ?? 5,
+      provider: y.provider,
     };
   }
   return {
@@ -231,6 +238,7 @@ function construirSpec(ficha: FichaRaw): AssetSpec {
     motionPrompt: ficha.prompt,
     cameraPreset: y.cameraPreset,
     duration: y.duration ?? 5,
+    provider: y.provider,
   };
 }
 

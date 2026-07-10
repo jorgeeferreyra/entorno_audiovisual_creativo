@@ -103,10 +103,10 @@ Qué credenciales conseguir y en qué orden para correr el pipeline punta a punt
 
 ## 5. Caveats
 
-- **Kling y autenticación.** La consola oficial emite Access Key + Secret Key y exige JWT firmado (expira a los 30 min), pero `wind-comic` manda `KELING_API_KEY` directo como `Bearer` ([`wind-comic/services/kling.service.ts`](../engine/wind-comic/services/kling.service.ts)) — la key esperada es de un agregador compatible. No contratar Kling oficial (mínimo enterprise ~USD 1.400/mes) hasta validar. **Decisión (resuelta):** vía Qingyun, `KELING_BASE_URL=https://api.qingyuntop.top/kling`; FLF real disponible sin contrato, con fallback automático a Minimax I2V. Falta validar el morph por eslabón (ver [PROGRESS.md](../proyectos/charles-jones/redes/PROGRESS.md) §Gate Kling).
+- **Kling y autenticación.** La consola oficial emite Access Key + Secret Key y exige JWT firmado (expira a los 30 min), pero `wind-comic` manda `KELING_API_KEY` directo como `Bearer` ([`wind-comic/services/kling.service.ts`](../engine/wind-comic/services/kling.service.ts)) — la key esperada es de un agregador compatible. No contratar Kling oficial (mínimo enterprise ~USD 1.400/mes) hasta validar. **Decisión (resuelta):** vía Qingyun, `KELING_BASE_URL=https://api.qingyuntop.top/kling`; FLF real disponible sin contrato, con degradación automática a I2V vía registry (no casada a un motor fijo). Falta validar el morph por eslabón (ver [PROGRESS.md](../proyectos/charles-jones/redes/PROGRESS.md) §Gate Kling).
 - **vectorengine.** URL no confirmada al 100% (fila 6). No asumir `api.vectorengine.ai` sin probarla.
 - **MiniMax: upload vs. TTS.** El TTS `speech-2.8-hd` (endpoint t2a_v2) no requiere GroupId, pero el upload de archivos de `wind-mcp` sí — conseguir ambos valores al registrarse.
-- **wind-mcp sube frames siempre a Minimax en modo real.** `resolveFrameUrlForVideo()` ([`wind-mcp/src/lib/image.ts`](../engine/wind-mcp/src/lib/image.ts)) sube los frames a Minimax incluso cuando el clip lo genera Kling FLF. Por eso `MINIMAX_API_KEY` bloquea todo el camino de video, no solo el motor Minimax.
+- **Resolución de frames agnóstica del provider.** `resolveFrameUrl()` ([`wind-mcp/src/lib/image.ts`](../engine/wind-mcp/src/lib/image.ts)) sube los frames a wind-comic (URL http que el gateway acepta en todos los motores, sin key de motor específica); si el upload falla, degrada a data-URI con warning. `MINIMAX_API_KEY` ya no bloquea el camino de video: es un motor más del registry.
 
 ---
 

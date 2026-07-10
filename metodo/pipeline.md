@@ -124,6 +124,7 @@ Clip [id] — [título ES]
 - lastFrame: [solo FLF: id + archivo]
 - cameraPreset: [1 de los 12 | —]
 - duration: 5 | 6 | 10 | 15   (FLF: solo 5 | 10)
+- provider: [motor preferido del registry (prefer): minimax-video | kling | veo | … | —] (opcional; el registry filtra por capability y cae al resto si falla)
 - Motion prompt (EN, ≤500 caracteres, sin lenguaje de cámara duplicado): [...]
 - Vision-Audit (EN): sceneDescription: [...] · action: [...] · mood: [...]
 - Audio (ES): [off / música / ninguno]

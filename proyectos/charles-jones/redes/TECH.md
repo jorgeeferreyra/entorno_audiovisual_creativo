@@ -32,7 +32,7 @@ BYO keys en `engine/wind-comic/.env.local`. Inventario priorizado y estado: [../
 
 | Servicio | Uso | Estado |
 |---|---|---|
-| MINIMAX_API_KEY | Imagen + video I2V + TTS + upload de frames (bloqueante en modo real) | Configurada |
+| MINIMAX_API_KEY | Imagen + video I2V + TTS (un motor más del registry de video, ya no bloqueante del camino de video) | Configurada |
 | KELING_API_KEY (vía gateway qingyuntop) | FLF real de la cadena de transiciones | Configurada — Gate Kling resuelto |
 | OPENROUTER_API_KEY | Nano Banana (imagen con refs, default Arco 3) | Configurada |
 | OPENAI_API_KEY | LLM / fallback imagen | Configurada |

@@ -165,6 +165,7 @@ async function generarVideo(
   }
 
   const firstFrame = await resolveDependencia(spec.id, spec.firstFrame, opts, 'firstFrame');
+  const provider = opts.provider ?? spec.provider;
 
   const out =
     spec.kind === 'video-flf'
@@ -177,6 +178,7 @@ async function generarVideo(
           slug: spec.slug,
           duration: spec.duration,
           cameraPreset: spec.cameraPreset,
+          provider,
         })
       : await generarVideoI2V({
           imagen: firstFrame,
@@ -186,6 +188,7 @@ async function generarVideo(
           slug: spec.slug,
           duration: spec.duration,
           cameraPreset: spec.cameraPreset,
+          provider,
         });
 
   await escribirSidecar(out.localPath, {

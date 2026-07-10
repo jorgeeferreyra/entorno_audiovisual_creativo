@@ -283,7 +283,7 @@ El presupuesto (estimado y real) no se documenta acá. Las cifras de costo viven
 
 `KELING_API_KEY` está configurada y `KELING_BASE_URL` apunta al **gateway qingyuntop** (`https://api.qingyuntop.top/kling`), que expone los endpoints Kling con key simple `Bearer` — exactamente la vía recomendada en [providers.md](../../../metodo/providers.md) §Caveats (evita el contrato enterprise de Kling oficial). La misma key sirve para `QINGYUNTOP_API_KEY`. Por lo tanto **FLF real está disponible** para la cadena de transiciones (a3-a5, a3-a5x, a3-a5y, a3-b4, a3-c0, a3-c2).
 
-- Si la llamada a Kling falla, el fallback a Minimax I2V ya es automático en `generateFlfViaKling()` ([`engine/wind-mcp/src/lib/video.ts`](../../../engine/wind-mcp/src/lib/video.ts)) — degrada a solo primer frame con warning.
+- Si Kling no cubre el FLF (o la cadena FLF cae), `generarVideoFLF()` ([`engine/wind-mcp/src/lib/video.ts`](../../../engine/wind-mcp/src/lib/video.ts)) degrada automáticamente a I2V (solo primer frame) re-despachando por el registry, con warning — la degradación ya no está casada a Minimax.
 - Validación pendiente: aprobar cada FLF mirando que el morph efectivamente ocurra; si el gateway no lo soporta en un eslabón, se acepta I2V degradado o corte duro (especialmente a5x experimental).
 
 ### Regeneración pendiente de a3-a5 (créditos Qingyun ya cargados)

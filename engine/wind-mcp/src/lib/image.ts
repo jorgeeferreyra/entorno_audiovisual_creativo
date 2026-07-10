@@ -165,16 +165,34 @@ export async function uploadImageToMinimax(localPath: string): Promise<string> {
   return downloadUrl;
 }
 
-export async function resolveFrameUrlForVideo(
+/**
+ * Resuelve un frame (first/last) a una URL que cualquier provider de video del
+ * registry pueda consumir, de forma agnóstica del motor:
+ *   1. URL remota http(s) válida (no localhost, no data:) → tal cual, sin re-subir.
+ *   2. Si no → upload a wind-comic (URL http pública que el gateway acepta en todos
+ *      los motores; no requiere ninguna key de motor específica).
+ *   3. Si el upload falla → data-URI con warning ruidoso (solo la verán los providers
+ *      que aceptan data-URI). Nunca fallo silencioso.
+ */
+export async function resolveFrameUrl(
   localPath: string,
   remoteUrl?: string,
 ): Promise<string> {
-  if (remoteUrl && /^https?:\/\//.test(remoteUrl) && !remoteUrl.includes('localhost')) {
+  if (
+    remoteUrl &&
+    /^https?:\/\//.test(remoteUrl) &&
+    !remoteUrl.startsWith('data:') &&
+    !remoteUrl.includes('localhost')
+  ) {
     return remoteUrl;
   }
-  if (process.env.MOCK_ENGINES === '1') {
-    return uploadImageToWindComic(localPath);
+  try {
+    return await uploadImageToWindComic(localPath);
+  } catch (e) {
+    console.warn(
+      '[wind-mcp] upload de frame a wind-comic falló, uso data-URI (solo la verán providers que la acepten):',
+      e instanceof Error ? e.message : e,
+    );
+    return fileToDataUri(localPath);
   }
-  // MiniMax I2V acepta data URL Base64 en first_frame_image (sin subir a /v1/files/upload).
-  return fileToDataUri(localPath);
 }

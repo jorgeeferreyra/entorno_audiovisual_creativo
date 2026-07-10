@@ -1,6 +1,6 @@
 import { loadWindComicEnv, resolveReadPath, type CameraPreset } from '../config.js';
 import { downloadToFile } from './download.js';
-import { resolveFrameUrlForVideo, uploadImageToWindComic } from './image.js';
+import { resolveFrameUrl } from './image.js';
 import { clipPath, ensureDirFor } from './paths.js';
 
 export interface GenerarVideoI2VInput {
@@ -12,6 +12,8 @@ export interface GenerarVideoI2VInput {
   arco: number;
   id: string;
   slug: string;
+  /** Provider preferido del registry (prefer); si no califica/falla, el registry cae al resto. */
+  provider?: string;
 }
 
 export interface GenerarVideoFLFInput {
@@ -25,6 +27,8 @@ export interface GenerarVideoFLFInput {
   arco: number;
   id: string;
   slug: string;
+  /** Provider preferido del registry (prefer); FLF hoy solo lo cubre Kling. */
+  provider?: string;
 }
 
 export interface GenerarVideoResult {
@@ -45,14 +49,22 @@ async function enhanceMotionPrompt(raw: string, cameraPreset?: string): Promise<
   return enhanceU2VMotionPrompt(verdict.sanitized, cameraPreset || undefined);
 }
 
+/**
+ * Único punto de generación de video: despacha por el registry de wind-comic
+ * (Strategy + fallback + health-cache + retry ya resueltos). `prefer` sube el
+ * provider elegido al frente de la cadena; el resto queda como fallback ordenado
+ * por prioridad. Ningún motor está hardcodeado: el registry filtra por capability
+ * (I2V vs FLF) y duración. Falla ruidoso si la cadena entera cae.
+ */
 async function generateViaRegistry(
   prompt: string,
   opts: {
     firstFrameUrl?: string;
     lastFrameUrl?: string;
     duration: number;
+    prefer?: string;
   },
-): Promise<{ videoUrl: string; provider: string; warning?: string }> {
+): Promise<{ videoUrl: string; provider: string }> {
   loadWindComicEnv();
   await import('@/lib/video-providers/builtins');
   const { dispatchVideoGenerate } = await import('@/lib/video-providers/registry');
@@ -74,6 +86,7 @@ async function generateViaRegistry(
       hasLastFrame: hasLast,
       hasSubjectReference: false,
       durationSec: opts.duration,
+      prefer: opts.prefer,
     },
   );
 
@@ -84,66 +97,6 @@ async function generateViaRegistry(
   return { videoUrl: result.videoUrl, provider: result.provider };
 }
 
-async function generateViaMinimax(
-  imageUrl: string,
-  prompt: string,
-  duration: number,
-): Promise<{ videoUrl: string; provider: string }> {
-  loadWindComicEnv();
-  const { MinimaxService } = await import('@/services/minimax.service');
-  const svc = new MinimaxService();
-  const videoUrl = await svc.generateVideo(imageUrl, prompt, {
-    duration,
-    aspectRatio: '9:16',
-  });
-  if (!videoUrl) throw new Error('Minimax devolvió video vacío');
-  return { videoUrl, provider: 'Minimax-I2V' };
-}
-
-async function resolveFrameUrlForKling(localPath: string, remoteUrl?: string): Promise<string> {
-  if (remoteUrl && /^https?:\/\//.test(remoteUrl) && !remoteUrl.startsWith('data:')) {
-    return remoteUrl;
-  }
-  return uploadImageToWindComic(localPath);
-}
-
-async function generateFlfViaKling(
-  firstLocal: string,
-  lastLocal: string,
-  firstRemote: string | undefined,
-  lastRemote: string | undefined,
-  prompt: string,
-  duration: 5 | 10,
-): Promise<{ videoUrl: string; provider: string; warning?: string }> {
-  loadWindComicEnv();
-  const { KlingService } = await import('@/services/kling.service');
-  const { API_CONFIG } = await import('@/lib/config');
-  const klingReady = API_CONFIG.keling.apiKey && !API_CONFIG.keling.apiKey.startsWith('your_');
-
-  if (klingReady) {
-    try {
-      const klingFirst = await resolveFrameUrlForKling(firstLocal, firstRemote);
-      const klingLast = await resolveFrameUrlForKling(lastLocal, lastRemote);
-      const k = new KlingService();
-      const videoUrl = await k.generateFirstLastFrame(klingFirst, klingLast, prompt, {
-        duration,
-        mode: 'professional',
-      });
-      if (videoUrl) return { videoUrl, provider: 'Kling-FLF' };
-    } catch (e) {
-      console.warn('[wind-mcp] Kling FLF falló, fallback Minimax:', e);
-    }
-  }
-
-  const minimaxUrl = await resolveFrameUrlForVideo(firstLocal, firstRemote);
-  const { videoUrl, provider } = await generateViaMinimax(minimaxUrl, prompt, duration === 10 ? 6 : 5);
-  return {
-    videoUrl,
-    provider: `${provider}-fallback`,
-    warning: 'Kling FLF no disponible; degradado a Minimax I2V (solo primer frame)',
-  };
-}
-
 export async function generarVideoI2V(input: GenerarVideoI2VInput): Promise<GenerarVideoResult> {
   loadWindComicEnv();
   const localPath = resolveReadPath(input.imagen);
@@ -152,33 +105,18 @@ export async function generarVideoI2V(input: GenerarVideoI2VInput): Promise<Gene
   const prompt = await enhanceMotionPrompt(input.motionPrompt, input.cameraPreset);
   const mock = process.env.MOCK_ENGINES === '1';
 
-  let videoUrl: string;
-  let provider: string;
-  let warning: string | undefined;
-
-  if (mock) {
-    const frameUrl = await resolveFrameUrlForVideo(localPath, input.imageUrl);
-    const out = await generateViaRegistry(prompt, { firstFrameUrl: frameUrl, duration });
-    videoUrl = out.videoUrl;
-    provider = out.provider;
-  } else {
-    const frameUrl = await resolveFrameUrlForVideo(localPath, input.imageUrl);
-    try {
-      const out = await generateViaMinimax(frameUrl, prompt, duration);
-      videoUrl = out.videoUrl;
-      provider = out.provider;
-    } catch {
-      const out = await generateViaRegistry(prompt, { firstFrameUrl: frameUrl, duration });
-      videoUrl = out.videoUrl;
-      provider = out.provider;
-    }
-  }
+  const frameUrl = await resolveFrameUrl(localPath, input.imageUrl);
+  const { videoUrl, provider } = await generateViaRegistry(prompt, {
+    firstFrameUrl: frameUrl,
+    duration,
+    prefer: input.provider,
+  });
 
   const destPath = clipPath(input.arco, input.id, input.slug);
   await ensureDirFor(destPath);
   await downloadToFile(videoUrl, destPath);
 
-  return { localPath: destPath, videoUrl, provider, duration, mock, warning };
+  return { localPath: destPath, videoUrl, provider, duration, mock };
 }
 
 export async function generarVideoFLF(input: GenerarVideoFLFInput): Promise<GenerarVideoResult> {
@@ -189,32 +127,35 @@ export async function generarVideoFLF(input: GenerarVideoFLFInput): Promise<Gene
   const prompt = await enhanceMotionPrompt(input.motionPrompt, input.cameraPreset);
   const mock = process.env.MOCK_ENGINES === '1';
 
+  const firstUrl = await resolveFrameUrl(firstLocal, input.firstFrameUrl);
+  const lastUrl = await resolveFrameUrl(lastLocal, input.lastFrameUrl);
+
   let videoUrl: string;
   let provider: string;
   let warning: string | undefined;
 
-  if (mock) {
-    const firstUrl = await resolveFrameUrlForKling(firstLocal, input.firstFrameUrl);
-    const lastUrl = await resolveFrameUrlForKling(lastLocal, input.lastFrameUrl);
+  try {
     const out = await generateViaRegistry(prompt, {
       firstFrameUrl: firstUrl,
       lastFrameUrl: lastUrl,
       duration,
+      prefer: input.provider,
     });
     videoUrl = out.videoUrl;
     provider = out.provider;
-  } else {
-    const out = await generateFlfViaKling(
-      firstLocal,
-      lastLocal,
-      input.firstFrameUrl,
-      input.lastFrameUrl,
-      prompt,
+  } catch (e) {
+    // Degradación agnóstica del provider: si ningún motor del registry cubre FLF
+    // (o la cadena FLF entera cae), re-despachar como I2V (solo primer frame).
+    // Nunca en silencio.
+    console.warn('[wind-mcp] FLF no disponible en el registry, degradando a I2V (solo primer frame):', e);
+    const out = await generateViaRegistry(prompt, {
+      firstFrameUrl: firstUrl,
       duration,
-    );
+      prefer: input.provider,
+    });
     videoUrl = out.videoUrl;
-    provider = out.provider;
-    warning = out.warning;
+    provider = `${out.provider}-fallback`;
+    warning = 'FLF no disponible; degradado a I2V (solo primer frame)';
   }
 
   const destPath = clipPath(input.arco, input.id, input.slug);
