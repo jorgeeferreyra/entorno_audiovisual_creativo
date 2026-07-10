@@ -51,6 +51,17 @@ WIND_PROJECT=otra-serie/episodio-2 npm run gen -- --arco 1
 
 Un episodio nuevo = crear `proyectos/<serie>/<episodio>/planos/arco-N.md` con el mismo formato. Cero código nuevo.
 
+## Git LFS
+
+Este repo usa [Git LFS](https://git-lfs.com/) para videos, imágenes y PDFs (`*.mp4`, `*.mov`, `*.gif`, `*.png`, `*.jpg`, `*.jpeg`, `*.pdf`). Después de clonar, instalar LFS y bajar los binarios:
+
+```bash
+git lfs install
+git clone <url>
+# o, si ya clonaste sin LFS:
+git lfs pull
+```
+
 ## Por dónde empezar
 
 - Entender la serie: [proyectos/charles-jones/biblia-serie.md](proyectos/charles-jones/biblia-serie.md).
