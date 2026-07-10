@@ -29,6 +29,14 @@ Espejo del roadmap de [TECH.md](TECH.md) § 5. Un stage se marca `[x]` solo cuan
 
 Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 
+### 2026-07-10 — a2-m01 c1 promovida (silueta master)
+
+- **Stage in flight:** Stage 3 — madres Arco 2.
+- **Done this session:**
+  - **`a2-m01` ← c1** → `a2-m01-charles-espaldas.png` (silueta master; c2/c3 archivados en `_prev/`).
+- **Next step:** still `a2-a0` ya puede montarse; generar/pickear pendientes que heredan (`a2-m05`) o siguen en Arco 2.
+- **New blockers / questions raised:** ninguno.
+
 ### 2026-07-10 — m24 c1 promovida + limpieza de candidatos
 
 - **Stage in flight:** Stage 3 — beat 8 cerrado en madres.
@@ -194,7 +202,7 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 
 1. **Re-correr animatic borrador** — `npm run animatic -- --reel la-grieta --borrador` (beat 8 completo).
 2. Afinar durs → variaciones sobrevivientes → animatic final.
-3. **`a2-m01`** sigue en el otro chat.
+3. **`a2-m01`** ← c1 aprobado (silueta master en disco).
 
 ---
 
@@ -240,12 +248,12 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 | a3-m22 | Orilla cercana: madre + cría | aprobado | Beat 8.2a; pick c1; still `a3-a6c` |
 | a3-m23 | Orilla lejana: padre + huevo | aprobado | Beat 8.2b; pick c3; still `a3-a6d` |
 | a3-m24 | Plano lejano: los 4 + grieta | aprobado | Beat 8.2c; pick c1 (tanda 2); still `a3-a6e` |
-| a2-m01 | Charles de espaldas | pendiente | Beat 9.1; **se maneja en otro chat — no tocar**. Vive en [planos/arco-2.md](planos/arco-2.md) |
+| a2-m01 | Charles de espaldas | aprobado | Beat 9.1; pick c1 → `a2-m01-charles-espaldas.png` (silueta master). Vive en [planos/arco-2.md](planos/arco-2.md) |
 | a2-m03 | Manos levantan la cría (cuento) | aprobado | Beat 9.3; pick c2 (gesto de alzar); still `a2-a0b` |
 | a2-m06 | Manos + cría (Revenant) | pendiente (**reserva destacada**) | `styleBlock: false`; ref `ornitorrinco_crias.jpeg`; NO entra al reel |
 | a2-m04 | El lugar blanco | aprobado | Beat 13.2 Revenant; pick `revenant-c2` → canónico, `revenant-c3` → `a2-m04-lugar-blanco-c3.png`; still `a2-a2`. Vive en [planos/arco-2.md](planos/arco-2.md) |
 | a2-m05 | El despertar (Coloradas) | pendiente | Beat 13.3; `ref a2-m01` + mundo `a3-m07` (OpenRouter), tinte rojo dusk; still `a2-a2b`. Vive en [planos/arco-2.md](planos/arco-2.md) |
-| a2-m09 | El despertar en la selva | pendiente | Beat 13.3 post-sueño; Reiniger, cara visible; ref `charles-jones-pintura.jpg`; tinte rojo dusk; aparte de `a2-m05`. Vive en [planos/arco-2.md](planos/arco-2.md) |
+| a2-m09 | El despertar en la selva | aprobado | Beat 13.3 post-sueño; pick c1 (mate a la salida de la carpa); Reiniger, cara visible; tinte rojo dusk; aparte de `a2-m05`. Vive en [planos/arco-2.md](planos/arco-2.md) |
 | a3-m01v1 | Madre al borde de la grieta (variación) | pendiente | Stage 4; `ref a3-m01` (OpenRouter), tinte rojo; firstFrame de a3-a6 |
 | a3-m01v2 | Madre en llanura seca (variación) | pendiente | Stage 4; `ref a3-m01` (OpenRouter), tinte gris; firstFrame de a3-b3 |
 | a3-m05v1 | Pangea antes del quiebre (variación) | pendiente | Stage 4; `ref a3-m05`; mismo encuadre que m05/m06 (par FLF); firstFrame de a3-a5 |
@@ -283,7 +291,7 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 | a3-a6c | A | ninguna | generado | Beat 8.2a; still m22 (~1.5s), solo montaje |
 | a3-a6d | A | ninguna | generado | Beat 8.2b; still m23 (~1.5s), solo montaje |
 | a3-a6e | A | ninguna | generado | Beat 8.2c; still m24 (~2s), solo montaje |
-| a2-a0 | A2 | ninguna | pendiente | Beat 9.1; still a2-m01 (~1.5s), solo montaje — otro chat |
+| a2-a0 | A2 | ninguna | listo (still) | Beat 9.1; still a2-m01 (~1.5s), solo montaje |
 | a2-a0b | A2 | ninguna | generado | Beat 9.3; still a2-m03 (~1.5s), solo montaje |
 | a2-a2 | A2 | ninguna | listo (still) | Beat 13.2; still a2-m04 canónico (~1.5s); entre a3-c2 y a3-c3; c3 aprobada como A/B |
 | a2-a2b | A2 | ninguna | pendiente | Beat 13.3; still a2-m05 (~1.5s), solo montaje |

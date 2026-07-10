@@ -18,7 +18,7 @@ Registro del Arco 2: esperanzador, el contrapeso del Arco 1. En el reel entra co
 | Manos + cría Revenant (a2-m06) — **reserva destacada**, no reel | REALITY-BLOCK (fotográfico; `styleBlock: false`) |
 | El mensaje / lugar blanco (a2-m04, a2-a2) | REALITY-BLOCK Revenant, void blanco puro (`styleBlock: false`; sin tinte de papel) |
 | El despertar Coloradas (a2-m05, a2-a2b) | `deep red dusk tinted background` (empalma con el Bloque C del Arco 3) |
-| El despertar selvático (a2-m09) — post lugar blanco | `dramatic deep red dusk tinted background` (Reiniger; cara visible) |
+| El despertar selvático (a2-m09) — post lugar blanco; mate a la salida de la carpa | `dramatic deep red dusk tinted background` (Reiniger; cara visible) |
 
 ---
 
@@ -35,7 +35,7 @@ anatomyRefs:
 provider: openrouter
 ```
 
-Nota: **silueta master** del arco — lock de identidad/vestuario (sombrero, abrigo, morral) que `a2-m04`/`a2-m05` heredan. Aspecto y vestuario canónicos en la ficha CFJ de [personajes-studio.md](../../personajes-studio.md). Regla dura: **nunca de frente** — silueta de cuerpo entero de espaldas. **Lotte Reiniger de verdad** (no ilustración vectorial plana): recorte de papel con filigrana fina de tijera, encaje de detalle interior, ref. *Die Abenteuer des Prinzen Achmed*. Registro esperanzador-en-quiebre: hábitat frondoso y vivo que recién empieza a rajarse (helechos, pastos, juncos, árboles en silueta), no páramo muerto. El golpe visceral de la grieta NO vive acá: es el Revenant `a2-m07`. Las refs (Nano Banana multi-ref) solo aportan identidad/vestuario; la cara NUNCA se muestra y el estilo NO cambia.
+Nota: Pick canónico: `a2-m01-c1` → `a2-m01-charles-espaldas.png`. **silueta master** del arco — lock de identidad/vestuario (sombrero, abrigo, morral) que `a2-m04`/`a2-m05` heredan. Aspecto y vestuario canónicos en la ficha CFJ de [personajes-studio.md](../../personajes-studio.md). Regla dura: **nunca de frente** — silueta de cuerpo entero de espaldas. **Lotte Reiniger de verdad** (no ilustración vectorial plana): recorte de papel con filigrana fina de tijera, encaje de detalle interior, ref. *Die Abenteuer des Prinzen Achmed*. Registro esperanzador-en-quiebre: hábitat frondoso y vivo que recién empieza a rajarse (helechos, pastos, juncos, árboles en silueta), no páramo muerto. El golpe visceral de la grieta NO vive acá: es el Revenant `a2-m07`. Las refs (Nano Banana multi-ref) solo aportan identidad/vestuario; la cara NUNCA se muestra y el estilo NO cambia.
 
 Prompt (EN):
 ```
@@ -194,16 +194,17 @@ The first reference image is the master character — reproduce this exact Charl
 ```yaml
 kind: image
 dest: assets/arco-2/madre/a2-m09-despertar-selva.png
+ref: assets/arco-2/madre/_pre-gate/a2-m09-base-c1.png
 anatomyRefs:
   - assets/fuentes/charles/charles-jones-pintura.jpg
 provider: openrouter
 ```
 
-Nota: viene **después** de `a2-m04` (lugar blanco Revenant) — Charles despierta del sueño en la selva. Madre **nueva** aparte de `a2-m05` (despertar Coloradas, que se conserva). Registro **Lotte Reiniger** con **cara visible** en perfil/tres cuartos recortado (excepción anotada en [personajes-studio.md](../../personajes-studio.md)): barba, ala del sombrero, rasgos en filigrana de tijera. Ref única: la pintura de Charles (identidad de rasgos/vestuario); sin `ref` de madre (`a2-m01` aún no está en disco). Ambiente selvático frondoso (helechos, lianas, árboles en capas de teatro de sombras). Gesto: alza la cabeza como quien vuelve de un sueño. Tinte rojo dusk para empalmar con el Bloque C del Arco 3.
+Nota: Pick canónico: `a2-m09-c1` → `a2-m09-despertar-selva.png`. Viene **después** de `a2-m04` (lugar blanco Revenant) — Charles despierta del sueño en la selva. Madre **nueva** aparte de `a2-m05` (despertar Coloradas, que se conserva). Registro **Lotte Reiniger** con **cara visible** en perfil/tres cuartos recortado (excepción anotada en [personajes-studio.md](../../personajes-studio.md)): barba, ala del sombrero, rasgos en filigrana de tijera. **Ref 1** (`_pre-gate/a2-m09-base-c1`): composición/estilo de la tanda previa (fidelidad alta de figura, filigrana, tinte rojo, selva en capas). **Ref 2** (pintura Charles): identidad de rasgos/vestuario. Gesto aprobado: **tomando mate a la salida de la carpa** (mate + bombilla; carpa de campaña detrás). Tinte rojo dusk para empalmar con el Bloque C del Arco 3.
 
 Prompt (EN):
 ```
-The reference painting shows an elderly bearded explorer — use it for identity of face, beard, wide-brimmed fedora and expedition coat, translated into black paper cutout silhouette (NOT photoreal, NOT painted). Black paper cutout silhouette of the elderly explorer seated in a lush jungle, full figure in three-quarter profile so his cut-out face IS visible — long white beard silhouette, hat brim, nose and brow as delicate lace-like hand-cut paper filigree, slowly raising his head as if waking from a dream. Layered shadow-theater jungle around him: silhouetted ferns, hanging vines, leafy trees and reeds as stacked flat paper cutout layers, thriving verdant habitat. Fine intricate cut-out inner details in the coat, hat and foliage — NOT flat vector shapes, in the manner of Lotte Reiniger's Die Abenteuer des Prinzen Achmed. dramatic deep red dusk tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+The first reference is the APPROVED base composition and style — keep near-100% fidelity of the elderly explorer's silhouette: same seated three-quarter profile facing right, same wide-brimmed fedora, same long textured beard, same intricate lace-like filigree on the coat, same deep red dusk glow, same layered jungle foliage framing, same woodcut/paper-cutout look, same aged-paper border mood — ONLY change the action and add the tent. The second reference painting shows the elderly bearded explorer — use it for identity of face, beard, hat and expedition coat. Black paper cutout silhouette: the same explorer now sits at the mouth of a small expedition canvas tent (A-frame or pup tent as a stacked flat paper cutout layer behind/beside him, guy-ropes and flaps readable as delicate cut-out detail), holding a traditional mate gourd with a metal bombilla straw raised to his lips, sipping mate as if waking calmly from a dream at camp. Layered shadow-theater jungle still around the tent: silhouetted ferns, hanging vines, leafy trees and reeds as stacked flat paper cutout layers. Fine intricate cut-out inner details in the coat, hat, tent and foliage — NOT flat vector shapes, in the manner of Lotte Reiniger's Die Abenteuer des Prinzen Achmed. dramatic deep red dusk tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
 ```
 
 **a2-m07 — La grieta (Revenant photoreal, OTS extremo + colina lejana)**
