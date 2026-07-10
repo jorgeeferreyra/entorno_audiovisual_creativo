@@ -90,11 +90,11 @@ Cruza cada beat con la [`cutlist`](README.md) actual. Expone qué está cubierto
 | 5 · El caos de la grieta | `a3-a5`, `a3-a5b` | Cubierto |
 | 6 · ZOOM Mano Negra | `a1-a1` | Cubierto (plano parcial [arco-1.md](../../planos/arco-1.md)) |
 | 7 · Dos mundos | `a3-a5c` | Cubierto |
-| **8 · ZOOM separación** | `a3-a6` | **Hueco**: un solo slot cubre los 3 sub-beats (ancho / lectura / despedida). Falta bajar fichas para 8.1 y 8.2 ("unos de un lado, otros del otro"). |
-| **9 · ZOOM Charles / palanca** | `a2-a1` (4s) | **Hueco**: el plano parcial de [arco-2.md](../../planos/arco-2.md) cubre solo el balancín (9.4). Faltan fichas para 9.1–9.3 (Charles de espaldas, levanta la cría) y 9.6 (consecuencia). |
+| **8 · ZOOM separación** | `a3-a6a` (8.1), `a3-a6b` (8.2), `a3-a6` (8.3) | Cubierto: fichas bajadas en [arco-3.md](../../planos/arco-3.md) — madres `a3-m19` (plano ancho) y `a3-m20` (familia repartida) montadas como stills antes de la despedida. |
+| **9 · ZOOM Charles / palanca** | `a2-a0` (9.1), `a2-a0b` (9.3), `a2-a1` (9.4) | Cubierto: fichas bajadas en [arco-2.md](../../planos/arco-2.md) — `a2-m01` (Charles de espaldas) + madre nueva `a2-m03` (levanta la cría), stills; el balancín sigue en `a2-a1`. La consecuencia (9.6) la resuelve el corte a `a3-b4` + off, sin plano propio. |
 | 10 · Vidas paralelas | `a3-b1`, `a3-b3` | Cubierto |
 | 11 · La sequía | `a3-b4` | Cubierto |
 | 12 · El último | `a3-c1` | Cubierto |
 | 13 · ZOOM remate | `a3-c2`, `a3-c3`, `a3-c4` | Cubierto |
 
-**Huecos a resolver antes del animatic:** beats **8** y **9**. Ambos son zooms aprobados que hoy la cutlist comprime en un solo slot; requieren decisión de dirección sobre cuántas imágenes bajar y expansión de fichas en `planos/`.
+**Huecos resueltos (2026-07-10):** beats **8** y **9** ya no se comprimen en un solo slot. Se bajaron las fichas a `planos/` (madres `a3-m19`/`a3-m20` para el 8; `a2-m01` con refs + `a2-m03` para el 9) y se expandió la [cutlist](README.md) con stills de montaje (~1.5s c/u). Pendiente: generar las madres y correr el animatic transversal (Stage 2.5) para aprobar ritmo/orden.

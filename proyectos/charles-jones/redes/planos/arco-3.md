@@ -301,13 +301,51 @@ Prompt (EN):
 The first reference image is the master character — the YOUNG platypus: reproduce this exact silhouette style with 100% fidelity — same bill shape, same etched eye, same fur strokes, same cross-hatched paddle tail, same webbed feet, same woodcut cutout style. The second reference image is the world: layered flat paper cutout red rock formations of the Coloradas badlands — reproduce that exact flat 2D cutout landscape style, stacked silhouette layers on a tinted paper background. The third reference shows real platypus anatomy — use only to keep anatomy true, never the style. Scene: a flat paper cutout red rock ledge juts out over a deep canyon with a river far below, a large pale yellow sun hangs in the red dusk sky above; the YOUNG platypus is dying of exhaustion on that ledge — a SMALL fragile figure, its body covering only about half the ledge with bare red rock visible around it, slim body, sleek fur, sprawled flat and limp, head drooping low over the edge of the rock, limbs splayed loosely, every feature readable inside the black silhouette through fine gold etched lines like a woodcut print — never a plain solid blob: (1) wide flat duck bill clearly separated from the head by an etched line, (2) two small etched nostril dots on top of the bill near the tip, (3) one almond-shaped eye outlined in thin light etched line, half closed and fading, (4) broad flat beaver-like paddle tail with cross-hatched fur texture lying limp, (5) webbed duck-like feet with etched toe lines splayed loosely, ABSOLUTELY NO photographic textures, no real stone, no 3D relief — the entire image is flat 2D paper cutout layers only, deep red dusk tinted background of the Coloradas rock world, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
 ```
 
+### Beat 8 — La separación (quién quedó de cada lado)
+
+> Zoom-in del beat 8 de la [cadena narrativa](../reels/la-grieta/cadena-narrativa.md): el slot único `a3-a6` no leía "unos de un lado, otros del otro". Se bajan dos madres nuevas que se montan como stills (fichas `a3-a6a`/`a3-a6b` en la Sección 2) antes del `a3-a6` (la despedida). Tinte del bloque a5–a6: `dramatic deep red tinted background`.
+
+**a3-m19 — Plano ancho de la separación (8.1)**
+
+```yaml
+kind: image
+dest: assets/arco-3/madre/a3-m19-separacion-ancha.png
+ref: a3-m06
+```
+
+Nota: hereda el mundo partido de m06 (grieta roja, agua en el gap). Plano ancho a nivel de suelo: las dos orillas ya separadas, sin personajes legibles todavía (los pone m20).
+
+Prompt (EN):
+```
+The reference image is the world: the same split Pangea landscape with a red glowing fracture and water filling the gap — reproduce that exact flat 2D paper cutout landscape style, stacked silhouette layers on a tinted paper background. Wide ground-level establishing shot of the two shores now fully separated by a widening sea channel, the near shore in the foreground and the far shore across the water, layered cutout cliffs and silhouetted Pangea ferns on both edges, empty of characters, the scale of the divide readable, dramatic deep red tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+```
+
+**a3-m20 — Plano de lectura: la familia repartida (8.2)**
+
+```yaml
+kind: image
+dest: assets/arco-3/madre/a3-m20-familia-repartida.png
+ref: a3-m01
+anatomyRefs:
+  - assets/fuentes/ornitorrincos/ornitorrincos-dibujo.png
+provider: openrouter
+```
+
+Nota: multi-ref (Nano Banana, mismo patrón que m02/m03/m10). Lectura clara "unos de un lado, otros del otro": madre + cría en la orilla cercana (lado que será Argentina), padre + huevo en la orilla lejana (lado que será Australia). Distinción por contorno: madre redondeada, cría más chica, padre fornido con la muesca de la ceja. La lámina ilustrada mantiene la anatomía sin arrastrar a fotorrealismo.
+
+Prompt (EN):
+```
+The first reference image is the master character — the mother platypus: reproduce this exact platypus silhouette style with 100% fidelity — same bill shape, same etched eye, same fur strokes, same cross-hatched paddle tail, same webbed feet, same woodcut cutout style. The other reference image is an illustrated plate of several platypuses — use it only to keep the anatomy true (flat duck bill, no ears, webbed feet, beaver tail) and to vary the poses, never to change the art style. Reading shot of a family of platypuses split across a widening rift: on the near shore, an adult mother platypus with a rounded gentle contour beside a much smaller slender young platypus; across the water on the far shore, a bulkier male platypus with a distinctive notch cut into the brow outline standing next to a single platypus egg in a nest of twigs; the red glowing sea channel separating the two shores clearly in the middle of the frame, each figure readable by its silhouette contour, every feature readable inside the black silhouettes through fine gold etched lines like a woodcut print — never plain solid blobs, dramatic deep red tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+```
+
 ### Material de origen real (NO se genera)
 
 - **ornitorrincos/** — referencias de anatomía (composite panel derecho para m02/m03/m10):
   - `ornitorrincos/ornitorrinco.png` — **PRIMARIA** (perfil bajo, fondo blanco; AnatomyRef canónica)
   - `ornitorrincos/ornitorrinco_parado.png` — secundaria (pose más erguida)
-  - `ornitorrincos/ornitorrincos-dibujo.png` — lámina ilustrada de perfil (alternativa si foto arrastra a fotorrealismo)
-  - `ornitorrincos/cria-ornitorrinco.jpg`, `ornitorrincos/ornitorrinco_crias.jpeg` — madre + puggles (NO target; puggles rosados eliminados del concepto m02)
+  - `ornitorrincos/ornitorrincos-dibujo.png` — lámina ilustrada de perfil (alternativa si foto arrastra a fotorrealismo; **AnatomyRef de a3-m20**, familia repartida)
+  - `ornitorrincos/cria-ornitorrinco.jpg` — madre + puggles (NO target; puggles rosados eliminados del concepto m02)
+  - `ornitorrincos/ornitorrinco_crias.jpeg` — mano humana sosteniendo una cría; **ref de pose** de `a2-m03` (Charles levanta la cría, beat 9.3) — solo el gesto y la anatomía, la cría se dibuja como la silueta joven, no un puggle rosado
 - **charles/** — `charles-jones-referencia.jpeg`, `charles-jones-pintura.jpg`
 - **rocas-coloradas-real** — `assets/fuentes/rocas-coloradas-real.jpg` (16:9; reencuadrar a 9:16 en montaje para a3-c4)
 - **m-mano (reutilizada del Arco 1)** — imagen madre "mano con cadenita" de [biblia-visual.md](../../biblia-visual.md) §Arco 1. NO se genera nueva; se insertan 1–2 frames en montaje de `a3-a5`.
@@ -486,7 +524,31 @@ The wide aerial view of two separated landmasses softens into layered black pape
 - Audio: off documental (la línea que sobrevive) + música tenue
 - Montaje: cierra el Bloque A / abre el Bloque B; cubre el hueco de m08 (hoy sin clip). Tras el morph, corta a a3-a6 o entra directo a b1 según montaje final.
 
-**Clip a3-a6 — La separación**
+**Clip a3-a6a — Plano ancho de la separación (montaje, sin generación)**
+
+```yaml
+kind: montaje
+fuente: a3-m19
+duration: 1.5
+```
+
+duration (montaje): 1–1.5s
+- Audio: off documental (beat 8.1: dos orillas)
+- Montaje: abre el zoom del beat 8 tras el respiro `a3-a5c`; still de m19 (dos orillas ya separadas); corta a `a3-a6b`. El animatic decide si asciende a clip U2V.
+
+**Clip a3-a6b — Plano de lectura: la familia repartida (montaje, sin generación)**
+
+```yaml
+kind: montaje
+fuente: a3-m20
+duration: 1.5
+```
+
+duration (montaje): 1–1.5s
+- Audio: off documental (beat 8.2: unos de un lado, otros del otro)
+- Montaje: still de m20 (madre+cría / padre+huevo); es el plano de lectura del beat 8; corta a `a3-a6` (la despedida).
+
+**Clip a3-a6 — La separación (la despedida, beat 8.3)**
 
 ```yaml
 kind: video-i2v

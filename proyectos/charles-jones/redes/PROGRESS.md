@@ -1,7 +1,7 @@
 # Redes (Arco 3) — Build Progress
 
 _Last updated: 2026-07-10_
-_Current stage: Stage 1.5 — Cadena narrativa (aprobada) → resolver huecos beats 8/9_
+_Current stage: Stage 1.5 — Cadena narrativa (aprobada); huecos beats 8/9 resueltos en planos → generar madres nuevas + animatic (Stage 2.5)_
 _Based on roadmap: [TECH.md](TECH.md) § 5_
 
 > Session log agency-os + seguimiento detallado de producción (estados, costos, gates). Absorbe el antiguo `arco-3-roadmap.md`. No duplica prompts ni fichas: la fuente de verdad de los prompts es [arco-3-planos.md](planos/arco-3.md); el STYLE-BLOCK y los switches cuento↔real viven en [biblia-visual.md](../biblia-visual.md); la convención de IDs/archivos en [pipeline.md](../../../metodo/pipeline.md) §5.
@@ -26,6 +26,18 @@ Espejo del roadmap de [TECH.md](TECH.md) § 5. Un stage se marca `[x]` solo cuan
 ## 2. Session Log
 
 Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
+
+### 2026-07-10 — Resolución de huecos beats 8 y 9 (fichas bajadas)
+
+- **Stage in flight:** Stage 1.5 → prep de Stage 2/2.5.
+- **Done this session:**
+  - **Beat 8 (ZOOM separación)** bajado a [planos/arco-3.md](planos/arco-3.md): madres nuevas `a3-m19` (plano ancho, `ref a3-m06`) y `a3-m20` (familia repartida, multi-ref `a3-m01` + `ornitorrincos-dibujo.png` vía OpenRouter). Stills de montaje `a3-a6a`/`a3-a6b` antes de `a3-a6` (la despedida).
+  - **Beat 9 (ZOOM Charles/palanca)** bajado a [planos/arco-2.md](planos/arco-2.md): `a2-m01` gana refs (`charles/` vía OpenRouter, guarda "nunca de frente"); madre nueva `a2-m03` (manos levantan la cría, refs `charles/` + `ornitorrinco_crias.jpeg` para la pose + `a3-m02` para la silueta). Stills `a2-a0`/`a2-a0b` antes de `a2-a1` (balancín). La consecuencia (9.6) la cierra el corte a `a3-b4` + off, sin plano propio.
+  - **Cutlist** de [reels/la-grieta/README.md](reels/la-grieta/README.md) expandida a ~44s: insertados los 4 stills; recortes compensatorios `a3-a1` 3→2, `a3-a6` 3→2, `a2-a1` 4→3.
+  - **Off** de los 4 slots nuevos en [arco-3-off.md](planos/arco-3-off.md) y [arco-2-off.md](planos/arco-2-off.md); mapa beat→clip de [cadena-narrativa.md](reels/la-grieta/cadena-narrativa.md) marca 8 y 9 como cubiertos.
+- **Decisión de dirección aplicada:** los sub-beats entran como **stills de montaje** (~1.5s), no clips U2V — cero costo de video ahora; el animatic decide después si alguno asciende.
+- **Next step:** generar madres nuevas (`a3-m19`, `a3-m20`, `a2-m01`, `a2-m03`) con `npm run gen --candidates 3` (~¥1.5–2) → correr el animatic transversal (Stage 2.5).
+- **New blockers / questions raised:** ninguno; a resolver en el animatic si `a2-m03` (manos + cría en silueta) lee bien o necesita clip.
 
 ### 2026-07-10 — Gate cadena narrativa (previo a imágenes)
 
@@ -87,13 +99,12 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 
 **Gate cadena narrativa (Stage 1.5) aprobado** — [reels/la-grieta/cadena-narrativa.md](reels/la-grieta/cadena-narrativa.md) es el mapa de beats que gobierna la cutlist. Madres del Arco 3 ya listas (m02/m03/m10/m17 vía **OpenRouter / Nano Banana**, multi-ref; provider por defecto en `npm run gen`, fallback `--provider minimax`).
 
-**Siguiente = resolver los huecos que expuso el gate (beats 8 y 9) antes del animatic:**
+**Huecos de los beats 8 y 9 resueltos (2026-07-10):** fichas bajadas a planos (madres `a3-m19`/`a3-m20`, `a2-m01` con refs + `a2-m03`) y cutlist expandida con stills de montaje (~44s). Falta:
 
-1. **Beat 8 (ZOOM separación)** — bajar fichas para "plano ancho" y "plano de lectura" (unos ornitorrincos de un lado, otros del otro); hoy solo `a3-a6` lo comprime.
-2. **Beat 9 (ZOOM Charles/palanca)** — expandir [planos/arco-2.md](planos/arco-2.md): Charles de espaldas (9.1), levanta la cría (9.3), consecuencia (9.6); hoy solo el balancín (`a2-a1`).
-3. Decisión de dirección: cuántas imágenes por zoom sin inflar el reel de 30–45s; actualizar la `cutlist` del [README.md](reels/la-grieta/README.md).
+1. **Generar las madres nuevas** — `a3-m19`, `a3-m20` (Arco 3) y `a2-m01`, `a2-m03` (Arco 2) con `npm run gen --candidates 3` y aprobar con `--pick`.
+2. **Correr el animatic transversal** (Stage 2.5) — decide si algún still (`a2-m03` en especial) asciende a clip U2V.
 
-**Recién con 8 y 9 cubiertos = animatic transversal (Stage 2.5):**
+**Con 8 y 9 cubiertos = animatic transversal (Stage 2.5):**
 
 ```bash
 cd engine/wind-mcp && npm run animatic -- --reel la-grieta
@@ -139,6 +150,10 @@ cd engine/wind-mcp && npm run animatic -- --reel la-grieta
 | ~~a3-m16~~ | ~~Ornitorrinco caminando~~ | **ELIMINADA** | — | Con m10 reencuadrada no comparte encuadre; a3-c1 = U2V sobre m07 |
 | a3-m17 | Argentina seca (estado final) | aprobado | OpenRouter | Par m09→m17; pick c2; mismo encuadre más seco/oscuro ✓ |
 | a3-m18 | Joven muriendo sobre roca | aprobado (**reserva, sin uso**) | OpenRouter | Nueva: Ref m02 + mundo m07 + foto; pick c2; JOVEN muriendo en cornisa. **Huérfana**: ninguna ficha de clip la usa y contradice el off (el joven prospera en Australia, b2). No usar hasta resolver la ambigüedad narrativa (auditoría §0/§C). |
+| a3-m19 | Plano ancho de la separación | pendiente | — | Beat 8.1; `ref a3-m06` (mundo partido); still `a3-a6a` |
+| a3-m20 | Familia repartida (plano de lectura) | pendiente | — | Beat 8.2; multi-ref `a3-m01` + `ornitorrincos-dibujo.png` (OpenRouter); still `a3-a6b` |
+| a2-m01 | Charles de espaldas | pendiente | — | Beat 9.1; refs `charles/` (OpenRouter), guarda "nunca de frente"; still `a2-a0`. Vive en [planos/arco-2.md](planos/arco-2.md) |
+| a2-m03 | Manos levantan la cría | pendiente | — | Beat 9.3; refs `charles/` + `ornitorrinco_crias.jpeg` (pose) + `a3-m02` (silueta), OpenRouter; still `a2-a0b`. Vive en [planos/arco-2.md](planos/arco-2.md) |
 
 > **Switch provider (2026-07-09):** madres con Ref/AnatomyRef pasan por `openrouter` (Nano Banana) en vez de Minimax. Minimax se queda como `--provider minimax` (composite 1-slot) por si hace falta.
 
@@ -166,6 +181,10 @@ cd engine/wind-mcp && npm run animatic -- --reel la-grieta
 | a3-c3 | C | U2V | pendiente | — | |
 | a3-c3e | C | ninguna | pendiente | — | Eco 1–2s m09 (solo montaje) |
 | a3-c4 | C | ninguna | pendiente | — | Solo montaje (foto real) |
+| a3-a6a | A | ninguna | pendiente | — | Beat 8.1; still m19 (~1.5s), solo montaje |
+| a3-a6b | A | ninguna | pendiente | — | Beat 8.2; still m20 (~1.5s), solo montaje |
+| a2-a0 | A2 | ninguna | pendiente | — | Beat 9.1; still a2-m01 (~1.5s), solo montaje |
+| a2-a0b | A2 | ninguna | pendiente | — | Beat 9.3; still a2-m03 (~1.5s), solo montaje |
 
 ## Continuidad y QC (vision-audit por clip)
 
