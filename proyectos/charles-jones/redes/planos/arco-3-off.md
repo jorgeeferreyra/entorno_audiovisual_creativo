@@ -18,8 +18,11 @@
 | a3-a5 (la grieta) | "Pero bajo sus patas, la tierra ya había empezado a partirse." | Transición-gancho |
 | **a3-a5b** (caos Revenant) | *(SIN off — el caos habla solo: rumble + crujidos)* | Silencio de locución deliberado |
 | a3-a5c (respiro poético) | "Cuando todo se detuvo, donde antes hubo un mundo, ahora había dos." | La escala de lo ocurrido |
-| a3-a6a (plano ancho, montaje ~1.5s) | "Un mar nuevo abrió una herida entre las dos orillas." | Beat 8.1: dos orillas |
-| a3-a6b (familia repartida, montaje ~1.5s) | "De un lado quedaron la madre y su cría. Del otro, el padre y el huevo." | Beat 8.2: unos de un lado, otros del otro |
+| a3-a6a (grieta abriéndose, montaje ~1.5s) | "La tierra se abrió." | Beat 8.1a |
+| a3-a6b (grieta ya abierta, montaje ~1.5s) | "Un mar nuevo entró por la herida." | Beat 8.1b |
+| a3-a6c (madre+cría, montaje ~1.5s) | "De este lado quedaron la madre y su cría." | Beat 8.2a |
+| a3-a6d (padre+huevo, montaje ~1.5s) | "Del otro, el padre y el huevo." | Beat 8.2b |
+| a3-a6e (lejano los 4, montaje ~2s) | "Y la distancia, de golpe, fue irreversible." | Beat 8.2c |
 | a3-a6 (la despedida) | "Y hubo un último instante, el más largo de todos, antes de que el agua los separara para siempre." | Beat 8.3: la despedida; cierra el Bloque A |
 
 ---

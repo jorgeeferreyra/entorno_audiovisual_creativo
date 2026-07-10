@@ -1,7 +1,7 @@
 # Redes (Arco 3) — Build Progress
 
 _Last updated: 2026-07-10_
-_Current stage: Stage 2 — Cadena narrativa (aprobada); huecos beats 8/9/13 resueltos en planos → generar madres nuevas + animatic (Stage 6)_
+_Current stage: Stage 3 — Beat 8 reestructurado (m19/m21/m03 aprobados; m22–m24 candidatos); animatic borrador (Stage 6) próximo_
 _Based on roadmap: [TECH.md](TECH.md) § 5_
 
 > Session log agency-os + seguimiento detallado de producción (estados, costos, gates). Absorbe el antiguo `arco-3-roadmap.md`. No duplica prompts ni fichas: la fuente de verdad de los prompts es [arco-3-planos.md](planos/arco-3.md); el STYLE-BLOCK y los switches cuento↔real viven en [biblia-visual.md](../biblia-visual.md); la convención de IDs/archivos en [pipeline.md](../../../metodo/pipeline.md) §5.
@@ -28,6 +28,26 @@ Espejo del roadmap de [TECH.md](TECH.md) § 5. Un stage se marca `[x]` solo cuan
 ## 2. Session Log
 
 Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
+
+### 2026-07-10 — Picks m22/m23 + regen m24
+
+- **Stage in flight:** Stage 3 — cierre beat 8.
+- **Done this session:**
+  - **Picks corregidos:** `a3-m22` ← **c1** (antes c2); `a3-m23` ← **c3** (antes c2).
+  - **`a3-m24`:** ningún candidato de la tanda 1 promovido (figuras ausentes o solo un lado). Canónico borrado. Ficha reforzada: `ref a3-m21` + anatomy `m22`/`m23` (orillas aprobadas) + prompt con "exactly FOUR" siluetas.
+- **Next step:** regenerar `a3-m24 --candidates 3` y pickear; luego re-correr animatic borrador.
+- **New blockers / questions raised:** ninguno.
+
+### 2026-07-10 — Beat 8 reestructurado + picks + reserva Revenant
+
+- **Stage in flight:** Stage 3 (madres) → prep Stage 6 (animatic borrador).
+- **Done this session:**
+  - **Picks:** `a3-m19` ← c1 (grieta abriéndose); `a3-m21` ← copia de `a3-m19-c2` (grieta ya abierta); `a2-m03` ← c2 (gesto de alzar). **`a2-m01` no se tocó** (otro chat).
+  - **Beat 8 por corte:** se retira ~~`a3-m20`~~ (frame único). Nuevas madres `a3-m21`…`a3-m24` + clips montaje `a3-a6a`…`a3-a6e`. Cutlist ~52s; off y cadena narrativa actualizados.
+  - **Reserva Revenant:** ficha `a2-m06` en [planos/arco-2.md](planos/arco-2.md) (`styleBlock: false`, ref `ornitorrinco_crias.jpeg`) — **solo destacada**, no reel ni cadena de switches.
+  - Fix menor: `resolveImageRefs` acepta `anatomyRefs` sin `ref` en openrouter (necesario para primeras madres).
+- **Next step:** revisar el animatic borrador (`reels/la-grieta/animatic-la-grieta.mp4`) — afinar durs del beat 8; luego variaciones sobrevivientes → animatic final.
+- **New blockers / questions raised:** ninguno; durs del beat 8 se afinan en el borrador. `a2-m01`/`a2-m04`/`a2-m05` siguen en otro chat (slots omitidos en el borrador).
 
 ### 2026-07-10 — Animatic borrador antes de pagar variaciones (micro-optimización de orden)
 
@@ -161,23 +181,11 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 
 ### Próxima acción
 
-**Gate cadena narrativa (Stage 2) aprobado** — [reels/la-grieta/cadena-narrativa.md](reels/la-grieta/cadena-narrativa.md) es el mapa de beats que gobierna la cutlist. Madres del Arco 3 ya listas (m02/m03/m10/m17 vía **OpenRouter / Nano Banana**, multi-ref; provider por defecto en `npm run gen`, fallback `--provider minimax`).
+**Beat 8 casi cerrado:** `m19`/`m21`/`m22`(c1)/`m23`(c3) aprobados; ~~`m20`~~ RETIRADA; `a2-m03` c2; `a2-m06` reserva. **`m24` pendiente** (tanda 1 rechazada).
 
-**Huecos de los beats 8, 9 y 13 resueltos (2026-07-10):** fichas bajadas a planos (madres `a3-m19`/`a3-m20`, `a2-m01` con refs + `a2-m03`, coda `a2-m04`/`a2-m05`) y cutlist expandida con stills de montaje (~47s). Falta:
-
-1. **Generar las madres nuevas** — `a3-m19`, `a3-m20` (Arco 3) y `a2-m01`, `a2-m03`, `a2-m04`, `a2-m05` (Arco 2) con `npm run gen --candidates 3` y aprobar con `--pick`.
-2. **Correr el animatic borrador** (Stage 6, `--borrador`) — `npm run animatic -- --reel la-grieta --borrador`: las 5 variaciones aún inexistentes degradan a su madre base, así se aprueba ritmo/orden/subtítulos **sin pagarlas todavía**. Decide además si algún still (`a2-m03`, coda `a2-m04`/`a2-m05`) asciende a clip U2V.
-3. **Generar variaciones sobrevivientes** — solo las de los slots que el borrador no recortó, con `npm run gen -- --id a3-mNNvK --candidates 3` y `--pick`.
-4. **Correr el animatic final** (sin `--borrador`) — con las variaciones reales; es el gate que suma unicidad y habilita los clips.
-
-**Con 8 y 9 cubiertos = animatic transversal (Stage 6):**
-
-```bash
-cd engine/wind-mcp && npm run animatic -- --reel la-grieta
-# los slots a1-a1 / a2-a1 se omiten hasta generar sus madres (planos parciales ya bajados)
-```
-
-**Bloque A:** a3-a1…a3-a6 aprobados; a3-a4 **obsoleto** (era cría; regen U2V sobre m04 huevo). a3-a5 I2V degradado — regen FLF **diferido a S2**. **Gate Kling resuelto** (FLF real vía gateway qingyuntop) para cuando toque b4/c2.
+1. **Regenerar `a3-m24`** — `npm run gen -- --arco 3 --id a3-m24 --candidates 3` (prompt reforzado con refs m21/m22/m23).
+2. Pickear → re-correr `npm run animatic -- --reel la-grieta --borrador`.
+3. **`a2-m01`** sigue en el otro chat.
 
 ---
 
@@ -217,10 +225,15 @@ cd engine/wind-mcp && npm run animatic -- --reel la-grieta
 | ~~a3-m16~~ | ~~Ornitorrinco caminando~~ | **ELIMINADA** | Con m10 reencuadrada no comparte encuadre; a3-c1 = U2V sobre m07 |
 | a3-m17 | Argentina seca (estado final) | aprobado | Par m09→m17; pick c2; mismo encuadre más seco/oscuro ✓ |
 | a3-m18 | Joven muriendo sobre roca | aprobado (**reserva, sin uso**) | Nueva: Ref m02 + mundo m07 + foto; pick c2; JOVEN muriendo en cornisa. **Huérfana**: ninguna ficha de clip la usa y contradice el off (el joven prospera en Australia, b2). No usar hasta resolver la ambigüedad narrativa (auditoría §0/§C). |
-| a3-m19 | Plano ancho de la separación | pendiente | Beat 8.1; `ref a3-m06` (mundo partido); still `a3-a6a` |
-| a3-m20 | Familia repartida (plano de lectura) | pendiente | Beat 8.2; multi-ref `a3-m01` + `ornitorrincos-dibujo.png` (OpenRouter); still `a3-a6b` |
-| a2-m01 | Charles de espaldas | pendiente | Beat 9.1; refs `charles/` (OpenRouter), guarda "nunca de frente"; still `a2-a0`. Vive en [planos/arco-2.md](planos/arco-2.md) |
-| a2-m03 | Manos levantan la cría | pendiente | Beat 9.3; refs `charles/` + `ornitorrinco_crias.jpeg` (pose) + `a3-m02` (silueta), OpenRouter; still `a2-a0b`. Vive en [planos/arco-2.md](planos/arco-2.md) |
+| a3-m19 | Separación: grieta abriéndose | aprobado | Beat 8.1a; pick c1; still `a3-a6a` |
+| ~~a3-m20~~ | ~~Familia repartida (frame único)~~ | **RETIRADA** | Reemplazada por estrategia de 3 (`m22`/`m23`/`m24`); candidatos c1–c3 quedan como ref visual |
+| a3-m21 | Separación: grieta ya abierta | aprobado | Beat 8.1b; copia de `a3-m19-c2`; still `a3-a6b` |
+| a3-m22 | Orilla cercana: madre + cría | aprobado | Beat 8.2a; pick c1; still `a3-a6c` |
+| a3-m23 | Orilla lejana: padre + huevo | aprobado | Beat 8.2b; pick c3; still `a3-a6d` |
+| a3-m24 | Plano lejano: los 4 + grieta | pendiente | Beat 8.2c; **ningún candidato promovido** — regenerar; still `a3-a6e` |
+| a2-m01 | Charles de espaldas | pendiente | Beat 9.1; **se maneja en otro chat — no tocar**. Vive en [planos/arco-2.md](planos/arco-2.md) |
+| a2-m03 | Manos levantan la cría (cuento) | aprobado | Beat 9.3; pick c2 (gesto de alzar); still `a2-a0b` |
+| a2-m06 | Manos + cría (Revenant) | pendiente (**reserva destacada**) | `styleBlock: false`; ref `ornitorrinco_crias.jpeg`; NO entra al reel |
 | a2-m04 | El lugar blanco | pendiente | Beat 13.2; `ref a2-m01` + `charles/` (OpenRouter), fondo blanco sin tinte (cuento sin tinte), palomas ausentes; still `a2-a2`. Vive en [planos/arco-2.md](planos/arco-2.md) |
 | a2-m05 | El despertar | pendiente | Beat 13.3; `ref a2-m01` + mundo `a3-m07` (OpenRouter), tinte rojo dusk; still `a2-a2b`. Vive en [planos/arco-2.md](planos/arco-2.md) |
 | a3-m01v1 | Madre al borde de la grieta (variación) | pendiente | Stage 4; `ref a3-m01` (OpenRouter), tinte rojo; firstFrame de a3-a6 |
@@ -255,10 +268,13 @@ cd engine/wind-mcp && npm run animatic -- --reel la-grieta
 | a3-c3 | C | U2V | pendiente | |
 | a3-c3e | C | ninguna | pendiente | Eco 1–2s m09 (solo montaje) |
 | a3-c4 | C | ninguna | pendiente | Solo montaje (foto real) |
-| a3-a6a | A | ninguna | pendiente | Beat 8.1; still m19 (~1.5s), solo montaje |
-| a3-a6b | A | ninguna | pendiente | Beat 8.2; still m20 (~1.5s), solo montaje |
-| a2-a0 | A2 | ninguna | pendiente | Beat 9.1; still a2-m01 (~1.5s), solo montaje |
-| a2-a0b | A2 | ninguna | pendiente | Beat 9.3; still a2-m03 (~1.5s), solo montaje |
+| a3-a6a | A | ninguna | generado | Beat 8.1a; still m19 (~1.5s), solo montaje |
+| a3-a6b | A | ninguna | generado | Beat 8.1b; still m21 (~1.5s), solo montaje |
+| a3-a6c | A | ninguna | generado | Beat 8.2a; still m22 (~1.5s), solo montaje |
+| a3-a6d | A | ninguna | generado | Beat 8.2b; still m23 (~1.5s), solo montaje |
+| a3-a6e | A | ninguna | pendiente | Beat 8.2c; still m24 (~2s) — madre pendiente de regen |
+| a2-a0 | A2 | ninguna | pendiente | Beat 9.1; still a2-m01 (~1.5s), solo montaje — otro chat |
+| a2-a0b | A2 | ninguna | generado | Beat 9.3; still a2-m03 (~1.5s), solo montaje |
 | a2-a2 | A2 | ninguna | pendiente | Beat 13.2; still a2-m04 (~1.5s), solo montaje; entre a3-c2 y a3-c3 |
 | a2-a2b | A2 | ninguna | pendiente | Beat 13.3; still a2-m05 (~1.5s), solo montaje |
 

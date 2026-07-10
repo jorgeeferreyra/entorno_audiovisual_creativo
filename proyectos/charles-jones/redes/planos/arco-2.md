@@ -13,6 +13,7 @@ Registro del Arco 2: esperanzador, el contrapeso del Arco 1. En el reel entra co
 | Beat | Tinte (línea EN del prompt) |
 |---|---|
 | La palanca (a2-m01, a2-m02, a2-m03, a2-a1) — en el momento de la grieta | `dramatic deep red tinted background` |
+| Manos + cría Revenant (a2-m06) — **reserva destacada**, no reel | REALITY-BLOCK (fotográfico; `styleBlock: false`) |
 | El mensaje / lugar blanco (a2-m04, a2-a2) | sin tinte: `pure white paper background` (registro nuevo: *cuento sin tinte*, ni sueño ni realidad) |
 | El despertar (a2-m05, a2-a2b) | `deep red dusk tinted background` (empalma con el Bloque C del Arco 3) |
 
@@ -20,7 +21,7 @@ Registro del Arco 2: esperanzador, el contrapeso del Arco 1. En el reel entra co
 
 ## Sección 1 — Imágenes madre (generar PRIMERO)
 
-**a2-m01 — Charles de espaldas (silueta con sombrero)**
+**a2-m01 — Charles OTS: la grieta (silueta sobre el hombro)**
 
 ```yaml
 kind: image
@@ -31,11 +32,11 @@ anatomyRefs:
 provider: openrouter
 ```
 
-Nota: aspecto y vestuario canónicos en la ficha CFJ de [personajes-studio.md](../../personajes-studio.md). Regla dura: **nunca de frente** — silueta de espaldas. Las refs (Nano Banana multi-ref) solo aportan identidad/vestuario (sombrero, abrigo, barba, morral); la cara NUNCA se muestra y el estilo NO cambia (silueta recortada).
+Nota: aspecto y vestuario canónicos en la ficha CFJ de [personajes-studio.md](../../personajes-studio.md). Regla dura: **nunca de frente** — silueta de espaldas. Encuadre **over-the-shoulder** (OTS): Charles recortado en primerísimo plano (nuca, ala del sombrero, hombro) como capa oscura; la cámara mira con él el hábitat que se quiebra. No es el REALITY-BLOCK fotorrealista: sigue siendo silueta Reiniger con lenguaje de cámara Revenant. **Registro del Arco 2 (esperanzador en quiebre):** el mundo NO es un páramo apocalíptico consumado — es un **hábitat frondoso y vivo que recién se está rajando** (helechos, pastos, juncos, árboles en silueta), la grieta como herida fresca sobre lo verde, no tierra muerta. El tinte rojo carga la tensión; el contenido carga la vida. Las refs (Nano Banana multi-ref) solo aportan identidad/vestuario; la cara NUNCA se muestra y el estilo NO cambia. m04/m05 heredan identidad/vestuario de esta silueta, **no** el crop OTS.
 
 Prompt (EN):
 ```
-The reference images show an elderly bearded explorer — use them ONLY for identity and wardrobe (wide-brimmed fedora, long expedition coat, satchel, general build), NEVER show his face, NEVER change the art style. Black paper cutout silhouette of the elderly explorer seen strictly from behind, wide-brimmed fedora hat, long expedition coat and a satchel across the back, standing at the edge of a splitting Pangea landscape, face never visible, delicate cut-out inner details in the coat and hat brim, dramatic deep red tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+The reference images show an elderly bearded explorer — use them ONLY for identity and wardrobe (wide-brimmed fedora, long expedition coat, satchel, general build), NEVER show his face, NEVER change the art style. Over-the-shoulder shot from just behind the elderly explorer: his black paper cutout silhouette fills the near foreground as a large dark layer — the back of his fedora hat brim, his shoulder and part of the coat cropped at the frame edge, seen strictly from behind, face never visible. Past his shoulder and below, the camera looks over a lush thriving habitat — layered cutout ferns, tall grasses, reeds and leafy trees — that is only just beginning to tear open: a single fresh jagged rift splits through the green landscape, a few plants and roots hanging over its edges, the world still verdant and alive, NOT a barren wasteland, no bare cracked desert, no dead ground. Strong layered depth: foreground silhouette layer, mid vegetation-and-rift layers, far leafy tree-line layer, like stacked shadow-theater paper planes. Delicate cut-out inner details in the coat and hat brim, dramatic deep red tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
 ```
 
 **a2-m02 — El tronco-balancín con el huevo**
@@ -62,11 +63,30 @@ anatomyRefs:
 provider: openrouter
 ```
 
-Nota: multi-ref (Nano Banana). El gesto mínimo del beat 9.3: las manos en silueta de Charles alzan a la cría. Refs: la de Charles solo para identidad de manos/mangas (nunca la cara); `ornitorrinco_crias.jpeg` **solo para la pose** (mano humana sosteniendo una cría) — la cría se dibuja como la silueta del ornitorrinco joven (tercera ref, master), NO un puggle rosado. Silueta de espaldas por diseño: se ven manos y antebrazos, no el rostro.
+Nota: multi-ref (Nano Banana). El gesto mínimo del beat 9.3: las manos en silueta de Charles **alzan** a la cría (no entrega entre dos personas). Pick canónico: `a2-m03-c2`. Refs: Charles solo para identidad de manos/mangas (nunca la cara); `ornitorrinco_crias.jpeg` **solo para la pose**; la cría se dibuja como la silueta del joven (tercera ref, master), NO un puggle rosado. Silueta de espaldas por diseño. La versión realista vive en `a2-m06` (reserva destacada).
 
 Prompt (EN):
 ```
 The first reference shows an elderly explorer — use it ONLY for the identity of the hands and coat sleeves (aged rugged hands, worn expedition coat cuffs), NEVER show a face. The second reference shows a human hand gently cupping a small platypus baby — use it ONLY for the pose and gesture of hands lifting a small creature, NEVER for its style or its pink fleshy look. The third reference is the master character — the young platypus: reproduce this exact silhouette style with 100% fidelity — same bill shape, same etched eye, same fur strokes, same cross-hatched paddle tail, same webbed feet, same woodcut cutout style. Black paper cutout silhouette scene: two aged silhouetted hands in worn coat cuffs gently cup and lift a small young platypus silhouette just above a fallen log balanced over a rift, the explorer's body only implied at the frame edge from behind with no face visible, the young platypus readable as a small slender silhouette through fine gold etched lines like a woodcut print — never a plain solid blob, never pink, never photographic, tender minimal almost accidental gesture, dramatic deep red tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+```
+
+**a2-m06 — Manos levantan la cría (registro Revenant) — RESERVA destacada**
+
+```yaml
+kind: image
+dest: assets/arco-2/madre/a2-m06-manos-cria-revenant.png
+anatomyRefs:
+  - assets/fuentes/ornitorrincos/ornitorrinco_crias.jpeg
+  - assets/fuentes/charles/charles-jones-referencia.jpeg
+provider: openrouter
+styleBlock: false # REALITY-BLOCK: fotográfico documental, no silueta
+```
+
+Nota: **reserva para la destacada del Arco 2** — NO entra al reel transversal ni toca la cadena de switches cuento↔real. Misma acción que `a2-m03` (manos alzan la cría) en registro Revenant realista, coincidente con `ornitorrinco_crias.jpeg` (anatomía/pose de la cría real; Charles solo manos/mangas, nunca la cara). Opcional a futuro: FLF `a2-m03` (cuento) → `a2-m06` (revenant) como switch de la destacada.
+
+Prompt (EN):
+```
+The first reference shows real baby platypuses held in human hands — use it as the primary look for the young platypus: plump soft brown fur, matte dark bill, tiny claws, naturalistic proportions, NEVER a silhouette, NEVER a paper cutout. The second reference shows an elderly explorer — use it ONLY for the identity of aged rugged hands and worn expedition coat cuffs, NEVER show a face. Photorealistic documentary close-up: two weathered human hands in worn coat cuffs gently cup and lift a small living baby platypus just above a fallen log over a dark rift, natural overcast light, cold muted earth tones, gritty documentary realism inspired by The Revenant, no illustration, no silhouette, no paper texture, vertical 9:16
 ```
 
 **a2-m04 — El lugar blanco (beat 13.2)**
@@ -81,11 +101,11 @@ provider: openrouter
 styleBlock: false # Cuento sin tinte: sigue siendo silueta recortada pero sobre blanco puro, sin tinte ni sepia (no valida STYLE-BLOCK/tinte)
 ```
 
-Nota: cruce con el Ep.1 (el "lugar blanco" del sueño, biblia §4). Registro nuevo: **cuento sin tinte** — la silueta se mantiene pero el fondo es blanco puro (ni el papel tintado del cuento ni el fotorrealismo del salto a la realidad). `ref: a2-m01` hereda la silueta de Charles de espaldas con sombrero; la ref `charles/` solo aporta identidad/vestuario, nunca la cara. Guarda dura: **nunca de frente**. Las palomas **no están**: el maíz cae y no hay nada que lo coma (esa ausencia ES la imagen del episodio).
+Nota: cruce con el Ep.1 (el "lugar blanco" del sueño, biblia §4). Registro nuevo: **cuento sin tinte** — la silueta se mantiene pero el fondo es blanco puro (ni el papel tintado del cuento ni el fotorrealismo del salto a la realidad). `ref: a2-m01` hereda **identidad/vestuario** de la silueta (sombrero, abrigo, estilo woodcut), **no** el crop OTS ni la grieta; acá Charles va de cuerpo entero sentado. La ref `charles/` solo aporta identidad/vestuario, nunca la cara. Guarda dura: **nunca de frente**. Las palomas **no están**: el maíz cae y no hay nada que lo coma (esa ausencia ES la imagen del episodio).
 
 Prompt (EN):
 ```
-The first reference image is the master character — reproduce this exact Charles silhouette with 100% fidelity: same wide-brimmed fedora, same long expedition coat, same seen-strictly-from-behind pose, same woodcut cutout style. The other reference shows an elderly bearded explorer — use it ONLY for identity and wardrobe, NEVER show his face, NEVER change the art style. Black paper cutout silhouette of the elderly explorer seen strictly from behind, seated on a small low stool, one hand tossing a scatter of corn kernels that fall through the air to the ground, absolutely no pigeons, no birds, no animals anywhere in the frame — only the falling seeds and empty ground, face never visible, delicate cut-out inner details in the coat and hat brim, pure white paper background with no tint and no scenery, an emptied dreamlike void, flat 2D paper cutout, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouette with delicate cut-out inner details, dark fairy tale mood, subtle soft edges, vertical 9:16
+The first reference image is the master character — reproduce this exact Charles silhouette identity with 100% fidelity: same wide-brimmed fedora, same long expedition coat, same woodcut cutout style — inherit wardrobe and cutout style ONLY, NOT the over-the-shoulder crop or the rift landscape. The other reference shows an elderly bearded explorer — use it ONLY for identity and wardrobe, NEVER show his face, NEVER change the art style. Black paper cutout silhouette of the elderly explorer seen strictly from behind, full figure seated on a small low stool, one hand tossing a scatter of corn kernels that fall through the air to the ground, absolutely no pigeons, no birds, no animals anywhere in the frame — only the falling seeds and empty ground, face never visible, delicate cut-out inner details in the coat and hat brim, pure white paper background with no tint and no scenery, an emptied dreamlike void, flat 2D paper cutout, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouette with delicate cut-out inner details, dark fairy tale mood, subtle soft edges, vertical 9:16
 ```
 
 **a2-m05 — El despertar (beat 13.3)**
@@ -99,11 +119,11 @@ anatomyRefs:
 provider: openrouter
 ```
 
-Nota: empalma el lugar blanco de vuelta con el Bloque C del Arco 3 (el mundo rojo de las Coloradas) — el mensaje ya fue transmitido. `ref: a2-m01` mantiene la silueta de Charles de espaldas; la ref `a3-m07` aporta el mundo de recortes rojos (mismo patrón multi-ref que `a3-m10`). Gesto mínimo: alza la cabeza como quien vuelve de un sueño. Guarda dura: **nunca de frente**.
+Nota: empalma el lugar blanco de vuelta con el Bloque C del Arco 3 (el mundo rojo de las Coloradas) — el mensaje ya fue transmitido. `ref: a2-m01` hereda **identidad/vestuario** de la silueta, **no** el crop OTS ni la grieta; acá Charles va de cuerpo entero sentado. La ref `a3-m07` aporta el mundo de recortes rojos (mismo patrón multi-ref que `a3-m10`). Gesto mínimo: alza la cabeza como quien vuelve de un sueño. Guarda dura: **nunca de frente**.
 
 Prompt (EN):
 ```
-The first reference image is the master character — reproduce this exact Charles silhouette with 100% fidelity: same wide-brimmed fedora, same long expedition coat, same seen-strictly-from-behind pose, same woodcut cutout style. The second reference image is the world: layered flat paper cutout red rock formations of the Coloradas badlands — reproduce that exact flat 2D cutout landscape style, stacked silhouette layers on a tinted paper background. Black paper cutout silhouette of the elderly explorer seen strictly from behind, seated among the silhouetted red rock formations, slowly raising his head as if waking from a trance, face never visible, delicate cut-out inner details in the coat and hat brim, deep red dusk tinted background of the Coloradas rock world, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+The first reference image is the master character — reproduce this exact Charles silhouette identity with 100% fidelity: same wide-brimmed fedora, same long expedition coat, same woodcut cutout style — inherit wardrobe and cutout style ONLY, NOT the over-the-shoulder crop or the rift landscape. The second reference image is the world: layered flat paper cutout red rock formations of the Coloradas badlands — reproduce that exact flat 2D cutout landscape style, stacked silhouette layers on a tinted paper background. Black paper cutout silhouette of the elderly explorer seen strictly from behind, full figure seated among the silhouetted red rock formations, slowly raising his head as if waking from a trance, face never visible, delicate cut-out inner details in the coat and hat brim, deep red dusk tinted background of the Coloradas rock world, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
 ```
 
 ---

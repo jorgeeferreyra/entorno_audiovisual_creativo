@@ -303,9 +303,11 @@ The first reference image is the master character — the YOUNG platypus: reprod
 
 ### Beat 8 — La separación (quién quedó de cada lado)
 
-> Zoom-in del beat 8 de la [cadena narrativa](../reels/la-grieta/cadena-narrativa.md): el slot único `a3-a6` no leía "unos de un lado, otros del otro". Se bajan dos madres nuevas que se montan como stills (fichas `a3-a6a`/`a3-a6b` en la Sección 2) antes del `a3-a6` (la despedida). Tinte del bloque a5–a6: `dramatic deep red tinted background`.
+> Zoom-in del beat 8 de la [cadena narrativa](../reels/la-grieta/cadena-narrativa.md). Se cuenta por **corte** (principio del pipeline): progresión de la grieta (`m19`→`m21`) + orillas por separado (`m22`/`m23`) + plano lejano con los 4 (`m24`), antes del `a3-a6` (la despedida). Todo stills de montaje. Tinte del bloque a5–a6: `dramatic deep red tinted background`.
+>
+> ~~`a3-m20` (familia repartida en un solo frame)~~ **RETIRADA**: el frame único comprimía "unos de un lado, otros del otro"; se reemplaza por la estrategia de 3 imágenes (`m22`/`m23`/`m24`). Los candidatos `a3-m20-c1..c3` quedan como referencia visual, no como ref literal.
 
-**a3-m19 — Plano ancho de la separación (8.1)**
+**a3-m19 — Separación: la grieta abriéndose (8.1a)**
 
 ```yaml
 kind: image
@@ -313,29 +315,83 @@ dest: assets/arco-3/madre/a3-m19-separacion-ancha.png
 ref: a3-m06
 ```
 
-Nota: hereda el mundo partido de m06 (grieta roja, agua en el gap). Plano ancho a nivel de suelo: las dos orillas ya separadas, sin personajes legibles todavía (los pone m20).
+Nota: hereda el mundo partido de m06. Establishing: dos paredes de la grieta **casi tocándose** (estado temprano, abriéndose). Sin personajes. Pick canónico: `a3-m19-c1`.
 
 Prompt (EN):
 ```
-The reference image is the world: the same split Pangea landscape with a red glowing fracture and water filling the gap — reproduce that exact flat 2D paper cutout landscape style, stacked silhouette layers on a tinted paper background. Wide ground-level establishing shot of the two shores now fully separated by a widening sea channel, the near shore in the foreground and the far shore across the water, layered cutout cliffs and silhouetted Pangea ferns on both edges, empty of characters, the scale of the divide readable, dramatic deep red tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+The reference image is the world: the same split Pangea landscape with a red glowing fracture — reproduce that exact flat 2D paper cutout landscape style, stacked silhouette layers on a tinted paper background. Establishing shot of the rift just beginning to open: two jagged cutout cliff walls almost touching in the center, a narrow glowing red V-shaped gap between them, silhouetted ferns at the base, empty of characters, the scale of the tear readable, dramatic deep red tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
 ```
 
-**a3-m20 — Plano de lectura: la familia repartida (8.2)**
+**a3-m21 — Separación: la grieta ya abierta, el mar entra (8.1b)**
 
 ```yaml
 kind: image
-dest: assets/arco-3/madre/a3-m20-familia-repartida.png
+dest: assets/arco-3/madre/a3-m21-grieta-abierta.png
+ref: a3-m06
+```
+
+Nota: mismo linaje que m19 (mundo m06), estado siguiente: la grieta **ya abierta**, canal/mar entrando al fondo. Sin personajes. Canónica: copia de `a3-m19-c2` (aprobada como progresión de c1).
+
+Prompt (EN):
+```
+The reference image is the world: the same split Pangea landscape with a red glowing fracture and water filling the gap — reproduce that exact flat 2D paper cutout landscape style, stacked silhouette layers on a tinted paper background. Establishing shot of the rift now fully open: a deep canyon between two jagged cutout shores, layered water or sea channel flowing into the gap below, silhouetted ferns in the foreground, empty of characters, the irreversible divide readable, dramatic deep red tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+```
+
+**a3-m22 — Orilla cercana: madre + cría (8.2a)**
+
+```yaml
+kind: image
+dest: assets/arco-3/madre/a3-m22-madre-cria-orilla.png
 ref: a3-m01
 anatomyRefs:
+  - assets/arco-3/madre/a3-m02-ornitorrinco-joven.png
   - assets/fuentes/ornitorrincos/ornitorrincos-dibujo.png
 provider: openrouter
 ```
 
-Nota: multi-ref (Nano Banana, mismo patrón que m02/m03/m10). Lectura clara "unos de un lado, otros del otro": madre + cría en la orilla cercana (lado que será Argentina), padre + huevo en la orilla lejana (lado que será Australia). Distinción por contorno: madre redondeada, cría más chica, padre fornido con la muesca de la ceja. La lámina ilustrada mantiene la anatomía sin arrastrar a fotorrealismo.
+Nota: solo la orilla cercana (lado que será Argentina). Distinción por contorno: madre redondeada + cría más chica/esbelta (master `a3-m02`). El canal rojo queda al borde del frame (hacia la orilla lejana), no el foco.
 
 Prompt (EN):
 ```
-The first reference image is the master character — the mother platypus: reproduce this exact platypus silhouette style with 100% fidelity — same bill shape, same etched eye, same fur strokes, same cross-hatched paddle tail, same webbed feet, same woodcut cutout style. The other reference image is an illustrated plate of several platypuses — use it only to keep the anatomy true (flat duck bill, no ears, webbed feet, beaver tail) and to vary the poses, never to change the art style. Reading shot of a family of platypuses split across a widening rift: on the near shore, an adult mother platypus with a rounded gentle contour beside a much smaller slender young platypus; across the water on the far shore, a bulkier male platypus with a distinctive notch cut into the brow outline standing next to a single platypus egg in a nest of twigs; the red glowing sea channel separating the two shores clearly in the middle of the frame, each figure readable by its silhouette contour, every feature readable inside the black silhouettes through fine gold etched lines like a woodcut print — never plain solid blobs, dramatic deep red tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+The first reference image is the master character — the mother platypus: reproduce this exact silhouette style with 100% fidelity — same bill shape, same etched eye, same fur strokes, same cross-hatched paddle tail, same webbed feet, same woodcut cutout style. The second reference is the young platypus master — reproduce that exact smaller slender silhouette with 100% fidelity. The third reference is an illustrated plate — use only to keep anatomy true, never the style. Near-shore reading shot: an adult mother platypus with a rounded gentle contour standing beside a much smaller slender young platypus on a layered cutout cliff edge, both in profile looking toward a red glowing sea channel that occupies only the far edge of the frame, no other characters, every feature readable inside the black silhouettes through fine gold etched lines like a woodcut print — never plain solid blobs, dramatic deep red tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+```
+
+**a3-m23 — Orilla lejana: padre + huevo (8.2b)**
+
+```yaml
+kind: image
+dest: assets/arco-3/madre/a3-m23-padre-huevo-orilla.png
+ref: a3-m03
+anatomyRefs:
+  - assets/arco-3/madre/a3-m04-huevo.png
+  - assets/fuentes/ornitorrincos/ornitorrincos-dibujo.png
+provider: openrouter
+```
+
+Nota: solo la orilla lejana (lado que será Australia). Padre fornido con la **muesca de la ceja** canónica (master `a3-m03`) + huevo en nido (master `a3-m04`). Sin marcas espurias en el pico.
+
+Prompt (EN):
+```
+The first reference image is the master character — the father platypus: reproduce this exact bulkier silhouette with 100% fidelity — same bill shape, same distinctive notch cut into the brow outline, same etched eye, same fur strokes, same cross-hatched paddle tail, same webbed feet, same woodcut cutout style. The second reference is the platypus egg — reproduce that exact egg and nest silhouette. The third reference is an illustrated plate — use only to keep anatomy true, never the style. Far-shore reading shot: a bulkier male platypus with the brow notch standing next to a single platypus egg in a nest of twigs on a layered cutout cliff edge, looking toward a red glowing sea channel at the near edge of the frame, no other characters, every feature readable inside the black silhouettes through fine gold etched lines like a woodcut print — never plain solid blobs, no marks on the bill tip, dramatic deep red tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+```
+
+**a3-m24 — Plano lejano: los cuatro y la grieta (8.2c)**
+
+```yaml
+kind: image
+dest: assets/arco-3/madre/a3-m24-lejano-familia-grieta.png
+ref: a3-m21
+anatomyRefs:
+  - assets/arco-3/madre/a3-m22-madre-cria-orilla.png
+  - assets/arco-3/madre/a3-m23-padre-huevo-orilla.png
+provider: openrouter
+```
+
+Nota: establishing lejano — la grieta/canal al centro (mundo de `m21`), **cuatro siluetas mínimas pero legibles** en ambas orillas. Refs: `m22` (madre+cría) y `m23` (padre+huevo) solo para identidad de contorno a escala pequeña — no copiar el encuadre cercano. El mensaje es la distancia irreversible. **Tanda 1 rechazada** (c1–c3: figuras ausentes o solo en un lado); regenerar.
+
+Prompt (EN):
+```
+The first reference image is the world: the same open rift with a red glowing sea channel between two cutout shores — reproduce that exact flat 2D paper cutout landscape style and the deep canyon composition, stacked silhouette layers on a tinted paper background. The second reference shows a mother platypus beside a young platypus — use it ONLY to place two tiny matching silhouettes on the NEAR shore (left), never copy that close framing. The third reference shows a bulkier father platypus beside an egg nest — use it ONLY to place two tiny matching silhouettes on the FAR shore (right), never copy that close framing. CRITICAL: exactly FOUR tiny black platypus-family silhouettes must appear — left shore: larger adult + smaller young; right shore: bulkier adult + small egg nest — all four readable as small contour shapes against the red channel, wide distant establishing shot, figures occupy less than 10% of frame height, the irreversible divide is the subject, empty sky above, dramatic deep red tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
 ```
 
 ### Variaciones (unicidad por escena — madres variations)
@@ -437,9 +493,9 @@ The reference image is the world: the same high aerial view of two vast green la
 - **ornitorrincos/** — referencias de anatomía (composite panel derecho para m02/m03/m10):
   - `ornitorrincos/ornitorrinco.png` — **PRIMARIA** (perfil bajo, fondo blanco; AnatomyRef canónica)
   - `ornitorrincos/ornitorrinco_parado.png` — secundaria (pose más erguida)
-  - `ornitorrincos/ornitorrincos-dibujo.png` — lámina ilustrada de perfil (alternativa si foto arrastra a fotorrealismo; **AnatomyRef de a3-m20**, familia repartida)
+  - `ornitorrincos/ornitorrincos-dibujo.png` — lámina ilustrada de perfil (alternativa si foto arrastra a fotorrealismo; AnatomyRef de `a3-m22`/`a3-m23`)
   - `ornitorrincos/cria-ornitorrinco.jpg` — madre + puggles (NO target; puggles rosados eliminados del concepto m02)
-  - `ornitorrincos/ornitorrinco_crias.jpeg` — mano humana sosteniendo una cría; **ref de pose** de `a2-m03` (Charles levanta la cría, beat 9.3) — solo el gesto y la anatomía, la cría se dibuja como la silueta joven, no un puggle rosado
+  - `ornitorrincos/ornitorrinco_crias.jpeg` — mano humana sosteniendo una cría; **ref de pose** de `a2-m03` (cuento) y **ref primaria** de `a2-m06` (Revenant, reserva destacada)
 - **charles/** — `charles-jones-referencia.jpeg`, `charles-jones-pintura.jpg`
 - **rocas-coloradas-real** — `assets/fuentes/rocas-coloradas-real.jpg` (16:9; reencuadrar a 9:16 en montaje para a3-c4)
 - **m-mano (reutilizada del Arco 1)** — imagen madre "mano con cadenita" de [biblia-visual.md](../../biblia-visual.md) §Arco 1. NO se genera nueva; se insertan 1–2 frames en montaje de `a3-a5`.
@@ -618,7 +674,7 @@ The wide aerial view of two separated landmasses softens into layered black pape
 - Audio: off documental (la línea que sobrevive) + música tenue
 - Montaje: cierra el Bloque A / abre el Bloque B; cubre el hueco de m08 (hoy sin clip). Tras el morph, corta a a3-a6 o entra directo a b1 según montaje final.
 
-**Clip a3-a6a — Plano ancho de la separación (montaje, sin generación)**
+**Clip a3-a6a — Separación: la grieta abriéndose (montaje, sin generación) — 8.1a**
 
 ```yaml
 kind: montaje
@@ -627,20 +683,56 @@ duration: 1.5
 ```
 
 duration (montaje): 1–1.5s
-- Audio: off documental (beat 8.1: dos orillas)
-- Montaje: abre el zoom del beat 8 tras el respiro `a3-a5c`; still de m19 (dos orillas ya separadas); corta a `a3-a6b`. El animatic decide si asciende a clip U2V.
+- Audio: off documental (beat 8.1a: la grieta se abre)
+- Montaje: abre el zoom del beat 8 tras el respiro `a3-a5c`; still de m19 (paredes casi tocándose); corta a `a3-a6b`.
 
-**Clip a3-a6b — Plano de lectura: la familia repartida (montaje, sin generación)**
+**Clip a3-a6b — Separación: la grieta ya abierta (montaje, sin generación) — 8.1b**
 
 ```yaml
 kind: montaje
-fuente: a3-m20
+fuente: a3-m21
 duration: 1.5
 ```
 
 duration (montaje): 1–1.5s
-- Audio: off documental (beat 8.2: unos de un lado, otros del otro)
-- Montaje: still de m20 (madre+cría / padre+huevo); es el plano de lectura del beat 8; corta a `a3-a6` (la despedida).
+- Audio: off documental (beat 8.1b: el mar entra)
+- Montaje: still de m21 (canal abierto); progresión de m19; corta a `a3-a6c`.
+
+**Clip a3-a6c — Orilla cercana: madre + cría (montaje, sin generación) — 8.2a**
+
+```yaml
+kind: montaje
+fuente: a3-m22
+duration: 1.5
+```
+
+duration (montaje): 1–1.5s
+- Audio: off documental (beat 8.2a: de este lado, la madre y su cría)
+- Montaje: still de m22; corta a `a3-a6d` (la otra orilla).
+
+**Clip a3-a6d — Orilla lejana: padre + huevo (montaje, sin generación) — 8.2b**
+
+```yaml
+kind: montaje
+fuente: a3-m23
+duration: 1.5
+```
+
+duration (montaje): 1–1.5s
+- Audio: off documental (beat 8.2b: del otro, el padre y el huevo)
+- Montaje: still de m23; corta a `a3-a6e` (plano lejano).
+
+**Clip a3-a6e — Plano lejano: los cuatro y la grieta (montaje, sin generación) — 8.2c**
+
+```yaml
+kind: montaje
+fuente: a3-m24
+duration: 2
+```
+
+duration (montaje): ~2s (el lejano respira)
+- Audio: off documental (beat 8.2c: la distancia ya es irreversible)
+- Montaje: still de m24 (los 4 a lo lejos); cierra la lectura del beat 8; corta a `a3-a6` (la despedida).
 
 **Clip a3-a6 — La separación (la despedida, beat 8.3)**
 
