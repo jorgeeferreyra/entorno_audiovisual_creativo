@@ -6,7 +6,7 @@
 
 Convenciones (idénticas a [arco-3.md](arco-3.md)): prompts en inglés con el STYLE-BLOCK embebido literal; títulos/off/montaje en español; el movimiento de cámara va en `cameraPreset`.
 
-Registro del Arco 2: esperanzador, el contrapeso del Arco 1. En el reel entra como **contrapunto** durante "vidas paralelas": la palanca de Charles explica por qué la línea australiana sobrevivió. Se produce mayormente en **silueta** Lotte Reiniger. **Guarda de cara:** en registro **Revenant / photoreal** Charles nunca de frente (de espaldas, OTS, manos); en registro **Reiniger** la cara **puede verse** en perfil/tres cuartos recortado (ver [personajes-studio.md](../../personajes-studio.md)). **Excepciones Revenant (decisión de dirección):** (1) el golpe de la grieta (`a2-m07`, `styleBlock: false`) — switch cuento→real, hermano de `a3-m14`; (2) la coda del lugar blanco (`a2-m04`) en void blanco puro. El master de silueta (`a2-m01`) se conserva para `a2-m05` y el resto del hilo en cuento; el despertar selvático post-sueño es `a2-m09` (Reiniger, cara visible).
+Registro del Arco 2: esperanzador, el contrapeso del Arco 1. En el reel entra como **contrapunto** durante "vidas paralelas": la palanca de Charles explica por qué la línea australiana sobrevivió. Se produce mayormente en **silueta** Lotte Reiniger. **Guarda de cara:** en registro **Revenant / photoreal** Charles nunca de frente (de espaldas, OTS, manos); en registro **Reiniger** la cara **puede verse** en perfil/tres cuartos recortado (ver [personajes-studio.md](../../personajes-studio.md)). **Excepciones Revenant (decisión de dirección):** (1) el golpe de la grieta (`a2-m07`, `styleBlock: false`) — switch cuento→real, hermano de `a3-m14`; (2) la coda del lugar blanco (`a2-m04`) en void blanco puro. El master de silueta (`a2-m01`) sostiene el hilo en cuento; el despertar Coloradas es `a2-m05` (Reiniger, ECU de ojos); el despertar selvático post-sueño es `a2-m09` (Reiniger, cara visible).
 
 ## Guion de color (tinte de fondo por beat)
 
@@ -17,7 +17,7 @@ Registro del Arco 2: esperanzador, el contrapeso del Arco 1. En el reel entra co
 | La grieta Reiniger (a2-m08) — exploración A/B del mismo encuadre | `dramatic deep red tinted background` |
 | Manos + cría Revenant (a2-m06) — **reserva destacada**, no reel | REALITY-BLOCK (fotográfico; `styleBlock: false`) |
 | El mensaje / lugar blanco (a2-m04, a2-a2) | REALITY-BLOCK Revenant, void blanco puro (`styleBlock: false`; sin tinte de papel) |
-| El despertar Coloradas (a2-m05, a2-a2b) | `deep red dusk tinted background` (empalma con el Bloque C del Arco 3) |
+| El despertar Coloradas (a2-m05, a2-a2b) — ECU ojos | `deep red dusk tinted background` (Reiniger; empalma Bloque C) |
 | El despertar selvático (a2-m09) — post lugar blanco; mate a la salida de la carpa | `dramatic deep red dusk tinted background` (Reiniger; cara visible) |
 
 ---
@@ -35,7 +35,7 @@ anatomyRefs:
 provider: openrouter
 ```
 
-Nota: Pick canónico: `a2-m01-c1` → `a2-m01-charles-espaldas.png`. **silueta master** del arco — lock de identidad/vestuario (sombrero, abrigo, morral) que `a2-m04`/`a2-m05` heredan. Aspecto y vestuario canónicos en la ficha CFJ de [personajes-studio.md](../../personajes-studio.md). Regla dura: **nunca de frente** — silueta de cuerpo entero de espaldas. **Lotte Reiniger de verdad** (no ilustración vectorial plana): recorte de papel con filigrana fina de tijera, encaje de detalle interior, ref. *Die Abenteuer des Prinzen Achmed*. Registro esperanzador-en-quiebre: hábitat frondoso y vivo que recién empieza a rajarse (helechos, pastos, juncos, árboles en silueta), no páramo muerto. El golpe visceral de la grieta NO vive acá: es el Revenant `a2-m07`. Las refs (Nano Banana multi-ref) solo aportan identidad/vestuario; la cara NUNCA se muestra y el estilo NO cambia.
+Nota: Pick canónico: `a2-m01-c1` → `a2-m01-charles-espaldas.png`. **silueta master** del arco — lock de identidad/vestuario (sombrero, abrigo, morral) del hilo en cuento. Aspecto y vestuario canónicos en la ficha CFJ de [personajes-studio.md](../../personajes-studio.md). Regla dura: **nunca de frente** — silueta de cuerpo entero de espaldas. **Lotte Reiniger de verdad** (no ilustración vectorial plana): recorte de papel con filigrana fina de tijera, encaje de detalle interior, ref. *Die Abenteuer des Prinzen Achmed*. Registro esperanzador-en-quiebre: hábitat frondoso y vivo que recién empieza a rajarse (helechos, pastos, juncos, árboles en silueta), no páramo muerto. El golpe visceral de la grieta NO vive acá: es el Revenant `a2-m07`. El despertar Coloradas (`a2-m05`) no hereda esta silueta de cuerpo entero: es ECU de ojos Reiniger. Las refs (Nano Banana multi-ref) solo aportan identidad/vestuario; la cara NUNCA se muestra y el estilo NO cambia.
 
 Prompt (EN):
 ```
@@ -171,22 +171,22 @@ Prompt (EN):
 The reference image shows an elderly bearded explorer — use it ONLY for the identity and wardrobe of a man seen from behind (wide-brimmed fedora, long worn expedition coat, satchel), NEVER show his face. Photorealistic documentary full figure: the elderly explorer seated on a small low wooden stool, seen strictly from behind, one weathered hand tossing a scatter of corn kernels that fall through the air to the empty ground, absolutely no pigeons, no birds, no animals anywhere in the frame — only the falling seeds and bare empty ground, face never visible. Surrounded by an emptied dreamlike pure white void — featureless white space with no scenery and no walls, soft overexposed white light, sparse soft shadow under the stool, coarse film grain, handheld documentary framing, gritty realism inspired by The Revenant, no illustration, no silhouette, no paper texture, vertical 9:16
 ```
 
-**a2-m05 — El despertar (beat 13.3)**
+**a2-m05 — El despertar (ECU ojos, Reiniger) — beat 13.3**
 
 ```yaml
 kind: image
 dest: assets/arco-2/madre/a2-m05-despertar.png
-ref: a2-m01
 anatomyRefs:
+  - assets/fuentes/charles/charles-jones-pintura.jpg
   - assets/arco-3/madre/a3-m07-rocas-coloradas.png
 provider: openrouter
 ```
 
-Nota: empalma el lugar blanco de vuelta con el Bloque C del Arco 3 (el mundo rojo de las Coloradas) — el mensaje ya fue transmitido. `ref: a2-m01` mantiene la silueta de Charles de espaldas; la ref `a3-m07` aporta el mundo de recortes rojos (mismo patrón multi-ref que `a3-m10`). Gesto mínimo: alza la cabeza como quien vuelve de un sueño. Guarda dura: **nunca de frente**.
+Nota: Pick canónico: `a2-m05-c3` → `a2-m05-despertar.png`. Empalma el lugar blanco (`a2-m04`) de vuelta con el Bloque C del Arco 3 — el mensaje ya fue transmitido. **Registro Lotte Reiniger**, no Revenant. **Plano extremo de los ojos** (ECU): cara visible en filigrana de tijera (excepción Reiniger). **Ref 1** (pintura Charles): identidad de ojos, cejas, ala del sombrero, barba. **Ref 2** (`a3-m07`): mundo de recortes rojos de las Coloradas. Gesto: párpados que se abren / mirada que enfoca, como quien vuelve de un trance. Tinte rojo dusk (puente de color al Bloque C).
 
 Prompt (EN):
 ```
-The first reference image is the master character — reproduce this exact Charles silhouette with 100% fidelity: same wide-brimmed fedora, same long expedition coat, same seen-strictly-from-behind pose, same woodcut cutout style. The second reference image is the world: layered flat paper cutout red rock formations of the Coloradas badlands — reproduce that exact flat 2D cutout landscape style, stacked silhouette layers on a tinted paper background. Black paper cutout silhouette of the elderly explorer seen strictly from behind, full figure seated among the silhouetted red rock formations, slowly raising his head as if waking from a trance, face never visible, delicate cut-out inner details in the coat and hat brim, deep red dusk tinted background of the Coloradas rock world, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+The first reference painting shows an elderly bearded explorer — use it ONLY for identity of his eyes, bushy white eyebrows, weathered brow, hat brim and beard edge, translated into black paper cutout silhouette (NOT photoreal, NOT painted). The second reference image is the world: layered flat paper cutout red rock formations of the Coloradas badlands — reproduce that exact flat 2D cutout landscape style as stacked silhouette layers behind/around the face. Extreme close-up black paper cutout of ONLY the explorer's eyes and the immediate cut-out skin around them filling the vertical frame — eyelids just opening as if waking from a deep trance, gaze coming into focus, delicate lace-like hand-cut paper filigree for crow's feet, eyebrows and iris cut-outs, fedora brim cropping the top as a black paper layer, NOT a full face portrait, NOT a medium shot, NOT photoreal. Coloradas rock cutout layers faintly readable at the edges. Fine intricate cut-out inner details — NOT flat vector shapes, in the manner of Lotte Reiniger's Die Abenteuer des Prinzen Achmed. deep red dusk tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
 ```
 
 **a2-m09 — El despertar en la selva (Reiniger, cara visible) — beat 13.3 post-sueño**
@@ -236,7 +236,7 @@ anatomyRefs:
 provider: openrouter
 ```
 
-Nota: Pick canónico: `a2-m08-c3` → `a2-m08-grieta-reiniger.png`. **exploración de dirección** — mismo encuadre que `a2-m07` (OTS extremo + Charles elevado en colina + grieta/laguna como panorama lejano) traducido a silueta Lotte Reiniger. Compite A/B con `a2-m07` por el slot del golpe de la grieta (ambos aprobados; la decisión de cuál entra al reel queda abierta). No toca la herencia de m04/m05 (siguen sobre `a2-m01`). Capas de teatro de sombras: hombro/ala del sombrero como capa negra grande en primerísimo plano (filigrana Reiniger, no vector plano), Charles en lo alto de una loma como capa media, valle verde con laguna drenando en la grieta como capas chicas al fondo. Guarda dura: **nunca de frente**.
+Nota: Pick canónico: `a2-m08-c3` → `a2-m08-grieta-reiniger.png`. **exploración de dirección** — mismo encuadre que `a2-m07` (OTS extremo + Charles elevado en colina + grieta/laguna como panorama lejano) traducido a silueta Lotte Reiniger. Compite A/B con `a2-m07` por el slot del golpe de la grieta (ambos aprobados; la decisión de cuál entra al reel queda abierta). No toca `a2-m04` (Revenant lugar blanco) ni `a2-m05` (Reiniger ECU ojos + Coloradas). Capas de teatro de sombras: hombro/ala del sombrero como capa negra grande en primerísimo plano (filigrana Reiniger, no vector plano), Charles en lo alto de una loma como capa media, valle verde con laguna drenando en la grieta como capas chicas al fondo. Guarda dura: **nunca de frente**.
 
 Prompt (EN):
 ```
@@ -337,4 +337,4 @@ duration: 1.5
 
 duration (montaje): 1–1.5s
 - Audio: sin off (silencio; respira antes del salto a la realidad de `a3-c3`)
-- Montaje: still de m05 (Charles alza la cabeza en el mundo rojo de las Coloradas); el tinte rojo empalma de vuelta con el Bloque C y el despertar prepara el corte a `a3-c3` (el fósil hoy, salto a la realidad). Cierra el ZOOM 13.
+- Montaje: still de m05 (ECU de ojos Reiniger, tinte rojo dusk + Coloradas); el rojo empalma de vuelta con el Bloque C y el despertar prepara el corte a `a3-c3` (el fósil hoy, salto a la realidad). Cierra el ZOOM 13.

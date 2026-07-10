@@ -11,7 +11,8 @@
 ## Charles Francis Jones (CFJ)
 
 > **Guarda de canon — NUNCA de frente (registro fotorrealista / Revenant).** La imagen de referencia (`assets/fuentes/charles/charles-jones-referencia.jpeg`) lo muestra de frente y se usa SOLO para identidad y vestuario. En planos **Revenant / photoreal** la cara no se muestra: de espaldas, OTS, o por manos/sombrero/objetos.
-> **Excepción (registro Lotte Reiniger):** en silueta recortada la cara **puede verse** — perfil o tres cuartos en papel negro con rasgos en filigrana de tijera (barba, ala del sombrero, nariz). La pintura (`assets/fuentes/charles/charles-jones-pintura.jpg`) aporta identidad de rasgos/vestuario sin romper el teatro de sombras.
+> **Excepciones Revenant (decisión de dirección, Arco 2):** `a2-m04` (lugar blanco), `a2-m07` (grieta).
+> **Excepción (registro Lotte Reiniger):** en silueta recortada la cara **puede verse** — perfil o tres cuartos en papel negro con rasgos en filigrana de tijera (barba, ala del sombrero, nariz); incluye `a2-m05` (ECU de ojos al despertar). La pintura (`assets/fuentes/charles/charles-jones-pintura.jpg`) aporta identidad de rasgos/vestuario sin romper el teatro de sombras.
 > Fuente del aspecto: `prompt_charles_jones.txt` (raíz de la serie, junto a este archivo). Se toma solo el aspecto físico y el vestuario; el framing de ese prompt (fotorrealista 8K, atmósfera tipo The Revenant) **NO se adopta** para el registro cuento: el default del proyecto es teatro de sombras / silueta recortada ([biblia-visual.md](biblia-visual.md) §1).
 
 ```
