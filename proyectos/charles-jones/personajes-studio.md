@@ -10,8 +10,9 @@
 
 ## Charles Francis Jones (CFJ)
 
-> **Guarda de canon — NUNCA de frente.** La imagen de referencia (`assets/fuentes/charles-jones-referencia.jpeg`) lo muestra de frente y se usa SOLO para identidad y vestuario. Todo plano generado va de espaldas, en silueta, o por manos/sombrero/objetos.
-> Fuente del aspecto: `prompt_charles_jones.txt` (raíz de la serie, junto a este archivo). Se toma solo el aspecto físico y el vestuario; el framing de ese prompt (fotorrealista 8K, atmósfera tipo The Revenant) **NO se adopta**: el registro del proyecto es teatro de sombras / silueta recortada ([biblia-visual.md](biblia-visual.md) §1), donde la regla "nunca de frente" se cumple por diseño.
+> **Guarda de canon — NUNCA de frente (registro fotorrealista / Revenant).** La imagen de referencia (`assets/fuentes/charles/charles-jones-referencia.jpeg`) lo muestra de frente y se usa SOLO para identidad y vestuario. En planos **Revenant / photoreal** la cara no se muestra: de espaldas, OTS, o por manos/sombrero/objetos.
+> **Excepción (registro Lotte Reiniger):** en silueta recortada la cara **puede verse** — perfil o tres cuartos en papel negro con rasgos en filigrana de tijera (barba, ala del sombrero, nariz). La pintura (`assets/fuentes/charles/charles-jones-pintura.jpg`) aporta identidad de rasgos/vestuario sin romper el teatro de sombras.
+> Fuente del aspecto: `prompt_charles_jones.txt` (raíz de la serie, junto a este archivo). Se toma solo el aspecto físico y el vestuario; el framing de ese prompt (fotorrealista 8K, atmósfera tipo The Revenant) **NO se adopta** para el registro cuento: el default del proyecto es teatro de sombras / silueta recortada ([biblia-visual.md](biblia-visual.md) §1).
 
 ```
 - name: Charles Francis Jones

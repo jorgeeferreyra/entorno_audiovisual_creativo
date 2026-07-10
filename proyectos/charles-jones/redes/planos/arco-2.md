@@ -6,18 +6,19 @@
 
 Convenciones (idénticas a [arco-3.md](arco-3.md)): prompts en inglés con el STYLE-BLOCK embebido literal; títulos/off/montaje en español; el movimiento de cámara va en `cameraPreset`.
 
-Registro del Arco 2: esperanzador, el contrapeso del Arco 1. En el reel entra como **contrapunto** durante "vidas paralelas": la palanca de Charles explica por qué la línea australiana sobrevivió. Se produce mayormente en **silueta** (Charles de espaldas): cumple "CFJ nunca de frente" por diseño y esquiva la guarda anti-manos. **Excepción (decisión de dirección):** el golpe de la grieta asciende a un quiebre fotorrealista **Revenant** OTS (`a2-m07`, `styleBlock: false`) — switch cuento→real, hermano de `a3-m14` pero con Charles presente; de espaldas + el caos como escudo mantienen las guardas de cara/manos. El master de silueta (`a2-m01`) se conserva aparte para que `a2-m04`/`a2-m05` sigan heredando identidad/vestuario.
+Registro del Arco 2: esperanzador, el contrapeso del Arco 1. En el reel entra como **contrapunto** durante "vidas paralelas": la palanca de Charles explica por qué la línea australiana sobrevivió. Se produce mayormente en **silueta** Lotte Reiniger. **Guarda de cara:** en registro **Revenant / photoreal** Charles nunca de frente (de espaldas, OTS, manos); en registro **Reiniger** la cara **puede verse** en perfil/tres cuartos recortado (ver [personajes-studio.md](../../personajes-studio.md)). **Excepciones Revenant (decisión de dirección):** (1) el golpe de la grieta (`a2-m07`, `styleBlock: false`) — switch cuento→real, hermano de `a3-m14`; (2) la coda del lugar blanco (`a2-m04`) en void blanco puro. El master de silueta (`a2-m01`) se conserva para `a2-m05` y el resto del hilo en cuento; el despertar selvático post-sueño es `a2-m09` (Reiniger, cara visible).
 
 ## Guion de color (tinte de fondo por beat)
 
 | Beat | Tinte (línea EN del prompt) |
 |---|---|
-| La palanca (a2-m01, a2-m02, a2-m02a, a2-m03, a2-a1) — en el momento de la grieta | `dramatic deep red tinted background` |
+| La palanca (a2-m01, a2-m02, a2-m02a, a2-m02b, a2-m02c, a2-m03, a2-a1, a2-a1c, a2-a1b, a2-a0b) — en el momento de la grieta | `dramatic deep red tinted background` |
 | La grieta Revenant (a2-m07) — golpe del quiebre en el reel (A/B vs m08) | REALITY-BLOCK Revenant, `deep blood-red overcast dusk light` (`styleBlock: false`; desvío rojo del bloque canónico) |
 | La grieta Reiniger (a2-m08) — exploración A/B del mismo encuadre | `dramatic deep red tinted background` |
 | Manos + cría Revenant (a2-m06) — **reserva destacada**, no reel | REALITY-BLOCK (fotográfico; `styleBlock: false`) |
-| El mensaje / lugar blanco (a2-m04, a2-a2) | sin tinte: `pure white paper background` (registro nuevo: *cuento sin tinte*, ni sueño ni realidad) |
-| El despertar (a2-m05, a2-a2b) | `deep red dusk tinted background` (empalma con el Bloque C del Arco 3) |
+| El mensaje / lugar blanco (a2-m04, a2-a2) | REALITY-BLOCK Revenant, void blanco puro (`styleBlock: false`; sin tinte de papel) |
+| El despertar Coloradas (a2-m05, a2-a2b) | `deep red dusk tinted background` (empalma con el Bloque C del Arco 3) |
+| El despertar selvático (a2-m09) — post lugar blanco | `dramatic deep red dusk tinted background` (Reiniger; cara visible) |
 
 ---
 
@@ -41,39 +42,74 @@ Prompt (EN):
 The reference images show an elderly bearded explorer — use them ONLY for identity and wardrobe (wide-brimmed fedora, long expedition coat, satchel, general build), NEVER show his face, NEVER change the art style. Black paper cutout silhouette of the elderly explorer seen strictly from behind, full standing figure, at the edge of a lush thriving habitat — silhouetted ferns, tall grasses, reeds and leafy trees — where a single fresh rift is only just beginning to split the green ground, the world still verdant and alive, NOT a barren wasteland, no dead cracked desert. Fine intricate lace-like hand-cut paper detail in the coat, hat brim and foliage — delicate filigree cut-outs, NOT flat vector shapes, in the manner of Lotte Reiniger's Die Abenteuer des Prinzen Achmed, flat 2D layered paper theater. dramatic deep red tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
 ```
 
-**a2-m02 — El tronco-balancín con el huevo (keyframe inicial, beat 9.4)**
+**a2-m02 — La pisada (beat 9.4) — un sujeto**
 
 ```yaml
 kind: image
-dest: assets/arco-2/madre/a2-m02-tronco-balancin.png
+dest: assets/arco-2/madre/a2-m02-pisada.png
 ref: a2-m03
 anatomyRefs:
-  - assets/arco-3/madre/a3-m04-huevo.png
   - assets/fuentes/charles/charles-jones-referencia.jpeg
 provider: openrouter
 ```
 
-Nota: **keyframe inicial** del par FLF de la palanca (`a2-m02` → `a2-m02a`, clip `a2-a1`). **Plano inteligente:** sinécdoque del descuido — solo la **pierna de Charles de la rodilla para abajo** entrando por el borde (mid-stride sobre el extremo del tronco); **nido vacío**; el **huevo girando/rodando** en pleno viaje sobre el tronco; la **grieta viniendo a lo lejos** (rompimiento que avanza hacia la escena, no abismo ya abierto bajo el tronco). Nano Banana: `ref: a2-m03` (mundo rojo + estilo); `a3-m04` = master huevo/nido; foto Charles = identidad de bota/pantalón (nunca la cara, nunca figura entera). El par se aprueba junto en el gate de madres keyframes antes de generar `a2-m02a` ni el clip.
+Nota: **un sujeto por plano** (pipeline §1: cruces por corte). Solo la **bota de Charles de la rodilla para abajo** apoyando sobre el extremo de un tronco — sinécdoque del descuido ("Charles pasa"). Sin nido, sin huevo, sin grieta. Still de montaje (`a2-a1`, ~1.5s). Nano Banana: `ref: a2-m03` (mundo rojo + estilo); foto Charles = identidad de bota/pantalón (nunca cara, nunca figura entera). La causalidad se monta por corte: `a2-a1` → `a2-a1c` (nido) → `a2-a1b` (huevo).
 
 Prompt (EN):
 ```
-The first reference is the approved prior beat — inherit ONLY its world and style: dramatic deep red tinted paper, torn-paper rift mood, silhouetted ferns, woodcut cutout look; do NOT copy the cupped hands or the young platypus. The second reference is the platypus egg master — reproduce that exact egg silhouette with 100% fidelity (use the nest shape only as the empty nest left behind). The third reference shows an elderly explorer — use it ONLY for the identity of a worn expedition boot and trouser leg below the knee, NEVER show a face, NEVER show a full body. Intelligent close composition, NOT a literal diagram: a fallen log balanced like a seesaw across two landmasses; on the near end an EMPTY nest of twigs (no egg inside); a single platypus egg mid-roll spinning along the log toward the far end — frozen in motion, already out of the nest; from the frame edge, ONLY the explorer's leg from the knee down (boot + lower trouser) mid-stride lightly pressing the opposite end of the log as an accidental walking step — human scale, synecdoche of carelessness, NEVER a full figure, NEVER anything above the knee, NEVER a giant centered boot, NEVER a hovering foot, NEVER a deliberate stomp. In the far background a fresh narrow red rift is approaching toward the scene — the break coming closer, NOT yet a wide open chasm under the log. Nobody else in frame. Dramatic deep red tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+The first reference is the approved prior beat — inherit ONLY its world and style: dramatic deep red tinted paper, torn-paper mood, silhouetted ferns, woodcut cutout look; do NOT copy the cupped hands or the young platypus. The second reference shows an elderly explorer — use it ONLY for the identity of a worn expedition boot and trouser leg below the knee, NEVER show a face, NEVER show a full body. Single-subject black paper cutout silhouette: ONLY the explorer's leg from the knee down (boot + lower trouser) entering from the frame edge, mid-stride, lightly pressing one end of a fallen log — human scale, accidental walking step, synecdoche of carelessness. NOTHING else in the frame: NO nest, NO egg, NO rift, NO full figure, NOTHING above the knee, NEVER a giant centered boot, NEVER a hovering foot, NEVER a deliberate stomp. Dramatic deep red tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
 ```
 
-**a2-m02a — El huevo cruza (keyframe final, beat 9.4) — diferido a keyframes**
+**a2-m02a — El huevo de este lado (keyframe inicial FLF, beat 9.4) — diferido a keyframes**
 
 ```yaml
 kind: image
-dest: assets/arco-2/madre/a2-m02a-huevo-cruza.png
+dest: assets/arco-2/madre/a2-m02a-huevo-este-lado.png
 ref: a2-m02
+anatomyRefs:
+  - assets/arco-3/madre/a3-m04-huevo.png
 provider: openrouter
 ```
 
-Nota: **keyframe final** del par FLF con `a2-m02` — mismo encuadre exacto, solo cambia el estado. La pierna ya salió de cuadro (o apenas al borde); tronco basculado; huevo llegado **al otro lado**; la grieta ya llegó/abierta entre ambas orillas. `ref: a2-m02` hereda composición/estilo. **Solo ficha por ahora** — se genera en el gate de madres keyframes, no en esta pasada.
+Nota: **un sujeto** — el huevo sobre el tronco, aún de este lado. Keyframe inicial del par FLF `a2-m02a` → `a2-m02b` (clip `a2-a1b`). Sin bota, sin nido, sin grieta. `ref: a2-m02` hereda mundo/tronco; `a3-m04` = master del huevo. Se genera tras promover `a2-m02`; `a2-m02b` espera al canónico de esta ficha.
 
 Prompt (EN):
 ```
-The first reference image is the master frame — reproduce this exact composition with 100% fidelity: same camera angle, same fallen log, same empty nest on the near end, same deep red tinted background, same silhouette style, same knee-down-only framing language. Only the state changes: the explorer's leg from the knee down has stepped off and left the frame (or is just exiting at the edge); the log is tipped like a seesaw; the platypus egg has finished rolling and rests on the far landmass; the approaching rift has arrived — a glowing red gap now open between the two shores under the tipped log. No full body, no face, no giant boot. Dramatic deep red tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+The first reference is the approved prior beat — inherit ONLY its world and style and the fallen log: dramatic deep red tinted paper, woodcut cutout look; do NOT copy the boot or leg. The second reference is the platypus egg master — reproduce that exact egg silhouette with 100% fidelity. Single-subject black paper cutout silhouette: a fallen log across the frame, a single platypus egg resting on the near end of the log — still, not yet rolling. NOTHING else: NO nest, NO boot, NO leg, NO rift, NO other characters. Dramatic deep red tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+```
+
+**a2-m02b — El huevo del otro lado (keyframe final FLF, beat 9.4) — diferido a keyframes**
+
+```yaml
+kind: image
+dest: assets/arco-2/madre/a2-m02b-huevo-otro-lado.png
+ref: a2-m02a
+provider: openrouter
+```
+
+Nota: **keyframe final** del par FLF con `a2-m02a` — mismo encuadre exacto, solo cambia el estado: tronco basculado, huevo llegado al otro lado. Sin bota, sin nido, sin grieta. **Solo ficha** — se genera en el gate de madres keyframes.
+
+Prompt (EN):
+```
+The first reference image is the master frame — reproduce this exact composition with 100% fidelity: same camera angle, same fallen log, same deep red tinted background, same silhouette style. Only the state changes: the log is tipped like a seesaw; the platypus egg has rolled to the far end and rests on the other side. NOTHING else enters the frame: NO nest, NO boot, NO leg, NO rift. Dramatic deep red tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+```
+
+**a2-m02c — El nido vacío (beat 9.4) — un sujeto**
+
+```yaml
+kind: image
+dest: assets/arco-2/madre/a2-m02c-nido-vacio.png
+ref: a2-m02
+anatomyRefs:
+  - assets/arco-3/madre/a3-m04-huevo.png
+provider: openrouter
+```
+
+Nota: **un sujeto** — solo el nido vacío sobre el tronco (eco: él se llevó a la cría; el huevo queda aparte). Still de montaje (`a2-a1c`, ~1.5s) entre la pisada y el FLF del huevo. `a3-m04` aporta la forma del nido (sin el huevo). Se genera tras promover `a2-m02`.
+
+Prompt (EN):
+```
+The first reference is the approved prior beat — inherit ONLY its world and style and the fallen log: dramatic deep red tinted paper, woodcut cutout look; do NOT copy the boot or leg. The second reference is the platypus egg-and-nest master — use it ONLY for the nest-of-twigs silhouette, NEVER include the egg. Single-subject black paper cutout silhouette: a fallen log across the frame, an EMPTY nest of twigs on the near end — no egg inside. NOTHING else: NO egg, NO boot, NO leg, NO rift, NO other characters. Dramatic deep red tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
 ```
 
 **a2-m03 — Las manos de Charles levantan a la cría (beat 9.2–9.3)**
@@ -89,7 +125,7 @@ anatomyRefs:
 provider: openrouter
 ```
 
-Nota: multi-ref (Nano Banana). Beat 9.3: gesto de ternura — Charles se agacha y alza a una **cría perdida** en el rompimiento que ya viene del beat 8. **Ref 1** (`_pre-gate/a2-m03-gesto-c1`): composición aprobada de manos + cría (fidelidad alta). **Ref 2** (`a3-m19`): mundo — grieta **temprana** (paredes casi tocándose), helechos, tinte rojo. **Ref 3** (`a3-m02`): master de la cría. **Ref 4** (foto Charles): solo identidad de manos/mangas, nunca la cara. El fondo es el hábitat que se raja (rompimiento emergiendo); **no** el tronco-balancín ni el huevo (eso es `a2-m02`/`a2-m02a`). Continuidad con la palanca por montaje (`a2-a0b` → `a2-a1`). La versión realista vive en `a2-m06` (reserva destacada).
+Nota: multi-ref (Nano Banana). Beat 9.3: gesto de ternura — Charles se agacha y alza a una **cría perdida** en el rompimiento que ya viene del beat 8. **Ref 1** (`_pre-gate/a2-m03-gesto-c1`): composición aprobada de manos + cría (fidelidad alta). **Ref 2** (`a3-m19`): mundo — grieta **temprana** (paredes casi tocándose), helechos, tinte rojo. **Ref 3** (`a3-m02`): master de la cría. **Ref 4** (foto Charles): solo identidad de manos/mangas, nunca la cara. El fondo es el hábitat que se raja (rompimiento emergiendo); **no** el tronco-balancín ni el huevo (eso es el beat 9.4 por montaje). Cierre del zoom 9 por montaje: `a2-a0` → `a2-a1` → `a2-a1c` → `a2-a1b` → `a2-a0b` (alzada al final). La versión realista vive en `a2-m06` (reserva destacada).
 
 Prompt (EN):
 ```
@@ -115,23 +151,22 @@ Prompt (EN):
 The first reference shows real baby platypuses held in human hands — use it as the primary look for the young platypus: plump soft brown fur, matte dark bill, tiny claws, naturalistic proportions, NEVER a silhouette, NEVER a paper cutout. The second reference shows an elderly explorer — use it ONLY for the identity of aged rugged hands and worn expedition coat cuffs, NEVER show a face. Photorealistic documentary close-up: two weathered human hands in worn coat cuffs gently cup and lift a small living baby platypus just above a fallen log over a dark rift, natural overcast light, cold muted earth tones, gritty documentary realism inspired by The Revenant, no illustration, no silhouette, no paper texture, vertical 9:16
 ```
 
-**a2-m04 — El lugar blanco (beat 13.2)**
+**a2-m04 — El lugar blanco (beat 13.2, Revenant)**
 
 ```yaml
 kind: image
 dest: assets/arco-2/madre/a2-m04-lugar-blanco.png
-ref: a2-m01
 anatomyRefs:
   - assets/fuentes/charles/charles-jones-referencia.jpeg
 provider: openrouter
-styleBlock: false # Cuento sin tinte: sigue siendo silueta recortada pero sobre blanco puro, sin tinte ni sepia (no valida STYLE-BLOCK/tinte)
+styleBlock: false # REALITY-BLOCK Revenant: fotográfico en void blanco (no silueta)
 ```
 
-Nota: cruce con el Ep.1 (el "lugar blanco" del sueño, biblia §4). Registro nuevo: **cuento sin tinte** — la silueta se mantiene pero el fondo es blanco puro (ni el papel tintado del cuento ni el fotorrealismo del salto a la realidad). `ref: a2-m01` hereda la silueta de Charles de espaldas con sombrero; la ref `charles/` solo aporta identidad/vestuario, nunca la cara. Guarda dura: **nunca de frente**. Las palomas **no están**: el maíz cae y no hay nada que lo coma (esa ausencia ES la imagen del episodio).
+Nota: cruce con el Ep.1 (el "lugar blanco" del sueño, biblia §4). Pick canónico: `a2-m04-revenant-c2` → `a2-m04-lugar-blanco.png`. Segunda aprobada: `a2-m04-revenant-c3` → `a2-m04-lugar-blanco-c3.png` (mismo patrón dual que `a2-m07`). Registro **Revenant** en void blanco puro (ni cuento tintado ni salto a las Coloradas). Solo ref foto `charles/` para vestuario; guarda dura: **nunca de frente**. Las palomas **no están**: el maíz cae y no hay nada que lo coma (esa ausencia ES la imagen del episodio). Los candidatos de silueta (`a2-m04-c1..c3`) quedan como exploración descartada del registro anterior (*cuento sin tinte*).
 
 Prompt (EN):
 ```
-The first reference image is the master character — reproduce this exact Charles silhouette with 100% fidelity: same wide-brimmed fedora, same long expedition coat, same seen-strictly-from-behind pose, same woodcut cutout style. The other reference shows an elderly bearded explorer — use it ONLY for identity and wardrobe, NEVER show his face, NEVER change the art style. Black paper cutout silhouette of the elderly explorer seen strictly from behind, full figure seated on a small low stool, one hand tossing a scatter of corn kernels that fall through the air to the ground, absolutely no pigeons, no birds, no animals anywhere in the frame — only the falling seeds and empty ground, face never visible, delicate cut-out inner details in the coat and hat brim, pure white paper background with no tint and no scenery, an emptied dreamlike void, flat 2D paper cutout, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouette with delicate cut-out inner details, dark fairy tale mood, subtle soft edges, vertical 9:16
+The reference image shows an elderly bearded explorer — use it ONLY for the identity and wardrobe of a man seen from behind (wide-brimmed fedora, long worn expedition coat, satchel), NEVER show his face. Photorealistic documentary full figure: the elderly explorer seated on a small low wooden stool, seen strictly from behind, one weathered hand tossing a scatter of corn kernels that fall through the air to the empty ground, absolutely no pigeons, no birds, no animals anywhere in the frame — only the falling seeds and bare empty ground, face never visible. Surrounded by an emptied dreamlike pure white void — featureless white space with no scenery and no walls, soft overexposed white light, sparse soft shadow under the stool, coarse film grain, handheld documentary framing, gritty realism inspired by The Revenant, no illustration, no silhouette, no paper texture, vertical 9:16
 ```
 
 **a2-m05 — El despertar (beat 13.3)**
@@ -150,6 +185,23 @@ Nota: empalma el lugar blanco de vuelta con el Bloque C del Arco 3 (el mundo roj
 Prompt (EN):
 ```
 The first reference image is the master character — reproduce this exact Charles silhouette with 100% fidelity: same wide-brimmed fedora, same long expedition coat, same seen-strictly-from-behind pose, same woodcut cutout style. The second reference image is the world: layered flat paper cutout red rock formations of the Coloradas badlands — reproduce that exact flat 2D cutout landscape style, stacked silhouette layers on a tinted paper background. Black paper cutout silhouette of the elderly explorer seen strictly from behind, full figure seated among the silhouetted red rock formations, slowly raising his head as if waking from a trance, face never visible, delicate cut-out inner details in the coat and hat brim, deep red dusk tinted background of the Coloradas rock world, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+```
+
+**a2-m09 — El despertar en la selva (Reiniger, cara visible) — beat 13.3 post-sueño**
+
+```yaml
+kind: image
+dest: assets/arco-2/madre/a2-m09-despertar-selva.png
+anatomyRefs:
+  - assets/fuentes/charles/charles-jones-pintura.jpg
+provider: openrouter
+```
+
+Nota: viene **después** de `a2-m04` (lugar blanco Revenant) — Charles despierta del sueño en la selva. Madre **nueva** aparte de `a2-m05` (despertar Coloradas, que se conserva). Registro **Lotte Reiniger** con **cara visible** en perfil/tres cuartos recortado (excepción anotada en [personajes-studio.md](../../personajes-studio.md)): barba, ala del sombrero, rasgos en filigrana de tijera. Ref única: la pintura de Charles (identidad de rasgos/vestuario); sin `ref` de madre (`a2-m01` aún no está en disco). Ambiente selvático frondoso (helechos, lianas, árboles en capas de teatro de sombras). Gesto: alza la cabeza como quien vuelve de un sueño. Tinte rojo dusk para empalmar con el Bloque C del Arco 3.
+
+Prompt (EN):
+```
+The reference painting shows an elderly bearded explorer — use it for identity of face, beard, wide-brimmed fedora and expedition coat, translated into black paper cutout silhouette (NOT photoreal, NOT painted). Black paper cutout silhouette of the elderly explorer seated in a lush jungle, full figure in three-quarter profile so his cut-out face IS visible — long white beard silhouette, hat brim, nose and brow as delicate lace-like hand-cut paper filigree, slowly raising his head as if waking from a dream. Layered shadow-theater jungle around him: silhouetted ferns, hanging vines, leafy trees and reeds as stacked flat paper cutout layers, thriving verdant habitat. Fine intricate cut-out inner details in the coat, hat and foliage — NOT flat vector shapes, in the manner of Lotte Reiniger's Die Abenteuer des Prinzen Achmed. dramatic deep red dusk tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
 ```
 
 **a2-m07 — La grieta (Revenant photoreal, OTS extremo + colina lejana)**
@@ -202,9 +254,53 @@ duration: 1.5
 
 duration (montaje): 1–1.5s
 - Audio: off documental (beat 9.1: aparece Charles, no puede frenar la grieta)
-- Montaje: abre el zoom del beat 9 en el reel (durante "vidas paralelas"); still de m01 (silueta de espaldas); corta a `a2-a0b`. El animatic decide si asciende a clip U2V.
+- Montaje: abre el zoom del beat 9 en el reel (durante "vidas paralelas"); still de m01 (silueta de espaldas); corta a `a2-a1` (Charles pasa). El animatic decide si asciende a clip U2V.
 
-**Clip a2-a0b — Las manos levantan a la cría (montaje, sin generación)**
+**Clip a2-a1 — La pisada / Charles pasa (montaje, sin generación) — beat 9.4**
+
+```yaml
+kind: montaje
+fuente: a2-m02
+duration: 1.5
+```
+
+duration (montaje): 1–1.5s
+- Audio: *(silencio)* — respira; el off de la palanca vive en `a2-a1b`
+- Montaje: still de m02 (solo la bota sobre el tronco); corta a `a2-a1c` (nido vacío).
+
+**Clip a2-a1c — El nido vacío (montaje, sin generación) — beat 9.4**
+
+```yaml
+kind: montaje
+fuente: a2-m02c
+duration: 1.5
+```
+
+duration (montaje): 1–1.5s
+- Audio: *(silencio)* — respiro entre la pisada y el FLF
+- Montaje: still de m02c (solo el nido vacío sobre el tronco); corta a `a2-a1b` (el huevo cruza).
+
+**Clip a2-a1b — El huevo cruza (beat 9.4)**
+
+```yaml
+kind: video-flf
+firstFrame: a2-m02a
+lastFrame: a2-m02b
+cameraPreset: locked-tripod
+duration: 5
+```
+
+cameraPreset locked-tripod: el mundo de recortes es plano; el movimiento lo pone el balancín, no la cámara. FLF no acepta 6s. El par `a2-m02a`/`a2-m02b` se aprueba junto en el gate de madres keyframes (pipeline §2 paso 4) antes de pagar este clip.
+
+Motion prompt (EN):
+```
+The fallen log tips like a seesaw, the platypus egg rolls slowly from the near end to the far end and crosses to the other side, hinged paper puppet movement, flat 2D silhouette animation, dramatic deep red tinted background.
+```
+- Vision-Audit (EN): sceneDescription: `a fallen log with a platypus egg on the near end, deep red tinted background` · action: `the log tips, the egg rolls across to the far side` · mood: `tender, accidental, hopeful`
+- Audio: off documental (la palanca) + música tenue — ver [arco-2-off.md](arco-2-off.md)
+- Montaje: tras el nido vacío; corta a `a2-a0b` (alzada de la cría, cierre del zoom). Orden del beat 9: `a2-a0` → `a2-a1` → `a2-a1c` → `a2-a1b` → `a2-a0b`, entre `a3-b3` y `a3-b4`. La consecuencia (beat 9.6) no tiene plano propio — la resuelve el corte a `a3-b4` (Argentina seca) + off.
+
+**Clip a2-a0b — Las manos levantan a la cría (montaje, sin generación) — cierre del zoom 9**
 
 ```yaml
 kind: montaje
@@ -213,28 +309,8 @@ duration: 1.5
 ```
 
 duration (montaje): 1–1.5s
-- Audio: off documental (beat 9.3: un gesto de ternura, casi accidental)
-- Montaje: still de m03 (manos alzando la cría); corta a `a2-a1` (el balancín).
-
-**Clip a2-a1 — La palanca: la pisada (beat 9.4)**
-
-```yaml
-kind: video-flf
-firstFrame: a2-m02
-lastFrame: a2-m02a
-cameraPreset: locked-tripod
-duration: 5
-```
-
-cameraPreset locked-tripod: el mundo de recortes es plano; el movimiento lo pone el balancín, no la cámara. FLF no acepta 6s. El par `a2-m02`/`a2-m02a` se aprueba junto en el gate de madres keyframes (pipeline §2 paso 4) antes de pagar este clip.
-
-Motion prompt (EN):
-```
-A knee-down boot mid-stride presses the far end of the log then exits the frame, the log tips like a seesaw, the platypus egg finishes rolling across to the far landmass while the distant red rift advances and opens under the log, hinged paper puppet movement, flat 2D silhouette animation, dramatic deep red tinted background.
-```
-- Vision-Audit (EN): sceneDescription: `fallen log with empty nest, egg mid-roll, knee-down boot on the far end, distant approaching red rift` · action: `the walking step tips the log, the egg finishes crossing, the rift arrives and opens, the leg exits frame` · mood: `tender, accidental, hopeful`
-- Audio: off documental (la palanca) + música tenue
-- Montaje: cierra el zoom del beat 9 (`a2-a0` → `a2-a0b` → `a2-a1`) durante "vidas paralelas", entre `a3-b3` y `a3-b4`: el gesto mínimo que mandó la vida al lado que prosperó. La consecuencia (beat 9.6) no tiene plano propio — la resuelve el corte a `a3-b4` (Argentina seca) + off. Off en [arco-2-off.md](arco-2-off.md).
+- Audio: off documental (beat 9.3: un gesto de ternura, casi accidental) — remate tierno tras el huevo
+- Montaje: still de m03 (manos alzando la cría); cierra el zoom del beat 9. Corta a `a3-b4` (Argentina seca).
 
 **Clip a2-a2 — El lugar blanco (montaje, sin generación) — beat 13.2**
 

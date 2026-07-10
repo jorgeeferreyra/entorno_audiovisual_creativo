@@ -54,9 +54,10 @@ Regla general del gate (lenguaje de historia y zoom-in por cobertura) en [pipeli
    9.1  Charles aparece de espaldas (sombrero, silueta; nunca de frente).
         No puede frenar la grieta.
    9.2  Encuentra a la familia partida. Actúa por ternura, no por plan.
-   9.3  Sus manos levantan a la cría — gesto mínimo, casi accidental.
-   9.4  El tronco bascula como balancín.
-        El huevo rueda y cruza al lado que será Australia.
+   9.4  Charles pasa (pisada) → nido vacío → el tronco bascula;
+        el huevo rueda y cruza al lado que será Australia.
+   9.3  Sus manos levantan a la cría — gesto mínimo, casi accidental
+        (cierre tierno del zoom, tras el huevo).
    9.5  Devuelve la cría junto a la madre (lado que será Argentina)
         y sigue su camino sin registrar lo que causó.
    9.6  Se entiende la consecuencia:
@@ -99,7 +100,7 @@ Cruza cada beat con la [`cutlist`](README.md) actual. Expone qué está cubierto
 | 6 · ZOOM Mano Negra | `a1-a1` | Cubierto (plano parcial [arco-1.md](../../planos/arco-1.md)) |
 | 7 · Dos mundos | `a3-a5c` | Cubierto |
 | **8 · ZOOM separación** | `a3-a6a` (8.1a), `a3-a6b` (8.1b), `a3-a6c` (8.2a), `a3-a6d` (8.2b), `a3-a6e` (8.2c), `a3-a6` (8.3) | Cubierto: estrategia de 3 + progresión de la grieta en [arco-3.md](../../planos/arco-3.md) — `m19`→`m21` (grieta), `m22`/`m23` (orillas), `m24` (lejano). ~~`m20`~~ RETIRADA. |
-| **9 · ZOOM Charles / palanca** | `a2-a0` (9.1), `a2-a0b` (9.3), `a2-a1` (9.4) | Cubierto: fichas en [arco-2.md](../../planos/arco-2.md) — `a2-m01` + `a2-m03` (cuento, pick c2); `a2-m06` Revenant es **reserva destacada**, no reel. La consecuencia (9.6) la resuelve el corte a `a3-b4` + off. |
+| **9 · ZOOM Charles / palanca** | `a2-a0` (9.1), `a2-a1` (9.4 pisada), `a2-a1c` (9.4 nido), `a2-a1b` (9.4 huevo FLF), `a2-a0b` (9.3 alzada, cierre) | Cubierto: fichas en [arco-2.md](../../planos/arco-2.md) — un sujeto por plano; orden montaje pasa → nido → huevo → cría. `a2-m06` Revenant es **reserva destacada**, no reel. La consecuencia (9.6) la resuelve el corte a `a3-b4` + off. |
 | 10 · Vidas paralelas | `a3-b1`, `a3-b3` | Cubierto |
 | 11 · La sequía | `a3-b4` | Cubierto |
 | 12 · El último | `a3-c1` | Cubierto |

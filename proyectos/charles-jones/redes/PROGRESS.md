@@ -244,7 +244,8 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 | a2-m03 | Manos levantan la cría (cuento) | aprobado | Beat 9.3; pick c2 (gesto de alzar); still `a2-a0b` |
 | a2-m06 | Manos + cría (Revenant) | pendiente (**reserva destacada**) | `styleBlock: false`; ref `ornitorrinco_crias.jpeg`; NO entra al reel |
 | a2-m04 | El lugar blanco | aprobado | Beat 13.2 Revenant; pick `revenant-c2` → canónico, `revenant-c3` → `a2-m04-lugar-blanco-c3.png`; still `a2-a2`. Vive en [planos/arco-2.md](planos/arco-2.md) |
-| a2-m05 | El despertar | pendiente | Beat 13.3; `ref a2-m01` + mundo `a3-m07` (OpenRouter), tinte rojo dusk; still `a2-a2b`. Vive en [planos/arco-2.md](planos/arco-2.md) |
+| a2-m05 | El despertar (Coloradas) | pendiente | Beat 13.3; `ref a2-m01` + mundo `a3-m07` (OpenRouter), tinte rojo dusk; still `a2-a2b`. Vive en [planos/arco-2.md](planos/arco-2.md) |
+| a2-m09 | El despertar en la selva | pendiente | Beat 13.3 post-sueño; Reiniger, cara visible; ref `charles-jones-pintura.jpg`; tinte rojo dusk; aparte de `a2-m05`. Vive en [planos/arco-2.md](planos/arco-2.md) |
 | a3-m01v1 | Madre al borde de la grieta (variación) | pendiente | Stage 4; `ref a3-m01` (OpenRouter), tinte rojo; firstFrame de a3-a6 |
 | a3-m01v2 | Madre en llanura seca (variación) | pendiente | Stage 4; `ref a3-m01` (OpenRouter), tinte gris; firstFrame de a3-b3 |
 | a3-m05v1 | Pangea antes del quiebre (variación) | pendiente | Stage 4; `ref a3-m05`; mismo encuadre que m05/m06 (par FLF); firstFrame de a3-a5 |
