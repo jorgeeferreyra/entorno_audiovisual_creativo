@@ -1,7 +1,7 @@
 # Redes (Arco 3) — Build Progress
 
 _Last updated: 2026-07-10_
-_Current stage: Stage 1.5 — Cadena narrativa (aprobada); huecos beats 8/9 resueltos en planos → generar madres nuevas + animatic (Stage 2.5)_
+_Current stage: Stage 1.5 — Cadena narrativa (aprobada); huecos beats 8/9/13 resueltos en planos → generar madres nuevas + animatic (Stage 2.5)_
 _Based on roadmap: [TECH.md](TECH.md) § 5_
 
 > Session log agency-os + seguimiento detallado de producción (estados, costos, gates). Absorbe el antiguo `arco-3-roadmap.md`. No duplica prompts ni fichas: la fuente de verdad de los prompts es [arco-3-planos.md](planos/arco-3.md); el STYLE-BLOCK y los switches cuento↔real viven en [biblia-visual.md](../biblia-visual.md); la convención de IDs/archivos en [pipeline.md](../../../metodo/pipeline.md) §5.
@@ -28,6 +28,18 @@ Espejo del roadmap de [TECH.md](TECH.md) § 5. Un stage se marca `[x]` solo cuan
 ## 2. Session Log
 
 Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
+
+### 2026-07-10 — Coda del lugar blanco (beat 13, cruce con el Ep.1)
+
+- **Stage in flight:** Stage 1.5 → prep de Stage 2/2.5 (misma cola que beats 8/9 y variaciones).
+- **Done this session:**
+  - **Beat 13 expandido** en [cadena-narrativa.md](reels/la-grieta/cadena-narrativa.md): el ZOOM del remate deja de comprimir el lugar blanco. Sub-beats 13.2 (lugar blanco: Charles de espaldas alimenta palomas que no están, susurra "es en Rocas Coloradas") y 13.3 (el despertar en el mundo rojo). Mapa beat→clip actualizado.
+  - **Coda bajada** a [planos/arco-2.md](planos/arco-2.md) (deja de estar diferida): madres nuevas `a2-m04` (lugar blanco, `ref a2-m01` + `charles/`, fondo blanco sin tinte) y `a2-m05` (despertar, `ref a2-m01` + mundo `a3-m07`, tinte rojo dusk). Registro nuevo en el guion de color: **cuento sin tinte** (ni sueño ni realidad). Stills de montaje `a2-a2`/`a2-a2b`.
+  - **Ubicación**: entre `a3-c2` (fosilización) y `a3-c3` (el fósil hoy) — el tinte gris piedra de c2 se drena a blanco puro; el despertar rojo empalma con el salto a la realidad. Cutlist de [reels/la-grieta/README.md](reels/la-grieta/README.md) expandida (~47s): insertados los 2 stills; recortes compensatorios `a3-c2` 3→2.5 y `a3-c4` 3→2.5.
+  - **Off** de los 2 slots en [arco-2-off.md](planos/arco-2-off.md): `a2-a2` susurro casi subliminal (no lectura documental), `a2-a2b` silencio.
+- **Decisión de dirección aplicada:** entra como **stills de montaje** (~1.5s), cero costo de video ahora; el mensaje sin diálogo en pantalla (susurro subliminal, precedente de la m-mano en a3-a5). El animatic decide si algún still asciende a clip U2V.
+- **Next step:** generar `a2-m04` y `a2-m05` con `npm run gen --candidates 3` y aprobar con `--pick`; luego el animatic transversal (Stage 2.5), junto con las demás madres pendientes.
+- **New blockers / questions raised:** ninguno; a validar en el animatic que el fondo blanco de m04 lea como "portal" y no como error de tinte.
 
 ### 2026-07-10 — Capa madres keyframes (paso 1.75, gate propio)
 
@@ -125,10 +137,10 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 
 **Gate cadena narrativa (Stage 1.5) aprobado** — [reels/la-grieta/cadena-narrativa.md](reels/la-grieta/cadena-narrativa.md) es el mapa de beats que gobierna la cutlist. Madres del Arco 3 ya listas (m02/m03/m10/m17 vía **OpenRouter / Nano Banana**, multi-ref; provider por defecto en `npm run gen`, fallback `--provider minimax`).
 
-**Huecos de los beats 8 y 9 resueltos (2026-07-10):** fichas bajadas a planos (madres `a3-m19`/`a3-m20`, `a2-m01` con refs + `a2-m03`) y cutlist expandida con stills de montaje (~44s). Falta:
+**Huecos de los beats 8, 9 y 13 resueltos (2026-07-10):** fichas bajadas a planos (madres `a3-m19`/`a3-m20`, `a2-m01` con refs + `a2-m03`, coda `a2-m04`/`a2-m05`) y cutlist expandida con stills de montaje (~47s). Falta:
 
-1. **Generar las madres nuevas** — `a3-m19`, `a3-m20` (Arco 3) y `a2-m01`, `a2-m03` (Arco 2) con `npm run gen --candidates 3` y aprobar con `--pick`.
-2. **Correr el animatic transversal** (Stage 2.5) — decide si algún still (`a2-m03` en especial) asciende a clip U2V.
+1. **Generar las madres nuevas** — `a3-m19`, `a3-m20` (Arco 3) y `a2-m01`, `a2-m03`, `a2-m04`, `a2-m05` (Arco 2) con `npm run gen --candidates 3` y aprobar con `--pick`.
+2. **Correr el animatic transversal** (Stage 2.5) — decide si algún still (`a2-m03` y la coda `a2-m04`/`a2-m05` en especial) asciende a clip U2V.
 
 **Con 8 y 9 cubiertos = animatic transversal (Stage 2.5):**
 
@@ -181,6 +193,8 @@ cd engine/wind-mcp && npm run animatic -- --reel la-grieta
 | a3-m20 | Familia repartida (plano de lectura) | pendiente | Beat 8.2; multi-ref `a3-m01` + `ornitorrincos-dibujo.png` (OpenRouter); still `a3-a6b` |
 | a2-m01 | Charles de espaldas | pendiente | Beat 9.1; refs `charles/` (OpenRouter), guarda "nunca de frente"; still `a2-a0`. Vive en [planos/arco-2.md](planos/arco-2.md) |
 | a2-m03 | Manos levantan la cría | pendiente | Beat 9.3; refs `charles/` + `ornitorrinco_crias.jpeg` (pose) + `a3-m02` (silueta), OpenRouter; still `a2-a0b`. Vive en [planos/arco-2.md](planos/arco-2.md) |
+| a2-m04 | El lugar blanco | pendiente | Beat 13.2; `ref a2-m01` + `charles/` (OpenRouter), fondo blanco sin tinte (cuento sin tinte), palomas ausentes; still `a2-a2`. Vive en [planos/arco-2.md](planos/arco-2.md) |
+| a2-m05 | El despertar | pendiente | Beat 13.3; `ref a2-m01` + mundo `a3-m07` (OpenRouter), tinte rojo dusk; still `a2-a2b`. Vive en [planos/arco-2.md](planos/arco-2.md) |
 | a3-m01v1 | Madre al borde de la grieta (variación) | pendiente | Stage 2.6; `ref a3-m01` (OpenRouter), tinte rojo; firstFrame de a3-a6 |
 | a3-m01v2 | Madre en llanura seca (variación) | pendiente | Stage 2.6; `ref a3-m01` (OpenRouter), tinte gris; firstFrame de a3-b3 |
 | a3-m05v1 | Pangea antes del quiebre (variación) | pendiente | Stage 2.6; `ref a3-m05`; mismo encuadre que m05/m06 (par FLF); firstFrame de a3-a5 |
@@ -217,6 +231,8 @@ cd engine/wind-mcp && npm run animatic -- --reel la-grieta
 | a3-a6b | A | ninguna | pendiente | Beat 8.2; still m20 (~1.5s), solo montaje |
 | a2-a0 | A2 | ninguna | pendiente | Beat 9.1; still a2-m01 (~1.5s), solo montaje |
 | a2-a0b | A2 | ninguna | pendiente | Beat 9.3; still a2-m03 (~1.5s), solo montaje |
+| a2-a2 | A2 | ninguna | pendiente | Beat 13.2; still a2-m04 (~1.5s), solo montaje; entre a3-c2 y a3-c3 |
+| a2-a2b | A2 | ninguna | pendiente | Beat 13.3; still a2-m05 (~1.5s), solo montaje |
 
 ## Continuidad y QC (vision-audit por clip)
 

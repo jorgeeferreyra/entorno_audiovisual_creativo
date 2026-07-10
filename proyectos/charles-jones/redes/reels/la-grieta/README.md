@@ -26,17 +26,18 @@ cutlist:
   - { clip: a2-a1,  dur: 3 }   # beat 9.4 A2 CONTRAPUNTO: la palanca (gap)
   - { clip: a3-b4,  dur: 2 }   # Argentina seca (FLF) — cierra beat 9.6 (consecuencia)
   - { clip: a3-c1,  dur: 2 }   # el último / rocas (regen)
-  - { clip: a3-c2,  dur: 3 }   # fosilización (FLF)
+  - { clip: a3-c2,  dur: 2.5 } # fosilización (FLF)
+  - { clip: a2-a2,  dur: 1.5 } # beat 13.2 lugar blanco: "es en Rocas Coloradas" (still a2-m04)
+  - { clip: a2-a2b, dur: 1.5 } # beat 13.3 despertar (still a2-m05)
   - { clip: a3-c3,  dur: 2 }   # el fósil hoy (gen)
-  - { clip: a3-c4,  dur: 3 }   # foto real + Fundación
-  # - { clip: a2-a2, dur: 2 }  # A2 CODA opcional ("es en Rocas Coloradas") — diferida
+  - { clip: a3-c4,  dur: 2.5 } # foto real + Fundación
 ---
 
 # Reel — La grieta (transversal)
 
 Salida transversal: intercala clips de los tres hilos (Mano Negra, Charles/palanca, Ornitorrincos) para contar las tres historias en una sola pieza vertical (IG/TikTok). No es la salida de un arco; los arcos son la **fuente**.
 
-- **Arcos que cruza**: `arcos: [1, 2, 3]`. La `cutlist` del front-matter es el mapa de intercut (~44s) de la [auditoría §A](../../auditoria-modelo-transversal.md): espina emocional del Arco 3, reveal del Arco 1 (`a1-a1`, la mano firma) tras la grieta, contrapunto del Arco 2 (`a2-a1`, la palanca) en vidas paralelas. Los zooms de los beats 8 (separación: `a3-a6a`/`a3-a6b`) y 9 (Charles/palanca: `a2-a0`/`a2-a0b`) entran como stills de montaje (~1.5s); el animatic decide si alguno asciende a clip U2V. Los `a1-*`/`a2-*` se omiten en el animatic hasta que esos hilos bajen a [../../planos/](../../planos/).
+- **Arcos que cruza**: `arcos: [1, 2, 3]`. La `cutlist` del front-matter es el mapa de intercut (~47s) de la [auditoría §A](../../auditoria-modelo-transversal.md): espina emocional del Arco 3, reveal del Arco 1 (`a1-a1`, la mano firma) tras la grieta, contrapunto del Arco 2 (`a2-a1`, la palanca) en vidas paralelas. Los zooms de los beats 8 (separación: `a3-a6a`/`a3-a6b`), 9 (Charles/palanca: `a2-a0`/`a2-a0b`) y 13 (coda del lugar blanco: `a2-a2`/`a2-a2b`, entre `a3-c2` y `a3-c3`) entran como stills de montaje (~1.5s); el animatic decide si alguno asciende a clip U2V. Los `a1-*`/`a2-*` se omiten en el animatic hasta que esos hilos bajen a [../../planos/](../../planos/).
 - **Mapa narrativo que gobierna**: [cadena-narrativa.md](cadena-narrativa.md) es la cadena de beats aprobada (gate previo a imágenes, Stage 1.5). La `cutlist` la **implementa**: cada slot responde a un beat de esa cadena, no al revés. Si la cadena cambia, la cutlist se re-deriva.
 - **Cut-list vs. lista plana**: cada entrada es un slot (`clip` + `dur` recortada en segundos). Reemplaza a la vieja lista `clips:` (que era solo Arco 3). La lee la herramienta del animatic (`--reel`).
 - **Origen**: metadata, no jerarquía. Es precuela canónica del episodio 1 (el fósil de Rocas Coloradas). Si la relación cambia (standalone, o semilla de un episodio futuro), se edita la línea `origen` del front-matter — no se mueve nada.

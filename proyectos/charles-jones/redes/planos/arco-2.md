@@ -1,7 +1,7 @@
 # Arco 2 — Plano a plano (PARCIAL: solo el aporte al reel transversal)
 
 > Bajada de producción del [Arco 2: Charles y la palanca](../arco-2-charles-palanca.md) a **fichas de ingesta** en wind-comic. Es **fuente por hilo** (spec ejecutable), no un entregable.
-> **PARCIAL a propósito**: por ahora solo se baja el beat que el reel transversal "La Grieta" necesita (la palanca como contrapunto esperanzador). El resto del hilo (intervenciones menores, el mensaje / lugar blanco → cruce con el Ep.1) se baja cuando le toque el turno de producción (orden 3 → 1 → 2). La coda "es en Rocas Coloradas" queda **diferida** (auditoría §B).
+> **PARCIAL a propósito**: por ahora se bajan los beats que el reel transversal "La Grieta" necesita: la palanca (contrapunto esperanzador, beat 9) y la coda del lugar blanco (beat 13.2–13.3, "es en Rocas Coloradas"). El resto del hilo (intervenciones menores, la meditación previa al lugar blanco) se baja cuando le toque el turno de producción (orden 3 → 1 → 2).
 > Fuentes que NO se duplican acá: canon en [biblia-serie.md](../../biblia-serie.md), STYLE-BLOCK y anclas de estilo en [biblia-visual.md](../../biblia-visual.md), ficha de CFJ en [personajes-studio.md](../../personajes-studio.md), convención de IDs/archivos en [pipeline.md](../../../../metodo/pipeline.md) §5–6.
 
 Convenciones (idénticas a [arco-3.md](arco-3.md)): prompts en inglés con el STYLE-BLOCK embebido literal; títulos/off/montaje en español; el movimiento de cámara va en `cameraPreset`.
@@ -13,6 +13,8 @@ Registro del Arco 2: esperanzador, el contrapeso del Arco 1. En el reel entra co
 | Beat | Tinte (línea EN del prompt) |
 |---|---|
 | La palanca (a2-m01, a2-m02, a2-m03, a2-a1) — en el momento de la grieta | `dramatic deep red tinted background` |
+| El mensaje / lugar blanco (a2-m04, a2-a2) | sin tinte: `pure white paper background` (registro nuevo: *cuento sin tinte*, ni sueño ni realidad) |
+| El despertar (a2-m05, a2-a2b) | `deep red dusk tinted background` (empalma con el Bloque C del Arco 3) |
 
 ---
 
@@ -67,6 +69,43 @@ Prompt (EN):
 The first reference shows an elderly explorer — use it ONLY for the identity of the hands and coat sleeves (aged rugged hands, worn expedition coat cuffs), NEVER show a face. The second reference shows a human hand gently cupping a small platypus baby — use it ONLY for the pose and gesture of hands lifting a small creature, NEVER for its style or its pink fleshy look. The third reference is the master character — the young platypus: reproduce this exact silhouette style with 100% fidelity — same bill shape, same etched eye, same fur strokes, same cross-hatched paddle tail, same webbed feet, same woodcut cutout style. Black paper cutout silhouette scene: two aged silhouetted hands in worn coat cuffs gently cup and lift a small young platypus silhouette just above a fallen log balanced over a rift, the explorer's body only implied at the frame edge from behind with no face visible, the young platypus readable as a small slender silhouette through fine gold etched lines like a woodcut print — never a plain solid blob, never pink, never photographic, tender minimal almost accidental gesture, dramatic deep red tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
 ```
 
+**a2-m04 — El lugar blanco (beat 13.2)**
+
+```yaml
+kind: image
+dest: assets/arco-2/madre/a2-m04-lugar-blanco.png
+ref: a2-m01
+anatomyRefs:
+  - assets/fuentes/charles/charles-jones-referencia.jpeg
+provider: openrouter
+styleBlock: false # Cuento sin tinte: sigue siendo silueta recortada pero sobre blanco puro, sin tinte ni sepia (no valida STYLE-BLOCK/tinte)
+```
+
+Nota: cruce con el Ep.1 (el "lugar blanco" del sueño, biblia §4). Registro nuevo: **cuento sin tinte** — la silueta se mantiene pero el fondo es blanco puro (ni el papel tintado del cuento ni el fotorrealismo del salto a la realidad). `ref: a2-m01` hereda la silueta de Charles de espaldas con sombrero; la ref `charles/` solo aporta identidad/vestuario, nunca la cara. Guarda dura: **nunca de frente**. Las palomas **no están**: el maíz cae y no hay nada que lo coma (esa ausencia ES la imagen del episodio).
+
+Prompt (EN):
+```
+The first reference image is the master character — reproduce this exact Charles silhouette with 100% fidelity: same wide-brimmed fedora, same long expedition coat, same seen-strictly-from-behind pose, same woodcut cutout style. The other reference shows an elderly bearded explorer — use it ONLY for identity and wardrobe, NEVER show his face, NEVER change the art style. Black paper cutout silhouette of the elderly explorer seen strictly from behind, seated on a small low stool, one hand tossing a scatter of corn kernels that fall through the air to the ground, absolutely no pigeons, no birds, no animals anywhere in the frame — only the falling seeds and empty ground, face never visible, delicate cut-out inner details in the coat and hat brim, pure white paper background with no tint and no scenery, an emptied dreamlike void, flat 2D paper cutout, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouette with delicate cut-out inner details, dark fairy tale mood, subtle soft edges, vertical 9:16
+```
+
+**a2-m05 — El despertar (beat 13.3)**
+
+```yaml
+kind: image
+dest: assets/arco-2/madre/a2-m05-despertar.png
+ref: a2-m01
+anatomyRefs:
+  - assets/arco-3/madre/a3-m07-rocas-coloradas.png
+provider: openrouter
+```
+
+Nota: empalma el lugar blanco de vuelta con el Bloque C del Arco 3 (el mundo rojo de las Coloradas) — el mensaje ya fue transmitido. `ref: a2-m01` mantiene la silueta de Charles de espaldas; la ref `a3-m07` aporta el mundo de recortes rojos (mismo patrón multi-ref que `a3-m10`). Gesto mínimo: alza la cabeza como quien vuelve de un sueño. Guarda dura: **nunca de frente**.
+
+Prompt (EN):
+```
+The first reference image is the master character — reproduce this exact Charles silhouette with 100% fidelity: same wide-brimmed fedora, same long expedition coat, same seen-strictly-from-behind pose, same woodcut cutout style. The second reference image is the world: layered flat paper cutout red rock formations of the Coloradas badlands — reproduce that exact flat 2D cutout landscape style, stacked silhouette layers on a tinted paper background. Black paper cutout silhouette of the elderly explorer seen strictly from behind, seated among the silhouetted red rock formations, slowly raising his head as if waking from a trance, face never visible, delicate cut-out inner details in the coat and hat brim, deep red dusk tinted background of the Coloradas rock world, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+```
+
 ---
 
 ## Sección 2 — Desglose plano a plano
@@ -113,3 +152,27 @@ A silhouetted hand enters from the frame edge and gently nudges the balanced log
 - Vision-Audit (EN): sceneDescription: `a log balanced like a seesaw over a rift on a deep red tinted background, a platypus egg on one end` · action: `a silhouetted hand tips the log, the egg rolls across to the far side` · mood: `tender, accidental, hopeful`
 - Audio: off documental (la palanca) + música tenue
 - Montaje: cierra el zoom del beat 9 (`a2-a0` → `a2-a0b` → `a2-a1`) durante "vidas paralelas", entre `a3-b3` y `a3-b4`: el gesto mínimo que mandó la vida al lado que prosperó. La consecuencia (beat 9.6) no tiene plano propio — la resuelve el corte a `a3-b4` (Argentina seca) + off. Off en [arco-2-off.md](arco-2-off.md).
+
+**Clip a2-a2 — El lugar blanco (montaje, sin generación) — beat 13.2**
+
+```yaml
+kind: montaje
+fuente: a2-m04
+duration: 1.5
+```
+
+duration (montaje): 1–1.5s
+- Audio: susurro casi subliminal "…es en Rocas Coloradas…" bajo la música (no lectura documental); ver [arco-2-off.md](arco-2-off.md)
+- Montaje: entra en el ZOOM 13 del reel, **entre `a3-c2` (fosilización) y `a3-c3` (el fósil hoy)**. El tinte gris piedra en el que cierra `a3-c2` se drena hasta el blanco puro de m04 (transición por color, sin corte duro); still de m04 (Charles de espaldas, maíz que cae, palomas ausentes); corta a `a2-a2b`. El animatic decide si asciende a clip U2V.
+
+**Clip a2-a2b — El despertar (montaje, sin generación) — beat 13.3**
+
+```yaml
+kind: montaje
+fuente: a2-m05
+duration: 1.5
+```
+
+duration (montaje): 1–1.5s
+- Audio: sin off (silencio; respira antes del salto a la realidad de `a3-c3`)
+- Montaje: still de m05 (Charles alza la cabeza en el mundo rojo de las Coloradas); el tinte rojo empalma de vuelta con el Bloque C y el despertar prepara el corte a `a3-c3` (el fósil hoy, salto a la realidad). Cierra el ZOOM 13.

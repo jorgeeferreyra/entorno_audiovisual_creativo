@@ -70,8 +70,11 @@ Regla general del gate (lenguaje de historia y zoom-in por cobertura) en [pipeli
 
 13 ZOOM — Remate (puente al episodio 1)
    13.1  Se echa a descansar. El tiempo lo vuelve piedra.
-   13.2  Hoy, en esas mismas rocas, la piedra todavía recuerda su forma.
-   13.3  Sobreimpreso: La Fundación protege este yacimiento.
+   13.2  El lugar blanco: Charles, de espaldas, alimenta palomas que no están.
+         Susurra dónde. El mensaje viaja 62 millones de años.
+   13.3  El despertar: Charles abre los ojos en el mundo rojo. Ya lo dijo.
+   13.4  Hoy, en esas mismas rocas, la piedra todavía recuerda su forma.
+   13.5  Sobreimpreso: La Fundación protege este yacimiento.
          El criminal custodia la escena del crimen.
 ```
 
@@ -95,6 +98,6 @@ Cruza cada beat con la [`cutlist`](README.md) actual. Expone qué está cubierto
 | 10 · Vidas paralelas | `a3-b1`, `a3-b3` | Cubierto |
 | 11 · La sequía | `a3-b4` | Cubierto |
 | 12 · El último | `a3-c1` | Cubierto |
-| 13 · ZOOM remate | `a3-c2`, `a3-c3`, `a3-c4` | Cubierto |
+| **13 · ZOOM remate** | `a3-c2` (13.1), `a2-a2` (13.2), `a2-a2b` (13.3), `a3-c3` (13.4), `a3-c4` (13.5) | Cubierto: coda del lugar blanco bajada en [arco-2.md](../../planos/arco-2.md) — madres `a2-m04` (lugar blanco) y `a2-m05` (despertar) montadas como stills entre la fosilización y el fósil de hoy; el mensaje "es en Rocas Coloradas" cruza al Ep.1. |
 
-**Huecos resueltos (2026-07-10):** beats **8** y **9** ya no se comprimen en un solo slot. Se bajaron las fichas a `planos/` (madres `a3-m19`/`a3-m20` para el 8; `a2-m01` con refs + `a2-m03` para el 9) y se expandió la [cutlist](README.md) con stills de montaje (~1.5s c/u). Pendiente: generar las madres y correr el animatic transversal (Stage 2.5) para aprobar ritmo/orden.
+**Huecos resueltos (2026-07-10):** beats **8**, **9** y **13** ya no se comprimen en un solo slot. Se bajaron las fichas a `planos/` (madres `a3-m19`/`a3-m20` para el 8; `a2-m01` con refs + `a2-m03` para el 9; `a2-m04`/`a2-m05` para la coda del lugar blanco del 13) y se expandió la [cutlist](README.md) con stills de montaje (~1.5s c/u). Pendiente: generar las madres y correr el animatic transversal (Stage 2.5) para aprobar ritmo/orden.
