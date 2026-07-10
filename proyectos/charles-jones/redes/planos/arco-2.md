@@ -13,7 +13,8 @@ Registro del Arco 2: esperanzador, el contrapeso del Arco 1. En el reel entra co
 | Beat | Tinte (línea EN del prompt) |
 |---|---|
 | La palanca (a2-m01, a2-m02, a2-m03, a2-a1) — en el momento de la grieta | `dramatic deep red tinted background` |
-| La grieta Revenant (a2-m07) — golpe del quiebre en el reel | REALITY-BLOCK Revenant, `deep blood-red overcast dusk light` (`styleBlock: false`; desvío rojo del bloque canónico) |
+| La grieta Revenant (a2-m07) — golpe del quiebre en el reel (A/B vs m08) | REALITY-BLOCK Revenant, `deep blood-red overcast dusk light` (`styleBlock: false`; desvío rojo del bloque canónico) |
+| La grieta Reiniger (a2-m08) — exploración A/B del mismo encuadre | `dramatic deep red tinted background` |
 | Manos + cría Revenant (a2-m06) — **reserva destacada**, no reel | REALITY-BLOCK (fotográfico; `styleBlock: false`) |
 | El mensaje / lugar blanco (a2-m04, a2-a2) | sin tinte: `pure white paper background` (registro nuevo: *cuento sin tinte*, ni sueño ni realidad) |
 | El despertar (a2-m05, a2-a2b) | `deep red dusk tinted background` (empalma con el Bloque C del Arco 3) |
@@ -127,7 +128,7 @@ Prompt (EN):
 The first reference image is the master character — reproduce this exact Charles silhouette with 100% fidelity: same wide-brimmed fedora, same long expedition coat, same seen-strictly-from-behind pose, same woodcut cutout style. The second reference image is the world: layered flat paper cutout red rock formations of the Coloradas badlands — reproduce that exact flat 2D cutout landscape style, stacked silhouette layers on a tinted paper background. Black paper cutout silhouette of the elderly explorer seen strictly from behind, full figure seated among the silhouetted red rock formations, slowly raising his head as if waking from a trance, face never visible, delicate cut-out inner details in the coat and hat brim, deep red dusk tinted background of the Coloradas rock world, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
 ```
 
-**a2-m07 — La grieta (Revenant photoreal, OTS sobre el hombro)**
+**a2-m07 — La grieta (Revenant photoreal, OTS extremo + colina lejana)**
 
 ```yaml
 kind: image
@@ -138,11 +139,29 @@ provider: openrouter
 styleBlock: false # REALITY-BLOCK Revenant: fotográfico, no silueta (switch cuento→real)
 ```
 
-Nota: **quiebre fotorrealista Revenant con Charles presente** — el golpe visceral del beat de la palanca, hermano de `a3-m14` (grieta photoreal) pero con la figura en cuadro. Encuadre **over-the-shoulder**: cámara pegada al hombro de Charles de espaldas; el caos es el escudo de las guardas (cara oculta, manos fuera de cuadro/desenfocadas). Realiza la visión de la lagunita: hábitat verde próspero que se raja y drena el agua a la grieta, caótico. **Desvío controlado del REALITY-BLOCK-CHAOS:** luz de atardecer rojo profundo en vez de `cold muted earth tones`, para sostener el mundo rojo del Arco 2 (decisión de dirección; si se prefiere el bloque canónico estricto, se revierte a tonos tierra fríos). Solo ref de foto (`charles-jones-referencia.jpeg`) para vestuario, sin la pintura (evita sesgo a ilustración). A futuro puede ascender a par FLF (laguna íntegra → drenada) en el gate de madres keyframes.
+Nota: Pick canónico: `a2-m07-c2` → `a2-m07-grieta-revenant.png`. Segunda aprobada: `a2-m07-c3` (OTS más pegado) en `a2-m07-grieta-revenant-c3.png`. **quiebre fotorrealista Revenant con Charles presente** — el golpe visceral del beat de la palanca, hermano de `a3-m14` (grieta photoreal) pero con la figura en cuadro. Encuadre **OTS extremo**: cámara casi pegada a la nuca — ala del sombrero y hombro ocupan un tercio o más del cuadro, desenfocados por cercanía (foreground bokeh). Charles parado **elevado en una colina/pendiente, lejos** de la destrucción; la laguna que drena y la grieta quedan abajo en el valle, chicas en el cuadro pero de escala colosal (panorama, bruma, escombros lejanos). La enormidad se lee por perspectiva, no por proximidad. El caos es el escudo de las guardas (cara oculta, manos fuera de cuadro). **Desvío controlado del REALITY-BLOCK-CHAOS:** luz de atardecer rojo profundo en vez de `cold muted earth tones`, para sostener el mundo rojo del Arco 2. Solo ref de foto (`charles-jones-referencia.jpeg`) para vestuario, sin la pintura. Compite A/B con `a2-m08` (mismo encuadre en Reiniger). A futuro puede ascender a par FLF (laguna íntegra → drenada) en el gate de madres keyframes.
 
 Prompt (EN):
 ```
-The reference image shows an elderly bearded explorer — use it ONLY for the identity and wardrobe of a man seen from behind (wide-brimmed fedora, long expedition coat, satchel), NEVER show his face. Over-the-shoulder shot from just behind the explorer, seen strictly from behind, his dark shoulder and hat brim filling the near foreground cropped large at the frame edge, face never visible, hands lowered and out of frame. Past his shoulder, a lush green thriving habitat around a small lagoon is violently splitting open: a jagged rift tears through the wet ground and the lagoon water pours and drains down into the chasm, reeds, ferns and mud torn loose, spray and debris in the air, chaotic and cataclysmic, the habitat still green and alive. handheld unstable camera, violent motion, heavy motion blur, dust and debris in the air, deep blood-red overcast dusk light, photorealistic, gritty documentary realism inspired by The Revenant, no illustration, no silhouette, no paper texture, vertical 9:16
+The reference image shows an elderly bearded explorer — use it ONLY for the identity and wardrobe of a man seen from behind (wide-brimmed fedora, long expedition coat, satchel), NEVER show his face. Extreme close over-the-shoulder shot, the camera almost touching the back of his head — his fedora hat brim and shoulder fill a third of the frame as a soft out-of-focus dark foreground, seen strictly from behind, face never visible, hands lowered and out of frame. He stands high on a grassy hillside ridge, far away from the destruction. Far below in the vast valley, a colossal rift tears the green thriving habitat open and a lagoon drains into it as a distant waterfall, tiny in the frame yet immense in scale, haze and dust rising, debris like specks in the air, sense of overwhelming scale and distance, deep panorama, the habitat still green and alive. handheld unstable camera, violent motion, heavy motion blur, dust and debris in the air, deep blood-red overcast dusk light, photorealistic, gritty documentary realism inspired by The Revenant, no illustration, no silhouette, no paper texture, vertical 9:16
+```
+
+**a2-m08 — La grieta (Reiniger, mismo encuadre) — exploración A/B**
+
+```yaml
+kind: image
+dest: assets/arco-2/madre/a2-m08-grieta-reiniger.png
+anatomyRefs:
+  - assets/fuentes/charles/charles-jones-referencia.jpeg
+  - assets/fuentes/charles/charles-jones-pintura.jpg
+provider: openrouter
+```
+
+Nota: Pick canónico: `a2-m08-c3` → `a2-m08-grieta-reiniger.png`. **exploración de dirección** — mismo encuadre que `a2-m07` (OTS extremo + Charles elevado en colina + grieta/laguna como panorama lejano) traducido a silueta Lotte Reiniger. Compite A/B con `a2-m07` por el slot del golpe de la grieta (ambos aprobados; la decisión de cuál entra al reel queda abierta). No toca la herencia de m04/m05 (siguen sobre `a2-m01`). Capas de teatro de sombras: hombro/ala del sombrero como capa negra grande en primerísimo plano (filigrana Reiniger, no vector plano), Charles en lo alto de una loma como capa media, valle verde con laguna drenando en la grieta como capas chicas al fondo. Guarda dura: **nunca de frente**.
+
+Prompt (EN):
+```
+The reference images show an elderly bearded explorer — use them ONLY for identity and wardrobe (wide-brimmed fedora, long expedition coat, satchel, general build), NEVER show his face, NEVER change the art style. Extreme close over-the-shoulder paper-cutout shot: the explorer's black silhouette fills the near foreground as a large dark layer — the back of his fedora hat brim and his shoulder cropped huge at the frame edge, seen strictly from behind, face never visible, fine intricate lace-like hand-cut paper detail in the coat and hat brim. He stands high on a silhouetted hillside ridge, far from the destruction. Far below in the vast valley as smaller stacked cutout layers: a lush thriving habitat of ferns, reeds and leafy trees where a colossal rift tears the green ground open and a lagoon drains into it as a distant waterfall silhouette, tiny in the frame yet immense in scale, sense of overwhelming distance through layered shadow-theater depth. Flat 2D layered paper theater in the manner of Lotte Reiniger's Die Abenteuer des Prinzen Achmed — NOT flat vector shapes. dramatic deep red tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
 ```
 
 ---
