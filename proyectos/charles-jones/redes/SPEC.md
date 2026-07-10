@@ -32,8 +32,8 @@ La serie tiene 3 arcos, cada uno un **hilo narrativo fuente** (no un entregable)
 
 | Arco | Qué cuenta | Estado de bajada a fichas |
 |---|---|---|
-| 1 · La Mano Negra | La Fundación planifica las extinciones a escala geológica | Pendiente ([arco-1-mano-negra.md](arco-1-mano-negra.md)) |
-| 2 · Charles y la palanca | CFJ interviene en puntos mínimos de apalancamiento | Pendiente ([arco-2-charles-palanca.md](arco-2-charles-palanca.md)) |
+| 1 · La Mano Negra | La Fundación planifica las extinciones a escala geológica | **Parcial**: solo el reveal para el reel ([planos/arco-1.md](planos/arco-1.md)); hilo completo pendiente ([arco-1-mano-negra.md](arco-1-mano-negra.md)) |
+| 2 · Charles y la palanca | CFJ interviene en puntos mínimos de apalancamiento | **Parcial**: solo la palanca para el reel ([planos/arco-2.md](planos/arco-2.md)); hilo completo pendiente ([arco-2-charles-palanca.md](arco-2-charles-palanca.md)) |
 | 3 · Ornitorrincos | El drama familiar; los divididos por la grieta; final en fosilización | **Bajado a fichas ejecutables** ([planos/arco-3.md](planos/arco-3.md)) |
 
 ## 5. La spec ejecutable
@@ -62,8 +62,10 @@ Fuentes que la spec NO duplica:
 
 ## 8. Open Questions
 
-- [ ] Regenerar `a3-a5` como FLF real (hoy I2V degradado) y validar el morph.
-- [ ] Aprobar la cadena de puentes FLF cruzados (a5x experimental, a5y, c0, c2).
+- [ ] Correr y aprobar el **animatic transversal** (`npm run animatic -- --reel la-grieta`) como gate previo al video.
+- [~] Regenerar `a3-a5` como FLF real: **diferido a la destacada S2** (en el reel se tolera recortado; auditoría §D).
+- [~] Puentes FLF cruzados (a5x, a5y, c0): **diferidos a destacadas** (en el reel el corte duro alcanza; se confirman/descartan tras el animatic).
+- [ ] Destino de `a3-m18` (joven muriendo): reserva sin uso vs. beat de muerte del joven (contradice el off actual). Decisión de dirección.
 
 ---
 

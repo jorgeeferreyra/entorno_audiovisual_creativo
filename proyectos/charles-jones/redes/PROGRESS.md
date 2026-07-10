@@ -16,7 +16,8 @@ Estados: `pendiente` → `generado` (existe el archivo) → `aprobado` (pasó el
 Espejo del roadmap de [TECH.md](TECH.md) § 5. Un stage se marca `[x]` solo cuando cumple sus Exit criteria.
 
 - [x] **Stage 1 — Docs y spec** — fichas de planos/arco-3.md válidas
-- [ ] **Stage 2 — Imágenes madre en cascada** — 16 madres aprobadas (todas generadas/aprobadas; ver checklist)
+- [ ] **Stage 2 — Imágenes madre en cascada** — 17 madres aprobadas (todas generadas/aprobadas; ver checklist)
+- [ ] **Stage 2.5 — Animatic (gate previo a video)** — animatic transversal `la-grieta` aprobado (ritmo/orden/subtítulos) antes de gastar en clips
 - [ ] **Stage 3 — Clips** — bloques A/B/C generados y aprobados (Bloque A casi completo; B/C pendientes)
 - [ ] **Stage 4 — Montaje del reel transversal** — la-grieta montado desde los bloques
 - [ ] **Stage 5 — Destacadas del arco** — S1–S5 por recorte
@@ -24,6 +25,18 @@ Espejo del roadmap de [TECH.md](TECH.md) § 5. Un stage se marca `[x]` solo cuan
 ## 2. Session Log
 
 Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
+
+### 2026-07-09 — Alineación al modelo transversal (post-auditoría)
+
+- **Stage in flight:** Stage 2.5 (animatic) / Stage 3 (clips)
+- **Done this session:**
+  - Auditoría del modelo transversal ([auditoria-modelo-transversal.md](auditoria-modelo-transversal.md)) → alineación de todo lo desajustado.
+  - **Herramienta animatic** ([`engine/wind-mcp/src/lib/animatic.ts`](../../../engine/wind-mcp/src/lib/animatic.ts)): (1) **FLF split** — los `video-flf` se muestran como first→last (dos mitades de `dur/2`), no un still; (2) **modo `--reel`** — animatic del intercut transversal desde la `cutlist` del front-matter de [reels/la-grieta/README.md](reels/la-grieta/README.md), cruzando arcos (los que no tienen planos aún se omiten con aviso).
+  - **Cut-list** de 17 slots (~43s) escrita en el README del reel (mapa de intercut de la auditoría §A).
+  - **Mini-planos parciales** de A1 ([planos/arco-1.md](planos/arco-1.md): mano+cadenita reveal) y A2 ([planos/arco-2.md](planos/arco-2.md): Charles silueta + tronco-balancín, la palanca) + sus off ([arco-1-off.md](planos/arco-1-off.md), [arco-2-off.md](planos/arco-2-off.md)). Solo los beats que el reel necesita.
+  - **Deuda técnica revalidada**: puentes FLF `a5x`/`a5y`/`c0` y regen FLF de `a3-a5` **diferidos a destacadas** (el reel usa corte duro). Clips `b1`–`c2` marcados `pre-rediseño → re-auditar/regen`. `m18` = reserva sin uso.
+- **Next step:** correr el animatic transversal, aprobar ritmo/orden, luego bajar madres de A1/A2 y regenerar `a3-a4`/`a3-c1`.
+- **New blockers / questions raised:** destino final de `a3-m18` (decisión de dirección: reserva o beat de muerte del joven).
 
 ### 2026-07-09 — Modelado fuente-por-hilo + dos familias de salida
 
@@ -52,22 +65,23 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 
 1. **Docs** — planos / biblia / progreso alineados a las decisiones de dirección.
 2. **Madres en cascada** — regenerar/generar con `--candidates 3` y aprobar con `--pick`, en orden: **m03' → m02' joven → m10' → m17**. Pares FLF se aprueban juntos (mismo encuadre).
-3. **Clips** — Bloque B (b1–b4) → FLF experimental m06→m14 (`a3-a5x`) → puentes m15→m08 (`a3-a5y`) y m14→m07 (`a3-c0`) → Bloque C. Regenerar `a3-a5` como FLF real cuando toque la cadena.
-4. **Montaje del reel transversal** — desde los bloques A, B, C (inserts: m-mano en a3-a5, eco m09 tras c3, foto real en a3-c4).
-5. **Destacadas** — S1–S5 derivadas por recorte, cero generación.
+3. **Animatic (gate)** — `npm run animatic -- --reel la-grieta` → aprobar ritmo/orden/subtítulos del intercut ANTES de gastar en video.
+4. **Clips** — solo lo que el reel aprobado necesita: regen `a3-a4` (huevo) y `a3-c1` (push-in m07), generar `a3-c3`, re-auditar `b1`–`c2`, y las madres+clips de A1/A2. Puentes FLF (`a5x`/`a5y`/`c0`) y regen FLF de `a3-a5` **diferidos a destacadas**.
+5. **Montaje del reel transversal** — desde la cut-list (inserts: eco m09 tras c3, foto real en a3-c4).
+6. **Destacadas** — S1–S5 derivadas por recorte, cero generación.
 
 ### Próxima acción
 
-**Paso 2 (madres en cascada) listo** — m02/m03/m10/m17 aprobados vía **OpenRouter / Nano Banana** (`google/gemini-2.5-flash-image`), con multi-ref (m01 lock + anatomía en `assets/fuentes/ornitorrincos/`). Provider por defecto en `npm run gen`; fallback `--provider minimax`.
+**Paso 2 (madres del Arco 3) listo** — m02/m03/m10/m17 aprobados vía **OpenRouter / Nano Banana** (`google/gemini-2.5-flash-image`), con multi-ref (m01 lock + anatomía en `assets/fuentes/ornitorrincos/`). Provider por defecto en `npm run gen`; fallback `--provider minimax`.
 
-**Siguiente = paso 3: clips.** Bloque B (b1–b4) → puentes / Bloque C. Requiere wind-comic arriba.
+**Siguiente = paso 3: animatic transversal (gate).** No cuesta nada (ffmpeg local); aprueba el intercut antes del video.
 
 ```bash
-cd engine/wind-comic && PLAN_GATE_DISABLED=1 npm run dev
-cd engine/wind-mcp && npm run gen -- --reel a # (o --id a3-XX por clip)
+cd engine/wind-mcp && npm run animatic -- --reel la-grieta
+# los slots a1-a1 / a2-a1 se omiten hasta generar sus madres (planos parciales ya bajados)
 ```
 
-**Bloque A:** a3-a1…a3-a6 aprobados; a3-a4 queda **obsoleto** (era cría; regenerar U2V sobre m04 huevo). a3-a5 aprobado como I2V degradado — regen FLF real pendiente. **Gate Kling resuelto** (FLF real vía gateway qingyuntop).
+**Bloque A:** a3-a1…a3-a6 aprobados; a3-a4 **obsoleto** (era cría; regen U2V sobre m04 huevo). a3-a5 I2V degradado — regen FLF **diferido a S2**. **Gate Kling resuelto** (FLF real vía gateway qingyuntop) para cuando toque b4/c2.
 
 ---
 
@@ -84,7 +98,7 @@ cd engine/wind-mcp && npm run gen -- --reel a # (o --id a3-XX por clip)
 
 ---
 
-## Checklist — Imágenes madre (16 generadas; m16 eliminada)
+## Checklist — Imágenes madre (17 generadas; m16 eliminada, m18 agregada)
 
 | ID | Título | Estado | Costo real | Nota |
 |---|---|---|---|---|
@@ -105,7 +119,7 @@ cd engine/wind-mcp && npm run gen -- --reel a # (o --id a3-XX por clip)
 | a3-m15 | Zoom-out poético | aprobado | ~¥0.6 | Retry ×1; firstFrame de a3-a5y ✓ |
 | ~~a3-m16~~ | ~~Ornitorrinco caminando~~ | **ELIMINADA** | — | Con m10 reencuadrada no comparte encuadre; a3-c1 = U2V sobre m07 |
 | a3-m17 | Argentina seca (estado final) | aprobado | OpenRouter | Par m09→m17; pick c2; mismo encuadre más seco/oscuro ✓ |
-| a3-m18 | Joven muriendo sobre roca | aprobado | OpenRouter | Nueva: Ref m02 + mundo m07 + foto; pick c2; JOVEN muriendo en cornisa (escena hermana de m10) ✓ |
+| a3-m18 | Joven muriendo sobre roca | aprobado (**reserva, sin uso**) | OpenRouter | Nueva: Ref m02 + mundo m07 + foto; pick c2; JOVEN muriendo en cornisa. **Huérfana**: ninguna ficha de clip la usa y contradice el off (el joven prospera en Australia, b2). No usar hasta resolver la ambigüedad narrativa (auditoría §0/§C). |
 
 > **Switch provider (2026-07-09):** madres con Ref/AnatomyRef pasan por `openrouter` (Nano Banana) en vez de Minimax. Minimax se queda como `--provider minimax` (composite 1-slot) por si hace falta.
 
@@ -117,19 +131,19 @@ cd engine/wind-mcp && npm run gen -- --reel a # (o --id a3-XX por clip)
 | a3-a2 | A | U2V | aprobado | ~¥0.5 | Establishing Pangea ✓ |
 | a3-a3 | A | U2V | aprobado | ~¥0.5 | Ritual madre ✓ |
 | a3-a4 | A | U2V | **obsoleto → regen** | ~¥0.5 (prev) | Regenerar: firstFrame m04 huevo (ya no cría) |
-| a3-a5 | A | U2V-FLF | aprobado (regen FLF pendiente) | ~¥0.5 | I2V degradado; regenerar FLF real m05→m06 |
+| a3-a5 | A | U2V-FLF | aprobado (I2V degradado) | ~¥0.5 | En el reel se tolera recortado a ~2s; **regen FLF m05→m06 diferido a la destacada S2** (auditoría §D) |
 | a3-a5b | A | U2V | aprobado | ~¥0.5 | Switch caos Revenant ✓ |
 | a3-a5c | A | U2V | aprobado | ~¥0.5 | Switch respiro crane-up ✓ |
-| a3-a5x | A | U2V-FLF | pendiente | — | **EXPERIMENTAL** m06→m14; gate morphs cruzados |
-| a3-a5y | A/B | U2V-FLF | pendiente | — | Puente m15→m08; cierra A / abre B |
+| a3-a5x | A | U2V-FLF | pendiente (diferido) | — | **EXPERIMENTAL** m06→m14; **diferido a destacadas** — en el reel el corte duro alcanza (auditoría §D) |
+| a3-a5y | A/B | U2V-FLF | pendiente (diferido) | — | Puente m15→m08; **diferido a destacadas** (auditoría §D) |
 | a3-a6 | A | U2V | aprobado | ~¥0.5 | |
-| a3-b1 | B | U2V | pendiente | — | Requiere m03' aprobada; pantalla partida con b3 |
-| a3-b2 | B | U2V | pendiente | — | Requiere m02' joven aprobada |
-| a3-b3 | B | U2V | pendiente | — | |
-| a3-b4 | B | U2V-FLF | pendiente | — | Par m09→m17 (requiere m17) |
-| a3-c0 | C | U2V-FLF | pendiente | — | Puente m14→m07; abre Bloque C |
-| a3-c1 | C | U2V | pendiente | — | Push-in sobre m07 + corte a c2 (NO FLF) |
-| a3-c2 | C | U2V-FLF | pendiente | — | Par m10'→m11 (requiere m10'); **Gate Kling** |
+| a3-b1 | B | U2V | **generado (pre-rediseño) → re-auditar** | ~¥0.5 (prev) | mp4 en disco de una pasada previa; si el contorno del padre calza con m03' aprobada, reutiliza |
+| a3-b2 | B | U2V | **generado (pre-rediseño) → re-auditar/regen** | ~¥0.5 (prev) | mp4 `cria-eclosionada` (concepto viejo); ficha ahora es joven (firstFrame m02) |
+| a3-b3 | B | U2V | **generado (pre-rediseño) → re-auditar** | ~¥0.5 (prev) | mp4 en disco; probable reutiliza |
+| a3-b4 | B | U2V-FLF | **generado (pre-rediseño) → re-auditar** | ~¥0.5 (prev) | mp4 en disco; ficha es FLF m09→m17 (verificar morph) |
+| a3-c0 | C | U2V-FLF | pendiente (diferido) | — | Puente m14→m07; **diferido a destacadas** (auditoría §D) |
+| a3-c1 | C | U2V | **generado (pre-rediseño) → regen** | ~¥0.5 (prev) | mp4 `ultimo-llega` = concepto m16 (caminata, eliminada); ficha ahora push-in sobre m07 |
+| a3-c2 | C | U2V-FLF | **generado (pre-rediseño) → re-auditar** | ~¥0.5 (prev) | mp4 en disco; ficha es FLF m10'→m11; **Gate Kling** (verificar morph) |
 | a3-c3 | C | U2V | pendiente | — | |
 | a3-c3e | C | ninguna | pendiente | — | Eco 1–2s m09 (solo montaje) |
 | a3-c4 | C | ninguna | pendiente | — | Solo montaje (foto real) |
@@ -179,8 +193,11 @@ Formaliza el QC que ya se hace informalmente (carpetas `_candidates`/`_audit`). 
 |---|---|---|
 | Madres (16 × ¥0.3 + retries m02/m03/m10/m17 ×3 candidates) | ~¥4.8 + ~¥3–4 retries | ~¥6.0 (prev) |
 | Clips U2V (~11 × ¥0.5, incl. a4 regen + c1) | ~¥5.5 | ~¥4.0 (Bloque A) |
-| Clips FLF (6 × ~¥1: a5, a5x, a5y, b4, c0, c2) | ~¥6 | ¥0 |
-| **Total** | **~¥16.3** (techo **¥19–20** con retries) | **~¥10** |
+| Clips FLF **del reel** (solo b4, c2 — el resto diferido) | ~¥2 | ¥0 |
+| Gaps A1/A2 para el reel (4 madres + 3 clips) | ~¥2.6 | ¥0 |
+| **Total reel** | **~¥14.9** (techo **¥19–20** con retries) | **~¥10** |
+
+**Ahorro por el modelo transversal:** los puentes FLF `a5x`/`a5y`/`c0` y la regen FLF de `a3-a5` se **difieren a las destacadas** (auditoría §D) — el reel de 30–45s los cubre con corte duro. Eso baja el costo del reel ~¥3–4 respecto del reel autoconclusivo viejo, y el **gate del animatic** (gratis) confirma qué slots pagar antes de generar video.
 
 Los retries de madres con `--candidates 3` suman ~¥0.9 c/u antes del pick: por eso la cascada ordenada (m03' → m02' → m10' → m17) y no regenerar en lote.
 

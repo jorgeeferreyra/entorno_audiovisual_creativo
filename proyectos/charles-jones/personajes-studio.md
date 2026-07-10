@@ -41,15 +41,17 @@ Las imágenes madre (`a3-m01`–`a3-m03`) ya están **generadas y aprobadas** ([
 - Voz: — (no habla)
 ```
 
-### Cría de ornitorrinco
+### Ornitorrinco joven
+
+> El concepto "cría bebé" fue **eliminado** (biblia-visual §2 / [arco-3-planos.md](redes/planos/arco-3.md)): el personaje es un ornitorrinco **joven**, no un puggle. Hereda la silueta de la madre (`Ref: a3-m01`), más chico y esbelto.
 
 ```
-- name: Cría de ornitorrinco
-- description (EN): The baby platypus of the Arc 3 family. Playful and curious; hatches on the Australian side of the rift and grows up thriving there.
-- appearance (EN): Black paper cutout silhouette of a small baby platypus, tiny rounded contour clearly smaller than an adult, playful side profile with tail curled upward.
+- name: Ornitorrinco joven
+- description (EN): The young platypus of the Arc 3 family. Hatches on the Australian side of the rift and grows up thriving there; the line that survives.
+- appearance (EN): Black paper cutout silhouette of a young platypus, slender contour clearly smaller than the adults, matching the mother's silhouette scaled down.
 - styleKeywords (EN): paper cutout silhouette, shadow puppet theater
-- visualTags (EN): platypus, baby, playful, prehistoric
-- imageUrls: assets/arco-3/madre/a3-m02-cria-ornitorrinco.png (generada ✓ — subir a Character Studio y pegar la URL)
+- visualTags (EN): platypus, young, thriving, prehistoric
+- imageUrls: assets/arco-3/madre/a3-m02-ornitorrinco-joven.png (generada ✓ — subir a Character Studio y pegar la URL)
 - Voz: — (no habla)
 ```
 

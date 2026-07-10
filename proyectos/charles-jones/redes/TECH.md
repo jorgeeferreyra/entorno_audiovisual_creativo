@@ -44,9 +44,9 @@ Relocado desde el pipeline; es el costeo específico de este episodio. El detall
 | Etapa | Estimado |
 |---|---|
 | Imágenes madre (16 × ¥0.3 + retries con `--candidates 3`) | ~¥4.8 + ~¥3–4 |
-| Clips U2V (~11 × ¥0.5) | ~¥5.5 |
-| Clips FLF (6 × ~¥1: a5, a5x, a5y, b4, c0, c2) | ~¥6 |
-| **Total** | **~¥16.3 (techo ¥19–20 con retries)** |
+| Clips U2V (~11 × ¥0.5) + gaps A1/A2 (4 madres + 3 clips ~¥2.6) | ~¥8 |
+| Clips FLF **del reel** (b4, c2; `a5`/`a5x`/`a5y`/`c0` diferidos a destacadas) | ~¥2 |
+| **Total reel** | **~¥14.9 (techo ¥19–20 con retries)** |
 
 El video es el mayor costo; Kling (~¥0.2/s) y Veo (~¥0.6/s) se reservan a los planos-gancho.
 
@@ -60,11 +60,15 @@ Orden de ejecución del episodio, cada stage entregable por separado.
 ### Stage 2 — Imágenes madre en cascada
 **Goal:** las 16 madres aprobadas. **Scope:** generar con `--candidates 3`, aprobar con `--pick`, en orden m03' → m02' → m10' → m17; pares FLF aprobados juntos. **Exit:** todas las madres con criterio de la etapa Madres.
 
-### Stage 2.5 — Animatic de madres (gate previo a video/audio)
-**Goal:** un animatic 9:16 que valide ritmo, orden narrativo y subtítulos con imágenes fijas, **antes** de gastar en video (el mayor costo: ~¥11.5 de ~¥16). **Scope:** cada clip aparece como su madre fija durante su `duration` (default 5s) con el off ES quemado; se corre con `npm run animatic -- --arco 3` (puro ffmpeg local, no usa wind-comic ni APIs). Madres aún sin generar se omiten con aviso, así el animatic sirve también en pleno refinamiento de madres. **Gate:** no se avanza a Stage 3 sin este animatic aprobado. **Exit:** animatic aprobado en [reels/la-grieta/](reels/la-grieta/).
+### Stage 2.5 — Animatic (gate previo a video/audio)
+**Goal:** un animatic 9:16 que valide ritmo, orden narrativo y subtítulos con imágenes fijas, **antes** de gastar en video (el mayor costo: ~¥11.5 de ~¥16). **Scope:** dos modos de `npm run animatic` (puro ffmpeg local, no usa wind-comic ni APIs):
+- `--reel la-grieta` → **animatic transversal**: intercala los clips de la `cutlist` del front-matter de [reels/la-grieta/README.md](reels/la-grieta/README.md) con sus duraciones recortadas, cruzando arcos. Es el gate principal (lo que se publica es el reel). Los clips de arcos aún sin planos (`a1-*`/`a2-*`) se omiten con aviso.
+- `--arco N` → **animatic del hilo**: todas las fichas de `planos/arco-N.md` en orden; sirve para aprobar la fuente y las destacadas de ese arco.
+
+Los `video-flf` se muestran como first→last (dos mitades de `dur/2`) para representar la transformación. Madres aún sin generar se omiten con aviso, así el animatic sirve también en pleno refinamiento. **Gate:** no se avanza a Stage 3 sin el animatic transversal aprobado. **Exit:** animatic aprobado en [reels/la-grieta/](reels/la-grieta/).
 
 ### Stage 3 — Clips
-**Goal:** clips de los bloques A/B/C generados y aprobados. **Scope:** Bloque B (b1–b4) → FLF experimental (a5x) → puentes (a5y, c0) → Bloque C; regenerar a3-a5 como FLF real. **Dependencies:** Stage 2. **Exit:** clips con criterio de la etapa Clips (morph real en FLF).
+**Goal:** clips que el reel aprobado necesita, generados y aprobados. **Scope (ordenado por el reel):** regen `a3-a4` (huevo) y `a3-c1` (push-in m07); generar `a3-c3`; re-auditar `b1`–`c2` (mp4 pre-rediseño en disco); bajar madres+clips de A1 (`a1-a1`) y A2 (`a2-a1`). **Diferido a Stage 5 (destacadas):** puentes FLF `a5x`/`a5y`/`c0` y regen FLF de `a3-a5` — el reel de 30–45s los cubre con corte duro (auditoría §D). **Dependencies:** Stage 2.5 aprobado. **Exit:** clips con criterio de la etapa Clips (morph real en FLF donde aplique: b4, c2).
 
 ### Stage 4 — Montaje del reel transversal
 **Goal:** reel transversal ([reels/la-grieta/](reels/la-grieta/)) montado a partir de los bloques (inserts: m-mano en a5, eco m09 tras c3, foto real en c4). **Dependencies:** Stage 3. **Exit:** continuidad de tinte, audio off, 9:16.
