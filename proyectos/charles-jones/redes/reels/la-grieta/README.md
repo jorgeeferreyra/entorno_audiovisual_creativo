@@ -17,4 +17,6 @@ Salida transversal: intercala clips de los tres hilos (Mano Negra, Charles/palan
 - **Clips fuente**: `../../assets/arco-3/clips/` (por arco).
 - **Off documental**: [../../planos/arco-3-off.md](../../planos/arco-3-off.md).
 
+**Primer milestone — animatic de madres:** antes de generar video/audio, `npm run animatic -- --arco 3` cae acá como `animatic-arco-3.mp4` (cada clip = su madre fija por su duración, con el off ES quemado). Es el gate de aprobación de ritmo/orden/subtítulos previo a la generación cara. Detalle en [../../TECH.md](../../TECH.md) §Stage 2.5.
+
 El montaje final (`montar_secuencia`) cae en esta carpeta.

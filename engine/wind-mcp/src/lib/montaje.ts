@@ -22,7 +22,7 @@ function resolvePath(p: string): string {
   return path.isAbsolute(p) ? p : path.join(PROJECT_ROOT, p);
 }
 
-async function runFfmpeg(args: string[]): Promise<void> {
+export async function runFfmpeg(args: string[]): Promise<void> {
   await new Promise<void>((resolve, reject) => {
     const proc = spawn('ffmpeg', ['-y', ...args], { stdio: ['ignore', 'pipe', 'pipe'] });
     let stderr = '';

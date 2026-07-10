@@ -17,17 +17,19 @@ Referencia de motores, capacidades y costos: `engine/wind-comic/docs/{video,imag
 
 ```mermaid
 flowchart TD
-    A["1. Imagenes madre (Flux/Minimax ~¥0.3 c/u)"] --> B["2. Clips 5-6s por personaje aislado"]
-    B --> C["3. Montaje: cruces por edicion, no por generacion"]
-    C --> D["4. Voz en off (grabada propia o TTS Minimax ~¥0.02/s)"]
-    D --> E["5. Export 9:16 + subtitulos"]
+    A["1. Imagenes madre (Flux/Minimax ~¥0.3 c/u)"] --> A2["2. Animatic de madres (imagen fija + subtitulo, gate barato)"]
+    A2 --> B["3. Clips 5-6s por personaje aislado"]
+    B --> C["4. Montaje: cruces por edicion, no por generacion"]
+    C --> D["5. Voz en off (grabada propia o TTS Minimax ~¥0.02/s)"]
+    D --> E["6. Export 9:16 + subtitulos"]
 ```
 
 1. **Imágenes madre primero** (~¥0.3 c/u): retrato de Charles de espaldas, mano con cadenita, un ornitorrinco por animal, paisajes Pangea. Son la biblia visual; todo parte de acá. Los clips de **transformación/transición** piden un **par de madres** (first/last frame para U2V-FLF), no una sola — regla de coherencia y keyframes en [biblia-visual.md](../proyectos/charles-jones/biblia-visual.md) §3.
-2. **Clips de 5–6s por personaje aislado**: la duración barata. En la instancia local con `PLAN_GATE_DISABLED=1` no aplican los gates de plan de pago.
-3. **Montaje de salidas**: los cruces (mano ↔ ornitorrincos, Charles ↔ familia) se resuelven por **corte**, no generando personajes juntos. Los clips generados son **fuente por hilo** (bloques del arco); de ahí se montan las dos familias de salida: **reels transversales** (intercalan clips de varios hilos) y **destacadas por arco** (recorte de un solo hilo). La pantalla partida Argentina/Australia del Arco 3 = dos clips independientes montados. El montaje se hace con `wind-mcp` (`montarSecuencia()` en [`wind-mcp/src/lib/montaje.ts`](../engine/wind-mcp/src/lib/montaje.ts): concat ffmpeg + pad 9:16 + off opcional), **no** con el timeline de wind-comic (que opera sobre proyectos del pipeline de 9 agentes, no sobre clips U2V sueltos — usarlo sería overkill).
-4. **Voz**: off documental (Attenborough). Recomendado grabarla propia (es la voz del proyecto y es gratis); alternativas: TTS Minimax (~¥0.02/s) o **clonar la voz propia** vía `POST /api/voice-clone` (MiniMax, ya configurado) — misma decisión de "voz del proyecto", pero permite iterar el off sin regrabar.
-5. **Export**: 9:16, subtítulos quemados si corresponde.
+2. **Animatic de madres** (gate barato previo a video/audio): antes de generar clips, montar un video donde cada clip aparece como su **imagen madre fija** durante su duración (default 5s) con el **subtítulo (off) quemado**. Da un acercamiento al producto para aprobar ritmo, orden y texto **antes** de gastar en video/audio (el mayor costo). Es puro ffmpeg local (`montarAnimatic()` en [`wind-mcp/src/lib/animatic.ts`](../engine/wind-mcp/src/lib/animatic.ts); CLI `npm run animatic -- --arco N`), no llama APIs. Recién con el animatic aprobado se avanza. Las madres aún sin generar se omiten con aviso, así también sirve durante el refinamiento.
+3. **Clips de 5–6s por personaje aislado**: la duración barata. En la instancia local con `PLAN_GATE_DISABLED=1` no aplican los gates de plan de pago.
+4. **Montaje de salidas**: los cruces (mano ↔ ornitorrincos, Charles ↔ familia) se resuelven por **corte**, no generando personajes juntos. Los clips generados son **fuente por hilo** (bloques del arco); de ahí se montan las dos familias de salida: **reels transversales** (intercalan clips de varios hilos) y **destacadas por arco** (recorte de un solo hilo). La pantalla partida Argentina/Australia del Arco 3 = dos clips independientes montados. El montaje se hace con `wind-mcp` (`montarSecuencia()` en [`wind-mcp/src/lib/montaje.ts`](../engine/wind-mcp/src/lib/montaje.ts): concat ffmpeg + pad 9:16 + off opcional), **no** con el timeline de wind-comic (que opera sobre proyectos del pipeline de 9 agentes, no sobre clips U2V sueltos — usarlo sería overkill).
+5. **Voz**: off documental (Attenborough). Recomendado grabarla propia (es la voz del proyecto y es gratis); alternativas: TTS Minimax (~¥0.02/s) o **clonar la voz propia** vía `POST /api/voice-clone` (MiniMax, ya configurado) — misma decisión de "voz del proyecto", pero permite iterar el off sin regrabar.
+6. **Export**: 9:16, subtítulos quemados si corresponde.
 
 ---
 

@@ -60,6 +60,9 @@ Orden de ejecución del episodio, cada stage entregable por separado.
 ### Stage 2 — Imágenes madre en cascada
 **Goal:** las 16 madres aprobadas. **Scope:** generar con `--candidates 3`, aprobar con `--pick`, en orden m03' → m02' → m10' → m17; pares FLF aprobados juntos. **Exit:** todas las madres con criterio de la etapa Madres.
 
+### Stage 2.5 — Animatic de madres (gate previo a video/audio)
+**Goal:** un animatic 9:16 que valide ritmo, orden narrativo y subtítulos con imágenes fijas, **antes** de gastar en video (el mayor costo: ~¥11.5 de ~¥16). **Scope:** cada clip aparece como su madre fija durante su `duration` (default 5s) con el off ES quemado; se corre con `npm run animatic -- --arco 3` (puro ffmpeg local, no usa wind-comic ni APIs). Madres aún sin generar se omiten con aviso, así el animatic sirve también en pleno refinamiento de madres. **Gate:** no se avanza a Stage 3 sin este animatic aprobado. **Exit:** animatic aprobado en [reels/la-grieta/](reels/la-grieta/).
+
 ### Stage 3 — Clips
 **Goal:** clips de los bloques A/B/C generados y aprobados. **Scope:** Bloque B (b1–b4) → FLF experimental (a5x) → puentes (a5y, c0) → Bloque C; regenerar a3-a5 como FLF real. **Dependencies:** Stage 2. **Exit:** clips con criterio de la etapa Clips (morph real en FLF).
 

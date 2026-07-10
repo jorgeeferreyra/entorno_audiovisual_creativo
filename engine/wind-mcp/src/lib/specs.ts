@@ -70,6 +70,8 @@ export interface MontajeSpec {
   slug: string;
   /** Id de asset o ruta literal (material de origen). No se genera. */
   fuente?: string;
+  /** Duración en segundos para el animatic (montaje libre: no limitado a 5/6/10/15). */
+  duration?: number;
 }
 
 export type AssetSpec = ImageSpec | VideoI2VSpec | VideoFlfSpec | MontajeSpec;
@@ -112,6 +114,7 @@ const montajeYaml = z
   .object({
     kind: z.literal('montaje'),
     fuente: z.string().optional(),
+    duration: z.number().optional(),
   })
   .strict();
 
@@ -196,7 +199,13 @@ function construirSpec(ficha: FichaRaw): AssetSpec {
   }
 
   if (y.kind === 'montaje') {
-    return { kind: 'montaje', ...base, slug: tituloToClipSlug(ficha.titulo), fuente: y.fuente };
+    return {
+      kind: 'montaje',
+      ...base,
+      slug: tituloToClipSlug(ficha.titulo),
+      fuente: y.fuente,
+      duration: y.duration,
+    };
   }
 
   // video-i2v | video-flf

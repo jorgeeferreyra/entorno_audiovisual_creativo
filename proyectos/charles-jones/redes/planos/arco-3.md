@@ -663,6 +663,7 @@ A platypus fossil embedded in red rock at a present-day excavation site, motionl
 ```yaml
 kind: montaje
 fuente: a3-m09
+duration: 2
 ```
 
 duration (montaje): 1–2s
@@ -674,6 +675,7 @@ duration (montaje): 1–2s
 ```yaml
 kind: montaje
 fuente: assets/fuentes/rocas-coloradas-real.jpg
+duration: 4
 ```
 
 duration (montaje): 3–4s (16:9; reencuadrar a 9:16)
