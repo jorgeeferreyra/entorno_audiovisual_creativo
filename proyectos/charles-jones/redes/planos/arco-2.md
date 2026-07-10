@@ -83,15 +83,17 @@ The first reference is the approved prior beat — inherit ONLY its world and st
 ```yaml
 kind: image
 dest: assets/arco-2/madre/a2-m02b-huevo-otro-lado.png
-ref: a2-m02a
+anatomyRefs:
+  - assets/arco-3/madre/a3-m04-huevo.png
+  - assets/arco-3/madre/a3-m08-australia-prospera.png
 provider: openrouter
 ```
 
-Nota: **keyframe final** del par FLF con `a2-m02a` — mismo encuadre exacto, solo cambia el estado: tronco basculado, huevo llegado al otro lado. Sin bota, sin nido, sin grieta. **Solo ficha** — se genera en el gate de madres keyframes.
+Nota: **keyframe final** del par FLF con `a2-m02a` — **ya no es el mismo encuadre** (aterrizaje, no balancín). El huevo quedó **del lado Australia**, claramente de un solo lado: **acostado de costado**, en ángulo desparejo, como tumbado por el envión (no acomodado). **Sin tronco, sin grieta, sin portal rojo en V.** Suelo/orilla próspera con helechos verdes (eco de `a3-m08`); tinte rojo del beat se mantiene en el fondo. `a3-m04` = master del huevo; `a3-m08` = solo mood de vegetación viva, no copiar el canal de agua ni el pájaro. Sin bota, sin nido. **Solo ficha** — se genera en el gate de madres keyframes.
 
 Prompt (EN):
 ```
-The first reference image is the master frame — reproduce this exact composition with 100% fidelity: same camera angle, same fallen log, same deep red tinted background, same silhouette style. Only the state changes: the log is tipped like a seesaw; the platypus egg has rolled to the far end and rests on the other side. NOTHING else enters the frame: NO nest, NO boot, NO leg, NO rift. Dramatic deep red tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+The first reference is the platypus egg master — reproduce that exact egg silhouette with 100% fidelity. The second reference is a lush thriving wetland — inherit ONLY its living green vegetation mood (ferns, reeds, grasses); do NOT copy the water channel, the bird, the centered sun, or the split composition. Single-subject paper cutout: a speckled platypus egg lying on its side on solid ground on ONE side of the frame — tumbled, imperfect, unbalanced angle, as if momentum knocked it over, NOT upright, NOT neatly placed. Around it, silhouetted green ferns and grasses of a prosperous bank. The egg sits clearly on that one bank — NOT straddling a divide, NOT centered in a chasm. NOTHING else: NO fallen log, NO trunk, NO seesaw, NO rift, NO crack, NO V-shaped glowing portal, NO canyon, NO nest, NO boot, NO leg, NO bird. Dramatic deep red tinted background with living green vegetation accents only, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
 ```
 
 **a2-m02c — El nido vacío (beat 9.4) — un sujeto**
@@ -290,13 +292,13 @@ cameraPreset: locked-tripod
 duration: 5
 ```
 
-cameraPreset locked-tripod: el mundo de recortes es plano; el movimiento lo pone el balancín, no la cámara. FLF no acepta 6s. El par `a2-m02a`/`a2-m02b` se aprueba junto en el gate de madres keyframes (pipeline §2 paso 4) antes de pagar este clip.
+cameraPreset locked-tripod: el mundo de recortes es plano. **Composición diverge** entre frames (m02a = tronco/este lado; m02b = aterrizaje Australia, sin tronco ni grieta) — el FLF morphs el cruce; aprobar el par junto en el gate de madres keyframes (pipeline §2 paso 4) antes de pagar este clip. FLF no acepta 6s.
 
 Motion prompt (EN):
 ```
-The fallen log tips like a seesaw, the platypus egg rolls slowly from the near end to the far end and crosses to the other side, hinged paper puppet movement, flat 2D silhouette animation, dramatic deep red tinted background.
+The platypus egg tumbles from the fallen log and comes to rest lying on its side on the prosperous far bank among green ferns, hinged paper puppet movement, flat 2D silhouette animation, dramatic deep red tinted background, NO log in the final state, NO rift.
 ```
-- Vision-Audit (EN): sceneDescription: `a fallen log with a platypus egg on the near end, deep red tinted background` · action: `the log tips, the egg rolls across to the far side` · mood: `tender, accidental, hopeful`
+- Vision-Audit (EN): sceneDescription: `a speckled platypus egg lying on its side on a prosperous fern bank, deep red tinted background` · action: `the egg tumbles across and lands off-balance on the far side` · mood: `tender, accidental, hopeful`
 - Audio: off documental (la palanca) + música tenue — ver [arco-2-off.md](arco-2-off.md)
 - Montaje: tras el nido vacío; corta a `a2-a0b` (alzada de la cría, cierre del zoom). Orden del beat 9: `a2-a0` → `a2-a1` → `a2-a1c` → `a2-a1b` → `a2-a0b`, entre `a3-b3` y `a3-b4`. La consecuencia (beat 9.6) no tiene plano propio — la resuelve el corte a `a3-b4` (Argentina seca) + off.
 

@@ -51,6 +51,23 @@ async function existe(p: string): Promise<boolean> {
   }
 }
 
+/** Mueve un archivo existente a `_candidates/_prev/` (nunca pisa ni borra). */
+async function archiveIfExists(absPath: string): Promise<string | undefined> {
+  if (!(await existe(absPath))) return undefined;
+  const prevDir = path.join(path.dirname(absPath), '_prev');
+  await fs.mkdir(prevDir, { recursive: true });
+  const stamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
+  const name = path.basename(absPath);
+  const archivedName = name.endsWith('.png.json')
+    ? `${name.slice(0, -9)}-${stamp}.png.json`
+    : name.endsWith('.png')
+      ? `${name.slice(0, -4)}-${stamp}.png`
+      : `${name}-${stamp}`;
+  const archivedPath = path.join(prevDir, archivedName);
+  await fs.rename(absPath, archivedPath);
+  return archivedPath;
+}
+
 async function main() {
   const args = process.argv.slice(2);
   const arco = Number(flag(args, '--arco') ?? 3);
@@ -82,15 +99,15 @@ async function main() {
     await fs.copyFile(src, dest);
     console.log(`Canónico ← ${path.relative(PROJECT_ROOT, src)} → ${spec.dest}`);
 
-    // Borrar candidatos no promovidos (+ sidecars).
+    // Archivar (no borrar) candidatos no promovidos (+ sidecars).
     const candDir = path.join(PROJECT_ROOT, 'assets', `arco-${arco}`, 'madre', '_candidates');
     const re = new RegExp(`^${id}-c(\\d+)\\.png(\\.json)?$`);
     for (const name of await fs.readdir(candDir)) {
       const m = name.match(re);
       if (!m) continue;
       if (Number(m[1]) === pick) continue;
-      await fs.unlink(path.join(candDir, name));
-      console.log(`Borrado candidato: ${name}`);
+      const archived = await archiveIfExists(path.join(candDir, name));
+      if (archived) console.log(`Archivado candidato: ${name} → ${path.relative(PROJECT_ROOT, archived)}`);
     }
     return;
   }
@@ -123,11 +140,20 @@ async function main() {
     if (!spec || spec.kind !== 'image') throw new Error(`--candidates solo aplica a imágenes (${id})`);
     await fs.mkdir(path.join(PROJECT_ROOT, path.dirname(candidatePath(arco, id, 1))), { recursive: true });
     for (let n = 1; n <= candidates; n++) {
+      const rel = candidatePath(arco, id, n);
+      const abs = path.join(PROJECT_ROOT, rel);
+      const archived = await archiveIfExists(abs);
+      if (archived) console.log(`Archivado previo: ${rel} → ${path.relative(PROJECT_ROOT, archived)}`);
+      const archivedSidecar = await archiveIfExists(`${abs}.json`);
+      if (archivedSidecar) {
+        console.log(`Archivado sidecar: ${path.relative(PROJECT_ROOT, archivedSidecar)}`);
+      }
       console.log(`\n--- candidato ${n}/${candidates} de ${id} ---`);
-      const r = await generar(spec, { ...opts, force: true, destOverride: candidatePath(arco, id, n) });
+      const r = await generar(spec, { ...opts, force: true, destOverride: rel });
       console.log('OK:', r.localPath, `[${r.provider}]`, r.estCostCny ? `~¥${r.estCostCny}` : '');
     }
     console.log(`\nRevisá assets/arco-${arco}/madre/_candidates/${id}-c1..c${candidates}.png`);
+    console.log(`(previas en _candidates/_prev/ — no se borran)`);
     console.log(`Promover: npm run gen -- --arco ${arco} --id ${id} --pick N\n`);
     return;
   }

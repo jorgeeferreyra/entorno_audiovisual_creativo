@@ -214,7 +214,7 @@ styleBlock: false
 
 Prompt (EN):
 ```
-First-person subjective POV looking down, weathered explorer hands gripping and beginning to open a rugged hardbound field journal, cover made of worn animal hide with bristly hair-like texture, embossed title clearly reading Charles Francis Jones, warm sepia expedition light, aged yellowed pages barely visible inside, intimate mysterious mood, vertical 9:16
+First-person subjective POV looking straight down at own lap, foreshortened weathered explorer hands holding a closed rugged hardbound field journal resting on the lap, worn animal-hide cover with bristly hair-like texture facing up toward the viewer, embossed title Charles Francis Jones clearly readable on the closed cover, no open pages, warm sepia expedition lamplight, intimate mysterious mood, vertical 9:16
 ```
 
 ### Salto a la realidad (rompe la estética silueta A PROPÓSITO)

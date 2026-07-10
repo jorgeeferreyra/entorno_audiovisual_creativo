@@ -22,6 +22,10 @@ Solo si el usuario **confirma explícitamente** en la conversación (p. ej. "te 
 - Borrar candidatos, canónicos o aprobados que el usuario no pidió borrar.
 - Marcar picks como resueltos sin haber promovido (o sin confirmación de que el usuario ya promovió).
 
+## Candidatos: nunca pisar
+
+Al regenerar (`--candidates N`), **no sobrescribir** `c1..cN` existentes. El CLI (`npm run gen`) archiva previos en `_candidates/_prev/` con timestamp. Si el agente regenera a mano (copia/rename), debe renombrar o mover a `_prev/` antes de escribir. No borrar rondas anteriores salvo pedido explícito del usuario.
+
 ## Qué hace el agente antes de la confirmación
 
 - Generar candidatos (`--candidates N`) cuando se lo piden.
