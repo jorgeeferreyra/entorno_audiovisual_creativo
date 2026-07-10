@@ -29,6 +29,15 @@ Espejo del roadmap de [TECH.md](TECH.md) § 5. Un stage se marca `[x]` solo cuan
 
 Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 
+### 2026-07-10 — a1-m01 c3 promovida (gag burocrático)
+
+- **Stage in flight:** Stage 3 — madres Arco 1 (reveal reel).
+- **Done this session:**
+  - **`a1-m01` ← c3** → `a1-m01-mano-cadenita.png` (papel limpio + titular "DOS CONTINENTES SE VENDEN MEJOR QUE UNO" + sello APROBADO; Reiniger).
+  - Dirección: se abandona el mapa de Pangea; gag burocrático Les Luthiers.
+- **Next step:** clip `a1-a1` (I2V) o seguir madres Arco 2 pendientes.
+- **New blockers / questions raised:** ninguno.
+
 ### 2026-07-10 — a2-m01 c1 promovida (silueta master)
 
 - **Stage in flight:** Stage 3 — madres Arco 2.
@@ -248,6 +257,7 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 | a3-m22 | Orilla cercana: madre + cría | aprobado | Beat 8.2a; pick c1; still `a3-a6c` |
 | a3-m23 | Orilla lejana: padre + huevo | aprobado | Beat 8.2b; pick c3; still `a3-a6d` |
 | a3-m24 | Plano lejano: los 4 + grieta | aprobado | Beat 8.2c; pick c1 (tanda 2); still `a3-a6e` |
+| a1-m01 | Mano con cadenita (informe) | aprobado | Beat 6 reveal; pick c3 → `a1-m01-mano-cadenita.png`; gag burocrático Reiniger (titular + APROBADO). Vive en [planos/arco-1.md](planos/arco-1.md) |
 | a2-m01 | Charles de espaldas | aprobado | Beat 9.1; pick c1 → `a2-m01-charles-espaldas.png` (silueta master). Vive en [planos/arco-2.md](planos/arco-2.md) |
 | a2-m03 | Manos levantan la cría (cuento) | aprobado | Beat 9.3; pick c2 (gesto de alzar); still `a2-a0b` |
 | a2-m06 | Manos + cría (Revenant) | pendiente (**reserva destacada**) | `styleBlock: false`; ref `ornitorrinco_crias.jpeg`; NO entra al reel |

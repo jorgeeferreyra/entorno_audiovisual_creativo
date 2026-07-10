@@ -11,4 +11,4 @@
 
 | Clip | Off (ES) | Nota |
 |---|---|---|
-| **a1-a1** (el reveal) | "La grieta no fue un accidente. Alguien, con mano firme, ya había trazado la línea." | Entra tras el caos; resignifica la separación como un plan |
+| **a1-a1** (el reveal) | "La grieta no fue un accidente. Alguien, con mano firme, ya había firmado el informe." | Entra tras el caos; no repite el titular en pantalla ("DOS CONTINENTES…"); el off completa el gag |

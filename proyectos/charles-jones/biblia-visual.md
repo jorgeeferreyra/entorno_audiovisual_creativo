@@ -99,8 +99,8 @@ El caos se diseña **alrededor** de las debilidades de los modelos, no a pesar d
 - **Apertura cuaderno (intro transversal)**: subjetiva POV, manos abriendo cuaderno de tapa dura áspera (piel/pelos), título "Charles Francis Jones" en la tapa, sepia, 9:16. Imagen madre `a3-m12`, clip `a3-a1`. Abre TODOS los reels.
 
 ### Arco 1 — Mano Negra
-- **Mano con cadenita**: "primer plano de una mano masculina con una cadenita de oro en la muñeca, sobre un mapa antiguo, iluminación dramática, sombra, 9:16" (varias poses: trazando, firmando, apoyada).
-- **Mapa de Pangea con la grieta**: "mapa antiguo de Pangea con una línea de fractura trazada a lapicera, anotaciones, 9:16".
+- **Mano con cadenita (reveal reel)**: gag burocrático Reiniger — mano masculina con cadenita de oro firmando un informe/dossier (sin mapa cartográfico); la geografía de la grieta vive en las madres de Pangea del Arco 3. Varias poses a futuro: firmando, sellando, apoyada.
+- **Mapa de Pangea con la grieta**: diferido / opcional para destacadas del Arco 1 — "mapa antiguo de Pangea con una línea de fractura trazada a lapicera, anotaciones, 9:16" (el reel ya no lo usa como madre del reveal).
 - **Logo de la Fundación**: "emblema de una fundación conservacionista ficticia, aspecto institucional y siniestro, 9:16".
 
 ### Arco 2 — Charles y la palanca
