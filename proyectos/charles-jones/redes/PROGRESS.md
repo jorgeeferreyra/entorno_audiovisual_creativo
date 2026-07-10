@@ -1,7 +1,7 @@
 # Redes (Arco 3) — Build Progress
 
 _Last updated: 2026-07-10_
-_Current stage: Stage 3 — Beat 8 madres cerradas (m19/m21/m22/m23/m24); animatic borrador (Stage 6) próximo_
+_Current stage: Stage 6 — Alineamiento Arco 2 cerrado; pendiente re-correr animatic borrador y revisión de ritmo/orden_
 _Based on roadmap: [TECH.md](TECH.md) § 5_
 
 > Session log agency-os + seguimiento detallado de producción (estados, costos, gates). Absorbe el antiguo `arco-3-roadmap.md`. No duplica prompts ni fichas: la fuente de verdad de los prompts es [arco-3-planos.md](planos/arco-3.md); el STYLE-BLOCK y los switches cuento↔real viven en [biblia-visual.md](../biblia-visual.md); la convención de IDs/archivos en [pipeline.md](../../../metodo/pipeline.md) §5.
@@ -28,6 +28,40 @@ Espejo del roadmap de [TECH.md](TECH.md) § 5. Un stage se marca `[x]` solo cuan
 ## 2. Session Log
 
 Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
+
+### 2026-07-10 — Alineamiento y balanceo Arco 2 (madres en disco como fuente de verdad)
+
+- **Stage in flight:** Stage 3 (docs Arco 2) → prep re-corrida de Stage 6 (animatic borrador).
+- **Contexto:** auditoría madre-por-madre encontró tres huecos en Arco 2 — cadena `a2-m02*` con IDs cruzados entre disco y plano, `a2-m07`/`a2-m08` aprobadas sin slot en el reel, y dos "despertares" (`a2-m05`/`a2-m09`) para un solo slot.
+- **Decisiones de dirección aplicadas:**
+  - **Cadena m02:** el disco manda. Re-letrado en [planos/arco-2.md](planos/arco-2.md): `a2-m02`→`a2-m02a` (pisada), `a2-m02c`→`a2-m02b` (nido), `a2-m02b`→`a2-m02c` (huevo otro lado, keyframe final), ficha nueva `a2-m02d` (huevo este lado, keyframe inicial, diferida a Stage 5). Clips `a2-a1`/`a2-a1c` re-apuntados; FLF `a2-a1b` ahora `a2-m02d`→`a2-m02c`.
+  - **Golpe de la grieta:** `a2-m07`→`a2-m08` deja de ser A/B — es un **switch secuencial transversal** (primero Revenant, se convierte a Reiniger; patrón de "ida y vuelta de estilo", no exclusivo de un arco). Clips nuevos `a2-a0c`/`a2-a0d`. Registrado en [arco-3.md](planos/arco-3.md) §Cadena de transiciones y como principio general en [biblia-visual.md](../biblia-visual.md) §1.
+  - **Coda del despertar:** ambas madres entran, en secuencia — `a2-m05` (ojos Coloradas) → `a2-m09` (selva, mate) → empalma Bloque C. Clip nuevo `a2-a2c`.
+- **Cutlist** de [reels/la-grieta/README.md](reels/la-grieta/README.md) expandida y balanceada (~55.5s): insertados 6 slots nuevos (`a2-a0c`, `a2-a0d`, `a2-a1c`, `a2-a1b`, `a2-a2c`, más el split de `a2-a1`); recortes compensatorios `a1-a1` 3→2.5, `a3-a6e` 2→1.5, `a3-c2`/`a3-c4` 2.5→2.
+- **Checklists de este doc** sincronizados: filas `a2-m02a/b/c/d`, `a2-m07`, `a2-m08` y sus clips agregadas; notas de `a2-m05`/`a2-m09` aclaran el orden de la secuencia.
+- **Next step:** re-correr el animatic borrador con la cutlist alineada; re-pick de `a2-m07` (canónico borrado) antes de que su still sea definitivo.
+- **New blockers / questions raised:** ninguno nuevo — el hueco de cutlist señalado en la sesión anterior queda resuelto.
+
+### 2026-07-10 — Voz en off gratuita (Edge TTS) en el animatic
+
+- **Stage in flight:** Stage 6 — tooling del animatic.
+- **Done this session:**
+  - TTS gratis vía `msedge-tts` (`es-AR-TomasNeural`): `src/lib/tts.ts` + flag `--off` / `--voz` en `npm run animatic`.
+  - Pista de audio aparte (offsets + adelay + amix); caché en `reels/<reel>/_off-tts/` (gitignore); avisos si la locución no entra en el slot.
+  - Costos: `edge-tts` tarifa 0 en [tarifas.json](../../../metodo/tarifas.json) + fila en [providers.md](../../../metodo/providers.md).
+- **Next step:** re-correr borrador con `--off` y afinar durs según avisos de overflow.
+- **New blockers / questions raised:** ninguno.
+
+### 2026-07-10 — Animatic borrador re-corrido (beat 8 + coda A2)
+
+- **Stage in flight:** Stage 6 — Animatic borrador.
+- **Done this session:**
+  - Corrió `npm run animatic -- --reel la-grieta --borrador` → `reels/la-grieta/animatic-la-grieta.mp4` (~45s).
+  - Beat 8 completo en stills (`a6a`…`a6e`); coda A2 (`a2-a2`/`a2-a2b`) entra; `a2-m01`/`a2-m03`/`a2-m04`/`a2-m05` en disco.
+  - Degradados (base por variación): `a3-a5` m05v1→m05, `a3-a6` m01v1→m01, `a3-b3` m01v2→m01.
+  - Omitidos: `a1-a1` (falta `a1-m01a`, diferida a Stage 5); `a2-a1` (falta canónico `a2-m02-pisada.png` — en disco quedan `a2-m02a/b/c` con naming viejo).
+- **Next step:** revisar ritmo/orden/durs (sobre todo beat 8); decidir si alinear cutlist beat 9 a `a2-a1`→`a2-a1c`→`a2-a1b` y generar/promover `a2-m02`.
+- **New blockers / questions raised:** cutlist del README aún tiene beat 9 viejo (`a2-a0`/`a2-a0b`/`a2-a1`); planos ya expandieron a pisada→nido→huevo FLF.
 
 ### 2026-07-10 — Par FLF a1-m01→a1-m01a (firma = grieta)
 
@@ -217,11 +251,13 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 
 ### Próxima acción
 
-**Beat 8 cerrado en madres:** `m19`/`m21`/`m22`(c1)/`m23`(c3)/`m24`(c1) aprobados; ~~`m20`~~ RETIRADA; `a2-m03` c2; `a2-m06` reserva. Candidatos no promovidos eliminados.
+**Alineamiento Arco 2 cerrado** (docs): cadena `a2-m02*` re-letrada a los IDs de disco, switch `a2-m07`→`a2-m08` (real→cuento) con slots propios, coda `a2-m05`→`a2-m09` en secuencia; cutlist del README expandida y balanceada (~55.5s). El bloqueo de la sesión anterior ("cutlist del README aún tiene beat 9 viejo") queda resuelto.
 
-1. **Re-correr animatic borrador** — `npm run animatic -- --reel la-grieta --borrador` (beat 8 completo).
-2. Afinar durs → variaciones sobrevivientes → animatic final.
-3. **`a2-m01`** ← c1 aprobado (silueta master en disco).
+1. **Re-correr el animatic borrador** — `npm run animatic -- --reel la-grieta --borrador --off` — con la cutlist ya alineada (beat 9 completo, switch de la grieta, coda de 2 pasos).
+2. Afinar durs / offs según avisos de overflow.
+3. **Huecos del intercut:** `a1-a1` espera `a1-m01a`; `a2-a1b` espera el par `a2-m02d`/`a2-m02c` — ambos diferidos al gate de madres keyframes (Stage 5).
+4. **Re-pick pendiente:** `a2-m07` (canónico borrado, solo queda `-c3` en disco) antes de que `a2-a0c` tenga still definitivo.
+5. Tras aprobar ritmo → variaciones sobrevivientes → animatic final.
 
 ---
 
@@ -270,11 +306,17 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 | a1-m01 | Mano con cadenita (informe) | aprobado | Beat 6 reveal; pick c3 → `a1-m01-mano-cadenita.png`; **keyframe inicial** del par FLF `m01`→`m01a`. Vive en [planos/arco-1.md](planos/arco-1.md) |
 | a1-m01a | La firma es la grieta | pendiente (**diferida a keyframes — Stage 5**) | Keyframe final FLF; `ref a1-m01`; mismo encuadre, firma = rasgadura del papel; raccord a `a3-a5c`. Vive en [planos/arco-1.md](planos/arco-1.md) |
 | a2-m01 | Charles de espaldas | aprobado | Beat 9.1; pick c1 → `a2-m01-charles-espaldas.png` (silueta master). Vive en [planos/arco-2.md](planos/arco-2.md) |
+| a2-m02a | La pisada | aprobado | Beat 9.4; en disco `a2-m02a-pisada.png`; still `a2-a1`. **Re-letrado 2026-07-10** (era `a2-m02`) para calzar con el archivo en disco |
+| a2-m02b | El nido vacío | aprobado | Beat 9.4; en disco `a2-m02b-nido-vacio.png`; still `a2-a1c`. **Re-letrado** (era `a2-m02c`) |
+| a2-m02c | El huevo del otro lado | aprobado | Beat 9.4; en disco `a2-m02c-huevo-otro-lado.png`; keyframe final FLF con `a2-m02d` (clip `a2-a1b`). **Re-letrado** (era `a2-m02b`) |
+| a2-m02d | El huevo de este lado | pendiente (**diferida a keyframes — Stage 5**) | Keyframe inicial FLF con `a2-m02c` (clip `a2-a1b`); aprobar el par junto. **Re-letrado** (era `a2-m02a`) |
 | a2-m03 | Manos levantan la cría (cuento) | aprobado | Beat 9.3; pick c2 (gesto de alzar); still `a2-a0b` |
 | a2-m06 | Manos + cría (Revenant) | pendiente (**reserva destacada**) | `styleBlock: false`; ref `ornitorrinco_crias.jpeg`; NO entra al reel |
 | a2-m04 | El lugar blanco | aprobado | Beat 13.2 Revenant; pick `revenant-c2` → canónico, `revenant-c3` → `a2-m04-lugar-blanco-c3.png`; still `a2-a2`. Vive en [planos/arco-2.md](planos/arco-2.md) |
-| a2-m05 | El despertar (Coloradas) | pendiente | Beat 13.3; `ref a2-m01` + mundo `a3-m07` (OpenRouter), tinte rojo dusk; still `a2-a2b`. Vive en [planos/arco-2.md](planos/arco-2.md) |
-| a2-m09 | El despertar en la selva | aprobado | Beat 13.3 post-sueño; pick c1 (mate a la salida de la carpa); Reiniger, cara visible; tinte rojo dusk; aparte de `a2-m05`. Vive en [planos/arco-2.md](planos/arco-2.md) |
+| a2-m05 | El despertar (Coloradas) | aprobado | Beat 13.3, **primer paso** de la coda (secuencia con `a2-m09`); pick c3 → `a2-m05-despertar.png`; ECU ojos Reiniger; still `a2-a2b`. Vive en [planos/arco-2.md](planos/arco-2.md) |
+| a2-m09 | El despertar en la selva | aprobado | Beat 13.3 post-sueño, **segundo paso** de la coda (cierra secuencia `a2-m05`→`a2-m09`, empalma Bloque C); pick c1 (mate a la salida de la carpa); Reiniger, cara visible; tinte rojo dusk; still `a2-a2c`. Vive en [planos/arco-2.md](planos/arco-2.md) |
+| a2-m07 | La grieta (Revenant) | **generado, re-pick pendiente** | Beat 9.2, **primer eslabón** del switch transversal con `a2-m08`; canónico borrado, solo `a2-m07-grieta-revenant-c3.png` en disco; still `a2-a0c`. Vive en [planos/arco-2.md](planos/arco-2.md) |
+| a2-m08 | La grieta (Reiniger) | aprobado | Beat 9.2, **segundo eslabón** del switch (vuelta al cuento, mismo encuadre que `a2-m07`); pick c3 → `a2-m08-grieta-reiniger.png`; still `a2-a0d`. Vive en [planos/arco-2.md](planos/arco-2.md) |
 | a3-m01v1 | Madre al borde de la grieta (variación) | pendiente | Stage 4; `ref a3-m01` (OpenRouter), tinte rojo; firstFrame de a3-a6 |
 | a3-m01v2 | Madre en llanura seca (variación) | pendiente | Stage 4; `ref a3-m01` (OpenRouter), tinte gris; firstFrame de a3-b3 |
 | a3-m05v1 | Pangea antes del quiebre (variación) | pendiente | Stage 4; `ref a3-m05`; mismo encuadre que m05/m06 (par FLF); firstFrame de a3-a5 |
@@ -313,9 +355,15 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 | a3-a6d | A | ninguna | generado | Beat 8.2b; still m23 (~1.5s), solo montaje |
 | a3-a6e | A | ninguna | generado | Beat 8.2c; still m24 (~2s), solo montaje |
 | a2-a0 | A2 | ninguna | listo (still) | Beat 9.1; still a2-m01 (~1.5s), solo montaje |
+| a2-a0c | A2 | ninguna | **generado, re-pick pendiente** | Beat 9.2; still a2-m07 (~1.5s); primer eslabón del switch grieta real→cuento |
+| a2-a0d | A2 | ninguna | listo (still) | Beat 9.2; still a2-m08 (~1.5s); segundo eslabón, cierra el switch |
+| a2-a1 | A2 | ninguna | listo (still) | Beat 9.4; still a2-m02a (~1.5s), la pisada |
+| a2-a1c | A2 | ninguna | listo (still) | Beat 9.4; still a2-m02b (~1.5s), el nido vacío |
+| a2-a1b | A2 | U2V-FLF | pendiente (diferido) | Beat 9.4; FLF a2-m02d→a2-m02c (el huevo cruza); **diferido a Stage 5** (par de keyframes) |
 | a2-a0b | A2 | ninguna | generado | Beat 9.3; still a2-m03 (~1.5s), solo montaje |
 | a2-a2 | A2 | ninguna | listo (still) | Beat 13.2; still a2-m04 canónico (~1.5s); entre a3-c2 y a3-c3; c3 aprobada como A/B |
-| a2-a2b | A2 | ninguna | pendiente | Beat 13.3; still a2-m05 (~1.5s), solo montaje |
+| a2-a2b | A2 | ninguna | listo (still) | Beat 13.3; still a2-m05 (~1.5s), primer paso de la coda |
+| a2-a2c | A2 | ninguna | listo (still) | Beat 13.3; still a2-m09 (~1.5s), segundo paso, cierra la coda |
 
 ## Continuidad y QC (vision-audit por clip)
 

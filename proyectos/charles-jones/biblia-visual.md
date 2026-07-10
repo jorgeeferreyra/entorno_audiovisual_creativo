@@ -52,6 +52,8 @@ Tres variantes del mismo recurso, cada una con su momento:
 
 Estructura dramática canónica del par caos→respiro: **silueta → caos Revenant → zoom-out poético → vuelta a silueta**. El caos necesita el respiro posterior para significar algo; el respiro es la traducción "real" de la poética de las imágenes madre de paisaje (ref. `a3-m05`).
 
+**Patrón "ida y vuelta de estilo" (switch secuencial, no A/B):** además del cruce cuento↔real en un solo sentido (un eslabón que salta de registro y no vuelve), el recurso admite un **par secuencial en el mismo encuadre**: primero sucede en Revenant/photoreal y el mismo instante se convierte de vuelta al cuento/Reiniger — dos madres, mismo encuadre, dos pasos de un solo golpe. No es una elección entre alternativas (A/B): ambas entran, en ese orden. Es un patrón **transversal**, no exclusivo de un arco. Ejemplo canónico: el golpe de la grieta del Arco 2 (`a2-m07` real → `a2-m08` cuento, ver [arco-2.md](redes/planos/arco-2.md)), candidato a ascender a par FLF real→dibujo en el gate de keyframes.
+
 #### REALITY-BLOCK-CHAOS (bloque canónico, en inglés)
 
 Se embebe **literal** en los prompts de quiebre caótico (misma regla de propagación que el STYLE-BLOCK):

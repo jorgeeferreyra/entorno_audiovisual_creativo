@@ -970,6 +970,7 @@ Kling (FLF) se reserva a la cadena de transiciones (a3-a5, a3-a5x experimental, 
 | m10'→m11 | a3-c2 | FLF | 2 (par) | Par fosilización: ornitorrinco sobre roca → fósil de piedra; Ref hereda de m11 (madre aprobada) |
 | m07→m10' | a3-c1 | U2V + corte | 1 | Push-in; NO FLF (no comparten encuadre) — no pasa por el gate de keyframes |
 | m13→m09 | a3-c3e | Solo montaje | — | Eco 1–2s de m09 tras pull-out de m13, antes de c4 (eco deliberado, exento de variación) |
+| a2-m07→a2-m08 | a2-a0c→a2-a0d | Stills secuenciales (candidato FLF) | 2 (par) | Switch transversal real→cuento del **Arco 2** (mismo encuadre OTS extremo, ver [arco-2.md](arco-2.md)); hoy 2 stills por corte — si asciende a FLF real→dibujo, aprobar el par junto en este gate |
 
 ---
 
