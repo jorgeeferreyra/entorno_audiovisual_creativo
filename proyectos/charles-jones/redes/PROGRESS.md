@@ -1,7 +1,7 @@
 # Redes (Arco 3) — Build Progress
 
-_Last updated: 2026-07-09_
-_Current stage: Stage 3 — Clips_
+_Last updated: 2026-07-10_
+_Current stage: Stage 1.5 — Cadena narrativa (aprobada) → resolver huecos beats 8/9_
 _Based on roadmap: [TECH.md](TECH.md) § 5_
 
 > Session log agency-os + seguimiento detallado de producción (estados, costos, gates). Absorbe el antiguo `arco-3-roadmap.md`. No duplica prompts ni fichas: la fuente de verdad de los prompts es [arco-3-planos.md](planos/arco-3.md); el STYLE-BLOCK y los switches cuento↔real viven en [biblia-visual.md](../biblia-visual.md); la convención de IDs/archivos en [pipeline.md](../../../metodo/pipeline.md) §5.
@@ -16,6 +16,7 @@ Estados: `pendiente` → `generado` (existe el archivo) → `aprobado` (pasó el
 Espejo del roadmap de [TECH.md](TECH.md) § 5. Un stage se marca `[x]` solo cuando cumple sus Exit criteria.
 
 - [x] **Stage 1 — Docs y spec** — fichas de planos/arco-3.md válidas
+- [x] **Stage 1.5 — Cadena narrativa** — cadena del reel aprobada 2026-07-10 ([reels/la-grieta/cadena-narrativa.md](reels/la-grieta/cadena-narrativa.md)); gate previo a imágenes
 - [ ] **Stage 2 — Imágenes madre en cascada** — 17 madres aprobadas (todas generadas/aprobadas; ver checklist)
 - [ ] **Stage 2.5 — Animatic (gate previo a video)** — animatic transversal `la-grieta` aprobado (ritmo/orden/subtítulos) antes de gastar en clips
 - [ ] **Stage 3 — Clips** — bloques A/B/C generados y aprobados (Bloque A casi completo; B/C pendientes)
@@ -25,6 +26,17 @@ Espejo del roadmap de [TECH.md](TECH.md) § 5. Un stage se marca `[x]` solo cuan
 ## 2. Session Log
 
 Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
+
+### 2026-07-10 — Gate cadena narrativa (previo a imágenes)
+
+- **Stage in flight:** Stage 1.5 (cadena narrativa) → prep de Stage 2/2.5.
+- **Done this session:**
+  - **Gate nuevo formalizado y aprobado:** [reels/la-grieta/cadena-narrativa.md](reels/la-grieta/cadena-narrativa.md) — mapa de beats del reel en lenguaje de historia (no de producción) + leyenda "cómo leer/iterar". Gobierna la `cutlist` (la cutlist la implementa).
+  - **Stage 1.5** insertado en [TECH.md](TECH.md) §5 entre docs y madres; Stage 2 y 2.5 pasan a depender de él.
+  - **Mapa beat→clip** en el doc: cruce de los 13 beats contra la cutlist actual.
+- **Hallazgo clave (huecos):** beats **8** (ZOOM separación: "unos ornitorrincos de un lado, otros del otro") y **9** (ZOOM Charles/palanca: de espaldas → levanta la cría → balancín → huevo cruza a Australia → consecuencia) están **sub-cubiertos**: la cutlist los comprime en un solo slot cada uno (`a3-a6` y `a2-a1`), y los planos parciales de A1/A2 no bajan esos sub-beats.
+- **Next step:** (1) resolver cobertura de beats 8 y 9 — decisión de dirección sobre cuántas imágenes bajar y expandir fichas en [planos/arco-2.md](planos/arco-2.md) (+ cutlist del reel); (2) recién después re-correr y aprobar el animatic transversal (Stage 2.5).
+- **New blockers / questions raised:** cuántas imágenes por zoom (8.1–8.3, 9.1–9.6) sin inflar el reel de 30–45s — decisión de dirección.
 
 ### 2026-07-09 — Alineación al modelo transversal (post-auditoría)
 
@@ -64,17 +76,24 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 ## Orden de ejecución
 
 1. **Docs** — planos / biblia / progreso alineados a las decisiones de dirección.
-2. **Madres en cascada** — regenerar/generar con `--candidates 3` y aprobar con `--pick`, en orden: **m03' → m02' joven → m10' → m17**. Pares FLF se aprueban juntos (mismo encuadre).
-3. **Animatic (gate)** — `npm run animatic -- --reel la-grieta` → aprobar ritmo/orden/subtítulos del intercut ANTES de gastar en video.
-4. **Clips** — solo lo que el reel aprobado necesita: regen `a3-a4` (huevo) y `a3-c1` (push-in m07), generar `a3-c3`, re-auditar `b1`–`c2`, y las madres+clips de A1/A2. Puentes FLF (`a5x`/`a5y`/`c0`) y regen FLF de `a3-a5` **diferidos a destacadas**.
-5. **Montaje del reel transversal** — desde la cut-list (inserts: eco m09 tras c3, foto real en a3-c4).
-6. **Destacadas** — S1–S5 derivadas por recorte, cero generación.
+2. **Cadena narrativa (gate)** — [reels/la-grieta/cadena-narrativa.md](reels/la-grieta/cadena-narrativa.md): mapa de beats en lenguaje de historia aprobado ANTES de generar imágenes; gobierna la cutlist.
+3. **Madres en cascada** — regenerar/generar con `--candidates 3` y aprobar con `--pick`, en orden: **m03' → m02' joven → m10' → m17**. Pares FLF se aprueban juntos (mismo encuadre).
+4. **Animatic (gate)** — `npm run animatic -- --reel la-grieta` → aprobar ritmo/orden/subtítulos del intercut ANTES de gastar en video.
+5. **Clips** — solo lo que el reel aprobado necesita: regen `a3-a4` (huevo) y `a3-c1` (push-in m07), generar `a3-c3`, re-auditar `b1`–`c2`, y las madres+clips de A1/A2. Puentes FLF (`a5x`/`a5y`/`c0`) y regen FLF de `a3-a5` **diferidos a destacadas**.
+6. **Montaje del reel transversal** — desde la cut-list (inserts: eco m09 tras c3, foto real en a3-c4).
+7. **Destacadas** — S1–S5 derivadas por recorte, cero generación.
 
 ### Próxima acción
 
-**Paso 2 (madres del Arco 3) listo** — m02/m03/m10/m17 aprobados vía **OpenRouter / Nano Banana** (`google/gemini-2.5-flash-image`), con multi-ref (m01 lock + anatomía en `assets/fuentes/ornitorrincos/`). Provider por defecto en `npm run gen`; fallback `--provider minimax`.
+**Gate cadena narrativa (Stage 1.5) aprobado** — [reels/la-grieta/cadena-narrativa.md](reels/la-grieta/cadena-narrativa.md) es el mapa de beats que gobierna la cutlist. Madres del Arco 3 ya listas (m02/m03/m10/m17 vía **OpenRouter / Nano Banana**, multi-ref; provider por defecto en `npm run gen`, fallback `--provider minimax`).
 
-**Siguiente = paso 3: animatic transversal (gate).** No cuesta nada (ffmpeg local); aprueba el intercut antes del video.
+**Siguiente = resolver los huecos que expuso el gate (beats 8 y 9) antes del animatic:**
+
+1. **Beat 8 (ZOOM separación)** — bajar fichas para "plano ancho" y "plano de lectura" (unos ornitorrincos de un lado, otros del otro); hoy solo `a3-a6` lo comprime.
+2. **Beat 9 (ZOOM Charles/palanca)** — expandir [planos/arco-2.md](planos/arco-2.md): Charles de espaldas (9.1), levanta la cría (9.3), consecuencia (9.6); hoy solo el balancín (`a2-a1`).
+3. Decisión de dirección: cuántas imágenes por zoom sin inflar el reel de 30–45s; actualizar la `cutlist` del [README.md](reels/la-grieta/README.md).
+
+**Recién con 8 y 9 cubiertos = animatic transversal (Stage 2.5):**
 
 ```bash
 cd engine/wind-mcp && npm run animatic -- --reel la-grieta

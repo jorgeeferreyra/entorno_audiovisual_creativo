@@ -18,13 +18,15 @@ Referencia de motores, capacidades y tarifas: [providers.md](providers.md).
 
 ```mermaid
 flowchart TD
-    A["1. Imagenes madre (Flux/Minimax)"] --> A2["2. Animatic de madres (imagen fija + subtitulo, gate barato)"]
+    A0["0. Cadena narrativa (mapa de beats, gate gratis)"] --> A["1. Imagenes madre (Flux/Minimax)"]
+    A --> A2["2. Animatic de madres (imagen fija + subtitulo, gate barato)"]
     A2 --> B["3. Clips 5-6s por personaje aislado"]
     B --> C["4. Montaje: cruces por edicion, no por generacion"]
     C --> D["5. Voz en off (grabada propia o TTS Minimax)"]
     D --> E["6. Export 9:16 + subtitulos"]
 ```
 
+0. **Cadena narrativa** (gate gratis, previo a toda imagen): aprobar el **mapa de beats** de la pieza **en lenguaje de historia** (sin IDs ni jerga de producción), antes de generar la primera madre. Distinto del animatic: la cadena valida **historia y cobertura** a costo cero; el animatic (paso 2) valida **ritmo/orden/subtítulos** con madres ya generadas — dos gates secuenciales. Mecanismo: un doc `cadena-narrativa.md` junto a la salida que gobierna (ej. `reels/<slug>/`), con front-matter `estado: aprobado` y un **mapa beat→clip** contra la cutlist que expone huecos de cobertura antes de pagar. Ejemplo vivo: [reels/la-grieta/cadena-narrativa.md](../proyectos/charles-jones/redes/reels/la-grieta/cadena-narrativa.md).
 1. **Imágenes madre primero**: retrato de Charles de espaldas, mano con cadenita, un ornitorrinco por animal, paisajes Pangea. Son la biblia visual; todo parte de acá. Los clips de **transformación/transición** piden un **par de madres** (first/last frame para U2V-FLF), no una sola — regla de coherencia y keyframes en [biblia-visual.md](../proyectos/charles-jones/biblia-visual.md) §3.
 2. **Animatic de madres** (gate barato previo a video/audio): antes de generar clips, montar un video donde cada clip aparece como su **imagen madre fija** durante su duración (default 5s) con el **subtítulo (off) quemado**. Da un acercamiento al producto para aprobar ritmo, orden y texto **antes** de gastar en video/audio (el mayor costo). Es puro ffmpeg local (`montarAnimatic()` en [`wind-mcp/src/lib/animatic.ts`](../engine/wind-mcp/src/lib/animatic.ts); CLI `npm run animatic -- --arco N`), no llama APIs. Recién con el animatic aprobado se avanza. Las madres aún sin generar se omiten con aviso, así también sirve durante el refinamiento.
 3. **Clips de 5–6s por personaje aislado**: la duración barata. En la instancia local con `PLAN_GATE_DISABLED=1` no aplican los gates de plan de pago.

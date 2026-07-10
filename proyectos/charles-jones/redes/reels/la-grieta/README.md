@@ -33,6 +33,7 @@ cutlist:
 Salida transversal: intercala clips de los tres hilos (Mano Negra, Charles/palanca, Ornitorrincos) para contar las tres historias en una sola pieza vertical (IG/TikTok). No es la salida de un arco; los arcos son la **fuente**.
 
 - **Arcos que cruza**: `arcos: [1, 2, 3]`. La `cutlist` del front-matter es el mapa de intercut (~43s) de la [auditoría §A](../../auditoria-modelo-transversal.md): espina emocional del Arco 3, reveal del Arco 1 (`a1-a1`, la mano firma) tras la grieta, contrapunto del Arco 2 (`a2-a1`, la palanca) en vidas paralelas. Los `a1-*`/`a2-*` se omiten en el animatic hasta que esos hilos bajen a [../../planos/](../../planos/).
+- **Mapa narrativo que gobierna**: [cadena-narrativa.md](cadena-narrativa.md) es la cadena de beats aprobada (gate previo a imágenes, Stage 1.5). La `cutlist` la **implementa**: cada slot responde a un beat de esa cadena, no al revés. Si la cadena cambia, la cutlist se re-deriva.
 - **Cut-list vs. lista plana**: cada entrada es un slot (`clip` + `dur` recortada en segundos). Reemplaza a la vieja lista `clips:` (que era solo Arco 3). La lee la herramienta del animatic (`--reel`).
 - **Origen**: metadata, no jerarquía. Es precuela canónica del episodio 1 (el fósil de Rocas Coloradas). Si la relación cambia (standalone, o semilla de un episodio futuro), se edita la línea `origen` del front-matter — no se mueve nada.
 - **Fuente ejecutable**: [../../planos/arco-3.md](../../planos/arco-3.md) (y [arco-1.md](../../planos/arco-1.md) / [arco-2.md](../../planos/arco-2.md), parciales).
