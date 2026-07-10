@@ -34,9 +34,9 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 - **Done this session:**
   - **Capa formalizada** en el método: paso 1.5 en [pipeline.md](../../../metodo/pipeline.md) §2 (regla, exenciones, mecanismo `ref` + Nano Banana, gate) + convención de ID `a{arco}-m{nn}v{k}` en §5; regla 7 en [biblia-visual.md](../biblia-visual.md) §3; Stage 2.6 + fila de presupuesto en [TECH.md](TECH.md).
   - **Regla:** toda reutilización de una madre en pantalla dispara una variación derivada de la base; la primera aparición usa la base. **Exentas:** keyframe compartido de cadena FLF (m06, m14, m07) y eco deliberado (m09 en c3e).
-  - **5 fichas de variación** en [planos/arco-3.md](planos/arco-3.md) §1: `a3-m01v1` (borde grieta, rojo → a3-a6), `a3-m01v2` (llanura seca, gris → a3-b3), `a3-m05v1` (Pangea pre-quiebre → a3-a5), `a3-m14v1` (grieta polvo → a3-c0), `a3-m15v1` (aéreo hacia humedal → a3-a5y). `firstFrame` de esos 5 clips re-apuntados; tabla de costo y §Cadena de transiciones actualizadas.
+  - **5 fichas de variación** en [planos/arco-3.md](planos/arco-3.md) §1: `a3-m01v1` (borde grieta, rojo → a3-a6), `a3-m01v2` (llanura seca, gris → a3-b3), `a3-m05v1` (Pangea pre-quiebre → a3-a5), `a3-m14v1` (grieta polvo → a3-c0), `a3-m15v1` (aéreo hacia humedal → a3-a5y). `firstFrame` de esos 5 clips re-apuntados; §Cadena de transiciones actualizada.
   - **Chequeo automático** `validarUnicidad()` en [`specs.ts`](../../../engine/wind-mcp/src/lib/specs.ts), surfaceado en `npm run gen` y el animatic `--arco`. `npm run gen -- --arco 3` verde, sin warnings de unicidad.
-- **Next step:** generar las 5 variaciones con `npm run gen -- --id a3-mNNvK --candidates 3` (~¥1.5–4.5) y aprobar con `--pick`; luego re-correr el animatic transversal (Stage 2.5) con las madres variadas y re-aprobar el gate (decisión de dirección).
+- **Next step:** generar las 5 variaciones con `npm run gen -- --id a3-mNNvK --candidates 3` y aprobar con `--pick`; luego re-correr el animatic transversal (Stage 2.5) con las madres variadas y re-aprobar el gate (decisión de dirección).
 - **New blockers / questions raised:** ninguno; `m05v1` debe conservar el encuadre exacto de m05/m06 (integridad del par FLF) — verificar en el pick.
 
 ### 2026-07-10 — Resolución de huecos beats 8 y 9 (fichas bajadas)
@@ -48,7 +48,7 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
   - **Cutlist** de [reels/la-grieta/README.md](reels/la-grieta/README.md) expandida a ~44s: insertados los 4 stills; recortes compensatorios `a3-a1` 3→2, `a3-a6` 3→2, `a2-a1` 4→3.
   - **Off** de los 4 slots nuevos en [arco-3-off.md](planos/arco-3-off.md) y [arco-2-off.md](planos/arco-2-off.md); mapa beat→clip de [cadena-narrativa.md](reels/la-grieta/cadena-narrativa.md) marca 8 y 9 como cubiertos.
 - **Decisión de dirección aplicada:** los sub-beats entran como **stills de montaje** (~1.5s), no clips U2V — cero costo de video ahora; el animatic decide después si alguno asciende.
-- **Next step:** generar madres nuevas (`a3-m19`, `a3-m20`, `a2-m01`, `a2-m03`) con `npm run gen --candidates 3` (~¥1.5–2) → correr el animatic transversal (Stage 2.5).
+- **Next step:** generar madres nuevas (`a3-m19`, `a3-m20`, `a2-m01`, `a2-m03`) con `npm run gen --candidates 3` → correr el animatic transversal (Stage 2.5).
 - **New blockers / questions raised:** ninguno; a resolver en el animatic si `a2-m03` (manos + cría en silueta) lee bien o necesita clip.
 
 ### 2026-07-10 — Gate cadena narrativa (previo a imágenes)
@@ -142,66 +142,66 @@ cd engine/wind-mcp && npm run animatic -- --reel la-grieta
 
 ## Checklist — Imágenes madre (17 generadas; m16 eliminada, m18 agregada)
 
-| ID | Título | Estado | Costo real | Nota |
-|---|---|---|---|---|
-| a3-m01 | Madre ornitorrinco | aprobado | ~¥0.3 | Lock de consistencia ✓ — no tocar |
-| a3-m02 | Ornitorrinco joven | aprobado | OpenRouter | Nano Banana multi-ref; pick c1 (más chico, panza arriba); path `a3-m02-ornitorrinco-joven.png` |
-| a3-m03 | Padre ornitorrinco | aprobado | OpenRouter | Nano Banana multi-ref; pick c3 (fornido, 4 patas, orilla de lago) |
-| a3-m04 | Huevo | aprobado | ~¥0.3 | Close-up nido; ahora firstFrame de a3-a4 ✓ |
-| a3-m05 | Paisaje Pangea | aprobado | ~¥0.3 | |
-| a3-m06 | Pangea partida | aprobado | ~¥0.3 | Grieta roja, agua en el gap ✓ |
-| a3-m07 | Rocas Coloradas | aprobado | ~¥0.6 | Retry ×1; firstFrame de a3-c1 (U2V) ✓ |
-| a3-m08 | Australia próspera | aprobado | ~¥0.3 | lastFrame de puente a3-a5y ✓ |
-| a3-m09 | Argentina en declive | aprobado | ~¥0.3 | firstFrame a3-b4 + eco montaje c3e ✓ |
-| a3-m10 | Ornitorrinco sobre roca | aprobado | OpenRouter | Nano Banana: Ref m01 + mundo m07 + foto; pick c3; MADRE muriendo junto al agua ✓ |
-| a3-m11 | Fósil de piedra | aprobado | ~¥0.3 | NO tocar — madre padre del par fosilización ✓ |
-| a3-m12 | Apertura cuaderno Charles | aprobado | ~¥0.3 | Intro transversal POV ✓ |
-| a3-m13 | Fósil en yacimiento | aprobado | ~¥0.3 | Salto realidad clínico ✓ |
-| a3-m14 | Grieta Revenant | aprobado | ~¥0.3 | REALITY-BLOCK-CHAOS; keyframe de a5x y c0 ✓ |
-| a3-m15 | Zoom-out poético | aprobado | ~¥0.6 | Retry ×1; firstFrame de a3-a5y ✓ |
-| ~~a3-m16~~ | ~~Ornitorrinco caminando~~ | **ELIMINADA** | — | Con m10 reencuadrada no comparte encuadre; a3-c1 = U2V sobre m07 |
-| a3-m17 | Argentina seca (estado final) | aprobado | OpenRouter | Par m09→m17; pick c2; mismo encuadre más seco/oscuro ✓ |
-| a3-m18 | Joven muriendo sobre roca | aprobado (**reserva, sin uso**) | OpenRouter | Nueva: Ref m02 + mundo m07 + foto; pick c2; JOVEN muriendo en cornisa. **Huérfana**: ninguna ficha de clip la usa y contradice el off (el joven prospera en Australia, b2). No usar hasta resolver la ambigüedad narrativa (auditoría §0/§C). |
-| a3-m19 | Plano ancho de la separación | pendiente | — | Beat 8.1; `ref a3-m06` (mundo partido); still `a3-a6a` |
-| a3-m20 | Familia repartida (plano de lectura) | pendiente | — | Beat 8.2; multi-ref `a3-m01` + `ornitorrincos-dibujo.png` (OpenRouter); still `a3-a6b` |
-| a2-m01 | Charles de espaldas | pendiente | — | Beat 9.1; refs `charles/` (OpenRouter), guarda "nunca de frente"; still `a2-a0`. Vive en [planos/arco-2.md](planos/arco-2.md) |
-| a2-m03 | Manos levantan la cría | pendiente | — | Beat 9.3; refs `charles/` + `ornitorrinco_crias.jpeg` (pose) + `a3-m02` (silueta), OpenRouter; still `a2-a0b`. Vive en [planos/arco-2.md](planos/arco-2.md) |
-| a3-m01v1 | Madre al borde de la grieta (variación) | pendiente | — | Stage 2.6; `ref a3-m01` (OpenRouter), tinte rojo; firstFrame de a3-a6 |
-| a3-m01v2 | Madre en llanura seca (variación) | pendiente | — | Stage 2.6; `ref a3-m01` (OpenRouter), tinte gris; firstFrame de a3-b3 |
-| a3-m05v1 | Pangea antes del quiebre (variación) | pendiente | — | Stage 2.6; `ref a3-m05`; mismo encuadre que m05/m06 (par FLF); firstFrame de a3-a5 |
-| a3-m14v1 | Grieta real, polvo asentándose (variación) | pendiente | — | Stage 2.6; `ref a3-m14`, styleBlock false; firstFrame de a3-c0 |
-| a3-m15v1 | Aéreo hacia el humedal (variación) | pendiente | — | Stage 2.6; `ref a3-m15`, styleBlock false; firstFrame de a3-a5y |
+| ID | Título | Estado | Nota |
+|---|---|---|---|
+| a3-m01 | Madre ornitorrinco | aprobado | Lock de consistencia ✓ — no tocar |
+| a3-m02 | Ornitorrinco joven | aprobado | Nano Banana multi-ref; pick c1 (más chico, panza arriba); path `a3-m02-ornitorrinco-joven.png` |
+| a3-m03 | Padre ornitorrinco | aprobado | Nano Banana multi-ref; pick c3 (fornido, 4 patas, orilla de lago) |
+| a3-m04 | Huevo | aprobado | Close-up nido; ahora firstFrame de a3-a4 ✓ |
+| a3-m05 | Paisaje Pangea | aprobado | |
+| a3-m06 | Pangea partida | aprobado | Grieta roja, agua en el gap ✓ |
+| a3-m07 | Rocas Coloradas | aprobado | Retry ×1; firstFrame de a3-c1 (U2V) ✓ |
+| a3-m08 | Australia próspera | aprobado | lastFrame de puente a3-a5y ✓ |
+| a3-m09 | Argentina en declive | aprobado | firstFrame a3-b4 + eco montaje c3e ✓ |
+| a3-m10 | Ornitorrinco sobre roca | aprobado | Nano Banana: Ref m01 + mundo m07 + foto; pick c3; MADRE muriendo junto al agua ✓ |
+| a3-m11 | Fósil de piedra | aprobado | NO tocar — madre padre del par fosilización ✓ |
+| a3-m12 | Apertura cuaderno Charles | aprobado | Intro transversal POV ✓ |
+| a3-m13 | Fósil en yacimiento | aprobado | Salto realidad clínico ✓ |
+| a3-m14 | Grieta Revenant | aprobado | REALITY-BLOCK-CHAOS; keyframe de a5x y c0 ✓ |
+| a3-m15 | Zoom-out poético | aprobado | Retry ×1; firstFrame de a3-a5y ✓ |
+| ~~a3-m16~~ | ~~Ornitorrinco caminando~~ | **ELIMINADA** | Con m10 reencuadrada no comparte encuadre; a3-c1 = U2V sobre m07 |
+| a3-m17 | Argentina seca (estado final) | aprobado | Par m09→m17; pick c2; mismo encuadre más seco/oscuro ✓ |
+| a3-m18 | Joven muriendo sobre roca | aprobado (**reserva, sin uso**) | Nueva: Ref m02 + mundo m07 + foto; pick c2; JOVEN muriendo en cornisa. **Huérfana**: ninguna ficha de clip la usa y contradice el off (el joven prospera en Australia, b2). No usar hasta resolver la ambigüedad narrativa (auditoría §0/§C). |
+| a3-m19 | Plano ancho de la separación | pendiente | Beat 8.1; `ref a3-m06` (mundo partido); still `a3-a6a` |
+| a3-m20 | Familia repartida (plano de lectura) | pendiente | Beat 8.2; multi-ref `a3-m01` + `ornitorrincos-dibujo.png` (OpenRouter); still `a3-a6b` |
+| a2-m01 | Charles de espaldas | pendiente | Beat 9.1; refs `charles/` (OpenRouter), guarda "nunca de frente"; still `a2-a0`. Vive en [planos/arco-2.md](planos/arco-2.md) |
+| a2-m03 | Manos levantan la cría | pendiente | Beat 9.3; refs `charles/` + `ornitorrinco_crias.jpeg` (pose) + `a3-m02` (silueta), OpenRouter; still `a2-a0b`. Vive en [planos/arco-2.md](planos/arco-2.md) |
+| a3-m01v1 | Madre al borde de la grieta (variación) | pendiente | Stage 2.6; `ref a3-m01` (OpenRouter), tinte rojo; firstFrame de a3-a6 |
+| a3-m01v2 | Madre en llanura seca (variación) | pendiente | Stage 2.6; `ref a3-m01` (OpenRouter), tinte gris; firstFrame de a3-b3 |
+| a3-m05v1 | Pangea antes del quiebre (variación) | pendiente | Stage 2.6; `ref a3-m05`; mismo encuadre que m05/m06 (par FLF); firstFrame de a3-a5 |
+| a3-m14v1 | Grieta real, polvo asentándose (variación) | pendiente | Stage 2.6; `ref a3-m14`, styleBlock false; firstFrame de a3-c0 |
+| a3-m15v1 | Aéreo hacia el humedal (variación) | pendiente | Stage 2.6; `ref a3-m15`, styleBlock false; firstFrame de a3-a5y |
 
 > **Switch provider (2026-07-09):** madres con Ref/AnatomyRef pasan por `openrouter` (Nano Banana) en vez de Minimax. Minimax se queda como `--provider minimax` (composite 1-slot) por si hace falta.
 
 ## Checklist — Clips
 
-| ID | Bloque | Herramienta | Estado | Costo real | Nota |
-|---|---|---|---|---|---|
-| a3-a1 | A | U2V | aprobado | ~¥0.5 | Intro transversal ✓ |
-| a3-a2 | A | U2V | aprobado | ~¥0.5 | Establishing Pangea ✓ |
-| a3-a3 | A | U2V | aprobado | ~¥0.5 | Ritual madre ✓ |
-| a3-a4 | A | U2V | **obsoleto → regen** | ~¥0.5 (prev) | Regenerar: firstFrame m04 huevo (ya no cría) |
-| a3-a5 | A | U2V-FLF | aprobado (I2V degradado) | ~¥0.5 | En el reel se tolera recortado a ~2s; **regen FLF m05→m06 diferido a la destacada S2** (auditoría §D) |
-| a3-a5b | A | U2V | aprobado | ~¥0.5 | Switch caos Revenant ✓ |
-| a3-a5c | A | U2V | aprobado | ~¥0.5 | Switch respiro crane-up ✓ |
-| a3-a5x | A | U2V-FLF | pendiente (diferido) | — | **EXPERIMENTAL** m06→m14; **diferido a destacadas** — en el reel el corte duro alcanza (auditoría §D) |
-| a3-a5y | A/B | U2V-FLF | pendiente (diferido) | — | Puente m15→m08; **diferido a destacadas** (auditoría §D) |
-| a3-a6 | A | U2V | aprobado | ~¥0.5 | |
-| a3-b1 | B | U2V | **generado (pre-rediseño) → re-auditar** | ~¥0.5 (prev) | mp4 en disco de una pasada previa; si el contorno del padre calza con m03' aprobada, reutiliza |
-| a3-b2 | B | U2V | **generado (pre-rediseño) → re-auditar/regen** | ~¥0.5 (prev) | mp4 `cria-eclosionada` (concepto viejo); ficha ahora es joven (firstFrame m02) |
-| a3-b3 | B | U2V | **generado (pre-rediseño) → re-auditar** | ~¥0.5 (prev) | mp4 en disco; probable reutiliza |
-| a3-b4 | B | U2V-FLF | **generado (pre-rediseño) → re-auditar** | ~¥0.5 (prev) | mp4 en disco; ficha es FLF m09→m17 (verificar morph) |
-| a3-c0 | C | U2V-FLF | pendiente (diferido) | — | Puente m14→m07; **diferido a destacadas** (auditoría §D) |
-| a3-c1 | C | U2V | **generado (pre-rediseño) → regen** | ~¥0.5 (prev) | mp4 `ultimo-llega` = concepto m16 (caminata, eliminada); ficha ahora push-in sobre m07 |
-| a3-c2 | C | U2V-FLF | **generado (pre-rediseño) → re-auditar** | ~¥0.5 (prev) | mp4 en disco; ficha es FLF m10'→m11; **Gate Kling** (verificar morph) |
-| a3-c3 | C | U2V | pendiente | — | |
-| a3-c3e | C | ninguna | pendiente | — | Eco 1–2s m09 (solo montaje) |
-| a3-c4 | C | ninguna | pendiente | — | Solo montaje (foto real) |
-| a3-a6a | A | ninguna | pendiente | — | Beat 8.1; still m19 (~1.5s), solo montaje |
-| a3-a6b | A | ninguna | pendiente | — | Beat 8.2; still m20 (~1.5s), solo montaje |
-| a2-a0 | A2 | ninguna | pendiente | — | Beat 9.1; still a2-m01 (~1.5s), solo montaje |
-| a2-a0b | A2 | ninguna | pendiente | — | Beat 9.3; still a2-m03 (~1.5s), solo montaje |
+| ID | Bloque | Herramienta | Estado | Nota |
+|---|---|---|---|---|
+| a3-a1 | A | U2V | aprobado | Intro transversal ✓ |
+| a3-a2 | A | U2V | aprobado | Establishing Pangea ✓ |
+| a3-a3 | A | U2V | aprobado | Ritual madre ✓ |
+| a3-a4 | A | U2V | **obsoleto → regen** | Regenerar: firstFrame m04 huevo (ya no cría) |
+| a3-a5 | A | U2V-FLF | aprobado (I2V degradado) | En el reel se tolera recortado a ~2s; **regen FLF m05→m06 diferido a la destacada S2** (auditoría §D) |
+| a3-a5b | A | U2V | aprobado | Switch caos Revenant ✓ |
+| a3-a5c | A | U2V | aprobado | Switch respiro crane-up ✓ |
+| a3-a5x | A | U2V-FLF | pendiente (diferido) | **EXPERIMENTAL** m06→m14; **diferido a destacadas** — en el reel el corte duro alcanza (auditoría §D) |
+| a3-a5y | A/B | U2V-FLF | pendiente (diferido) | Puente m15→m08; **diferido a destacadas** (auditoría §D) |
+| a3-a6 | A | U2V | aprobado | |
+| a3-b1 | B | U2V | **generado (pre-rediseño) → re-auditar** | mp4 en disco de una pasada previa; si el contorno del padre calza con m03' aprobada, reutiliza |
+| a3-b2 | B | U2V | **generado (pre-rediseño) → re-auditar/regen** | mp4 `cria-eclosionada` (concepto viejo); ficha ahora es joven (firstFrame m02) |
+| a3-b3 | B | U2V | **generado (pre-rediseño) → re-auditar** | mp4 en disco; probable reutiliza |
+| a3-b4 | B | U2V-FLF | **generado (pre-rediseño) → re-auditar** | mp4 en disco; ficha es FLF m09→m17 (verificar morph) |
+| a3-c0 | C | U2V-FLF | pendiente (diferido) | Puente m14→m07; **diferido a destacadas** (auditoría §D) |
+| a3-c1 | C | U2V | **generado (pre-rediseño) → regen** | mp4 `ultimo-llega` = concepto m16 (caminata, eliminada); ficha ahora push-in sobre m07 |
+| a3-c2 | C | U2V-FLF | **generado (pre-rediseño) → re-auditar** | mp4 en disco; ficha es FLF m10'→m11; **Gate Kling** (verificar morph) |
+| a3-c3 | C | U2V | pendiente | |
+| a3-c3e | C | ninguna | pendiente | Eco 1–2s m09 (solo montaje) |
+| a3-c4 | C | ninguna | pendiente | Solo montaje (foto real) |
+| a3-a6a | A | ninguna | pendiente | Beat 8.1; still m19 (~1.5s), solo montaje |
+| a3-a6b | A | ninguna | pendiente | Beat 8.2; still m20 (~1.5s), solo montaje |
+| a2-a0 | A2 | ninguna | pendiente | Beat 9.1; still a2-m01 (~1.5s), solo montaje |
+| a2-a0b | A2 | ninguna | pendiente | Beat 9.3; still a2-m03 (~1.5s), solo montaje |
 
 ## Continuidad y QC (vision-audit por clip)
 
@@ -242,19 +242,9 @@ Formaliza el QC que ya se hace informalmente (carpetas `_candidates`/`_audit`). 
 
 ---
 
-## Presupuesto (techo operativo ~¥19–20)
+## Presupuesto
 
-| Etapa | Estimado | Real acumulado |
-|---|---|---|
-| Madres (16 × ¥0.3 + retries m02/m03/m10/m17 ×3 candidates) | ~¥4.8 + ~¥3–4 retries | ~¥6.0 (prev) |
-| Clips U2V (~11 × ¥0.5, incl. a4 regen + c1) | ~¥5.5 | ~¥4.0 (Bloque A) |
-| Clips FLF **del reel** (solo b4, c2 — el resto diferido) | ~¥2 | ¥0 |
-| Gaps A1/A2 para el reel (4 madres + 3 clips) | ~¥2.6 | ¥0 |
-| **Total reel** | **~¥14.9** (techo **¥19–20** con retries) | **~¥10** |
-
-**Ahorro por el modelo transversal:** los puentes FLF `a5x`/`a5y`/`c0` y la regen FLF de `a3-a5` se **difieren a las destacadas** (auditoría §D) — el reel de 30–45s los cubre con corte duro. Eso baja el costo del reel ~¥3–4 respecto del reel autoconclusivo viejo, y el **gate del animatic** (gratis) confirma qué slots pagar antes de generar video.
-
-Los retries de madres con `--candidates 3` suman ~¥0.9 c/u antes del pick: por eso la cascada ordenada (m03' → m02' → m10' → m17) y no regenerar en lote.
+El presupuesto (estimado y real) no se documenta acá. Las cifras de costo viven solo en la doc de costos ([../../../metodo/providers.md](../../../metodo/providers.md) + [tarifas.json](../../../metodo/tarifas.json)); la estimación se calcula on-demand con la calculadora de costos y el costo real vive en los sidecars `.json` por asset. Decisión de alcance vigente: los puentes FLF `a5x`/`a5y`/`c0` y la regen FLF de `a3-a5` se **difieren a las destacadas** (auditoría §D) — el reel de 30–45s los cubre con corte duro, y el **gate del animatic** (gratis) confirma qué slots generar antes de pagar video.
 
 ---
 
@@ -273,7 +263,7 @@ a3-a5 salió por I2V fallback cuando Kling devolvió "quota insufficient"; ahora
 cd engine/wind-mcp && npm run gen -- --id a3-a5 --force
 ```
 
-Requiere wind-comic arriba en modo real (`MOCK_ENGINES=0`). Criterio de aceptación: el log debe mostrar provider `Kling-FLF` (no `Minimax-I2V-fallback`) y el morph primer→último frame de la grieta debe ocurrir. Costo estimado ~¥1. Al aprobar, actualizar la fila de a3-a5 en el checklist de clips.
+Requiere wind-comic arriba en modo real (`MOCK_ENGINES=0`). Criterio de aceptación: el log debe mostrar provider `Kling-FLF` (no `Minimax-I2V-fallback`) y el morph primer→último frame de la grieta debe ocurrir. Al aprobar, actualizar la fila de a3-a5 en el checklist de clips.
 
 ---
 

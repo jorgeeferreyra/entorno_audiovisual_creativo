@@ -44,6 +44,6 @@ Salida transversal: intercala clips de los tres hilos (Mano Negra, Charles/palan
 - **Clips fuente**: `../../assets/arco-N/clips/` (por arco).
 - **Off documental**: [arco-3-off.md](../../planos/arco-3-off.md), [arco-1-off.md](../../planos/arco-1-off.md), [arco-2-off.md](../../planos/arco-2-off.md).
 
-**Gate — animatic transversal:** antes de generar video/audio, `npm run animatic -- --reel la-grieta` cae acá como `animatic-la-grieta.mp4` (cada slot de la cut-list = su madre fija por su `dur`, con el off ES quemado; los FLF muestran first→last). Es el gate de aprobación de ritmo/orden/subtítulos previo a la generación cara (~¥11.5 de ~¥16). El animatic por hilo (`--arco 3` → `animatic-arco-3.mp4`) sirve para aprobar la fuente y las destacadas de un arco. Detalle en [../../TECH.md](../../TECH.md) §Stage 2.5.
+**Gate — animatic transversal:** antes de generar video/audio, `npm run animatic -- --reel la-grieta` cae acá como `animatic-la-grieta.mp4` (cada slot de la cut-list = su madre fija por su `dur`, con el off ES quemado; los FLF muestran first→last). Es el gate de aprobación de ritmo/orden/subtítulos previo a la generación cara (el video es el mayor costo). El animatic por hilo (`--arco 3` → `animatic-arco-3.mp4`) sirve para aprobar la fuente y las destacadas de un arco. Detalle en [../../TECH.md](../../TECH.md) §Stage 2.5.
 
 El montaje final (`montar_secuencia`) cae en esta carpeta.

@@ -30,7 +30,7 @@ La emoción de cada plano la carga el **tinte del fondo**, no el animal. Cada pr
 
 ## Sección 1 — Imágenes madre (generar PRIMERO)
 
-Generar cada una en wind-comic (Flux/Minimax ~¥0.3, o preview-shot en `/dashboard/create` con video apagado), elegir la mejor y guardarla con su **archivo destino** (convención en [pipeline-wind-comic.md](../../../../metodo/pipeline.md) §5). Ese archivo es lo que se sube como `firstFrame`/`lastFrame` en los clips de la Sección 2.
+Generar cada una en wind-comic (Flux/Minimax, o preview-shot en `/dashboard/create` con video apagado), elegir la mejor y guardarla con su **archivo destino** (convención en [pipeline-wind-comic.md](../../../../metodo/pipeline.md) §5). Ese archivo es lo que se sube como `firstFrame`/`lastFrame` en los clips de la Sección 2.
 
 Campos fijos de todas las fichas (salvo indicación): `style: Woodcut Print` (preset más cercano de la galería: `bold black lines, high contrast, textured paper` — compatible con silueta; el look real lo carga el prompt) · `aspect: 9:16`.
 
@@ -448,7 +448,7 @@ The reference image is the world: the same high aerial view of two vast green la
 
 ## Sección 2 — Desglose plano a plano (fichas U2V / U2V-FLF)
 
-Regla del [pipeline](../../../../metodo/pipeline.md): **un personaje por clip**, cruces por corte. Herramienta: `/dashboard/u2v` (U2V con 5/6s va por Minimax I2V ~¥0.1/s; U2V-FLF va por Kling ~¥0.2/s y **solo acepta 5 o 10s**). Audio por defecto de todo el arco: **off documental (Attenborough) grabado propio** + música suave sin percusión. El texto literal del off por clip vive en [arco-3-off.md](arco-3-off.md) (fuente única de la locución).
+Regla del [pipeline](../../../../metodo/pipeline.md): **un personaje por clip**, cruces por corte. Herramienta: `/dashboard/u2v` (U2V con 5/6s va por Minimax I2V; U2V-FLF va por Kling y **solo acepta 5 o 10s**). Audio por defecto de todo el arco: **off documental (Attenborough) grabado propio** + música suave sin percusión. El texto literal del off por clip vive en [arco-3-off.md](arco-3-off.md) (fuente única de la locución).
 
 ### Bloque A — "La grieta" (~45s)
 
@@ -855,17 +855,9 @@ Las destacadas del [calendario](../calendario-publicacion.md) (Semana 1) se arma
 
 ---
 
-## Costo estimado del arco
+## Motores por etapa
 
-| Etapa | Cálculo | Total aprox. |
-|---|---|---|
-| Imágenes madre | 16 generadas × ¥0.3 (m16 eliminada; retries m02/m03/m10 aparte) | ~¥4.8 |
-| Madres variations | 5 × ¥0.3 (m01v1, m01v2, m05v1, m14v1, m15v1; retries aparte) | ~¥1.5 |
-| Clips U2V (Minimax I2V, 5s) | 11 × ¥0.5 | ~¥5.5 |
-| Clips U2V-FLF (Kling, 5s) | 6 × ~¥1 (a5, a5x, a5y, b4, c0, c2) | ~¥6 |
-| **Total** | | **~¥17.8** (+ retries madres/variations ≈ **¥22–23** techo operativo) |
-
-Dentro del presupuesto del [pipeline](../../../../metodo/pipeline.md) §3. Kling (FLF) se reserva a la cadena de transiciones (a3-a5, a3-a5x experimental, a3-a5y, a3-b4, a3-c0, a3-c2); el resto va por Minimax. a3-c1 es U2V simple (push-in sobre m07), no FLF.
+Kling (FLF) se reserva a la cadena de transiciones (a3-a5, a3-a5x experimental, a3-a5y, a3-b4, a3-c0, a3-c2); el resto va por Minimax. a3-c1 es U2V simple (push-in sobre m07), no FLF. La estimación de costo del arco no se documenta acá: se calcula on-demand con la calculadora, a partir de la doc de costos ([../../../../metodo/providers.md](../../../../metodo/providers.md)).
 
 ---
 

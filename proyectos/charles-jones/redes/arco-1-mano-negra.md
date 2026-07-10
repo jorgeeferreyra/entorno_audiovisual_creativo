@@ -47,5 +47,5 @@ La Fundación no es una ONG moderna corrupta: es la misma entidad **desde siempr
 ## Producción
 
 - **Personaje a lockear**: ninguno con cara. Solo **mano + cadenita** → se mantiene con prompt + primer frame (imagen madre de la mano).
-- **Motor recomendado**: el más barato (Minimax Hailuo ~¥0.1/s). No requiere lock de sujeto.
+- **Motor recomendado**: el más barato (Minimax Hailuo). No requiere lock de sujeto.
 - **Imágenes madre necesarias**: mano con cadenita (varias poses), mapa de Pangea, logo de la Fundación. Ver [biblia-visual.md](../biblia-visual.md).

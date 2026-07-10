@@ -1,0 +1,42 @@
+---
+description: Fuente única de costos. Prohíbe cifras de costo fuera de la doc de costos y la calculadora.
+alwaysApply: true
+---
+
+# Costos: fuente única
+
+Las cifras de costo del repo viven en un solo lugar. No las repliques ni las inventes en otros documentos.
+
+## Únicos lugares permitidos
+
+- `metodo/tarifas.json` — tarifas unitarias machine-readable (fuente de verdad).
+- `metodo/providers.md` — glosario, fórmulas por capa y método de actualización.
+- La calculadora de costos (canvas de Cursor `calculadora-costos.canvas.tsx`) — estimación on-demand, siembra sus tarifas de `tarifas.json`.
+- Sidecars `.json` por asset — costo real, auto-generados por el pipeline (no se editan a mano).
+
+## Prohibido en cualquier otro archivo
+
+En `TECH.md`, `PROGRESS.md`, `planos/*`, `reels/*`, `pipeline.md`, `insights.md` y demás docs **no** se escribe:
+
+- Montos en `¥` ni ninguna tarifa unitaria (`¥0.3`, `~¥0.1/s`, etc.).
+- Tablas de "presupuesto", "costo estimado" o "costo real".
+- Techos operativos con cifras (`~¥19–20`, etc.).
+
+El presupuesto **no se documenta**: se pide y se calcula con la calculadora.
+
+## Qué sí se permite
+
+- Menciones cualitativas sin números: "el video es el mayor costo", "el motor más barato", "costo casi nulo".
+- Decisiones de alcance/motor sin cifras: "Kling se reserva a los planos-gancho", "diferido a las destacadas".
+
+## Cómo referenciar
+
+```markdown
+<!-- MAL: cifra hardcodeada -->
+Imágenes madre (16 × ¥0.3) | ~¥4.8
+
+<!-- BIEN: sin cifra, con puntero -->
+La estimación de costo se calcula con la calculadora, a partir de la doc de costos ([providers.md](../../../metodo/providers.md)).
+```
+
+Si un cambio de precios ocurre, se actualiza `tarifas.json` (y su campo `revisado`) y la calculadora; nada más.

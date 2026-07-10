@@ -2,7 +2,9 @@
 
 > Fuente única de **quién genera qué, a qué costo y cómo se estima**. Transversal a todos los proyectos.
 >
-> Las tarifas unitarias machine-readable viven en [tarifas.json](tarifas.json); acá se documentan, se convierten en fórmulas por capa y se explica cuándo/cómo actualizarlas. El presupuesto de cada unidad (cantidades × tarifa) vive en su `TECH.md`; el costo real acumulado, en su `PROGRESS.md`.
+> **Invariante de costos:** las únicas cifras de costo del repo viven acá y en [tarifas.json](tarifas.json). Ningún otro documento (TECH, PROGRESS, planos, reels, pipeline, insights) escribe tarifas, montos en ¥ ni tablas de presupuesto: solo referencian esta doc. El presupuesto **no se documenta**; se estima on-demand con la calculadora de costos (canvas de Cursor `calculadora-costos.canvas.tsx`, con tarifas sembradas de [tarifas.json](tarifas.json)). El costo real por asset vive en los sidecars `.json` que genera el pipeline, no en los `.md`.
+>
+> Las tarifas unitarias machine-readable viven en [tarifas.json](tarifas.json); acá se documentan, se convierten en fórmulas por capa y se explica cuándo/cómo actualizarlas.
 >
 > Credenciales revisadas contra [`wind-comic/.env.local`](../engine/wind-comic/.env.local). Los valores de las keys **no** se exponen aquí — solo si están configuradas o no.
 
@@ -56,10 +58,10 @@ Como los clips son **fuente reutilizable** entre salidas (reels transversales y 
 
 ## 3. Método de actualización de tarifas
 
-1. **Cuándo:** al arrancar cada unidad de trabajo, antes de escribir el presupuesto de su `TECH.md`. Y cuando un provider anuncie cambio de precios.
+1. **Cuándo:** al arrancar cada unidad de trabajo, antes de estimar su presupuesto con la calculadora. Y cuando un provider anuncie cambio de precios.
 2. **Contra qué:** las páginas de pricing linkeadas en [tarifas.json](tarifas.json) (campo `pricing`) y en el glosario §1.
 3. **Cómo:** editar `tarifas.json`, subir el campo `revisado`, y reflejar el cambio en la calculadora (canvas `calculadora-costos.canvas.tsx`, cuyas tarifas embebidas se siembran de este archivo).
-4. **Loop de verificación (real vs. estimado):** cada asset generado deja un sidecar `.json` con su costo real (`escribirSidecar()` en [`wind-mcp/src/lib/motor.ts`](../engine/wind-mcp/src/lib/motor.ts)) y el `PROGRESS.md` de la unidad lleva el acumulado. Si el real se despega del estimado (p. ej. el factor de retries `candidatosMadre` no calibra), corregir la tarifa o el parámetro acá.
+4. **Loop de verificación (real vs. estimado):** cada asset generado deja un sidecar `.json` con su costo real (`escribirSidecar()` en [`wind-mcp/src/lib/motor.ts`](../engine/wind-mcp/src/lib/motor.ts)); el acumulado real se lee de esos sidecars, no de los `.md`. Si el real se despega del estimado (p. ej. el factor de retries `candidatosMadre` no calibra), corregir la tarifa o el parámetro acá.
 
 ---
 

@@ -18,7 +18,7 @@ Qué lockear y con qué motor, según el tipo de contenido de cada arco (relocad
 
 | Arco | Elemento a lockear | Motor recomendado | Por qué |
 |---|---|---|---|
-| 1 · Mano Negra | Ninguno (solo mano + cadenita) | Minimax Hailuo (~¥0.1/s) | La mano se mantiene con prompt + primer frame; no gasta lock |
+| 1 · Mano Negra | Ninguno (solo mano + cadenita) | Minimax Hailuo | La mano se mantiene con prompt + primer frame; no gasta lock |
 | 2 · Charles | 1 sujeto | Minimax S2V o Kling | S2V lockea 1 protagonista; silueta de espaldas = poca cara = fácil |
 | 3 · Ornitorrincos | Referencia de imagen por animal | Kling FLF o Seedance multi-ref | Consistencia desde imagen madre como primer frame (I2V) |
 
@@ -37,19 +37,11 @@ BYO keys en `engine/wind-comic/.env.local`. Inventario priorizado y estado: [../
 | OPENROUTER_API_KEY | Nano Banana (imagen con refs, default Arco 3) | Configurada |
 | OPENAI_API_KEY | LLM / fallback imagen | Configurada |
 
-## 4. Presupuesto estimado (techo operativo ~¥19–20)
+## 4. Presupuesto
 
-Relocado desde el pipeline; es el costeo específico de este episodio (cantidades × tarifa unitaria). Las tarifas por operación y las fórmulas por capa están en [../../../metodo/providers.md](../../../metodo/providers.md) §2; el detalle real acumulado, en [PROGRESS.md](PROGRESS.md) §Presupuesto.
+El presupuesto no se documenta acá. Las cifras de costo viven solo en la doc de costos ([../../../metodo/providers.md](../../../metodo/providers.md) + [tarifas.json](../../../metodo/tarifas.json)); la estimación de este episodio (cantidades × tarifa) se calcula on-demand con la calculadora de costos, no se copia a este archivo.
 
-| Etapa | Estimado |
-|---|---|
-| Imágenes madre (16 × ¥0.3 + retries con `--candidates 3`) | ~¥4.8 + ~¥3–4 |
-| Madres variations (5 × ¥0.3, `--candidates 3` con retries) | ~¥1.5 (+ ~¥3 retries) |
-| Clips U2V (~11 × ¥0.5) + gaps A1/A2 (4 madres + 3 clips ~¥2.6) | ~¥8 |
-| Clips FLF **del reel** (b4, c2; `a5`/`a5x`/`a5y`/`c0` diferidos a destacadas) | ~¥2 |
-| **Total reel** | **~¥16.4 (techo ¥22–23 con retries)** |
-
-El video es el mayor costo; los motores caros (Kling, Veo) se reservan a los planos-gancho.
+Principio de dirección: el video es el mayor costo; los motores caros (Kling, Veo) se reservan a los planos-gancho.
 
 ## 5. Roadmap (stages)
 
@@ -68,7 +60,7 @@ Orden de ejecución del episodio, cada stage entregable por separado.
 **Método:** instancia del paso 1.5 del pipeline ([../../../metodo/pipeline.md](../../../metodo/pipeline.md) §2). **Goal:** cero madres repetidas tal cual entre escenas — cada reutilización en pantalla resuelta con una variación única derivada de la base (Nano Banana, `ref:` + `provider: openrouter`). **Scope (5 variaciones del Arco 3):** `a3-m01v1` (m01 al borde de la grieta, tinte rojo, clip `a3-a6`), `a3-m01v2` (m01 en llanura agrietada, tinte gris, clip `a3-b3`), `a3-m05v1` (m05 previo al quiebre, clip `a3-a5`), `a3-m14v1` (m14 con polvo asentado, clip `a3-c0`), `a3-m15v1` (m15 encuadre hacia m08, clip `a3-a5y`). **Exenciones (no se varían):** keyframe compartido de cadena FLF (`a3-m14` en a5x→a5b, `a3-m07` en c0→c1) y eco deliberado (`a3-m09` en `a3-c3e`). **Dependencies:** Stage 2 aprobado. **Gate:** el animatic (Stage 2.5) se corre con las variaciones y suma el criterio de unicidad; cambiar una variación invalida su aprobación. **Exit:** fichas de variación en `planos/arco-3.md` §1, `firstFrame` de los clips re-apuntados, `npm run gen -- --arco 3` sin warnings de unicidad.
 
 ### Stage 2.5 — Animatic (gate previo a video/audio)
-**Goal:** un animatic 9:16 que valide ritmo, orden narrativo y subtítulos con imágenes fijas, **antes** de gastar en video (el mayor costo: ~¥11.5 de ~¥16). **Scope:** dos modos de `npm run animatic` (puro ffmpeg local, no usa wind-comic ni APIs):
+**Goal:** un animatic 9:16 que valide ritmo, orden narrativo y subtítulos con imágenes fijas, **antes** de gastar en video (el mayor costo). **Scope:** dos modos de `npm run animatic` (puro ffmpeg local, no usa wind-comic ni APIs):
 - `--reel la-grieta` → **animatic transversal**: intercala los clips de la `cutlist` del front-matter de [reels/la-grieta/README.md](reels/la-grieta/README.md) con sus duraciones recortadas, cruzando arcos. Es el gate principal (lo que se publica es el reel). Los clips de arcos aún sin planos (`a1-*`/`a2-*`) se omiten con aviso.
 - `--arco N` → **animatic del hilo**: todas las fichas de `planos/arco-N.md` en orden; sirve para aprobar la fuente y las destacadas de ese arco.
 

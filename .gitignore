@@ -7,10 +7,8 @@
 !.env.example
 
 # IDE / agent local
-.cursor/
 .vscode/
 .idea/
-.claude/
 
 # Node / build (cinturón de seguridad desde la raíz)
 node_modules/
