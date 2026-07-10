@@ -44,9 +44,10 @@ Relocado desde el pipeline; es el costeo específico de este episodio (cantidade
 | Etapa | Estimado |
 |---|---|
 | Imágenes madre (16 × ¥0.3 + retries con `--candidates 3`) | ~¥4.8 + ~¥3–4 |
+| Madres variations (5 × ¥0.3, `--candidates 3` con retries) | ~¥1.5 (+ ~¥3 retries) |
 | Clips U2V (~11 × ¥0.5) + gaps A1/A2 (4 madres + 3 clips ~¥2.6) | ~¥8 |
 | Clips FLF **del reel** (b4, c2; `a5`/`a5x`/`a5y`/`c0` diferidos a destacadas) | ~¥2 |
-| **Total reel** | **~¥14.9 (techo ¥19–20 con retries)** |
+| **Total reel** | **~¥16.4 (techo ¥22–23 con retries)** |
 
 El video es el mayor costo; los motores caros (Kling, Veo) se reservan a los planos-gancho.
 
@@ -63,12 +64,15 @@ Orden de ejecución del episodio, cada stage entregable por separado.
 ### Stage 2 — Imágenes madre en cascada
 **Goal:** las 16 madres aprobadas. **Scope:** generar con `--candidates 3`, aprobar con `--pick`, en orden m03' → m02' → m10' → m17; pares FLF aprobados juntos. **Dependencies:** Stage 1.5 aprobado. **Exit:** todas las madres con criterio de la etapa Madres.
 
+### Stage 2.6 — Madres variations (unicidad por escena)
+**Método:** instancia del paso 1.5 del pipeline ([../../../metodo/pipeline.md](../../../metodo/pipeline.md) §2). **Goal:** cero madres repetidas tal cual entre escenas — cada reutilización en pantalla resuelta con una variación única derivada de la base (Nano Banana, `ref:` + `provider: openrouter`). **Scope (5 variaciones del Arco 3):** `a3-m01v1` (m01 al borde de la grieta, tinte rojo, clip `a3-a6`), `a3-m01v2` (m01 en llanura agrietada, tinte gris, clip `a3-b3`), `a3-m05v1` (m05 previo al quiebre, clip `a3-a5`), `a3-m14v1` (m14 con polvo asentado, clip `a3-c0`), `a3-m15v1` (m15 encuadre hacia m08, clip `a3-a5y`). **Exenciones (no se varían):** keyframe compartido de cadena FLF (`a3-m14` en a5x→a5b, `a3-m07` en c0→c1) y eco deliberado (`a3-m09` en `a3-c3e`). **Dependencies:** Stage 2 aprobado. **Gate:** el animatic (Stage 2.5) se corre con las variaciones y suma el criterio de unicidad; cambiar una variación invalida su aprobación. **Exit:** fichas de variación en `planos/arco-3.md` §1, `firstFrame` de los clips re-apuntados, `npm run gen -- --arco 3` sin warnings de unicidad.
+
 ### Stage 2.5 — Animatic (gate previo a video/audio)
 **Goal:** un animatic 9:16 que valide ritmo, orden narrativo y subtítulos con imágenes fijas, **antes** de gastar en video (el mayor costo: ~¥11.5 de ~¥16). **Scope:** dos modos de `npm run animatic` (puro ffmpeg local, no usa wind-comic ni APIs):
 - `--reel la-grieta` → **animatic transversal**: intercala los clips de la `cutlist` del front-matter de [reels/la-grieta/README.md](reels/la-grieta/README.md) con sus duraciones recortadas, cruzando arcos. Es el gate principal (lo que se publica es el reel). Los clips de arcos aún sin planos (`a1-*`/`a2-*`) se omiten con aviso.
 - `--arco N` → **animatic del hilo**: todas las fichas de `planos/arco-N.md` en orden; sirve para aprobar la fuente y las destacadas de ese arco.
 
-Los `video-flf` se muestran como first→last (dos mitades de `dur/2`) para representar la transformación; las cadenas de keyframes (§2 paso 1 del pipeline) aparecen como todos sus keyframes en secuencia. Madres aún sin generar se omiten con aviso, así el animatic sirve también en pleno refinamiento. **Dependencies:** Stage 1.5 aprobado (la cadena narrativa gobierna la cutlist que alimenta el animatic). **Gate:** no se avanza a Stage 3 sin el animatic transversal aprobado. **Re-aprobación (instancia del gate de keyframes del pipeline, [../../../metodo/pipeline.md](../../../metodo/pipeline.md) §2 paso 2):** cualquier cambio en la cantidad de keyframes de una escena invalida la aprobación anterior — hay que re-correr y re-aprobar el animatic antes de generar los clips. **Exit:** animatic aprobado en [reels/la-grieta/](reels/la-grieta/).
+Los `video-flf` se muestran como first→last (dos mitades de `dur/2`) para representar la transformación; las cadenas de keyframes (§2 paso 1 del pipeline) aparecen como todos sus keyframes en secuencia. Madres aún sin generar se omiten con aviso, así el animatic sirve también en pleno refinamiento. **Dependencies:** Stage 1.5 y Stage 2.6 aprobados (la cadena narrativa gobierna la cutlist que alimenta el animatic; las variaciones garantizan la unicidad que este gate valida). **Gate:** no se avanza a Stage 3 sin el animatic transversal aprobado. **Re-aprobación (instancia del gate de keyframes del pipeline, [../../../metodo/pipeline.md](../../../metodo/pipeline.md) §2 paso 2):** cualquier cambio en la cantidad de keyframes de una escena —o en una variación de madre (Stage 2.6)— invalida la aprobación anterior — hay que re-correr y re-aprobar el animatic antes de generar los clips. Este gate valida además que **ninguna imagen se repita** en la pieza salvo las exenciones (keyframe compartido de cadena y eco deliberado). **Exit:** animatic aprobado en [reels/la-grieta/](reels/la-grieta/).
 
 ### Stage 3 — Clips
 **Goal:** clips que el reel aprobado necesita, generados y aprobados. **Scope (ordenado por el reel):** regen `a3-a4` (huevo) y `a3-c1` (push-in m07); generar `a3-c3`; re-auditar `b1`–`c2` (mp4 pre-rediseño en disco); bajar madres+clips de A1 (`a1-a1`) y A2 (`a2-a1`). **Diferido a Stage 5 (destacadas):** puentes FLF `a5x`/`a5y`/`c0` y regen FLF de `a3-a5` — el reel de 30–45s los cubre con corte duro (auditoría §D). **Dependencies:** Stage 2.5 aprobado. **Exit:** clips con criterio de la etapa Clips (morph real en FLF donde aplique: b4, c2).

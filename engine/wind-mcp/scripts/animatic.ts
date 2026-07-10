@@ -20,7 +20,7 @@
 import path from 'node:path';
 import { WORK_DIR } from '../src/config.js';
 import { montarAnimatic, montarAnimaticReel, parseOff } from '../src/lib/animatic.js';
-import { leerPlanos } from '../src/lib/specs.js';
+import { leerPlanos, validarUnicidad } from '../src/lib/specs.js';
 
 function flag(args: string[], name: string): string | undefined {
   const i = args.indexOf(name);
@@ -48,6 +48,7 @@ async function main() {
   const salida = flag(args, '--out') ?? `reels/la-grieta/animatic-arco-${arco}.mp4`;
 
   const specs = await leerPlanos(arco);
+  for (const w of validarUnicidad(specs)) console.warn(`⚠ ${w}`);
   const offMap = await parseOff(arco);
 
   const r = await montarAnimatic({ arco, specs, offMap, salida });

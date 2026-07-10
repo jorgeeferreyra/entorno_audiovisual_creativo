@@ -308,3 +308,34 @@ export async function validarImagenes(specs: AssetSpec[]): Promise<string[]> {
   }
   return warnings;
 }
+
+/**
+ * Validación blanda de unicidad por escena (madres variations, warnings no bloqueantes):
+ * una imagen usada como `firstFrame` de más de un clip generable se ve repetida en
+ * pantalla — cada reutilización debería tener su variación (`a{arco}-m{nn}v{k}`,
+ * ver pipeline.md §2 paso 1.5 y biblia-visual.md §3 regla 7).
+ *
+ * Exenciones automáticas (no suman repetición, no hace falta codificarlas aparte):
+ * el keyframe compartido de una cadena FLF aparece como `lastFrame` de un eslabón y
+ * `firstFrame` del siguiente (cuenta como firstFrame una sola vez), y los ecos/stills
+ * (`kind: montaje`) no usan `firstFrame`.
+ */
+export function validarUnicidad(specs: AssetSpec[]): string[] {
+  const usos = new Map<string, string[]>();
+  for (const s of specs) {
+    if (s.kind === 'video-i2v' || s.kind === 'video-flf') {
+      const clips = usos.get(s.firstFrame) ?? [];
+      clips.push(s.id);
+      usos.set(s.firstFrame, clips);
+    }
+  }
+  const warnings: string[] = [];
+  for (const [frame, clips] of usos) {
+    if (clips.length > 1) {
+      warnings.push(
+        `${frame}: firstFrame reutilizado en ${clips.length} clips (${clips.join(', ')}) — generar una variación (${frame}vN) por reutilización para unicidad en pantalla`,
+      );
+    }
+  }
+  return warnings;
+}

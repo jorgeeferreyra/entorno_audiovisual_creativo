@@ -18,7 +18,8 @@ Espejo del roadmap de [TECH.md](TECH.md) § 5. Un stage se marca `[x]` solo cuan
 - [x] **Stage 1 — Docs y spec** — fichas de planos/arco-3.md válidas
 - [x] **Stage 1.5 — Cadena narrativa** — cadena del reel aprobada 2026-07-10 ([reels/la-grieta/cadena-narrativa.md](reels/la-grieta/cadena-narrativa.md)); gate previo a imágenes
 - [ ] **Stage 2 — Imágenes madre en cascada** — 17 madres aprobadas (todas generadas/aprobadas; ver checklist)
-- [ ] **Stage 2.5 — Animatic (gate previo a video)** — animatic transversal `la-grieta` aprobado (ritmo/orden/subtítulos) antes de gastar en clips
+- [ ] **Stage 2.6 — Madres variations (unicidad por escena)** — 5 variaciones generadas/aprobadas; cero reutilización de firstFrame no exenta
+- [ ] **Stage 2.5 — Animatic (gate previo a video)** — animatic transversal `la-grieta` aprobado (ritmo/orden/subtítulos) antes de gastar en clips, corrido con las madres variadas
 - [ ] **Stage 3 — Clips** — bloques A/B/C generados y aprobados (Bloque A casi completo; B/C pendientes)
 - [ ] **Stage 4 — Montaje del reel transversal** — la-grieta montado desde los bloques
 - [ ] **Stage 5 — Destacadas del arco** — S1–S5 por recorte
@@ -26,6 +27,17 @@ Espejo del roadmap de [TECH.md](TECH.md) § 5. Un stage se marca `[x]` solo cuan
 ## 2. Session Log
 
 Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
+
+### 2026-07-10 — Capa madres variations (unicidad por escena)
+
+- **Stage in flight:** nuevo Stage 2.6 (entre Stage 2 y 2.5).
+- **Done this session:**
+  - **Capa formalizada** en el método: paso 1.5 en [pipeline.md](../../../metodo/pipeline.md) §2 (regla, exenciones, mecanismo `ref` + Nano Banana, gate) + convención de ID `a{arco}-m{nn}v{k}` en §5; regla 7 en [biblia-visual.md](../biblia-visual.md) §3; Stage 2.6 + fila de presupuesto en [TECH.md](TECH.md).
+  - **Regla:** toda reutilización de una madre en pantalla dispara una variación derivada de la base; la primera aparición usa la base. **Exentas:** keyframe compartido de cadena FLF (m06, m14, m07) y eco deliberado (m09 en c3e).
+  - **5 fichas de variación** en [planos/arco-3.md](planos/arco-3.md) §1: `a3-m01v1` (borde grieta, rojo → a3-a6), `a3-m01v2` (llanura seca, gris → a3-b3), `a3-m05v1` (Pangea pre-quiebre → a3-a5), `a3-m14v1` (grieta polvo → a3-c0), `a3-m15v1` (aéreo hacia humedal → a3-a5y). `firstFrame` de esos 5 clips re-apuntados; tabla de costo y §Cadena de transiciones actualizadas.
+  - **Chequeo automático** `validarUnicidad()` en [`specs.ts`](../../../engine/wind-mcp/src/lib/specs.ts), surfaceado en `npm run gen` y el animatic `--arco`. `npm run gen -- --arco 3` verde, sin warnings de unicidad.
+- **Next step:** generar las 5 variaciones con `npm run gen -- --id a3-mNNvK --candidates 3` (~¥1.5–4.5) y aprobar con `--pick`; luego re-correr el animatic transversal (Stage 2.5) con las madres variadas y re-aprobar el gate (decisión de dirección).
+- **New blockers / questions raised:** ninguno; `m05v1` debe conservar el encuadre exacto de m05/m06 (integridad del par FLF) — verificar en el pick.
 
 ### 2026-07-10 — Resolución de huecos beats 8 y 9 (fichas bajadas)
 
@@ -154,6 +166,11 @@ cd engine/wind-mcp && npm run animatic -- --reel la-grieta
 | a3-m20 | Familia repartida (plano de lectura) | pendiente | — | Beat 8.2; multi-ref `a3-m01` + `ornitorrincos-dibujo.png` (OpenRouter); still `a3-a6b` |
 | a2-m01 | Charles de espaldas | pendiente | — | Beat 9.1; refs `charles/` (OpenRouter), guarda "nunca de frente"; still `a2-a0`. Vive en [planos/arco-2.md](planos/arco-2.md) |
 | a2-m03 | Manos levantan la cría | pendiente | — | Beat 9.3; refs `charles/` + `ornitorrinco_crias.jpeg` (pose) + `a3-m02` (silueta), OpenRouter; still `a2-a0b`. Vive en [planos/arco-2.md](planos/arco-2.md) |
+| a3-m01v1 | Madre al borde de la grieta (variación) | pendiente | — | Stage 2.6; `ref a3-m01` (OpenRouter), tinte rojo; firstFrame de a3-a6 |
+| a3-m01v2 | Madre en llanura seca (variación) | pendiente | — | Stage 2.6; `ref a3-m01` (OpenRouter), tinte gris; firstFrame de a3-b3 |
+| a3-m05v1 | Pangea antes del quiebre (variación) | pendiente | — | Stage 2.6; `ref a3-m05`; mismo encuadre que m05/m06 (par FLF); firstFrame de a3-a5 |
+| a3-m14v1 | Grieta real, polvo asentándose (variación) | pendiente | — | Stage 2.6; `ref a3-m14`, styleBlock false; firstFrame de a3-c0 |
+| a3-m15v1 | Aéreo hacia el humedal (variación) | pendiente | — | Stage 2.6; `ref a3-m15`, styleBlock false; firstFrame de a3-a5y |
 
 > **Switch provider (2026-07-09):** madres con Ref/AnatomyRef pasan por `openrouter` (Nano Banana) en vez de Minimax. Minimax se queda como `--provider minimax` (composite 1-slot) por si hace falta.
 

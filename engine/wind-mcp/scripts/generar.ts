@@ -25,7 +25,7 @@ import { PROJECT_ROOT } from '../src/config.js';
 import { formatEstado, getEstado } from '../src/lib/estado.js';
 import { generar, type GenerarOpts } from '../src/lib/motor.js';
 import { clipPath } from '../src/lib/paths.js';
-import { leerPlanos, validarImagenes, type AssetSpec } from '../src/lib/specs.js';
+import { leerPlanos, validarImagenes, validarUnicidad, type AssetSpec } from '../src/lib/specs.js';
 
 function flag(args: string[], name: string): string | undefined {
   const i = args.indexOf(name);
@@ -66,6 +66,7 @@ async function main() {
 
   const specs = await leerPlanos(arco);
   for (const w of await validarImagenes(specs)) console.warn(`⚠ ${w}`);
+  for (const w of validarUnicidad(specs)) console.warn(`⚠ ${w}`);
 
   const opts: GenerarOpts = { arco, specs, provider, force };
 

@@ -338,6 +338,100 @@ Prompt (EN):
 The first reference image is the master character — the mother platypus: reproduce this exact platypus silhouette style with 100% fidelity — same bill shape, same etched eye, same fur strokes, same cross-hatched paddle tail, same webbed feet, same woodcut cutout style. The other reference image is an illustrated plate of several platypuses — use it only to keep the anatomy true (flat duck bill, no ears, webbed feet, beaver tail) and to vary the poses, never to change the art style. Reading shot of a family of platypuses split across a widening rift: on the near shore, an adult mother platypus with a rounded gentle contour beside a much smaller slender young platypus; across the water on the far shore, a bulkier male platypus with a distinctive notch cut into the brow outline standing next to a single platypus egg in a nest of twigs; the red glowing sea channel separating the two shores clearly in the middle of the frame, each figure readable by its silhouette contour, every feature readable inside the black silhouettes through fine gold etched lines like a woodcut print — never plain solid blobs, dramatic deep red tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
 ```
 
+### Variaciones (unicidad por escena — madres variations)
+
+> Instancia del paso 1.5 del [pipeline](../../../../metodo/pipeline.md) §2 y de la regla 7 de [biblia-visual.md](../../biblia-visual.md) §3. **Toda reutilización de una madre en pantalla dispara una variación**: la primera aparición usa la base, cada aparición siguiente usa una variación derivada (`ref:` a la base + Nano Banana, `provider: openrouter`) que cambia solo pose/encuadre/estado y el tinte del beat destino, con fidelidad 100% al estilo. **Exentas** (la repetición ES el mecanismo): el keyframe compartido de una cadena FLF (`a3-m14` en a5x→a5b, `a3-m07` en c0→c1) y el eco deliberado (`a3-m09` en `a3-c3e`).
+
+| Variación | Madre base | Reemplaza en | Delta |
+|---|---|---|---|
+| `a3-m01v1` | `a3-m01` | `a3-a6` (la despedida) | Madre al borde de la grieta, tinte rojo profundo |
+| `a3-m01v2` | `a3-m01` | `a3-b3` (la madre en declive) | Madre debilitada en llanura agrietada, tinte gris frío |
+| `a3-m05v1` | `a3-m05` | `a3-a5` (firstFrame del FLF) | Pangea un beat antes del quiebre; **mismo encuadre que m05/m06** (integridad del par FLF), delta de estado |
+| `a3-m14v1` | `a3-m14` | `a3-c0` (firstFrame del FLF) | Grieta real con el polvo asentándose; encuadre compatible con el morph a m07 |
+| `a3-m15v1` | `a3-m15` | `a3-a5y` (firstFrame del FLF) | Aéreo con encuadre que baja hacia el humedal; compatible con el morph a m08 |
+
+**a3-m01v1 — Madre al borde de la grieta (variación para a3-a6)**
+
+```yaml
+kind: image
+dest: assets/arco-3/madre/a3-m01v1-madre-borde-grieta.png
+ref: a3-m01
+anatomyRefs:
+  - assets/fuentes/ornitorrincos/ornitorrinco.png
+provider: openrouter
+```
+
+Prompt (EN):
+```
+The first reference image is the master character — the mother platypus: reproduce this exact silhouette with 100% fidelity — same bill shape, same etched eye, same fur strokes, same cross-hatched paddle tail, same webbed feet, same woodcut cutout style. The other reference image shows real platypus anatomy — use it only to keep the anatomy true, never to change the art style. The same mother platypus standing at the very edge of a layered cutout chasm in side profile, head lowered, looking across a red glowing sea channel to the far shore, silhouetted ferns trembling around her, grief held in stillness, every feature readable inside the black silhouette through fine gold etched lines like a woodcut print — never a plain solid blob, dramatic deep red tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+```
+
+**a3-m01v2 — Madre debilitada en la llanura seca (variación para a3-b3)**
+
+```yaml
+kind: image
+dest: assets/arco-3/madre/a3-m01v2-madre-llanura-seca.png
+ref: a3-m01
+anatomyRefs:
+  - assets/fuentes/ornitorrincos/ornitorrinco.png
+provider: openrouter
+```
+
+Prompt (EN):
+```
+The first reference image is the master character — the mother platypus: reproduce this exact silhouette with 100% fidelity — same bill shape, same etched eye, same fur strokes, same cross-hatched paddle tail, same webbed feet, same woodcut cutout style. The other reference image shows real platypus anatomy — use it only to keep the anatomy true, never to change the art style. The same mother platypus weakened and moving slowly across a silhouetted cracked drying plain in side profile, head hanging low, halting exhausted posture, silhouetted withered plants and spreading crack lines around her, every feature readable inside the black silhouette through fine gold etched lines like a woodcut print — never a plain solid blob, cold desaturated grey tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+```
+
+**a3-m05v1 — Pangea antes del quiebre (variación para a3-a5)**
+
+```yaml
+kind: image
+dest: assets/arco-3/madre/a3-m05v1-pangea-pre-quiebre.png
+ref: a3-m05
+provider: openrouter
+```
+
+Nota: firstFrame del clip FLF `a3-a5` (→ m06). **Mismo encuadre exacto que m05/m06** para que el morph a m06 quede garantizado; el delta es de estado (la calma tensa previa al quiebre), no de encuadre.
+
+Prompt (EN):
+```
+The reference image is the world: the same layered paper cutout Pangea landscape seen from a hill — reproduce that exact flat 2D cutout landscape style and identical framing, stacked silhouette layers on a tinted paper background. Hold the same composition as the base but a beat before the catastrophe: the silhouetted vegetation stilled, an ominous tension in the air, the light beginning to dim, the warm amber and saturated green tinted background just starting to bruise toward red at the edges, no rift yet, flat 2D silhouette animation, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+```
+
+**a3-m14v1 — Grieta real, polvo asentándose (variación para a3-c0)**
+
+```yaml
+kind: image
+dest: assets/arco-3/madre/a3-m14v1-grieta-polvo.png
+ref: a3-m14
+provider: openrouter
+styleBlock: false # Photographic documentary: hereda el REALITY-BLOCK-CHAOS de m14
+```
+
+Nota: firstFrame del clip FLF `a3-c0` (→ m07). Encuadre de la grieta compatible con el morph al cuento rojo de m07.
+
+Prompt (EN):
+```
+The reference image is the world: the same real earth rift seen from ground level — reproduce that exact photorealistic gritty documentary look and framing. The same massive chasm in a held, settling moment: falling debris coming to rest, dust hanging and thinning in the air, the collapse stilled just before it freezes over, no people, no animals, natural overcast light, cold muted earth tones, photorealistic, gritty documentary realism inspired by The Revenant, no illustration, no silhouette, no paper texture, vertical 9:16
+```
+
+**a3-m15v1 — Aéreo hacia el humedal (variación para a3-a5y)**
+
+```yaml
+kind: image
+dest: assets/arco-3/madre/a3-m15v1-aereo-humedal.png
+ref: a3-m15
+provider: openrouter
+styleBlock: false # Photographic documentary: hereda el REALITY-BLOCK-POETIC de m15
+```
+
+Nota: firstFrame del clip FLF `a3-a5y` (→ m08). Encuadre aéreo que enmarca la orilla cercana para que el morph asiente en el humedal de m08.
+
+Prompt (EN):
+```
+The reference image is the world: the same high aerial view of two vast green landmasses separated by a calm sea channel — reproduce that exact photorealistic documentary look and framing. Hold the same wide aerial composition but frame the near landmass to fill more of the lower frame so it can settle into a wetland, golden dusk light softening, atmospheric haze thickening slightly, immense stillness, photorealistic documentary realism, natural atmospheric haze, no illustration, no silhouette, no paper texture, vertical 9:16
+```
+
 ### Material de origen real (NO se genera)
 
 - **ornitorrincos/** — referencias de anatomía (composite panel derecho para m02/m03/m10):
@@ -431,7 +525,7 @@ The single egg silhouette rests in the small nest on the mossy log, soft breathi
 
 ```yaml
 kind: video-flf
-firstFrame: a3-m05
+firstFrame: a3-m05v1
 lastFrame: a3-m06
 duration: 5
 ```
@@ -508,7 +602,7 @@ The torn paper-cutout Pangea rift morphs into a real earth chasm, silhouette lay
 
 ```yaml
 kind: video-flf
-firstFrame: a3-m15
+firstFrame: a3-m15v1
 lastFrame: a3-m08
 cameraPreset: locked-tripod
 duration: 5
@@ -552,7 +646,7 @@ duration (montaje): 1–1.5s
 
 ```yaml
 kind: video-i2v
-firstFrame: a3-m01
+firstFrame: a3-m01v1
 cameraPreset: push-in
 duration: 5
 ```
@@ -607,7 +701,7 @@ The young platypus silhouette exploring confidently among silhouetted wetland pl
 
 ```yaml
 kind: video-i2v
-firstFrame: a3-m01
+firstFrame: a3-m01v2
 cameraPreset: locked-tripod
 duration: 5
 ```
@@ -648,7 +742,7 @@ Silhouetted crack lines spreading across the cutout plain, paper plants slowly w
 
 ```yaml
 kind: video-flf
-firstFrame: a3-m14
+firstFrame: a3-m14v1
 lastFrame: a3-m07
 cameraPreset: locked-tripod
 duration: 5
@@ -766,9 +860,10 @@ Las destacadas del [calendario](../calendario-publicacion.md) (Semana 1) se arma
 | Etapa | Cálculo | Total aprox. |
 |---|---|---|
 | Imágenes madre | 16 generadas × ¥0.3 (m16 eliminada; retries m02/m03/m10 aparte) | ~¥4.8 |
+| Madres variations | 5 × ¥0.3 (m01v1, m01v2, m05v1, m14v1, m15v1; retries aparte) | ~¥1.5 |
 | Clips U2V (Minimax I2V, 5s) | 11 × ¥0.5 | ~¥5.5 |
 | Clips U2V-FLF (Kling, 5s) | 6 × ~¥1 (a5, a5x, a5y, b4, c0, c2) | ~¥6 |
-| **Total** | | **~¥16.3** (+ retries madres ≈ **¥19–20** techo operativo) |
+| **Total** | | **~¥17.8** (+ retries madres/variations ≈ **¥22–23** techo operativo) |
 
 Dentro del presupuesto del [pipeline](../../../../metodo/pipeline.md) §3. Kling (FLF) se reserva a la cadena de transiciones (a3-a5, a3-a5x experimental, a3-a5y, a3-b4, a3-c0, a3-c2); el resto va por Minimax. a3-c1 es U2V simple (push-in sobre m07), no FLF.
 
@@ -780,12 +875,12 @@ Dentro del presupuesto del [pipeline](../../../../metodo/pipeline.md) §3. Kling
 
 | Eslabón | Clip | Tipo | Keyframes | Nota |
 |---|---|---|---|---|
-| m05→m06 | a3-a5 | FLF | 2 (par) | Regenerar (hoy I2V degradado) |
+| m05v1→m06 | a3-a5 | FLF | 2 (par) | firstFrame variado (unicidad, §Variaciones); regenerar (hoy I2V degradado) |
 | m06→m14 | a3-a5x | FLF experimental | 2 (par) | Gate morphs cruzados cuento→real; si salta feo → corte duro |
-| m15→m08 | a3-a5y | FLF | 2 (par) | Cierra Bloque A / abre Bloque B; cubre hueco de m08 |
-| m14→m07 | a3-c0 | FLF | 2 (par) | Abre Bloque C: grieta real se congela en cuento rojo |
+| m15v1→m08 | a3-a5y | FLF | 2 (par) | firstFrame variado (unicidad); cierra Bloque A / abre Bloque B; cubre hueco de m08 |
+| m14v1→m07 | a3-c0 | FLF | 2 (par) | firstFrame variado (unicidad); abre Bloque C: grieta real se congela en cuento rojo |
 | m07→m10' | a3-c1 | U2V + corte | 1 | Push-in; NO FLF (no comparten encuadre) |
-| m13→m09 | a3-c3e | Solo montaje | — | Eco 1–2s de m09 tras pull-out de m13, antes de c4 |
+| m13→m09 | a3-c3e | Solo montaje | — | Eco 1–2s de m09 tras pull-out de m13, antes de c4 (eco deliberado, exento de variación) |
 
 ---
 
