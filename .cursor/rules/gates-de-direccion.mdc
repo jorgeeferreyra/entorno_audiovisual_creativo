@@ -1,0 +1,27 @@
+---
+description: Los gates de dirección (pick de candidatos, aprobaciones) son exclusivos del usuario; el agente nunca promueve
+alwaysApply: true
+---
+
+# Gates de dirección: solo el usuario aprueba
+
+Promover o elegir candidatos es una decisión de dirección **exclusiva del usuario**. El agente **nunca** la ejecuta, ni siquiera si el usuario eligió un candidato en una conversación: la promoción la corre él.
+
+## Prohibido para el agente
+
+- Correr `npm run gen -- --pick N` (o cualquier equivalente de promoción).
+- Copiar un candidato de `_candidates/` a un slot canónico o aprobado (`assets/**/madre/*.png`).
+- Borrar candidatos, canónicos o aprobados existentes.
+- Marcar picks como resueltos en `planos/*` o `PROGRESS.md` sin que el usuario haya promovido.
+
+## Qué sí hace el agente
+
+- Generar candidatos (`--candidates N`) cuando se lo piden.
+- Presentar los candidatos al usuario y **recomendar** uno, con argumentos.
+- Dejar listo el comando de promoción para que el usuario lo corra, p. ej.:
+
+```bash
+npm run gen -- --arco 2 --id a2-m07 --pick 2
+```
+
+Lo mismo aplica a los demás gates del pipeline (animatic, pares/cadenas FLF): el agente prepara y recomienda; la aprobación es del usuario.
