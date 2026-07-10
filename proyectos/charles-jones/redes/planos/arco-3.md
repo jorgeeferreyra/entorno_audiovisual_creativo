@@ -340,7 +340,7 @@ The first reference image is the master character — the mother platypus: repro
 
 ### Variaciones (unicidad por escena — madres variations)
 
-> Instancia del paso 1.5 del [pipeline](../../../../metodo/pipeline.md) §2 y de la regla 7 de [biblia-visual.md](../../biblia-visual.md) §3. **Toda reutilización de una madre en pantalla dispara una variación**: la primera aparición usa la base, cada aparición siguiente usa una variación derivada (`ref:` a la base + Nano Banana, `provider: openrouter`) que cambia solo pose/encuadre/estado y el tinte del beat destino, con fidelidad 100% al estilo. **Exentas** (la repetición ES el mecanismo): el keyframe compartido de una cadena FLF (`a3-m14` en a5x→a5b, `a3-m07` en c0→c1) y el eco deliberado (`a3-m09` en `a3-c3e`).
+> Instancia del paso 3 del [pipeline](../../../../metodo/pipeline.md) §2 y de la regla 7 de [biblia-visual.md](../../biblia-visual.md) §3. **Toda reutilización de una madre en pantalla dispara una variación**: la primera aparición usa la base, cada aparición siguiente usa una variación derivada (`ref:` a la base + Nano Banana, `provider: openrouter`) que cambia solo pose/encuadre/estado y el tinte del beat destino, con fidelidad 100% al estilo. **Exentas** (la repetición ES el mecanismo): el keyframe compartido de una cadena FLF (`a3-m14` en a5x→a5b, `a3-m07` en c0→c1) y el eco deliberado (`a3-m09` en `a3-c3e`).
 
 | Variación | Madre base | Reemplaza en | Delta |
 |---|---|---|---|
@@ -863,8 +863,8 @@ Kling (FLF) se reserva a la cadena de transiciones (a3-a5, a3-a5x experimental, 
 
 ## Cadena de transiciones (sub-clips FLF de 5s, límite duro 2 keyframes por eslabón)
 
-> **Artefacto de la capa Madres keyframes** (instancia del [pipeline](../../../../metodo/pipeline.md) §2 paso 1.75 / Stage 2.7 de [TECH.md](../TECH.md)): esta tabla es el plan de keyframes del arco. Cada par emparejado (mismo encuadre exacto, solo cambia el estado) y cada cadena FLF (keyframe compartido) se aprueba **junto**, sobre las variaciones (§Variaciones), ANTES del animatic. Solo entran escenas de 2 o N keyframes; las de 1 keyframe (U2V simple) se listan como referencia pero no pasan por el gate.
-> Columna **Keyframes**: cuántas madres pide cada escena (taxonomía 1/2/N del [pipeline](../../../../metodo/pipeline.md) §2 paso 1.75). Hoy ninguna escena del arco supera 2 keyframes; una eventual cadena N>2 se declararía como eslabones FLF consecutivos que comparten el keyframe intermedio (`a3-mNN`→`a3-mNNa`→…).
+> **Artefacto de la capa Madres keyframes** (instancia del [pipeline](../../../../metodo/pipeline.md) §2 paso 4 / Stage 5 de [TECH.md](../TECH.md)): esta tabla es el plan de keyframes del arco. Cada par emparejado (mismo encuadre exacto, solo cambia el estado) y cada cadena FLF (keyframe compartido) se aprueba **junto**, sobre las variaciones (§Variaciones), ANTES del animatic. Solo entran escenas de 2 o N keyframes; las de 1 keyframe (U2V simple) se listan como referencia pero no pasan por el gate.
+> Columna **Keyframes**: cuántas madres pide cada escena (taxonomía 1/2/N del [pipeline](../../../../metodo/pipeline.md) §2 paso 4). Hoy ninguna escena del arco supera 2 keyframes; una eventual cadena N>2 se declararía como eslabones FLF consecutivos que comparten el keyframe intermedio (`a3-mNN`→`a3-mNNa`→…).
 
 | Eslabón | Clip | Tipo | Keyframes | Nota |
 |---|---|---|---|---|

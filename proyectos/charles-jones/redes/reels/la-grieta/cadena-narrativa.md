@@ -7,11 +7,11 @@ fecha: 2026-07-10
 
 # La grieta — Cadena narrativa
 
-> Mapa narrativo del reel transversal, en lenguaje de historia (no de producción). **Gobierna** la `cutlist` del [README.md](README.md): la cutlist implementa esta cadena, no al revés. Es el **gate previo a generar imágenes** (Stage 1.5 en [../../TECH.md](../../TECH.md) §5): se aprueba el mapa de beats antes de gastar en madres o clips.
+> Mapa narrativo del reel transversal, en lenguaje de historia (no de producción). **Gobierna** la `cutlist` del [README.md](README.md): la cutlist implementa esta cadena, no al revés. Es el **gate previo a generar imágenes** (Stage 2 en [../../TECH.md](../../TECH.md) §5): se aprueba el mapa de beats antes de gastar en madres o clips.
 
 ## Cómo leer / iterar
 
-Regla general del gate (lenguaje de historia y zoom-in por cobertura) en [pipeline.md](../../../../../metodo/pipeline.md) §2 paso 0. Acá, en concreto: cada número es un **beat** que se lee solo; la sangría marca un **zoom-in** (el beat se parte en varias imágenes); si un beat no se lee → se expande, si sobra → se comprime; orden de arriba hacia abajo, sin ramas.
+Regla general del gate (lenguaje de historia y zoom-in por cobertura) en [pipeline.md](../../../../../metodo/pipeline.md) §2 paso 1. Acá, en concreto: cada número es un **beat** que se lee solo; la sangría marca un **zoom-in** (el beat se parte en varias imágenes); si un beat no se lee → se expande, si sobra → se comprime; orden de arriba hacia abajo, sin ramas.
 
 ---
 
@@ -100,4 +100,4 @@ Cruza cada beat con la [`cutlist`](README.md) actual. Expone qué está cubierto
 | 12 · El último | `a3-c1` | Cubierto |
 | **13 · ZOOM remate** | `a3-c2` (13.1), `a2-a2` (13.2), `a2-a2b` (13.3), `a3-c3` (13.4), `a3-c4` (13.5) | Cubierto: coda del lugar blanco bajada en [arco-2.md](../../planos/arco-2.md) — madres `a2-m04` (lugar blanco) y `a2-m05` (despertar) montadas como stills entre la fosilización y el fósil de hoy; el mensaje "es en Rocas Coloradas" cruza al Ep.1. |
 
-**Huecos resueltos (2026-07-10):** beats **8**, **9** y **13** ya no se comprimen en un solo slot. Se bajaron las fichas a `planos/` (madres `a3-m19`/`a3-m20` para el 8; `a2-m01` con refs + `a2-m03` para el 9; `a2-m04`/`a2-m05` para la coda del lugar blanco del 13) y se expandió la [cutlist](README.md) con stills de montaje (~1.5s c/u). Pendiente: generar las madres y correr el animatic transversal (Stage 2.5) para aprobar ritmo/orden.
+**Huecos resueltos (2026-07-10):** beats **8**, **9** y **13** ya no se comprimen en un solo slot. Se bajaron las fichas a `planos/` (madres `a3-m19`/`a3-m20` para el 8; `a2-m01` con refs + `a2-m03` para el 9; `a2-m04`/`a2-m05` para la coda del lugar blanco del 13) y se expandió la [cutlist](README.md) con stills de montaje (~1.5s c/u). Pendiente: generar las madres y correr el animatic transversal (Stage 6) para aprobar ritmo/orden.

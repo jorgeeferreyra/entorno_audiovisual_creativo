@@ -1,7 +1,7 @@
 # Redes (Arco 3) — Build Progress
 
 _Last updated: 2026-07-10_
-_Current stage: Stage 1.5 — Cadena narrativa (aprobada); huecos beats 8/9/13 resueltos en planos → generar madres nuevas + animatic (Stage 2.5)_
+_Current stage: Stage 2 — Cadena narrativa (aprobada); huecos beats 8/9/13 resueltos en planos → generar madres nuevas + animatic (Stage 6)_
 _Based on roadmap: [TECH.md](TECH.md) § 5_
 
 > Session log agency-os + seguimiento detallado de producción (estados, costos, gates). Absorbe el antiguo `arco-3-roadmap.md`. No duplica prompts ni fichas: la fuente de verdad de los prompts es [arco-3-planos.md](planos/arco-3.md); el STYLE-BLOCK y los switches cuento↔real viven en [biblia-visual.md](../biblia-visual.md); la convención de IDs/archivos en [pipeline.md](../../../metodo/pipeline.md) §5.
@@ -16,18 +16,42 @@ Estados: `pendiente` → `generado` (existe el archivo) → `aprobado` (pasó el
 Espejo del roadmap de [TECH.md](TECH.md) § 5. Un stage se marca `[x]` solo cuando cumple sus Exit criteria.
 
 - [x] **Stage 1 — Docs y spec** — fichas de planos/arco-3.md válidas
-- [x] **Stage 1.5 — Cadena narrativa** — cadena del reel aprobada 2026-07-10 ([reels/la-grieta/cadena-narrativa.md](reels/la-grieta/cadena-narrativa.md)); gate previo a imágenes
-- [ ] **Stage 2 — Imágenes madre en cascada** — 17 madres aprobadas (todas generadas/aprobadas; ver checklist)
-- [ ] **Stage 2.6 — Madres variations (unicidad por escena)** — 5 variaciones generadas/aprobadas; cero reutilización de firstFrame no exenta
-- [ ] **Stage 2.7 — Madres keyframes** — cada par/cadena FLF de la §Cadena de transiciones aprobado junto (sobre las variaciones); solo escenas de 2/N keyframes
-- [ ] **Stage 2.5 — Animatic (gate previo a video)** — animatic transversal `la-grieta` aprobado (ritmo/orden/subtítulos) antes de gastar en clips, corrido con las madres variadas
-- [ ] **Stage 3 — Clips** — bloques A/B/C generados y aprobados (Bloque A casi completo; B/C pendientes)
-- [ ] **Stage 4 — Montaje del reel transversal** — la-grieta montado desde los bloques
-- [ ] **Stage 5 — Destacadas del arco** — S1–S5 por recorte
+- [x] **Stage 2 — Cadena narrativa** — cadena del reel aprobada 2026-07-10 ([reels/la-grieta/cadena-narrativa.md](reels/la-grieta/cadena-narrativa.md)); gate previo a imágenes
+- [ ] **Stage 3 — Imágenes madre en cascada** — 17 madres aprobadas (todas generadas/aprobadas; ver checklist)
+- [ ] **Stage 4 — Madres variations (unicidad por escena)** — 5 variaciones generadas/aprobadas; cero reutilización de firstFrame no exenta
+- [ ] **Stage 5 — Madres keyframes** — cada par/cadena FLF de la §Cadena de transiciones aprobado junto (sobre las variaciones); solo escenas de 2/N keyframes
+- [ ] **Stage 6 — Animatic (gate previo a video)** — dos pasadas: **borrador** (`--borrador`, bases en vez de variaciones, aprueba ritmo/orden ANTES de pagarlas) → **final** (variaciones reales + unicidad, gate que habilita clips)
+- [ ] **Stage 7 — Clips** — bloques A/B/C generados y aprobados (Bloque A casi completo; B/C pendientes)
+- [ ] **Stage 8 — Montaje del reel transversal** — la-grieta montado desde los bloques
+- [ ] **Stage 9 — Destacadas del arco** — S1–S5 por recorte
 
 ## 2. Session Log
 
 Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
+
+### 2026-07-10 — Animatic borrador antes de pagar variaciones (micro-optimización de orden)
+
+- **Stage in flight:** Stage 6 (Animatic) — tooling + reordenamiento; sin cambio de trabajo pendiente.
+- **Done this session:**
+  - **Modo `--borrador`** en el animatic ([`engine/wind-mcp/src/lib/animatic.ts`](../../../engine/wind-mcp/src/lib/animatic.ts) + [`scripts/animatic.ts`](../../../engine/wind-mcp/scripts/animatic.ts)): cuando un `firstFrame`/`lastFrame` apunta a una variación (`a{arco}-m{nn}v{k}`) aún no generada, degrada a su madre base en disco. El CLI lista los slots degradados y avisa que la pasada **no valida unicidad** (repeticiones esperadas). `MontarAnimaticResult` gana `degradados`. Sin el flag, comportamiento intacto (gate final estricto).
+  - **Orden de dos pasadas formalizado** en el método ([pipeline.md](../../../metodo/pipeline.md) §2 pasos 3 y 5, flowchart 5a/5b): **animatic borrador** (gratis, bases) → generar variaciones **solo de los slots sobrevivientes** → **animatic final** (variaciones + unicidad, único gate). Espejos en [TECH.md](TECH.md) (Stage 4 Dependencies, Stage 6 dos pasadas) y en el Orden de ejecución / Próxima acción de este doc.
+- **Por qué:** las variaciones son imágenes pagas; correr el borrador antes evita pagar la variación de un slot que el ritmo/orden termina recortando o matando. El costo es una corrida extra de ffmpeg (gratis), no una aprobación extra: el gate sigue siendo uno solo (el final).
+- **Next step:** generar las 6 madres nuevas → correr el borrador (`npm run animatic -- --reel la-grieta --borrador`) → generar variaciones sobrevivientes → animatic final.
+- **New blockers / questions raised:** ninguno.
+
+### 2026-07-10 — Renumeración de stages y pasos (enteros consecutivos)
+
+- **Stage in flight:** Stage 2 (Cadena narrativa) → prep de Stage 3/6 (sin cambio de trabajo, solo numeración).
+- **Done this session:**
+  - **Pasos del pipeline** ([../../../metodo/pipeline.md](../../../metodo/pipeline.md) §2) renumerados 0/1/1.5/1.75/2… → **1–9** consecutivos (lista, flowchart y auto-referencias).
+  - **Stages del episodio** ([TECH.md](TECH.md) §5) renumerados 1/1.5/2/2.6/2.7/2.5/3… → **1–9** consecutivos, respetando el orden de ejecución real (el ex-2.5 animatic queda como Stage 6, después de keyframes).
+  - **Referencias cruzadas** actualizadas en [insights.md](../../../metodo/insights.md), este doc (status, criterios, próxima acción), [reels/la-grieta/README.md](reels/la-grieta/README.md), [cadena-narrativa.md](reels/la-grieta/cadena-narrativa.md), [planos/arco-3.md](planos/arco-3.md), [biblia-visual.md](../biblia-visual.md) y el comentario de [`specs.ts`](../../../engine/wind-mcp/src/lib/specs.ts).
+  - **Principio anti-recurrencia:** el nombre de la capa es el identificador estable; el número es solo ordinal. Una inserción futura renumera headers, no rompe el vocabulario.
+- **Sin cambio de proceso:** cero trabajo de producción alterado; es solo la numeración.
+- **Next step:** retomar la generación de las madres pendientes (Stage 3) y el animatic (Stage 6).
+- **New blockers / questions raised:** ninguno.
+
+> **Nota de renumeración (2026-07-10):** las entradas de log **debajo de esta nota** usan la numeración vieja de stages/pasos. Mapa stages: Stage 1.5→**2**, Stage 2→**3**, Stage 2.6→**4**, Stage 2.7→**5**, Stage 2.5→**6**, Stage 3→**7**, Stage 4→**8**, Stage 5→**9** (Stage 1 sin cambio). Mapa pasos del pipeline: 0→**1**, 1→**2**, 1.5→**3**, 1.75→**4**, 2→**5**, 3→**6**, 4→**7**, 5→**8**, 6→**9**.
 
 ### 2026-07-10 — Coda del lugar blanco (beat 13, cruce con el Ep.1)
 
@@ -127,22 +151,26 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 1. **Docs** — planos / biblia / progreso alineados a las decisiones de dirección.
 2. **Cadena narrativa (gate)** — [reels/la-grieta/cadena-narrativa.md](reels/la-grieta/cadena-narrativa.md): mapa de beats en lenguaje de historia aprobado ANTES de generar imágenes; gobierna la cutlist.
 3. **Madres en cascada** — regenerar/generar con `--candidates 3` y aprobar con `--pick`, en orden: **m03' → m02' joven → m10' → m17**.
-4. **Madres keyframes (gate)** — cada par/cadena FLF de la [§Cadena de transiciones](planos/arco-3.md) aprobado junto (mismo encuadre, solo cambia el estado), sobre las variaciones; ANTES del animatic.
-5. **Animatic (gate)** — `npm run animatic -- --reel la-grieta` → aprobar ritmo/orden/subtítulos del intercut ANTES de gastar en video.
-6. **Clips** — solo lo que el reel aprobado necesita: regen `a3-a4` (huevo) y `a3-c1` (push-in m07), generar `a3-c3`, re-auditar `b1`–`c2`, y las madres+clips de A1/A2. Puentes FLF (`a5x`/`a5y`/`c0`) y regen FLF de `a3-a5` **diferidos a destacadas**.
-7. **Montaje del reel transversal** — desde la cut-list (inserts: eco m09 tras c3, foto real en a3-c4).
-8. **Destacadas** — S1–S5 derivadas por recorte, cero generación.
+4. **Animatic borrador (gratis)** — `npm run animatic -- --reel la-grieta --borrador`: las variaciones aún inexistentes degradan a su madre base; aprobar ritmo/orden/subtítulos ANTES de pagar las variaciones.
+5. **Madres variations** — generar **solo las variaciones de los slots que sobrevivieron** al borrador (un slot recortado/muerto no paga su variación).
+6. **Madres keyframes (gate)** — cada par/cadena FLF de la [§Cadena de transiciones](planos/arco-3.md) aprobado junto (mismo encuadre, solo cambia el estado), sobre las variaciones; ANTES del animatic final.
+7. **Animatic final (gate)** — `npm run animatic -- --reel la-grieta` (sin `--borrador`) → con variaciones reales + unicidad; aprobar ANTES de gastar en video.
+8. **Clips** — solo lo que el reel aprobado necesita: regen `a3-a4` (huevo) y `a3-c1` (push-in m07), generar `a3-c3`, re-auditar `b1`–`c2`, y las madres+clips de A1/A2. Puentes FLF (`a5x`/`a5y`/`c0`) y regen FLF de `a3-a5` **diferidos a destacadas**.
+9. **Montaje del reel transversal** — desde la cut-list (inserts: eco m09 tras c3, foto real en a3-c4).
+10. **Destacadas** — S1–S5 derivadas por recorte, cero generación.
 
 ### Próxima acción
 
-**Gate cadena narrativa (Stage 1.5) aprobado** — [reels/la-grieta/cadena-narrativa.md](reels/la-grieta/cadena-narrativa.md) es el mapa de beats que gobierna la cutlist. Madres del Arco 3 ya listas (m02/m03/m10/m17 vía **OpenRouter / Nano Banana**, multi-ref; provider por defecto en `npm run gen`, fallback `--provider minimax`).
+**Gate cadena narrativa (Stage 2) aprobado** — [reels/la-grieta/cadena-narrativa.md](reels/la-grieta/cadena-narrativa.md) es el mapa de beats que gobierna la cutlist. Madres del Arco 3 ya listas (m02/m03/m10/m17 vía **OpenRouter / Nano Banana**, multi-ref; provider por defecto en `npm run gen`, fallback `--provider minimax`).
 
 **Huecos de los beats 8, 9 y 13 resueltos (2026-07-10):** fichas bajadas a planos (madres `a3-m19`/`a3-m20`, `a2-m01` con refs + `a2-m03`, coda `a2-m04`/`a2-m05`) y cutlist expandida con stills de montaje (~47s). Falta:
 
 1. **Generar las madres nuevas** — `a3-m19`, `a3-m20` (Arco 3) y `a2-m01`, `a2-m03`, `a2-m04`, `a2-m05` (Arco 2) con `npm run gen --candidates 3` y aprobar con `--pick`.
-2. **Correr el animatic transversal** (Stage 2.5) — decide si algún still (`a2-m03` y la coda `a2-m04`/`a2-m05` en especial) asciende a clip U2V.
+2. **Correr el animatic borrador** (Stage 6, `--borrador`) — `npm run animatic -- --reel la-grieta --borrador`: las 5 variaciones aún inexistentes degradan a su madre base, así se aprueba ritmo/orden/subtítulos **sin pagarlas todavía**. Decide además si algún still (`a2-m03`, coda `a2-m04`/`a2-m05`) asciende a clip U2V.
+3. **Generar variaciones sobrevivientes** — solo las de los slots que el borrador no recortó, con `npm run gen -- --id a3-mNNvK --candidates 3` y `--pick`.
+4. **Correr el animatic final** (sin `--borrador`) — con las variaciones reales; es el gate que suma unicidad y habilita los clips.
 
-**Con 8 y 9 cubiertos = animatic transversal (Stage 2.5):**
+**Con 8 y 9 cubiertos = animatic transversal (Stage 6):**
 
 ```bash
 cd engine/wind-mcp && npm run animatic -- --reel la-grieta
@@ -158,7 +186,7 @@ cd engine/wind-mcp && npm run animatic -- --reel la-grieta
 | Etapa | Criterio |
 |---|---|
 | Madres | Silueta 100% negra recorte plano (NO fieltro/3D/plush), fondo tintado del beat correcto (guion de color de [arco-3-planos.md](planos/arco-3.md)), STYLE-BLOCK respetado (salvo m12–m15 que rompen a propósito), 9:16. Personajes distinguibles por contorno. Dirección de Ref: hereda de la madre ya aprobada/querida (hoy m10←m11). |
-| Madres keyframes (Stage 2.7) | Solo escenas de 2 o N keyframes. **Par emparejado** (par first/last de un FLF: m05v1/m06, m06/m14, m15v1/m08, m14v1/m07, m09/m17, m10'/m11): mismo encuadre y composición base, solo cambia el estado — el par se aprueba **junto** ([biblia-visual.md](../biblia-visual.md) §3, [pipeline.md](../../../metodo/pipeline.md) §2 paso 1.75). **Cadena** (N>2): eslabones aprobados juntos, `lastFrame` de un eslabón = `firstFrame` del siguiente (keyframe compartido). Sobre las variaciones del Stage 2.6, no sobre las madres base. |
+| Madres keyframes (Stage 5) | Solo escenas de 2 o N keyframes. **Par emparejado** (par first/last de un FLF: m05v1/m06, m06/m14, m15v1/m08, m14v1/m07, m09/m17, m10'/m11): mismo encuadre y composición base, solo cambia el estado — el par se aprueba **junto** ([biblia-visual.md](../biblia-visual.md) §3, [pipeline.md](../../../metodo/pipeline.md) §2 paso 4). **Cadena** (N>2): eslabones aprobados juntos, `lastFrame` de un eslabón = `firstFrame` del siguiente (keyframe compartido). Sobre las variaciones del Stage 4, no sobre las madres base. |
 | Clips | Arranca 1:1 de su imagen madre, movimiento tipo títere de papel plano (no 3D), tinte estable durante el clip, duración correcta. FLF: morph real primer→último (provider `Kling-FLF`, no fallback I2V). |
 | Reels | Continuidad de tinte entre clips, switches cuento↔real solo en la cadena de transiciones aprobada (ver abajo), audio off sincero sin chistes. |
 | Stories | 15s, legibles sin audio, sin generación extra. |
@@ -195,11 +223,11 @@ cd engine/wind-mcp && npm run animatic -- --reel la-grieta
 | a2-m03 | Manos levantan la cría | pendiente | Beat 9.3; refs `charles/` + `ornitorrinco_crias.jpeg` (pose) + `a3-m02` (silueta), OpenRouter; still `a2-a0b`. Vive en [planos/arco-2.md](planos/arco-2.md) |
 | a2-m04 | El lugar blanco | pendiente | Beat 13.2; `ref a2-m01` + `charles/` (OpenRouter), fondo blanco sin tinte (cuento sin tinte), palomas ausentes; still `a2-a2`. Vive en [planos/arco-2.md](planos/arco-2.md) |
 | a2-m05 | El despertar | pendiente | Beat 13.3; `ref a2-m01` + mundo `a3-m07` (OpenRouter), tinte rojo dusk; still `a2-a2b`. Vive en [planos/arco-2.md](planos/arco-2.md) |
-| a3-m01v1 | Madre al borde de la grieta (variación) | pendiente | Stage 2.6; `ref a3-m01` (OpenRouter), tinte rojo; firstFrame de a3-a6 |
-| a3-m01v2 | Madre en llanura seca (variación) | pendiente | Stage 2.6; `ref a3-m01` (OpenRouter), tinte gris; firstFrame de a3-b3 |
-| a3-m05v1 | Pangea antes del quiebre (variación) | pendiente | Stage 2.6; `ref a3-m05`; mismo encuadre que m05/m06 (par FLF); firstFrame de a3-a5 |
-| a3-m14v1 | Grieta real, polvo asentándose (variación) | pendiente | Stage 2.6; `ref a3-m14`, styleBlock false; firstFrame de a3-c0 |
-| a3-m15v1 | Aéreo hacia el humedal (variación) | pendiente | Stage 2.6; `ref a3-m15`, styleBlock false; firstFrame de a3-a5y |
+| a3-m01v1 | Madre al borde de la grieta (variación) | pendiente | Stage 4; `ref a3-m01` (OpenRouter), tinte rojo; firstFrame de a3-a6 |
+| a3-m01v2 | Madre en llanura seca (variación) | pendiente | Stage 4; `ref a3-m01` (OpenRouter), tinte gris; firstFrame de a3-b3 |
+| a3-m05v1 | Pangea antes del quiebre (variación) | pendiente | Stage 4; `ref a3-m05`; mismo encuadre que m05/m06 (par FLF); firstFrame de a3-a5 |
+| a3-m14v1 | Grieta real, polvo asentándose (variación) | pendiente | Stage 4; `ref a3-m14`, styleBlock false; firstFrame de a3-c0 |
+| a3-m15v1 | Aéreo hacia el humedal (variación) | pendiente | Stage 4; `ref a3-m15`, styleBlock false; firstFrame de a3-a5y |
 
 > **Switch provider (2026-07-09):** madres con Ref/AnatomyRef pasan por `openrouter` (Nano Banana) en vez de Minimax. Minimax se queda como `--provider minimax` (composite 1-slot) por si hace falta.
 

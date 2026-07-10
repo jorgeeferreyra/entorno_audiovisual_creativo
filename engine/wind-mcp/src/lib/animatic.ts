@@ -41,12 +41,27 @@ export interface MontarAnimaticInput {
   offMap: Map<string, string>;
   /** Ruta de salida, relativa a la unidad o absoluta. */
   salida: string;
+  /**
+   * Modo borrador: si un `firstFrame`/`lastFrame` apunta a una variación aún no
+   * generada (`a{arco}-m{nn}v{k}`), degrada a su madre base (`a{arco}-m{nn}`).
+   * Habilita aprobar ritmo/orden ANTES de pagar las variaciones. No valida
+   * unicidad: las repeticiones son esperadas en esta pasada.
+   */
+  borrador?: boolean;
+}
+
+/** Slot cuyo frame de variación se resolvió a la madre base (solo modo borrador). */
+export interface Degradado {
+  id: string;
+  ref: string;
+  base: string;
 }
 
 export interface MontarAnimaticResult {
   localPath: string;
   segmentCount: number;
   omitidos: { id: string; motivo: string }[];
+  degradados: Degradado[];
 }
 
 async function existe(p: string): Promise<boolean> {
@@ -147,6 +162,9 @@ interface Segmento {
 
 type Omitido = { id: string; motivo: string };
 
+/** `a3-m01v1` → grupo 1 = `a3-m01` (madre base). No matchea madres ni intermedias. */
+const VARIATION_RE = /^(a\d+-m\d+)v\d+$/;
+
 async function renderSegmento(
   seg: Segmento,
   idx: number,
@@ -206,14 +224,28 @@ async function segmentosDeSpec(
   specs: AssetSpec[],
   offMap: Map<string, string>,
   durOverride?: number,
+  opts?: { borrador?: boolean; degradados?: Degradado[] },
 ): Promise<{ segmentos: Segmento[]; omitido?: Omitido }> {
   const subtitulo = offMap.get(spec.id);
   const duracion = durOverride ?? duracionDe(spec);
 
   const resolver = async (ref: string): Promise<string | Omitido> => {
     const imagen = resolveReadPath(resolveAssetRef(ref, arco, specs));
-    if (!(await existe(imagen))) return { id: spec.id, motivo: `imagen aún no generada (${ref})` };
-    return imagen;
+    if (await existe(imagen)) return imagen;
+    // Borrador: una variación aún no generada degrada a su madre base, que ya
+    // está en disco. Deja registro en `degradados` para que la salida lo avise.
+    if (opts?.borrador) {
+      const m = ref.match(VARIATION_RE);
+      if (m) {
+        const base = m[1];
+        const baseImagen = resolveReadPath(resolveAssetRef(base, arco, specs));
+        if (await existe(baseImagen)) {
+          opts.degradados?.push({ id: spec.id, ref, base });
+          return baseImagen;
+        }
+      }
+    }
+    return { id: spec.id, motivo: `imagen aún no generada (${ref})` };
   };
 
   if (spec.kind === 'video-flf') {
@@ -290,17 +322,18 @@ async function renderYConcat(segmentos: Segmento[], salida: string): Promise<str
  * documento. Útil para aprobar la fuente y las destacadas de ese arco.
  */
 export async function montarAnimatic(input: MontarAnimaticInput): Promise<MontarAnimaticResult> {
-  const { arco, specs, offMap } = input;
+  const { arco, specs, offMap, borrador } = input;
 
   const clips = specs.filter(
     (s) => s.kind === 'video-i2v' || s.kind === 'video-flf' || s.kind === 'montaje',
   );
 
   const omitidos: Omitido[] = [];
+  const degradados: Degradado[] = [];
   const segmentos: Segmento[] = [];
 
   for (const spec of clips) {
-    const r = await segmentosDeSpec(spec, arco, specs, offMap);
+    const r = await segmentosDeSpec(spec, arco, specs, offMap, undefined, { borrador, degradados });
     if (r.omitido) omitidos.push(r.omitido);
     segmentos.push(...r.segmentos);
   }
@@ -312,7 +345,7 @@ export async function montarAnimatic(input: MontarAnimaticInput): Promise<Montar
   }
 
   const localPath = await renderYConcat(segmentos, input.salida);
-  return { localPath, segmentCount: segmentos.length, omitidos };
+  return { localPath, segmentCount: segmentos.length, omitidos, degradados };
 }
 
 export interface CutlistItem {
@@ -345,8 +378,14 @@ export async function parseCutlist(reel: string): Promise<CutlistItem[]> {
  * las duraciones de la cut-list del README. Es el gate que protege el mayor
  * costo (video). Los clips cuyo `planos/arco-N.md` aún no existe, o cuya imagen
  * madre no está en disco, se reportan como omitidos (animatic parcial).
+ * En modo `borrador`, las variaciones aún no generadas degradan a su madre base
+ * para aprobar ritmo/orden antes de pagarlas (ver MontarAnimaticInput.borrador).
  */
-export async function montarAnimaticReel(reel: string, salida: string): Promise<MontarAnimaticResult> {
+export async function montarAnimaticReel(
+  reel: string,
+  salida: string,
+  borrador = false,
+): Promise<MontarAnimaticResult> {
   const items = await parseCutlist(reel);
 
   // Carga perezosa por arco: null = el arco aún no tiene planos.
@@ -354,6 +393,7 @@ export async function montarAnimaticReel(reel: string, salida: string): Promise<
   const offCache = new Map<number, Map<string, string>>();
 
   const omitidos: Omitido[] = [];
+  const degradados: Degradado[] = [];
   const segmentos: Segmento[] = [];
 
   for (const item of items) {
@@ -385,7 +425,7 @@ export async function montarAnimaticReel(reel: string, salida: string): Promise<
       continue;
     }
     const off = offCache.get(arco) ?? new Map<string, string>();
-    const r = await segmentosDeSpec(spec, arco, specs, off, item.dur);
+    const r = await segmentosDeSpec(spec, arco, specs, off, item.dur, { borrador, degradados });
     if (r.omitido) omitidos.push(r.omitido);
     segmentos.push(...r.segmentos);
   }
@@ -397,5 +437,5 @@ export async function montarAnimaticReel(reel: string, salida: string): Promise<
   }
 
   const localPath = await renderYConcat(segmentos, salida);
-  return { localPath, segmentCount: segmentos.length, omitidos };
+  return { localPath, segmentCount: segmentos.length, omitidos, degradados };
 }

@@ -321,7 +321,7 @@ export async function validarImagenes(specs: AssetSpec[]): Promise<string[]> {
  * Validación blanda de unicidad por escena (madres variations, warnings no bloqueantes):
  * una imagen usada como `firstFrame` de más de un clip generable se ve repetida en
  * pantalla — cada reutilización debería tener su variación (`a{arco}-m{nn}v{k}`,
- * ver pipeline.md §2 paso 1.5 y biblia-visual.md §3 regla 7).
+ * ver pipeline.md §2 paso 3 y biblia-visual.md §3 regla 7).
  *
  * Exenciones automáticas (no suman repetición, no hace falta codificarlas aparte):
  * el keyframe compartido de una cadena FLF aparece como `lastFrame` de un eslabón y
