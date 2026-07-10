@@ -8,13 +8,13 @@
     "start": "tsx --tsconfig tsconfig.json src/index.ts",
     "e2e:mock": "MOCK_ENGINES=1 PLAN_GATE_DISABLED=1 tsx --tsconfig tsconfig.json scripts/e2e-a3-m01.ts --mock",
     "e2e:real": "MOCK_ENGINES=0 PLAN_GATE_DISABLED=1 tsx --tsconfig tsconfig.json scripts/e2e-a3-m01.ts --real",
-    "madres:a3": "MOCK_ENGINES=0 PLAN_GATE_DISABLED=1 tsx --tsconfig tsconfig.json scripts/generar-madres-a3.ts",
-    "clips:a3": "MOCK_ENGINES=0 PLAN_GATE_DISABLED=1 tsx --tsconfig tsconfig.json scripts/generar-clips-a3.ts",
+    "gen": "MOCK_ENGINES=0 PLAN_GATE_DISABLED=1 tsx --tsconfig tsconfig.json scripts/generar.ts",
     "audio:a3": "MOCK_ENGINES=0 PLAN_GATE_DISABLED=1 tsx --tsconfig tsconfig.json scripts/generar-bgm-a3.ts"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.12.1",
     "dotenv": "^16.4.7",
+    "yaml": "^2.9.0",
     "zod": "^3.24.2"
   },
   "devDependencies": {

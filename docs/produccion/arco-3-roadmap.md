@@ -1,7 +1,7 @@
 # Arco 3 — Roadmap de producción
 
 > Documento de **seguimiento** (estados, costos, gates). No duplica prompts ni fichas: la fuente de verdad de los prompts es [arco-3-planos.md](arco-3-planos.md); el STYLE-BLOCK y los switches cuento↔real viven en [biblia-visual.md](biblia-visual.md); la convención de IDs/archivos en [pipeline-wind-comic.md](pipeline-wind-comic.md) §5.
-> Comandos: los scripts de `wind-mcp/` leen los prompts directamente de arco-3-planos.md (`wind-mcp/src/lib/planos.ts`) — nunca editar prompts fuera del doc fuente.
+> Comandos: los scripts de `wind-mcp/` leen las fichas (YAML + prompt) directamente de arco-3-planos.md (`wind-mcp/src/lib/specs.ts`) — nunca editar prompts fuera del doc fuente. Generación: `npm run gen` (un solo CLI para madres y clips).
 
 Estados: `pendiente` → `generado` (existe el archivo) → `aprobado` (pasó el criterio de su etapa). Se actualiza a mano al avanzar.
 
@@ -17,13 +17,13 @@ Estados: `pendiente` → `generado` (existe el archivo) → `aprobado` (pasó el
 
 ### Próxima acción
 
-**Paso 2 (madres en cascada) listo** — m02/m03/m10/m17 aprobados vía **OpenRouter / Nano Banana** (`google/gemini-2.5-flash-image`), con multi-ref (m01 lock + anatomía en `assets/fuentes/ornitorrincos/`). Provider por defecto en `npm run madres:a3`; fallback `--provider minimax`.
+**Paso 2 (madres en cascada) listo** — m02/m03/m10/m17 aprobados vía **OpenRouter / Nano Banana** (`google/gemini-2.5-flash-image`), con multi-ref (m01 lock + anatomía en `assets/fuentes/ornitorrincos/`). Provider por defecto en `npm run gen`; fallback `--provider minimax`.
 
 **Siguiente = paso 3: clips.** Reel B (b1–b4) → puentes / Reel C. Requiere wind-comic arriba.
 
 ```bash
 cd wind-comic && PLAN_GATE_DISABLED=1 npm run dev
-cd wind-mcp && npm run clips:a3 -- # (o el script/U2V que toque por clip)
+cd wind-mcp && npm run gen -- --reel a # (o --id a3-XX por clip)
 ```
 
 **Reel A:** a3-a1…a3-a6 aprobados; a3-a4 queda **obsoleto** (era cría; regenerar U2V sobre m04 huevo). a3-a5 aprobado como I2V degradado — regen FLF real pendiente. **Gate Kling resuelto** (FLF real vía gateway qingyuntop).
@@ -150,7 +150,7 @@ Los retries de madres con `--candidates 3` suman ~¥0.9 c/u antes del pick: por 
 a3-a5 salió por I2V fallback cuando Kling devolvió "quota insufficient"; ahora hay saldo en el gateway. Regenerar con:
 
 ```bash
-cd wind-mcp && npm run clips:a3 -- --id a3-a5 --force
+cd wind-mcp && npm run gen -- --id a3-a5 --force
 ```
 
 Requiere wind-comic arriba en modo real (`MOCK_ENGINES=0`). Criterio de aceptación: el log debe mostrar provider `Kling-FLF` (no `Minimax-I2V-fallback`) y el morph primer→último frame de la grieta debe ocurrir. Costo estimado ~¥1. Al aprobar, actualizar la fila de a3-a5 en el checklist de clips.
