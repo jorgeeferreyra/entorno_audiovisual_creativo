@@ -1,7 +1,7 @@
 # Redes (Arco 3) — Build Progress
 
 _Last updated: 2026-07-10_
-_Current stage: Stage 3 — Beat 8 reestructurado (m19/m21/m03 aprobados; m22–m24 candidatos); animatic borrador (Stage 6) próximo_
+_Current stage: Stage 3 — Beat 8 madres cerradas (m19/m21/m22/m23/m24); animatic borrador (Stage 6) próximo_
 _Based on roadmap: [TECH.md](TECH.md) § 5_
 
 > Session log agency-os + seguimiento detallado de producción (estados, costos, gates). Absorbe el antiguo `arco-3-roadmap.md`. No duplica prompts ni fichas: la fuente de verdad de los prompts es [arco-3-planos.md](planos/arco-3.md); el STYLE-BLOCK y los switches cuento↔real viven en [biblia-visual.md](../biblia-visual.md); la convención de IDs/archivos en [pipeline.md](../../../metodo/pipeline.md) §5.
@@ -28,6 +28,15 @@ Espejo del roadmap de [TECH.md](TECH.md) § 5. Un stage se marca `[x]` solo cuan
 ## 2. Session Log
 
 Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
+
+### 2026-07-10 — m24 c1 promovida + limpieza de candidatos
+
+- **Stage in flight:** Stage 3 — beat 8 cerrado en madres.
+- **Done this session:**
+  - **`a3-m24` ← c1** (tanda 2; las 4 figuras legibles).
+  - **Limpieza:** eliminados candidatos no promovidos de `m19`/`m20`/`m22`/`m23`/`m24` y `a2-m03`. **`a2-m01` intacto** (otro chat).
+- **Next step:** re-correr animatic borrador con beat 8 completo → afinar durs → variaciones.
+- **New blockers / questions raised:** ninguno.
 
 ### 2026-07-10 — Picks m22/m23 + regen m24
 
@@ -181,10 +190,10 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 
 ### Próxima acción
 
-**Beat 8 casi cerrado:** `m19`/`m21`/`m22`(c1)/`m23`(c3) aprobados; ~~`m20`~~ RETIRADA; `a2-m03` c2; `a2-m06` reserva. **`m24` pendiente** (tanda 1 rechazada).
+**Beat 8 cerrado en madres:** `m19`/`m21`/`m22`(c1)/`m23`(c3)/`m24`(c1) aprobados; ~~`m20`~~ RETIRADA; `a2-m03` c2; `a2-m06` reserva. Candidatos no promovidos eliminados.
 
-1. **Regenerar `a3-m24`** — `npm run gen -- --arco 3 --id a3-m24 --candidates 3` (prompt reforzado con refs m21/m22/m23).
-2. Pickear → re-correr `npm run animatic -- --reel la-grieta --borrador`.
+1. **Re-correr animatic borrador** — `npm run animatic -- --reel la-grieta --borrador` (beat 8 completo).
+2. Afinar durs → variaciones sobrevivientes → animatic final.
 3. **`a2-m01`** sigue en el otro chat.
 
 ---
@@ -230,7 +239,7 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 | a3-m21 | Separación: grieta ya abierta | aprobado | Beat 8.1b; copia de `a3-m19-c2`; still `a3-a6b` |
 | a3-m22 | Orilla cercana: madre + cría | aprobado | Beat 8.2a; pick c1; still `a3-a6c` |
 | a3-m23 | Orilla lejana: padre + huevo | aprobado | Beat 8.2b; pick c3; still `a3-a6d` |
-| a3-m24 | Plano lejano: los 4 + grieta | pendiente | Beat 8.2c; **ningún candidato promovido** — regenerar; still `a3-a6e` |
+| a3-m24 | Plano lejano: los 4 + grieta | aprobado | Beat 8.2c; pick c1 (tanda 2); still `a3-a6e` |
 | a2-m01 | Charles de espaldas | pendiente | Beat 9.1; **se maneja en otro chat — no tocar**. Vive en [planos/arco-2.md](planos/arco-2.md) |
 | a2-m03 | Manos levantan la cría (cuento) | aprobado | Beat 9.3; pick c2 (gesto de alzar); still `a2-a0b` |
 | a2-m06 | Manos + cría (Revenant) | pendiente (**reserva destacada**) | `styleBlock: false`; ref `ornitorrinco_crias.jpeg`; NO entra al reel |
@@ -272,7 +281,7 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 | a3-a6b | A | ninguna | generado | Beat 8.1b; still m21 (~1.5s), solo montaje |
 | a3-a6c | A | ninguna | generado | Beat 8.2a; still m22 (~1.5s), solo montaje |
 | a3-a6d | A | ninguna | generado | Beat 8.2b; still m23 (~1.5s), solo montaje |
-| a3-a6e | A | ninguna | pendiente | Beat 8.2c; still m24 (~2s) — madre pendiente de regen |
+| a3-a6e | A | ninguna | generado | Beat 8.2c; still m24 (~2s), solo montaje |
 | a2-a0 | A2 | ninguna | pendiente | Beat 9.1; still a2-m01 (~1.5s), solo montaje — otro chat |
 | a2-a0b | A2 | ninguna | generado | Beat 9.3; still a2-m03 (~1.5s), solo montaje |
 | a2-a2 | A2 | ninguna | pendiente | Beat 13.2; still a2-m04 (~1.5s), solo montaje; entre a3-c2 y a3-c3 |

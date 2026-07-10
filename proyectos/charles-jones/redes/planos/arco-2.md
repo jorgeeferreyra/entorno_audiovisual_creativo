@@ -6,13 +6,14 @@
 
 Convenciones (idénticas a [arco-3.md](arco-3.md)): prompts en inglés con el STYLE-BLOCK embebido literal; títulos/off/montaje en español; el movimiento de cámara va en `cameraPreset`.
 
-Registro del Arco 2: esperanzador, el contrapeso del Arco 1. En el reel entra como **contrapunto** durante "vidas paralelas": la palanca de Charles explica por qué la línea australiana sobrevivió. Se produce en **silueta** (Charles de espaldas): cumple "CFJ nunca de frente" por diseño y evita la guarda anti-manos del quiebre fotorrealista.
+Registro del Arco 2: esperanzador, el contrapeso del Arco 1. En el reel entra como **contrapunto** durante "vidas paralelas": la palanca de Charles explica por qué la línea australiana sobrevivió. Se produce mayormente en **silueta** (Charles de espaldas): cumple "CFJ nunca de frente" por diseño y esquiva la guarda anti-manos. **Excepción (decisión de dirección):** el golpe de la grieta asciende a un quiebre fotorrealista **Revenant** OTS (`a2-m07`, `styleBlock: false`) — switch cuento→real, hermano de `a3-m14` pero con Charles presente; de espaldas + el caos como escudo mantienen las guardas de cara/manos. El master de silueta (`a2-m01`) se conserva aparte para que `a2-m04`/`a2-m05` sigan heredando identidad/vestuario.
 
 ## Guion de color (tinte de fondo por beat)
 
 | Beat | Tinte (línea EN del prompt) |
 |---|---|
 | La palanca (a2-m01, a2-m02, a2-m03, a2-a1) — en el momento de la grieta | `dramatic deep red tinted background` |
+| La grieta Revenant (a2-m07) — golpe del quiebre en el reel | REALITY-BLOCK Revenant, `deep blood-red overcast dusk light` (`styleBlock: false`; desvío rojo del bloque canónico) |
 | Manos + cría Revenant (a2-m06) — **reserva destacada**, no reel | REALITY-BLOCK (fotográfico; `styleBlock: false`) |
 | El mensaje / lugar blanco (a2-m04, a2-a2) | sin tinte: `pure white paper background` (registro nuevo: *cuento sin tinte*, ni sueño ni realidad) |
 | El despertar (a2-m05, a2-a2b) | `deep red dusk tinted background` (empalma con el Bloque C del Arco 3) |
@@ -21,7 +22,7 @@ Registro del Arco 2: esperanzador, el contrapeso del Arco 1. En el reel entra co
 
 ## Sección 1 — Imágenes madre (generar PRIMERO)
 
-**a2-m01 — Charles OTS: la grieta (silueta sobre el hombro)**
+**a2-m01 — Charles de espaldas (silueta master)**
 
 ```yaml
 kind: image
@@ -32,11 +33,11 @@ anatomyRefs:
 provider: openrouter
 ```
 
-Nota: aspecto y vestuario canónicos en la ficha CFJ de [personajes-studio.md](../../personajes-studio.md). Regla dura: **nunca de frente** — silueta de espaldas. Encuadre **over-the-shoulder** (OTS): Charles recortado en primerísimo plano (nuca, ala del sombrero, hombro) como capa oscura; la cámara mira con él el hábitat que se quiebra. No es el REALITY-BLOCK fotorrealista: sigue siendo silueta Reiniger con lenguaje de cámara Revenant. **Registro del Arco 2 (esperanzador en quiebre):** el mundo NO es un páramo apocalíptico consumado — es un **hábitat frondoso y vivo que recién se está rajando** (helechos, pastos, juncos, árboles en silueta), la grieta como herida fresca sobre lo verde, no tierra muerta. El tinte rojo carga la tensión; el contenido carga la vida. Las refs (Nano Banana multi-ref) solo aportan identidad/vestuario; la cara NUNCA se muestra y el estilo NO cambia. m04/m05 heredan identidad/vestuario de esta silueta, **no** el crop OTS.
+Nota: **silueta master** del arco — lock de identidad/vestuario (sombrero, abrigo, morral) que `a2-m04`/`a2-m05` heredan. Aspecto y vestuario canónicos en la ficha CFJ de [personajes-studio.md](../../personajes-studio.md). Regla dura: **nunca de frente** — silueta de cuerpo entero de espaldas. **Lotte Reiniger de verdad** (no ilustración vectorial plana): recorte de papel con filigrana fina de tijera, encaje de detalle interior, ref. *Die Abenteuer des Prinzen Achmed*. Registro esperanzador-en-quiebre: hábitat frondoso y vivo que recién empieza a rajarse (helechos, pastos, juncos, árboles en silueta), no páramo muerto. El golpe visceral de la grieta NO vive acá: es el Revenant `a2-m07`. Las refs (Nano Banana multi-ref) solo aportan identidad/vestuario; la cara NUNCA se muestra y el estilo NO cambia.
 
 Prompt (EN):
 ```
-The reference images show an elderly bearded explorer — use them ONLY for identity and wardrobe (wide-brimmed fedora, long expedition coat, satchel, general build), NEVER show his face, NEVER change the art style. Over-the-shoulder shot from just behind the elderly explorer: his black paper cutout silhouette fills the near foreground as a large dark layer — the back of his fedora hat brim, his shoulder and part of the coat cropped at the frame edge, seen strictly from behind, face never visible. Past his shoulder and below, the camera looks over a lush thriving habitat — layered cutout ferns, tall grasses, reeds and leafy trees — that is only just beginning to tear open: a single fresh jagged rift splits through the green landscape, a few plants and roots hanging over its edges, the world still verdant and alive, NOT a barren wasteland, no bare cracked desert, no dead ground. Strong layered depth: foreground silhouette layer, mid vegetation-and-rift layers, far leafy tree-line layer, like stacked shadow-theater paper planes. Delicate cut-out inner details in the coat and hat brim, dramatic deep red tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+The reference images show an elderly bearded explorer — use them ONLY for identity and wardrobe (wide-brimmed fedora, long expedition coat, satchel, general build), NEVER show his face, NEVER change the art style. Black paper cutout silhouette of the elderly explorer seen strictly from behind, full standing figure, at the edge of a lush thriving habitat — silhouetted ferns, tall grasses, reeds and leafy trees — where a single fresh rift is only just beginning to split the green ground, the world still verdant and alive, NOT a barren wasteland, no dead cracked desert. Fine intricate lace-like hand-cut paper detail in the coat, hat brim and foliage — delicate filigree cut-outs, NOT flat vector shapes, in the manner of Lotte Reiniger's Die Abenteuer des Prinzen Achmed, flat 2D layered paper theater. dramatic deep red tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
 ```
 
 **a2-m02 — El tronco-balancín con el huevo**
@@ -101,11 +102,11 @@ provider: openrouter
 styleBlock: false # Cuento sin tinte: sigue siendo silueta recortada pero sobre blanco puro, sin tinte ni sepia (no valida STYLE-BLOCK/tinte)
 ```
 
-Nota: cruce con el Ep.1 (el "lugar blanco" del sueño, biblia §4). Registro nuevo: **cuento sin tinte** — la silueta se mantiene pero el fondo es blanco puro (ni el papel tintado del cuento ni el fotorrealismo del salto a la realidad). `ref: a2-m01` hereda **identidad/vestuario** de la silueta (sombrero, abrigo, estilo woodcut), **no** el crop OTS ni la grieta; acá Charles va de cuerpo entero sentado. La ref `charles/` solo aporta identidad/vestuario, nunca la cara. Guarda dura: **nunca de frente**. Las palomas **no están**: el maíz cae y no hay nada que lo coma (esa ausencia ES la imagen del episodio).
+Nota: cruce con el Ep.1 (el "lugar blanco" del sueño, biblia §4). Registro nuevo: **cuento sin tinte** — la silueta se mantiene pero el fondo es blanco puro (ni el papel tintado del cuento ni el fotorrealismo del salto a la realidad). `ref: a2-m01` hereda la silueta de Charles de espaldas con sombrero; la ref `charles/` solo aporta identidad/vestuario, nunca la cara. Guarda dura: **nunca de frente**. Las palomas **no están**: el maíz cae y no hay nada que lo coma (esa ausencia ES la imagen del episodio).
 
 Prompt (EN):
 ```
-The first reference image is the master character — reproduce this exact Charles silhouette identity with 100% fidelity: same wide-brimmed fedora, same long expedition coat, same woodcut cutout style — inherit wardrobe and cutout style ONLY, NOT the over-the-shoulder crop or the rift landscape. The other reference shows an elderly bearded explorer — use it ONLY for identity and wardrobe, NEVER show his face, NEVER change the art style. Black paper cutout silhouette of the elderly explorer seen strictly from behind, full figure seated on a small low stool, one hand tossing a scatter of corn kernels that fall through the air to the ground, absolutely no pigeons, no birds, no animals anywhere in the frame — only the falling seeds and empty ground, face never visible, delicate cut-out inner details in the coat and hat brim, pure white paper background with no tint and no scenery, an emptied dreamlike void, flat 2D paper cutout, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouette with delicate cut-out inner details, dark fairy tale mood, subtle soft edges, vertical 9:16
+The first reference image is the master character — reproduce this exact Charles silhouette with 100% fidelity: same wide-brimmed fedora, same long expedition coat, same seen-strictly-from-behind pose, same woodcut cutout style. The other reference shows an elderly bearded explorer — use it ONLY for identity and wardrobe, NEVER show his face, NEVER change the art style. Black paper cutout silhouette of the elderly explorer seen strictly from behind, full figure seated on a small low stool, one hand tossing a scatter of corn kernels that fall through the air to the ground, absolutely no pigeons, no birds, no animals anywhere in the frame — only the falling seeds and empty ground, face never visible, delicate cut-out inner details in the coat and hat brim, pure white paper background with no tint and no scenery, an emptied dreamlike void, flat 2D paper cutout, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouette with delicate cut-out inner details, dark fairy tale mood, subtle soft edges, vertical 9:16
 ```
 
 **a2-m05 — El despertar (beat 13.3)**
@@ -119,11 +120,29 @@ anatomyRefs:
 provider: openrouter
 ```
 
-Nota: empalma el lugar blanco de vuelta con el Bloque C del Arco 3 (el mundo rojo de las Coloradas) — el mensaje ya fue transmitido. `ref: a2-m01` hereda **identidad/vestuario** de la silueta, **no** el crop OTS ni la grieta; acá Charles va de cuerpo entero sentado. La ref `a3-m07` aporta el mundo de recortes rojos (mismo patrón multi-ref que `a3-m10`). Gesto mínimo: alza la cabeza como quien vuelve de un sueño. Guarda dura: **nunca de frente**.
+Nota: empalma el lugar blanco de vuelta con el Bloque C del Arco 3 (el mundo rojo de las Coloradas) — el mensaje ya fue transmitido. `ref: a2-m01` mantiene la silueta de Charles de espaldas; la ref `a3-m07` aporta el mundo de recortes rojos (mismo patrón multi-ref que `a3-m10`). Gesto mínimo: alza la cabeza como quien vuelve de un sueño. Guarda dura: **nunca de frente**.
 
 Prompt (EN):
 ```
-The first reference image is the master character — reproduce this exact Charles silhouette identity with 100% fidelity: same wide-brimmed fedora, same long expedition coat, same woodcut cutout style — inherit wardrobe and cutout style ONLY, NOT the over-the-shoulder crop or the rift landscape. The second reference image is the world: layered flat paper cutout red rock formations of the Coloradas badlands — reproduce that exact flat 2D cutout landscape style, stacked silhouette layers on a tinted paper background. Black paper cutout silhouette of the elderly explorer seen strictly from behind, full figure seated among the silhouetted red rock formations, slowly raising his head as if waking from a trance, face never visible, delicate cut-out inner details in the coat and hat brim, deep red dusk tinted background of the Coloradas rock world, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+The first reference image is the master character — reproduce this exact Charles silhouette with 100% fidelity: same wide-brimmed fedora, same long expedition coat, same seen-strictly-from-behind pose, same woodcut cutout style. The second reference image is the world: layered flat paper cutout red rock formations of the Coloradas badlands — reproduce that exact flat 2D cutout landscape style, stacked silhouette layers on a tinted paper background. Black paper cutout silhouette of the elderly explorer seen strictly from behind, full figure seated among the silhouetted red rock formations, slowly raising his head as if waking from a trance, face never visible, delicate cut-out inner details in the coat and hat brim, deep red dusk tinted background of the Coloradas rock world, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+```
+
+**a2-m07 — La grieta (Revenant photoreal, OTS sobre el hombro)**
+
+```yaml
+kind: image
+dest: assets/arco-2/madre/a2-m07-grieta-revenant.png
+anatomyRefs:
+  - assets/fuentes/charles/charles-jones-referencia.jpeg
+provider: openrouter
+styleBlock: false # REALITY-BLOCK Revenant: fotográfico, no silueta (switch cuento→real)
+```
+
+Nota: **quiebre fotorrealista Revenant con Charles presente** — el golpe visceral del beat de la palanca, hermano de `a3-m14` (grieta photoreal) pero con la figura en cuadro. Encuadre **over-the-shoulder**: cámara pegada al hombro de Charles de espaldas; el caos es el escudo de las guardas (cara oculta, manos fuera de cuadro/desenfocadas). Realiza la visión de la lagunita: hábitat verde próspero que se raja y drena el agua a la grieta, caótico. **Desvío controlado del REALITY-BLOCK-CHAOS:** luz de atardecer rojo profundo en vez de `cold muted earth tones`, para sostener el mundo rojo del Arco 2 (decisión de dirección; si se prefiere el bloque canónico estricto, se revierte a tonos tierra fríos). Solo ref de foto (`charles-jones-referencia.jpeg`) para vestuario, sin la pintura (evita sesgo a ilustración). A futuro puede ascender a par FLF (laguna íntegra → drenada) en el gate de madres keyframes.
+
+Prompt (EN):
+```
+The reference image shows an elderly bearded explorer — use it ONLY for the identity and wardrobe of a man seen from behind (wide-brimmed fedora, long expedition coat, satchel), NEVER show his face. Over-the-shoulder shot from just behind the explorer, seen strictly from behind, his dark shoulder and hat brim filling the near foreground cropped large at the frame edge, face never visible, hands lowered and out of frame. Past his shoulder, a lush green thriving habitat around a small lagoon is violently splitting open: a jagged rift tears through the wet ground and the lagoon water pours and drains down into the chasm, reeds, ferns and mud torn loose, spray and debris in the air, chaotic and cataclysmic, the habitat still green and alive. handheld unstable camera, violent motion, heavy motion blur, dust and debris in the air, deep blood-red overcast dusk light, photorealistic, gritty documentary realism inspired by The Revenant, no illustration, no silhouette, no paper texture, vertical 9:16
 ```
 
 ---

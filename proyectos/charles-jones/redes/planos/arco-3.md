@@ -387,7 +387,7 @@ anatomyRefs:
 provider: openrouter
 ```
 
-Nota: establishing lejano — la grieta/canal al centro (mundo de `m21`), **cuatro siluetas mínimas pero legibles** en ambas orillas. Refs: `m22` (madre+cría) y `m23` (padre+huevo) solo para identidad de contorno a escala pequeña — no copiar el encuadre cercano. El mensaje es la distancia irreversible. **Tanda 1 rechazada** (c1–c3: figuras ausentes o solo en un lado); regenerar.
+Nota: establishing lejano — la grieta/canal al centro (mundo de `m21`), **cuatro siluetas mínimas pero legibles** en ambas orillas. Refs: `m22` (madre+cría) y `m23` (padre+huevo) solo para identidad de contorno a escala pequeña — no copiar el encuadre cercano. El mensaje es la distancia irreversible. Pick canónico: `a3-m24-c1` (tanda 2).
 
 Prompt (EN):
 ```
