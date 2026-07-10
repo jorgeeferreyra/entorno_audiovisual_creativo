@@ -29,6 +29,16 @@ Espejo del roadmap de [TECH.md](TECH.md) § 5. Un stage se marca `[x]` solo cuan
 
 Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 
+### 2026-07-10 — Par FLF a1-m01→a1-m01a (firma = grieta)
+
+- **Stage in flight:** Stage 3 docs → prep Stage 5 (madres keyframes).
+- **Done this session:**
+  - **Decisión de dirección:** el reveal `a1-a1` pasa a **FLF** — la firma ES la grieta que rasga el papel.
+  - Ficha nueva `a1-m01a` (keyframe final, `ref a1-m01`, diferida a Stage 5); `a1-m01` queda como keyframe inicial.
+  - Clip `a1-a1`: `video-i2v` → `video-flf` (`m01`→`m01a`); raccord por corte a `a3-a5c` (sin puente FLF pago).
+- **Next step:** generar `a1-m01a` en el gate de keyframes (aprobar el par junto); no generar el clip hasta el animatic.
+- **New blockers / questions raised:** ninguno.
+
 ### 2026-07-10 — a1-m01 c3 promovida (gag burocrático)
 
 - **Stage in flight:** Stage 3 — madres Arco 1 (reveal reel).
@@ -257,7 +267,8 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 | a3-m22 | Orilla cercana: madre + cría | aprobado | Beat 8.2a; pick c1; still `a3-a6c` |
 | a3-m23 | Orilla lejana: padre + huevo | aprobado | Beat 8.2b; pick c3; still `a3-a6d` |
 | a3-m24 | Plano lejano: los 4 + grieta | aprobado | Beat 8.2c; pick c1 (tanda 2); still `a3-a6e` |
-| a1-m01 | Mano con cadenita (informe) | aprobado | Beat 6 reveal; pick c3 → `a1-m01-mano-cadenita.png`; gag burocrático Reiniger (titular + APROBADO). Vive en [planos/arco-1.md](planos/arco-1.md) |
+| a1-m01 | Mano con cadenita (informe) | aprobado | Beat 6 reveal; pick c3 → `a1-m01-mano-cadenita.png`; **keyframe inicial** del par FLF `m01`→`m01a`. Vive en [planos/arco-1.md](planos/arco-1.md) |
+| a1-m01a | La firma es la grieta | pendiente (**diferida a keyframes — Stage 5**) | Keyframe final FLF; `ref a1-m01`; mismo encuadre, firma = rasgadura del papel; raccord a `a3-a5c`. Vive en [planos/arco-1.md](planos/arco-1.md) |
 | a2-m01 | Charles de espaldas | aprobado | Beat 9.1; pick c1 → `a2-m01-charles-espaldas.png` (silueta master). Vive en [planos/arco-2.md](planos/arco-2.md) |
 | a2-m03 | Manos levantan la cría (cuento) | aprobado | Beat 9.3; pick c2 (gesto de alzar); still `a2-a0b` |
 | a2-m06 | Manos + cría (Revenant) | pendiente (**reserva destacada**) | `styleBlock: false`; ref `ornitorrinco_crias.jpeg`; NO entra al reel |
