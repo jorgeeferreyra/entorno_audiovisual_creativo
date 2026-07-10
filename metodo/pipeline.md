@@ -1,21 +1,15 @@
 # Pipeline de producción con wind-comic
 
 > Cómo producir el contenido. Qué producir está en los arcos; la consistencia visual en [biblia-visual.md](../proyectos/charles-jones/biblia-visual.md). El alcance completo de la caja de herramientas (todo lo que wind-comic puede hacer, más allá de este flujo recomendado) está en [toolkit-wind-comic.md](toolkit-wind-comic.md).
-> Herramienta: instancia local de `wind-comic` (en la raíz del proyecto). Es BYO (bring your own keys): el costo es de las APIs, no de la app.
+> Herramienta: instancia local de `wind-comic` (en `engine/wind-comic`), orquestada por `engine/wind-mcp`. Es BYO (bring your own keys): el costo es de las APIs, no de la app.
 
 ---
 
 ## 1. Estrategia de generación: un personaje por clip
 
-Generar cada personaje/elemento **aislado** y unir en montaje. Es lo más barato, lo más consistente y el lenguaje de cine correcto.
+Generar cada personaje/elemento **aislado** y unir en montaje. Es lo más barato, lo más consistente y el lenguaje de cine correcto. Qué lockear y con qué motor depende del tipo de contenido de cada arco: esa tabla (motores por arco) es específica del proyecto y vive en el `TECH.md` del episodio.
 
-| Arco | Elemento a lockear | Motor recomendado | Por qué |
-|---|---|---|---|
-| 1 · Mano Negra | Ninguno (solo mano + cadenita) | Minimax Hailuo (~¥0.1/s) | La mano se mantiene con prompt + primer frame; no gasta lock |
-| 2 · Charles | 1 sujeto | Minimax S2V o Kling | S2V lockea 1 protagonista; silueta de espaldas = poca cara = fácil |
-| 3 · Ornitorrincos | Referencia de imagen por animal | Kling FLF o Seedance multi-ref | Consistencia desde imagen madre como primer frame (I2V) |
-
-Referencia de motores, capacidades y costos: `wind-comic/docs/video-providers.md` e `image-providers.md`.
+Referencia de motores, capacidades y costos: `engine/wind-comic/docs/{video,image}-providers.md`.
 
 ---
 
@@ -37,18 +31,9 @@ flowchart TD
 
 ---
 
-## 3. Presupuesto estimado
+## 3. Presupuesto
 
-Paquete completo (3 arcos, ~15 clips de 5s + ~12 imágenes madre, Minimax como motor principal):
-
-| Etapa | Cálculo | Total aprox. |
-|---|---|---|
-| Imágenes madre | 12 × ¥0.3 | ~¥3.6 |
-| Video (15 × 5s × ¥0.1 Minimax) | | ~¥7.5 |
-| TTS (si se usa, ~3 min) | 180s × ¥0.02 | ~¥3.6 |
-| **Total** | | **~¥15 (barato) a ~¥30 (con Kling en planos clave)** |
-
-El video es el mayor costo; usar Kling (~¥0.2/s) o Veo (~¥0.6/s) solo en los planos-gancho.
+El presupuesto es específico de cada proyecto (cantidad de clips/madres, motor elegido) y vive en el `TECH.md` del episodio. Principio transversal: el **video es el mayor costo**; reservar Kling (~¥0.2/s) o Veo (~¥0.6/s) solo para los planos-gancho, y usar Minimax (~¥0.1/s) para el resto.
 
 ---
 
@@ -69,10 +54,10 @@ IDs con prefijo de arco, en minúsculas:
 | Imagen madre | `a{arco}-m{nn}` | `a3-m01` |
 | Clip | `a{arco}-{reel}{n}` | `a3-a1`, `a3-c2` |
 
-Archivos (en la raíz del proyecto, fuera de `docs/`):
+Archivos (rutas relativas al proyecto; el engine las resuelve contra el episodio activo, con fallback a la serie para `fuentes`):
 
-- **Generados**: `assets/arco-{N}/madre/{id}-{slug}.png` y `assets/arco-{N}/clips/{id}-{slug}.mp4`. Ej.: `assets/arco-3/madre/a3-m01-madre-ornitorrinco.png`.
-- **Material de origen real** (no generado, aportado a mano): `assets/fuentes/{slug}.{ext}`. Ej.: `assets/fuentes/rocas-coloradas-real.jpg`, `assets/fuentes/charles-jones-referencia.jpeg`.
+- **Generados** (nivel episodio): `assets/arco-{N}/madre/{id}-{slug}.png` y `assets/arco-{N}/clips/{id}-{slug}.mp4`. Ej.: `assets/arco-3/madre/a3-m01-madre-ornitorrinco.png`.
+- **Material de origen real** (no generado, aportado a mano; nivel serie, reutilizable entre episodios): `assets/fuentes/{slug}.{ext}`. Ej.: `assets/fuentes/rocas-coloradas-real.jpg`, `assets/fuentes/charles-jones-referencia.jpeg`.
 
 El nombre de archivo es la referencia única: es lo que se sube como `firstFrame`/`lastFrame` en la UI y lo que citan las fichas de clip.
 
