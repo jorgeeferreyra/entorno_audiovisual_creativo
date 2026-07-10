@@ -75,8 +75,9 @@ async function resolveDependencia(
 
 /**
  * Refs de imagen según provider:
- * - openrouter: [ref, ...anatomy] separadas (máx 4).
- * - resto (minimax): 1 slot → composite ref + primera anatomy.
+ * - openrouter: [ref?, ...anatomy] separadas (máx 4). anatomyRefs solos OK
+ *   (primera madre de un personaje: solo fotos de identidad, sin madre lock).
+ * - resto (minimax): 1 slot → composite ref + primera anatomy (exige ref).
  */
 async function resolveImageRefs(
   spec: ImageSpec,
@@ -84,15 +85,24 @@ async function resolveImageRefs(
   opts: GenerarOpts,
 ): Promise<string[] | undefined> {
   if (!spec.ref && !(spec.anatomyRefs?.length)) return undefined;
-  if (!spec.ref && spec.anatomyRefs?.length) {
-    throw new Error(`${spec.id}: anatomyRefs sin ref — declarar ambos o solo ref`);
-  }
 
-  const basePath = await resolveDependencia(spec.id, spec.ref!, opts, 'ref');
   const anatomyPaths: string[] = [];
   for (const r of spec.anatomyRefs ?? []) {
     anatomyPaths.push(await resolveDependencia(spec.id, r, opts, 'anatomyRef'));
   }
+
+  if (!spec.ref) {
+    // Solo anatomy: válido en openrouter (multi-ref). Minimax no tiene slot
+    // para N anatomies sin base → exigir ref o caer a openrouter.
+    if (provider !== 'openrouter') {
+      throw new Error(
+        `${spec.id}: anatomyRefs sin ref — con provider ${provider} declarar ref, o usar openrouter`,
+      );
+    }
+    return anatomyPaths.slice(0, MAX_OPENROUTER_REFS);
+  }
+
+  const basePath = await resolveDependencia(spec.id, spec.ref, opts, 'ref');
 
   if (provider === 'openrouter') {
     return [basePath, ...anatomyPaths].slice(0, MAX_OPENROUTER_REFS);
