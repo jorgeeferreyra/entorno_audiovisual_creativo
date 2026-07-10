@@ -1,7 +1,7 @@
 # Arco 1 — La Mano Negra (La Fundación es eterna)
 
-> Canon: [biblia-serie.md](../../biblia-serie.md) · Estrategia: [estrategia-contenido.md](estrategia-contenido.md) · Producción: [../produccion/pipeline-wind-comic.md](../../../../metodo/pipeline.md)
-> Orden de publicación: **2º** (después del Arco 3, antes del Arco 2).
+> Canon: [biblia-serie.md](../biblia-serie.md) · Estrategia: [estrategia-contenido.md](estrategia-contenido.md) · Producción: [pipeline.md](../../../metodo/pipeline.md)
+> Este archivo es **fuente por hilo** (guion del arco), no un entregable. Orden de bajada a fichas: **2º** (después del Arco 3, antes del Arco 2).
 
 ---
 
@@ -24,17 +24,17 @@ La Fundación no es una ONG moderna corrupta: es la misma entidad **desde siempr
 
 ---
 
-## Beats por pieza (macro)
+## Beats por bloque (macro)
 
-> Pendiente de bajar a plano-a-plano con prompts (ver plantilla en [pipeline](../../../../metodo/pipeline.md)).
+> Los bloques agrupan los beats del hilo; **no son entregables**. Alimentan el reel transversal y las destacadas del arco. Pendiente de bajar a plano-a-plano con prompts (ver plantilla en [pipeline](../../../metodo/pipeline.md)).
 
-**Reel A — "La firma" (30–45s)**
+**Bloque A — "La firma" (beats a1–a4)**
 1. Mano con cadenita sobre un mapa de Pangea; la lapicera traza la grieta.
 2. Off documental: la separación "no fue un accidente geológico".
 3. Montaje de la misma mano en distintas eras (rupestre → matadero 1900 → maqueta actual).
 4. Cierre: logo de la Fundación + frase "los que tenemos planeado extinguir".
 
-**Story set (3 piezas de 15s)**
+**Semilla de destacadas del arco (mini-historias de 15s)**
 - S1: detalle de la mano y la cadenita (misterio, sin contexto).
 - S2: el "informe de rentabilidad a 60M de años" (gag burocrático).
 - S3: la pista anacrónica (reloj / mandarina) → pregunta abierta al público.
@@ -48,4 +48,4 @@ La Fundación no es una ONG moderna corrupta: es la misma entidad **desde siempr
 
 - **Personaje a lockear**: ninguno con cara. Solo **mano + cadenita** → se mantiene con prompt + primer frame (imagen madre de la mano).
 - **Motor recomendado**: el más barato (Minimax Hailuo ~¥0.1/s). No requiere lock de sujeto.
-- **Imágenes madre necesarias**: mano con cadenita (varias poses), mapa de Pangea, logo de la Fundación. Ver [biblia-visual.md](../../biblia-visual.md).
+- **Imágenes madre necesarias**: mano con cadenita (varias poses), mapa de Pangea, logo de la Fundación. Ver [biblia-visual.md](../biblia-visual.md).

@@ -1,6 +1,6 @@
 # Estrategia de contenido para redes
 
-> Qué contamos y en qué formato. El "cómo producirlo" vive en [produccion/pipeline-wind-comic.md](../../../../metodo/pipeline.md). El canon está en [biblia-serie.md](../../biblia-serie.md).
+> Qué contamos y en qué formato. El "cómo producirlo" vive en [pipeline.md](../../../metodo/pipeline.md). El canon está en [biblia-serie.md](../biblia-serie.md).
 
 ---
 
@@ -36,9 +36,9 @@ Resumen; el detalle está en cada archivo.
 
 ---
 
-## 4. Orden de publicación (y por qué)
+## 4. Fuente por hilo y orden de producción
 
-**Arco 3 → Arco 1 → Arco 2.** Cada arco resignifica al anterior (regla de 3 estructural del proyecto):
+Los tres arcos son la **fuente** (hilo narrativo + clips generados), no entregables. El orden **Arco 3 → Arco 1 → Arco 2** es el orden en que se bajan a fichas y se producen, porque cada hilo resignifica al anterior (regla de 3 estructural del proyecto):
 
 ```mermaid
 flowchart LR
@@ -51,17 +51,23 @@ flowchart LR
 - **Arco 1 después**: revela que la separación no fue natural → resignifica la muerte del Arco 3 como un crimen.
 - **Arco 2 al final**: introduce a Charles interviniendo → esperanza, y conecta directamente con el sueño del episodio 1.
 
+De esa fuente salen las piezas publicables (§5): un mismo clip de un hilo puede alimentar tanto un reel transversal como una destacada de su arco.
+
 ---
 
-## 5. Formatos
+## 5. Salidas y formatos
 
-| Formato | Duración | Contenido | Uso |
-|---|---|---|---|
-| **Story** | 15s | 1 beat por pieza, en series de 3–5 | Goteo diario, encuestas, "página del cuaderno" |
-| **Reel** | 30–45s | 2–3 reels cubren un arco entero | Pieza principal de alcance |
-| **Feed (carrusel)** | estático | "Páginas del cuaderno de Charles" (imágenes madre + anotaciones) | Lore, costo casi nulo, fija identidad visual |
+Dos familias de **salida** se montan a partir de la fuente por hilo, más el feed de lore:
 
-Pieza estrella: el **reel del final del Arco 3** (fosilización → corte al plano real del fósil del episodio 1).
+| Familia | Alcance | Duración | Qué es | Dónde vive |
+|---|---|---|---|---|
+| **Reel transversal** | cruza los 3 hilos | 30–45s | Intercala clips de varios arcos para contar las tres historias en una pieza | `reels/<slug>/` (hoy [reels/la-grieta/](reels/la-grieta/)) |
+| **Destacadas** | un solo hilo | 15s c/u, series de 3–5 | Mini-historias de un arco → historias destacadas de IG (goteo, encuestas, "página del cuaderno") | `destacadas/arco-N/` (diferido; ver abajo) |
+| **Feed (carrusel)** | transversal | estático | "Páginas del cuaderno de Charles" (imágenes madre + anotaciones) | lore, costo casi nulo, fija identidad visual |
+
+Las **destacadas por arco** se documentan pero **no se crean como carpetas vacías**: `redes/destacadas/arco-N/` se materializa recién cuando se monta la primera pieza de ese hilo. Las del Arco 3 coinciden con las Stories S1–S5 ya catalogadas en [SPEC.md](SPEC.md)/[PROGRESS.md](PROGRESS.md).
+
+Pieza estrella dentro del reel transversal: el final del hilo del Arco 3 (fosilización → corte al plano real del fósil del episodio 1).
 
 ---
 

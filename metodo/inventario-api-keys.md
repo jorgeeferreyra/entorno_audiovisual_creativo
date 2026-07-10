@@ -65,7 +65,7 @@ La consola oficial emite un par **Access Key + Secret Key** y exige un JWT firma
 
 **Recomendación:** no contratar Kling oficial (mínimo enterprise ~USD 1.400/mes) hasta validar. Probar primero vía Qingyun, que expone endpoints Kling (`/kling/v1/videos/...`) con key simple.
 
-**Decisión Arco 3 (RESUELTA):** se adoptó la vía Qingyun — `KELING_API_KEY` está configurada con `KELING_BASE_URL=https://api.qingyuntop.top/kling`, así que FLF real está disponible sin contrato enterprise. El fallback a Minimax I2V sigue siendo automático si la llamada falla. Falta validar que el gateway soporte el morph primer→último frame al generar a3-a5 (ver [arco-3-roadmap.md](../proyectos/charles-jones/episodio-1/arco-3-roadmap.md) §Gate Kling — RESUELTO).
+**Decisión Arco 3 (RESUELTA):** se adoptó la vía Qingyun — `KELING_API_KEY` está configurada con `KELING_BASE_URL=https://api.qingyuntop.top/kling`, así que FLF real está disponible sin contrato enterprise. El fallback a Minimax I2V sigue siendo automático si la llamada falla. Falta validar que el gateway soporte el morph primer→último frame al generar a3-a5 (ver [PROGRESS.md](../proyectos/charles-jones/redes/PROGRESS.md) §Gate Kling — RESUELTO).
 
 ### vectorengine
 

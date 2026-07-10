@@ -11,46 +11,47 @@ export const FRAMEWORK_ROOT = path.resolve(__dirname, '../../..');
 export const WIND_COMIC_DIR = path.join(FRAMEWORK_ROOT, 'engine', 'wind-comic');
 
 /**
- * Episodio activo, en la forma "serie/episodio". Se elige (en este orden):
- *   1. flag `--project <serie>/<episodio>` (CLI de generación),
+ * Unidad de trabajo activa, en la forma "serie/unidad" (p. ej. la carpeta de
+ * redes que produce el pipeline, o un episodio). Se elige (en este orden):
+ *   1. flag `--project <serie>/<unidad>` (CLI de generación),
  *   2. env `WIND_PROJECT`,
- *   3. default `charles-jones/episodio-1`.
+ *   3. default `charles-jones/redes`.
  */
 function activeProject(): string {
   const i = process.argv.indexOf('--project');
   if (i !== -1 && process.argv[i + 1]) return process.argv[i + 1];
-  return process.env.WIND_PROJECT || 'charles-jones/episodio-1';
+  return process.env.WIND_PROJECT || 'charles-jones/redes';
 }
 
-/** Carpeta del episodio activo: contiene `planos/` y `assets/` (generados). */
-export const EPISODE_DIR = path.join(FRAMEWORK_ROOT, 'proyectos', activeProject());
-/** Carpeta de la serie (padre del episodio): biblia-visual.md, assets/fuentes/. */
-export const SERIE_DIR = path.dirname(EPISODE_DIR);
-/** Assets generados del episodio (madre, clips, reels). */
-export const ASSETS_ROOT = path.join(EPISODE_DIR, 'assets');
+/** Carpeta de la unidad de trabajo activa: contiene `planos/` y `assets/` (generados). */
+export const WORK_DIR = path.join(FRAMEWORK_ROOT, 'proyectos', activeProject());
+/** Carpeta de la serie (padre de la unidad): biblia-visual.md, assets/fuentes/. */
+export const SERIE_DIR = path.dirname(WORK_DIR);
+/** Assets generados de la unidad (madre, clips, reels). */
+export const ASSETS_ROOT = path.join(WORK_DIR, 'assets');
 
 /**
  * Compat con el motor histórico (raíz única de resolución). Las escrituras van
- * siempre al episodio, así que apunta al episodio. Para lecturas que pueden vivir
- * a nivel serie (assets/fuentes/), usar `resolveReadPath`.
+ * siempre a la unidad de trabajo, así que apunta a ella. Para lecturas que pueden
+ * vivir a nivel serie (assets/fuentes/), usar `resolveReadPath`.
  */
-export const PROJECT_ROOT = EPISODE_DIR;
+export const PROJECT_ROOT = WORK_DIR;
 
 /**
- * Resuelve una ruta de LECTURA. Absoluta → tal cual. Relativa → episodio primero
+ * Resuelve una ruta de LECTURA. Absoluta → tal cual. Relativa → unidad primero
  * (assets/arco-N/…), y si no existe, serie (assets/fuentes/… compartidas entre
- * episodios). Fuente única de la resolución serie/episodio.
+ * unidades). Fuente única de la resolución serie/unidad.
  */
 export function resolveReadPath(p: string): string {
   if (path.isAbsolute(p)) return p;
-  const episodePath = path.join(EPISODE_DIR, p);
-  if (fs.existsSync(episodePath)) return episodePath;
+  const workPath = path.join(WORK_DIR, p);
+  if (fs.existsSync(workPath)) return workPath;
   return path.join(SERIE_DIR, p);
 }
 
-/** Resuelve una ruta de ESCRITURA: siempre relativa al episodio. */
+/** Resuelve una ruta de ESCRITURA: siempre relativa a la unidad de trabajo. */
 export function resolveWritePath(p: string): string {
-  return path.isAbsolute(p) ? p : path.join(EPISODE_DIR, p);
+  return path.isAbsolute(p) ? p : path.join(WORK_DIR, p);
 }
 
 let envLoaded = false;

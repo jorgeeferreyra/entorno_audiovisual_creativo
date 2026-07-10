@@ -1,4 +1,4 @@
-# Episodio 1 (Arco 3) — Build Progress
+# Redes (Arco 3) — Build Progress
 
 _Last updated: 2026-07-09_
 _Current stage: Stage 3 — Clips_
@@ -17,13 +17,24 @@ Espejo del roadmap de [TECH.md](TECH.md) § 5. Un stage se marca `[x]` solo cuan
 
 - [x] **Stage 1 — Docs y spec** — fichas de planos/arco-3.md válidas
 - [ ] **Stage 2 — Imágenes madre en cascada** — 16 madres aprobadas (todas generadas/aprobadas; ver checklist)
-- [ ] **Stage 3 — Clips** — A/B/C generados y aprobados (Reel A casi completo; B/C pendientes)
-- [ ] **Stage 4 — Montaje de reels** — A/B/C montados
-- [ ] **Stage 5 — Stories** — S1–S5 por recorte
+- [ ] **Stage 3 — Clips** — bloques A/B/C generados y aprobados (Bloque A casi completo; B/C pendientes)
+- [ ] **Stage 4 — Montaje del reel transversal** — la-grieta montado desde los bloques
+- [ ] **Stage 5 — Destacadas del arco** — S1–S5 por recorte
 
 ## 2. Session Log
 
 Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
+
+### 2026-07-09 — Modelado fuente-por-hilo + dos familias de salida
+
+- **Stage in flight:** Stage 3 (clips)
+- **Done this session:**
+  - `redes/` quedó como hermano de `episodios/` bajo la serie. El episodio grabado NO pasa por el pipeline; lo que se produce es contenido de redes.
+  - Modelo cerrado: los `arco-N.md` + `planos/` + `assets/arco-N/` son **fuente por hilo** (no entregables). Dos familias de salida: **reel transversal** (`reels/<slug>/`, cruza hilos) y **destacadas por arco** (`destacadas/arco-N/`, un solo hilo, diferidas).
+  - Corregidas las salidas: borrados `reels/vidas-paralelas` y `reels/el-ultimo` (eran beats internos del Arco 3); `reels/la-grieta` reescrito como transversal (`arcos: [1,2,3]`, `origen:` como metadata).
+  - Docs realineados: etiquetas "Reel A/B/C" → "Bloque A/B/C" en planos/arco-3.md y arco-3-ornitorrincos.md; SPEC/TECH/PROGRESS, estrategia, READMEs y pipeline al modelo de dos salidas. Enlaces huérfanos a `episodio-1/` corregidos.
+- **Next step:** Stage 3 — generar Bloque B (b1–b4) y puentes; regenerar a3-a5 como FLF real.
+- **New blockers / questions raised:** ninguno nuevo.
 
 ### 2026-07-09 — Reestructura a framework multi-proyecto
 
@@ -41,22 +52,22 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 
 1. **Docs** — planos / biblia / progreso alineados a las decisiones de dirección.
 2. **Madres en cascada** — regenerar/generar con `--candidates 3` y aprobar con `--pick`, en orden: **m03' → m02' joven → m10' → m17**. Pares FLF se aprueban juntos (mismo encuadre).
-3. **Clips** — Reel B (b1–b4) → FLF experimental m06→m14 (`a3-a5x`) → puentes m15→m08 (`a3-a5y`) y m14→m07 (`a3-c0`) → Reel C. Regenerar `a3-a5` como FLF real cuando toque la cadena.
-4. **Montaje reels** — A, B, C (inserts: m-mano en a3-a5, eco m09 tras c3, foto real en a3-c4).
-5. **Stories** — S1–S5 derivadas por recorte, cero generación.
+3. **Clips** — Bloque B (b1–b4) → FLF experimental m06→m14 (`a3-a5x`) → puentes m15→m08 (`a3-a5y`) y m14→m07 (`a3-c0`) → Bloque C. Regenerar `a3-a5` como FLF real cuando toque la cadena.
+4. **Montaje del reel transversal** — desde los bloques A, B, C (inserts: m-mano en a3-a5, eco m09 tras c3, foto real en a3-c4).
+5. **Destacadas** — S1–S5 derivadas por recorte, cero generación.
 
 ### Próxima acción
 
 **Paso 2 (madres en cascada) listo** — m02/m03/m10/m17 aprobados vía **OpenRouter / Nano Banana** (`google/gemini-2.5-flash-image`), con multi-ref (m01 lock + anatomía en `assets/fuentes/ornitorrincos/`). Provider por defecto en `npm run gen`; fallback `--provider minimax`.
 
-**Siguiente = paso 3: clips.** Reel B (b1–b4) → puentes / Reel C. Requiere wind-comic arriba.
+**Siguiente = paso 3: clips.** Bloque B (b1–b4) → puentes / Bloque C. Requiere wind-comic arriba.
 
 ```bash
 cd engine/wind-comic && PLAN_GATE_DISABLED=1 npm run dev
 cd engine/wind-mcp && npm run gen -- --reel a # (o --id a3-XX por clip)
 ```
 
-**Reel A:** a3-a1…a3-a6 aprobados; a3-a4 queda **obsoleto** (era cría; regenerar U2V sobre m04 huevo). a3-a5 aprobado como I2V degradado — regen FLF real pendiente. **Gate Kling resuelto** (FLF real vía gateway qingyuntop).
+**Bloque A:** a3-a1…a3-a6 aprobados; a3-a4 queda **obsoleto** (era cría; regenerar U2V sobre m04 huevo). a3-a5 aprobado como I2V degradado — regen FLF real pendiente. **Gate Kling resuelto** (FLF real vía gateway qingyuntop).
 
 ---
 
@@ -100,7 +111,7 @@ cd engine/wind-mcp && npm run gen -- --reel a # (o --id a3-XX por clip)
 
 ## Checklist — Clips
 
-| ID | Reel | Herramienta | Estado | Costo real | Nota |
+| ID | Bloque | Herramienta | Estado | Costo real | Nota |
 |---|---|---|---|---|---|
 | a3-a1 | A | U2V | aprobado | ~¥0.5 | Intro transversal ✓ |
 | a3-a2 | A | U2V | aprobado | ~¥0.5 | Establishing Pangea ✓ |
@@ -116,7 +127,7 @@ cd engine/wind-mcp && npm run gen -- --reel a # (o --id a3-XX por clip)
 | a3-b2 | B | U2V | pendiente | — | Requiere m02' joven aprobada |
 | a3-b3 | B | U2V | pendiente | — | |
 | a3-b4 | B | U2V-FLF | pendiente | — | Par m09→m17 (requiere m17) |
-| a3-c0 | C | U2V-FLF | pendiente | — | Puente m14→m07; abre Reel C |
+| a3-c0 | C | U2V-FLF | pendiente | — | Puente m14→m07; abre Bloque C |
 | a3-c1 | C | U2V | pendiente | — | Push-in sobre m07 + corte a c2 (NO FLF) |
 | a3-c2 | C | U2V-FLF | pendiente | — | Par m10'→m11 (requiere m10'); **Gate Kling** |
 | a3-c3 | C | U2V | pendiente | — | |
@@ -140,13 +151,20 @@ Formaliza el QC que ya se hace informalmente (carpetas `_candidates`/`_audit`). 
 | a3-a6 | mother at chasm edge, head lowering | ✓ | ✓ | aprobado |
 | a3-a5x…a3-c4 | — | — | — | pendiente |
 
-## Checklist — Reels y stories (montaje, sin costo de generación)
+## Checklist — Salidas (montaje, sin costo de generación)
 
-| Pieza | Fuente | Estado |
+**Reel transversal** ([reels/la-grieta/](reels/la-grieta/)): intercala clips de los hilos. Hoy solo hay fuente del Arco 3; los bloques que la alimentan:
+
+| Aporte (Arco 3) | Fuente | Estado |
 |---|---|---|
-| Reel A "La grieta" | a3-a1…a3-a6 (+a5x/a5y si aprueban; +1–2 frames m-mano en a3-a5) | pendiente |
-| Reel B "Vidas paralelas" | a3-b1…a3-b4 (pantalla partida) | pendiente |
-| Reel C "El último" | a3-c0…a3-c4 (+eco m09) | pendiente |
+| Bloque A "La grieta" | a3-a1…a3-a6 (+a5x/a5y si aprueban; +1–2 frames m-mano en a3-a5) | pendiente |
+| Bloque B "Vidas paralelas" | a3-b1…a3-b4 (pantalla partida) | pendiente |
+| Bloque C "El último" | a3-c0…a3-c4 (+eco m09) | pendiente |
+
+**Destacadas del Arco 3** (`destacadas/arco-3/`, carpeta se crea al montar la primera):
+
+| Destacada | Fuente | Estado |
+|---|---|---|
 | S1 La familia feliz | a3-a3 + a3-a4 (madre + huevo) | pendiente |
 | S2 La grieta | a3-a5 | pendiente |
 | S3 La despedida | a3-a6 | pendiente |
@@ -160,7 +178,7 @@ Formaliza el QC que ya se hace informalmente (carpetas `_candidates`/`_audit`). 
 | Etapa | Estimado | Real acumulado |
 |---|---|---|
 | Madres (16 × ¥0.3 + retries m02/m03/m10/m17 ×3 candidates) | ~¥4.8 + ~¥3–4 retries | ~¥6.0 (prev) |
-| Clips U2V (~11 × ¥0.5, incl. a4 regen + c1) | ~¥5.5 | ~¥4.0 (Reel A) |
+| Clips U2V (~11 × ¥0.5, incl. a4 regen + c1) | ~¥5.5 | ~¥4.0 (Bloque A) |
 | Clips FLF (6 × ~¥1: a5, a5x, a5y, b4, c0, c2) | ~¥6 | ¥0 |
 | **Total** | **~¥16.3** (techo **¥19–20** con retries) | **~¥10** |
 

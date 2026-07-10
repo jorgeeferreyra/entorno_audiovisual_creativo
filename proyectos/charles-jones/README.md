@@ -10,8 +10,11 @@ Precuela canónica del episodio 1: la familia de ornitorrincos que se anima ES e
 - `assets/fuentes/` — material de origen real (no generado), reutilizable entre episodios.
 - `Contexto del Proyecto.pdf`, `prompt_charles_jones.txt` — fuentes primarias.
 
-## Episodios
+## Episodios y redes (hermanos)
 
-- [episodio-1/](episodio-1/) — primer episodio a publicar (Arco 3 en producción).
+- [episodios/](episodios/) — episodios grabados (guion). Es el material que se filma; **no pasa por el pipeline**.
+- [redes/](redes/) — contenido de redes producido con el pipeline: **fuente por hilo** (arcos) + **salidas** (reels transversales y destacadas por arco). Arco 3 en producción; ver [redes/SPEC.md](redes/SPEC.md).
+
+La relación redes↔episodio es **metadata** (línea `origen:` en el README de cada reel), no jerarquía.
 
 > El "cómo producir" es transversal y vive en [../../metodo/](../../metodo/). La herramienta en [../../engine/](../../engine/).

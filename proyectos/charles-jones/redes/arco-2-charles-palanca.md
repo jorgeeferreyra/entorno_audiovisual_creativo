@@ -1,7 +1,7 @@
 # Arco 2 — Charles y la palanca
 
-> Canon: [biblia-serie.md](../../biblia-serie.md) · Estrategia: [estrategia-contenido.md](estrategia-contenido.md) · Producción: [../produccion/pipeline-wind-comic.md](../../../../metodo/pipeline.md)
-> Orden de publicación: **3º** (último; conecta directo con el episodio 1).
+> Canon: [biblia-serie.md](../biblia-serie.md) · Estrategia: [estrategia-contenido.md](estrategia-contenido.md) · Producción: [pipeline.md](../../../metodo/pipeline.md)
+> Este archivo es **fuente por hilo** (guion del arco), no un entregable. Orden de bajada a fichas: **3º** (último; conecta directo con el episodio 1).
 
 ---
 
@@ -25,22 +25,22 @@ Charles no puede frenar a la Fundación de frente, así que interviene en puntos
 
 ---
 
-## Beats por pieza (macro)
+## Beats por bloque (macro)
 
-> Pendiente de bajar a plano-a-plano con prompts.
+> Los bloques agrupan los beats del hilo; **no son entregables**. Alimentan el reel transversal y las destacadas del arco. Pendiente de bajar a plano-a-plano con prompts.
 
-**Reel A — "La palanca" (30–45s)**
+**Bloque A — "La palanca" (30–45s)**
 1. Pangea partiéndose; caos; la familia de ornitorrincos separada por la grieta.
 2. Silueta de Charles (espaldas, sombrero) se acerca; **sus manos levantan a la cría** — plano foto-real (quiebre de realidad, mismo recurso del Arco 3; ref: cuadrante superior derecho de `assets/fuentes/ornitorrincos/ornitorrinco_crias.jpeg`). Solo manos en cuadro (regla de rostro).
 3. La palanca: el tronco bascula como balancín y el huevo cruza al lado australiano; Charles ni lo registra y devuelve la cría junto a la madre.
 4. Salto temporal: ornitorrincos vivos en Australia hoy. Off: "lo pequeño mueve lo enorme".
 
-**Reel B — "El mensaje" (30–45s)**
+**Bloque B — "El mensaje" (30–45s)**
 1. Charles medita en Pangea.
 2. Fusión al lugar blanco del episodio 1.
 3. "Es en Rocas Coloradas" → guiño directo al episodio.
 
-**Story set (3 piezas de 15s)**
+**Semilla de destacadas del arco (mini-historias de 15s)**
 - S1: la piedrita que desvía el arroyo.
 - S2: el tropiezo que salva sin querer.
 - S3: la silueta meditando (teaser del cruce con el sueño).
@@ -52,5 +52,5 @@ Charles no puede frenar a la Fundación de frente, así que interviene en puntos
 - **Personaje a lockear**: 1 sujeto (Charles). Minimax S2V lockea 1 protagonista → ideal.
 - **Ventaja de consistencia**: silueta + sombrero de espaldas = poca cara visible = fácil de mantener.
 - **Motor recomendado**: Minimax S2V o Kling.
-- **Imágenes madre necesarias**: Charles de espaldas con sombrero (varias poses), manos de Charles con la cría (foto-real), tronco-balancín con huevo y cría, el lugar blanco. Ver [biblia-visual.md](../../biblia-visual.md).
+- **Imágenes madre necesarias**: Charles de espaldas con sombrero (varias poses), manos de Charles con la cría (foto-real), tronco-balancín con huevo y cría, el lugar blanco. Ver [biblia-visual.md](../biblia-visual.md).
 - **Material de origen real (NO se genera)**: `assets/fuentes/ornitorrincos/ornitorrinco_crias.jpeg` — referencia del plano mano-cría (usar solo el cuadrante superior derecho: cría en la mano).

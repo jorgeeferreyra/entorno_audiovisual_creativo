@@ -1,6 +1,6 @@
 # Arco 3 — Plano a plano listo para producir
 
-> Bajada de producción del [Arco 3: Ornitorrincos](../redes/arco-3-ornitorrincos.md) a **fichas de ingesta directa** en wind-comic (campos 1:1 con la UI).
+> Bajada de producción del [Arco 3: Ornitorrincos](../arco-3-ornitorrincos.md) a **fichas de ingesta directa** en wind-comic (campos 1:1 con la UI). Es **fuente por hilo** (spec ejecutable), no un entregable.
 > Fuentes que NO se duplican acá: canon en [biblia-serie.md](../../biblia-serie.md), anclas de estilo y STYLE-BLOCK en [biblia-visual.md](../../biblia-visual.md), plantillas y convención de IDs/archivos en [pipeline-wind-comic.md](../../../../metodo/pipeline.md) §5–6, fichas de personaje en [personajes-studio.md](../../personajes-studio.md).
 > Este archivo es la fuente de verdad de los **prompts finales de producción** del Arco 3.
 
@@ -18,13 +18,13 @@ La emoción de cada plano la carga el **tinte del fondo**, no el animal. Cada pr
 
 | Beat | Tinte (línea EN del prompt) |
 |---|---|
-| Reel A — Pangea feliz (a1–a4) | `warm amber and saturated green tinted background` |
-| Reel A — La grieta (a5–a6) | vira a `dramatic deep red tinted background` |
-| Reel B — Australia próspera (b1–b2) | `saturated lush green tinted background` |
-| Reel B — Argentina en declive (b3–b4) | `cold desaturated grey tinted background` |
-| Reel C — Rocas Coloradas (c1) | `deep red dusk tinted background` |
-| Reel C — Fosilización (c2) | el tinte rojo se apaga hacia `stone grey` |
-| Reel C — Salto a la realidad (c3–c4) | sin tinte: registro fotográfico real |
+| Bloque A — Pangea feliz (a1–a4) | `warm amber and saturated green tinted background` |
+| Bloque A — La grieta (a5–a6) | vira a `dramatic deep red tinted background` |
+| Bloque B — Australia próspera (b1–b2) | `saturated lush green tinted background` |
+| Bloque B — Argentina en declive (b3–b4) | `cold desaturated grey tinted background` |
+| Bloque C — Rocas Coloradas (c1) | `deep red dusk tinted background` |
+| Bloque C — Fosilización (c2) | el tinte rojo se apaga hacia `stone grey` |
+| Bloque C — Salto a la realidad (c3–c4) | sin tinte: registro fotográfico real |
 
 ---
 
@@ -318,7 +318,7 @@ The first reference image is the master character — the YOUNG platypus: reprod
 
 Regla del [pipeline](../../../../metodo/pipeline.md): **un personaje por clip**, cruces por corte. Herramienta: `/dashboard/u2v` (U2V con 5/6s va por Minimax I2V ~¥0.1/s; U2V-FLF va por Kling ~¥0.2/s y **solo acepta 5 o 10s**). Audio por defecto de todo el arco: **off documental (Attenborough) grabado propio** + música suave sin percusión. El texto literal del off por clip vive en [arco-3-off.md](arco-3-off.md) (fuente única de la locución).
 
-### Reel A — "La grieta" (~45s)
+### Bloque A — "La grieta" (~45s)
 
 **Clip a3-a1 — Apertura: página de cuaderno (intro transversal)**
 
@@ -387,7 +387,7 @@ The single egg silhouette rests in the small nest on the mossy log, soft breathi
 ```
 - Vision-Audit (EN): sceneDescription: `egg silhouette resting in a twig nest on a warm tinted background` · action: `the nest breathes softly, light shifts gently` · mood: `warm, expectant, peaceful`
 - Audio: off documental (continúa)
-- Montaje: intercut con a3-a3; cierra el bloque "unidad" (madre + huevo) y corta a a3-a5. El concepto cría bebé quedó eliminado; el joven aparece en Reel B.
+- Montaje: intercut con a3-a3; cierra el bloque "unidad" (madre + huevo) y corta a a3-a5. El concepto cría bebé quedó eliminado; el joven aparece en el Bloque B.
 
 **Clip a3-a5 — La grieta (transición-gancho)**
 
@@ -484,7 +484,7 @@ The wide aerial view of two separated landmasses softens into layered black pape
 ```
 - Vision-Audit (EN): sceneDescription: `aerial real continents morphing into cutout Australian wetland` · action: `photoreal world settles into silhouette prosperity` · mood: `hopeful, bridging`
 - Audio: off documental (la línea que sobrevive) + música tenue
-- Montaje: cierra Reel A / abre Reel B; cubre el hueco de m08 (hoy sin clip). Tras el morph, corta a a3-a6 o entra directo a b1 según montaje final.
+- Montaje: cierra el Bloque A / abre el Bloque B; cubre el hueco de m08 (hoy sin clip). Tras el morph, corta a a3-a6 o entra directo a b1 según montaje final.
 
 **Clip a3-a6 — La separación**
 
@@ -501,9 +501,9 @@ The mother platypus silhouette stands at the edge of the cutout chasm in profile
 ```
 - Vision-Audit (EN): sceneDescription: `the edge of the cutout chasm on a deep red tinted background, far shore in the distance` · action: `the mother platypus silhouette stands still in profile, head slowly lowering` · mood: `grief, restrained sorrow`
 - Audio: off documental (la despedida)
-- Montaje: vuelve a silueta tras los switches; corta contra el padre con el huevo (a3-m03 + a3-m04) al otro lado de la grieta; cierra el Reel A
+- Montaje: vuelve a silueta tras los switches; corta contra el padre con el huevo (a3-m03 + a3-m04) al otro lado de la grieta; cierra el Bloque A
 
-### Reel B — "Vidas paralelas" (~30s, pantalla partida por montaje)
+### Bloque B — "Vidas paralelas" (~30s, pantalla partida por montaje)
 
 > La pantalla partida = dos clips independientes montados (mitad superior/inferior del 9:16). No se generan personajes juntos. El contraste próspero/árido lo aporta el **tinte de fondo** (verde saturado vs. gris frío, ver guion de color); si el fondo no acompaña, cutaways con a3-m08/a3-m09.
 
@@ -578,9 +578,9 @@ Silhouetted crack lines spreading across the cutout plain, paper plants slowly w
 ```
 - Vision-Audit (EN): sceneDescription: `arid cutout Patagonian plain on a cold grey tinted background` · action: `crack lines spread and paper vegetation wilts, time-lapse feel` · mood: `cold, desolate`
 - Audio: off documental (el ecosistema cambia)
-- Montaje: transición hacia el Reel C; corta a a3-c1
+- Montaje: transición hacia el Bloque C; corta a a3-c1
 
-### Reel C — "El último" (PIEZA ESTRELLA, ~30s)
+### Bloque C — "El último" (REMATE DEL HILO, ~30s)
 
 **Clip a3-c0 — Puente FLF: grieta real → cuento rojo (m14→m07)**
 
@@ -600,7 +600,7 @@ The real earth rift freezes and resolves into layered black paper cutout Martian
 ```
 - Vision-Audit (EN): sceneDescription: `real rift morphing into cutout Coloradas rock landscape` · action: `photoreal chasm freezes into silhouette red world` · mood: `solemn, locking into fate`
 - Audio: rumble que se apaga + off documental breve
-- Montaje: abre el Reel C — la grieta real se congela en el cuento rojo; corta a a3-c1
+- Montaje: abre el Bloque C — la grieta real se congela en el cuento rojo; corta a a3-c1
 
 **Clip a3-c1 — Establishing Rocas Coloradas (push-in hacia la roca)**
 
@@ -683,9 +683,9 @@ duration (montaje): 3–4s (16:9; reencuadrar a 9:16)
 
 ---
 
-## Sección 3 — Stories S1–S5 (derivadas por montaje, sin generación)
+## Sección 3 — Destacadas del arco (S1–S5, derivadas por montaje, sin generación)
 
-Las stories del [calendario](../redes/calendario-publicacion.md) (Semana 1) se arman **recortando/reencuadrando** los clips ya generados a 15s. Cero generación extra.
+Las destacadas del [calendario](../calendario-publicacion.md) (Semana 1) se arman **recortando/reencuadrando** los clips ya generados a 15s. Cero generación extra.
 
 | Story | Beat | Fuente (clips) | Nota de montaje |
 |---|---|---|---|
@@ -716,8 +716,8 @@ Dentro del presupuesto del [pipeline](../../../../metodo/pipeline.md) §3. Kling
 |---|---|---|---|
 | m05→m06 | a3-a5 | FLF | Regenerar (hoy I2V degradado) |
 | m06→m14 | a3-a5x | FLF experimental | Gate morphs cruzados cuento→real; si salta feo → corte duro |
-| m15→m08 | a3-a5y | FLF | Cierra Reel A / abre Reel B; cubre hueco de m08 |
-| m14→m07 | a3-c0 | FLF | Abre Reel C: grieta real se congela en cuento rojo |
+| m15→m08 | a3-a5y | FLF | Cierra Bloque A / abre Bloque B; cubre hueco de m08 |
+| m14→m07 | a3-c0 | FLF | Abre Bloque C: grieta real se congela en cuento rojo |
 | m07→m10' | a3-c1 | U2V + corte | Push-in; NO FLF (no comparten encuadre) |
 | m13→m09 | a3-c3e | Solo montaje | Eco 1–2s de m09 tras pull-out de m13, antes de c4 |
 

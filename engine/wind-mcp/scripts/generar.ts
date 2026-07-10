@@ -1,8 +1,8 @@
 /**
  * CLI único de generación (imágenes madre + clips) para cualquier arco.
- * Fuente de verdad: <episodio>/planos/arco-{N}.md (vía src/lib/specs.ts).
- * Episodio activo: flag `--project <serie>/<episodio>` o env WIND_PROJECT
- * (default charles-jones/episodio-1).
+ * Fuente de verdad: <unidad>/planos/arco-{N}.md (vía src/lib/specs.ts).
+ * Unidad de trabajo activa: flag `--project <serie>/<unidad>` o env WIND_PROJECT
+ * (default charles-jones/redes).
  *
  * Reemplaza a generar-madres-a3.ts + generar-clips-a3.ts: el tipo de asset se
  * infiere del `kind` de la ficha, no del script.
@@ -17,7 +17,7 @@
  *   npm run gen -- --id a3-m03 --pick 2
  *   npm run gen -- --id a3-m03 --provider minimax
  *   npm run gen -- --arco 4 --todas
- *   npm run gen -- --project charles-jones/episodio-1 --arco 3
+ *   npm run gen -- --project charles-jones/redes --arco 3
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';

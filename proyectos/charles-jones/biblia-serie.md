@@ -83,4 +83,4 @@ Estos son los "ladrillos" del universo que las historias de redes deben honrar y
 
 - **POV Jorgito (Osmo Pocket)**: autograbaciones ceremoniosas, encuadres erráticos pero intencionados.
 - **POV Diego (cámara + GoPro)**: tomas quietas, bellas, meditativas; contrapunto visual.
-- Para redes se suma un tercer registro: **"cuadernos reconstruidos de Charles"** (material animado/ilustrado por IA). Ver [estrategia-contenido.md](episodio-1/redes/estrategia-contenido.md).
+- Para redes se suma un tercer registro: **"cuadernos reconstruidos de Charles"** (material animado/ilustrado por IA). Ver [estrategia-contenido.md](redes/estrategia-contenido.md).

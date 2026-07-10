@@ -1,7 +1,7 @@
 /**
  * Parser genérico arco-N de fichas de producción.
  *
- * Fuente de verdad: <episodio>/planos/arco-{N}.md. Cada ficha declara sus
+ * Fuente de verdad: <unidad>/planos/arco-{N}.md. Cada ficha declara sus
  * campos estructurados en un bloque ```yaml``` embebido y su prompt en el primer
  * bloque de código siguiente. El id y el título salen del header **id — título**
  * (no se duplican en el YAML). Los prompts NO se duplican en código.
@@ -13,7 +13,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import YAML from 'yaml';
 import { z } from 'zod';
-import { CAMERA_PRESETS, EPISODE_DIR, SERIE_DIR, type CameraPreset } from '../config.js';
+import { CAMERA_PRESETS, WORK_DIR, SERIE_DIR, type CameraPreset } from '../config.js';
 
 const BIBLIA_MD = path.join(SERIE_DIR, 'biblia-visual.md');
 
@@ -254,7 +254,7 @@ function validarReferencias(specs: AssetSpec[], arco: number): void {
 }
 
 export async function leerPlanos(arco: number): Promise<AssetSpec[]> {
-  const planosMd = path.join(EPISODE_DIR, 'planos', `arco-${arco}.md`);
+  const planosMd = path.join(WORK_DIR, 'planos', `arco-${arco}.md`);
   const md = await fs.readFile(planosMd, 'utf8');
   const specs = extraerFichas(md, arco).map(construirSpec);
   validarReferencias(specs, arco);

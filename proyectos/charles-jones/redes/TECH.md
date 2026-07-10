@@ -1,10 +1,10 @@
-# Episodio 1 (redes) — Fundación técnica
+# Redes (charles-jones) — Fundación técnica
 
 _Status: Approved_
 _Date: 2026-07-09_
 _Based on: [SPEC.md](SPEC.md)_
 
-> El **cómo** de este episodio: motores por arco, presupuesto y decisiones de producción específicas. El método transversal (estrategia "un personaje por clip", convención de IDs, plantillas de ingesta) vive en [../../../metodo/pipeline.md](../../../metodo/pipeline.md) y no se duplica acá.
+> El **cómo** de las redes: motores por arco, presupuesto y decisiones de producción específicas. El método transversal (estrategia "un personaje por clip", convención de IDs, plantillas de ingesta) vive en [../../../metodo/pipeline.md](../../../metodo/pipeline.md) y no se duplica acá.
 
 ---
 
@@ -61,13 +61,13 @@ Orden de ejecución del episodio, cada stage entregable por separado.
 **Goal:** las 16 madres aprobadas. **Scope:** generar con `--candidates 3`, aprobar con `--pick`, en orden m03' → m02' → m10' → m17; pares FLF aprobados juntos. **Exit:** todas las madres con criterio de la etapa Madres.
 
 ### Stage 3 — Clips
-**Goal:** clips A/B/C generados y aprobados. **Scope:** Reel B (b1–b4) → FLF experimental (a5x) → puentes (a5y, c0) → Reel C; regenerar a3-a5 como FLF real. **Dependencies:** Stage 2. **Exit:** clips con criterio de la etapa Clips (morph real en FLF).
+**Goal:** clips de los bloques A/B/C generados y aprobados. **Scope:** Bloque B (b1–b4) → FLF experimental (a5x) → puentes (a5y, c0) → Bloque C; regenerar a3-a5 como FLF real. **Dependencies:** Stage 2. **Exit:** clips con criterio de la etapa Clips (morph real en FLF).
 
-### Stage 4 — Montaje de reels
-**Goal:** Reels A/B/C montados (inserts: m-mano en a5, eco m09 tras c3, foto real en c4). **Dependencies:** Stage 3. **Exit:** continuidad de tinte, audio off, 9:16.
+### Stage 4 — Montaje del reel transversal
+**Goal:** reel transversal ([reels/la-grieta/](reels/la-grieta/)) montado a partir de los bloques (inserts: m-mano en a5, eco m09 tras c3, foto real en c4). **Dependencies:** Stage 3. **Exit:** continuidad de tinte, audio off, 9:16.
 
-### Stage 5 — Stories
-**Goal:** S1–S5 por recorte, cero generación. **Dependencies:** Stage 4.
+### Stage 5 — Destacadas del arco
+**Goal:** destacadas S1–S5 por recorte, cero generación (carpetas `destacadas/arco-3/` se crean al montar la primera). **Dependencies:** Stage 4.
 
 ## 6. Open Questions
 

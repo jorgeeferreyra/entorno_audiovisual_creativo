@@ -15,41 +15,42 @@ Framework para producir contenido audiovisual generado por IA, organizado en tre
 │   └── insights.md            Aprendizajes destilados de la producción (crece con cada proyecto).
 └── proyectos/         CONTENIDO — qué se produce
     └── charles-jones/         Una SERIE (canon, biblia visual, personajes, fuentes reales).
-        └── episodio-1/        Un EPISODIO: unidad de trabajo spec-driven.
+        ├── episodios/         Episodios grabados (guion). NO pasan por el pipeline.
+        └── redes/             Contenido de redes: fuente por hilo + salidas (lo que se produce).
 ```
 
 ## Las tres categorías
 
-- **engine/** — herramienta pura, agnóstica del proyecto. No contiene contenido creativo. Se parametriza por episodio (ver abajo).
-- **metodo/** — cómo se trabaja: principios de generación e insights que deja el proceso. Sirve a cualquier proyecto/episodio.
-- **proyectos/** — el contenido. Cada carpeta es una **serie**; dentro, cada **episodio** es la unidad que se lleva por el flujo spec-driven.
+- **engine/** — herramienta pura, agnóstica del proyecto. No contiene contenido creativo. Se parametriza por unidad de trabajo (ver abajo).
+- **metodo/** — cómo se trabaja: principios de generación e insights que deja el proceso. Sirve a cualquier proyecto.
+- **proyectos/** — el contenido. Cada carpeta es una **serie**; dentro, `episodios/` (el material grabado) y `redes/` (el contenido producido con el pipeline) son hermanos.
 
-Nivel **serie** (aplica a todos sus episodios): canon (`biblia-serie.md`), estilo (`biblia-visual.md`), personajes (`personajes-studio.md`) y material de origen real (`assets/fuentes/`).
-Nivel **episodio**: guion, arcos de redes, fichas de planos (`planos/arco-N.md`), assets generados (`assets/arco-N/`) y los documentos del flujo (`SPEC.md` / `TECH.md` / `PROGRESS.md`).
+Nivel **serie** (aplica a todo): canon (`biblia-serie.md`), estilo (`biblia-visual.md`), personajes (`personajes-studio.md`) y material de origen real (`assets/fuentes/`).
+Nivel **redes** (la unidad de trabajo spec-driven): los **hilos fuente** por arco (`arco-N.md` + `planos/arco-N.md` + `assets/arco-N/`) y **dos familias de salida** —reels transversales (`reels/<slug>/`) y destacadas por arco (`destacadas/arco-N/`, diferidas)— más los documentos del flujo (`SPEC.md` / `TECH.md` / `PROGRESS.md`).
 
 ## Flujo spec-driven (Spec → Tech → Build)
 
-Cada episodio se produce con gates de documentación (framework agency-os, skill `iteration-roadmap-scaffold`):
+La unidad de trabajo (hoy `redes/`) se produce con gates de documentación (framework agency-os, skill `iteration-roadmap-scaffold`):
 
-1. **SPEC** (qué): canon + arcos + fichas de planos. `planos/arco-N.md` es spec ejecutable.
+1. **SPEC** (qué): canon + hilos fuente por arco + fichas de planos. `planos/arco-N.md` es spec ejecutable.
 2. **TECH** (cómo): motores por arco, presupuesto, estrategia de referencias.
 3. **BUILD**: cada tanda de generación es una iteración con su criterio de cierre y validación en sala. El `PROGRESS.md` es el session log.
 
-Lo aprendido en cada BUILD se destila hacia `metodo/insights.md`, de modo que el próximo episodio arranca sabiéndolo.
+Lo aprendido en cada BUILD se destila hacia `metodo/insights.md`, de modo que el próximo trabajo arranca sabiéndolo.
 
 ## El engine es agnóstico del proyecto (OCP)
 
-`wind-mcp` no tiene nada hardcodeado del episodio: lee `proyectos/<serie>/<episodio>/planos/arco-N.md` y escribe en `.../assets/arco-N/`. El episodio activo se elige por flag o env:
+`wind-mcp` no tiene nada hardcodeado de la unidad: lee `proyectos/<serie>/<unidad>/planos/arco-N.md` y escribe en `.../assets/arco-N/`. La unidad activa se elige por flag o env:
 
 ```bash
 cd engine/wind-mcp
-npm run gen                                             # episodio por defecto (charles-jones/episodio-1)
+npm run gen                                             # unidad por defecto (charles-jones/redes)
 npm run gen -- --arco 3                                 # lista los assets del arco 3
-npm run gen -- --project charles-jones/episodio-1 --arco 3
-WIND_PROJECT=otra-serie/episodio-2 npm run gen -- --arco 1
+npm run gen -- --project charles-jones/redes --arco 3
+WIND_PROJECT=otra-serie/redes npm run gen -- --arco 1
 ```
 
-Un episodio nuevo = crear `proyectos/<serie>/<episodio>/planos/arco-N.md` con el mismo formato. Cero código nuevo.
+Una unidad nueva = crear `proyectos/<serie>/<unidad>/planos/arco-N.md` con el mismo formato. Cero código nuevo.
 
 ## Git LFS
 
@@ -67,4 +68,4 @@ git lfs pull
 - Entender la serie: [proyectos/charles-jones/biblia-serie.md](proyectos/charles-jones/biblia-serie.md).
 - Cómo se produce: [metodo/pipeline.md](metodo/pipeline.md).
 - Qué puede la herramienta: [metodo/toolkit-wind-comic.md](metodo/toolkit-wind-comic.md).
-- Episodio en curso: [proyectos/charles-jones/episodio-1/](proyectos/charles-jones/episodio-1/).
+- Trabajo en curso: [proyectos/charles-jones/redes/](proyectos/charles-jones/redes/) (Arco 3 en producción).

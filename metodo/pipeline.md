@@ -7,7 +7,7 @@
 
 ## 1. Estrategia de generación: un personaje por clip
 
-Generar cada personaje/elemento **aislado** y unir en montaje. Es lo más barato, lo más consistente y el lenguaje de cine correcto. Qué lockear y con qué motor depende del tipo de contenido de cada arco: esa tabla (motores por arco) es específica del proyecto y vive en el `TECH.md` del episodio.
+Generar cada personaje/elemento **aislado** y unir en montaje. Es lo más barato, lo más consistente y el lenguaje de cine correcto. Qué lockear y con qué motor depende del tipo de contenido de cada arco: esa tabla (motores por arco) es específica del proyecto y vive en el `TECH.md` de la unidad de trabajo.
 
 Referencia de motores, capacidades y costos: `engine/wind-comic/docs/{video,image}-providers.md`.
 
@@ -25,7 +25,7 @@ flowchart TD
 
 1. **Imágenes madre primero** (~¥0.3 c/u): retrato de Charles de espaldas, mano con cadenita, un ornitorrinco por animal, paisajes Pangea. Son la biblia visual; todo parte de acá. Los clips de **transformación/transición** piden un **par de madres** (first/last frame para U2V-FLF), no una sola — regla de coherencia y keyframes en [biblia-visual.md](../proyectos/charles-jones/biblia-visual.md) §3.
 2. **Clips de 5–6s por personaje aislado**: la duración barata. En la instancia local con `PLAN_GATE_DISABLED=1` no aplican los gates de plan de pago.
-3. **Montaje**: los cruces (mano ↔ ornitorrincos, Charles ↔ familia) se resuelven por **corte**, no generando personajes juntos. La pantalla partida Argentina/Australia del Arco 3 = dos clips independientes montados. El montaje de reels se hace con `wind-mcp` (`montarSecuencia()` en [`wind-mcp/src/lib/montaje.ts`](../engine/wind-mcp/src/lib/montaje.ts): concat ffmpeg + pad 9:16 + off opcional), **no** con el timeline de wind-comic (que opera sobre proyectos del pipeline de 9 agentes, no sobre clips U2V sueltos — usarlo sería overkill).
+3. **Montaje de salidas**: los cruces (mano ↔ ornitorrincos, Charles ↔ familia) se resuelven por **corte**, no generando personajes juntos. Los clips generados son **fuente por hilo** (bloques del arco); de ahí se montan las dos familias de salida: **reels transversales** (intercalan clips de varios hilos) y **destacadas por arco** (recorte de un solo hilo). La pantalla partida Argentina/Australia del Arco 3 = dos clips independientes montados. El montaje se hace con `wind-mcp` (`montarSecuencia()` en [`wind-mcp/src/lib/montaje.ts`](../engine/wind-mcp/src/lib/montaje.ts): concat ffmpeg + pad 9:16 + off opcional), **no** con el timeline de wind-comic (que opera sobre proyectos del pipeline de 9 agentes, no sobre clips U2V sueltos — usarlo sería overkill).
 4. **Voz**: off documental (Attenborough). Recomendado grabarla propia (es la voz del proyecto y es gratis); alternativas: TTS Minimax (~¥0.02/s) o **clonar la voz propia** vía `POST /api/voice-clone` (MiniMax, ya configurado) — misma decisión de "voz del proyecto", pero permite iterar el off sin regrabar.
 5. **Export**: 9:16, subtítulos quemados si corresponde.
 
@@ -33,7 +33,7 @@ flowchart TD
 
 ## 3. Presupuesto
 
-El presupuesto es específico de cada proyecto (cantidad de clips/madres, motor elegido) y vive en el `TECH.md` del episodio. Principio transversal: el **video es el mayor costo**; reservar Kling (~¥0.2/s) o Veo (~¥0.6/s) solo para los planos-gancho, y usar Minimax (~¥0.1/s) para el resto.
+El presupuesto es específico de cada proyecto (cantidad de clips/madres, motor elegido) y vive en el `TECH.md` de la unidad. Principio transversal: el **video es el mayor costo**; reservar Kling (~¥0.2/s) o Veo (~¥0.6/s) solo para los planos-gancho, y usar Minimax (~¥0.1/s) para el resto.
 
 ---
 
@@ -52,12 +52,12 @@ IDs con prefijo de arco, en minúsculas:
 | Unidad | Formato de ID | Ejemplo |
 |---|---|---|
 | Imagen madre | `a{arco}-m{nn}` | `a3-m01` |
-| Clip | `a{arco}-{reel}{n}` | `a3-a1`, `a3-c2` |
+| Clip | `a{arco}-{bloque}{n}` | `a3-a1`, `a3-c2` |
 
-Archivos (rutas relativas al proyecto; el engine las resuelve contra el episodio activo, con fallback a la serie para `fuentes`):
+Archivos (rutas relativas al proyecto; el engine las resuelve contra la unidad activa, con fallback a la serie para `fuentes`):
 
-- **Generados** (nivel episodio): `assets/arco-{N}/madre/{id}-{slug}.png` y `assets/arco-{N}/clips/{id}-{slug}.mp4`. Ej.: `assets/arco-3/madre/a3-m01-madre-ornitorrinco.png`.
-- **Material de origen real** (no generado, aportado a mano; nivel serie, reutilizable entre episodios): `assets/fuentes/{slug}.{ext}`. Ej.: `assets/fuentes/rocas-coloradas-real.jpg`, `assets/fuentes/charles-jones-referencia.jpeg`.
+- **Generados** (nivel unidad): `assets/arco-{N}/madre/{id}-{slug}.png` y `assets/arco-{N}/clips/{id}-{slug}.mp4`. Ej.: `assets/arco-3/madre/a3-m01-madre-ornitorrinco.png`.
+- **Material de origen real** (no generado, aportado a mano; nivel serie, reutilizable entre unidades): `assets/fuentes/{slug}.{ext}`. Ej.: `assets/fuentes/rocas-coloradas-real.jpg`, `assets/fuentes/charles-jones-referencia.jpeg`.
 
 El nombre de archivo es la referencia única: es lo que se sube como `firstFrame`/`lastFrame` en la UI y lo que citan las fichas de clip.
 

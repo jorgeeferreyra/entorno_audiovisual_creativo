@@ -1,7 +1,7 @@
 # Arco 3 — La familia de ornitorrincos (el drama)
 
-> Canon: [biblia-serie.md](../../biblia-serie.md) · Estrategia: [estrategia-contenido.md](estrategia-contenido.md) · Producción: [../produccion/pipeline-wind-comic.md](../../../../metodo/pipeline.md)
-> Orden de publicación: **1º** (abre la serie; es autoconclusivo y golpea emocionalmente).
+> Canon: [biblia-serie.md](../biblia-serie.md) · Estrategia: [estrategia-contenido.md](estrategia-contenido.md) · Producción: [pipeline.md](../../../metodo/pipeline.md)
+> Este archivo es **fuente por hilo** (guion del arco), no un entregable. Orden de bajada a fichas: **1º** (abre la serie; es autoconclusivo y golpea emocionalmente).
 
 ---
 
@@ -25,26 +25,26 @@ Documental de naturaleza puro, tono Attenborough **sincero**, sin chistes de di�
 
 ---
 
-## Beats por pieza (macro)
+## Beats por bloque (macro)
 
-> Bajado a plano-a-plano con prompts finales en [../produccion/arco-3-planos.md](../planos/arco-3.md).
+> Los bloques agrupan los beats del hilo; **no son entregables**. Alimentan el reel transversal y las destacadas del arco. Bajado a plano-a-plano con prompts finales en [planos/arco-3.md](planos/arco-3.md).
 
-**Reel A — "La grieta" (30–45s)**
+**Bloque A — "La grieta" (beats a1–a6)**
 1. Familia unida en Pangea (Attenborough puro).
 2. Temblor, la grieta; frame subliminal de la mano.
 3. La separación: cada grupo a un lado.
 
-**Reel B — "Vidas paralelas" (30–45s)**
+**Bloque B — "Vidas paralelas" (beats b1–b4)**
 1. Pantalla partida: Australia próspera / Argentina en declive.
 2. Off documental sobre adaptación y pérdida.
 
-**Reel C — "El último" (30–45s) — PIEZA ESTRELLA**
+**Bloque C — "El último" (beats c0–c4) — REMATE DEL HILO**
 1. El último ornitorrinco argentino entre las rocas coloradas.
 2. Fosilización (animación → piedra).
 3. Corte al plano real del fósil del episodio 1.
 4. (Opcional) sobreimpreso de la Fundación.
 
-**Story set (goteo emocional de 15s)**
+**Semilla de destacadas del arco (mini-historias de 15s)**
 - S1: la familia feliz. S2: la grieta. S3: la despedida. S4: el declive. S5: el fósil.
 
 ---
@@ -54,4 +54,4 @@ Documental de naturaleza puro, tono Attenborough **sincero**, sin chistes de di�
 - **Personaje a lockear**: referencia de imagen por animal (cada ornitorrinco tiene su imagen madre).
 - **Técnica de consistencia**: generar **1 imagen madre por ornitorrinco** y usarla como **primer frame** de cada clip (I2V). La consistencia sale de ahí, no de un lock de sujeto.
 - **Motor recomendado**: Kling FLF (primer + último frame para transiciones) o Seedance multi-ref.
-- **Imágenes madre necesarias**: familia de ornitorrincos (madre, cría, padre, huevo), paisaje Pangea, rocas coloradas, y el plano real del fósil del episodio 1 para el corte final. Ver [biblia-visual.md](../../biblia-visual.md).
+- **Imágenes madre necesarias**: familia de ornitorrincos (madre, cría, padre, huevo), paisaje Pangea, rocas coloradas, y el plano real del fósil del episodio 1 para el corte final. Ver [biblia-visual.md](../biblia-visual.md).

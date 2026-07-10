@@ -8,7 +8,7 @@
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { EPISODE_DIR, resolveReadPath, resolveWritePath } from '../config.js';
+import { WORK_DIR, resolveReadPath, resolveWritePath } from '../config.js';
 import { compositeRefs } from './composite.js';
 import { generarImagen } from './image.js';
 import { clipPath, ensureDirFor } from './paths.js';
@@ -161,7 +161,7 @@ async function generarVideo(
 ): Promise<GenerarResult> {
   const destAbs = clipPath(opts.arco, spec.id, spec.slug);
   if (!opts.force && (await existe(destAbs))) {
-    return { id: spec.id, kind: spec.kind, skipped: true, motivo: `ya existe ${path.relative(EPISODE_DIR, destAbs)}` };
+    return { id: spec.id, kind: spec.kind, skipped: true, motivo: `ya existe ${path.relative(WORK_DIR, destAbs)}` };
   }
 
   const firstFrame = await resolveDependencia(spec.id, spec.firstFrame, opts, 'firstFrame');

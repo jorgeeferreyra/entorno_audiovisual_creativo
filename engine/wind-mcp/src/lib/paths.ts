@@ -10,8 +10,9 @@ export function clipPath(arco: number, id: string, slug: string): string {
   return path.join(ASSETS_ROOT, `arco-${arco}`, 'clips', `${id}-${slug}.mp4`);
 }
 
-export function reelPath(arco: number, id: string, slug: string): string {
-  return path.join(ASSETS_ROOT, `arco-${arco}`, 'reels', `${id}-${slug}.mp4`);
+/** Montaje final de un reel: `<unidad>/reels/<slug>/<slug>.mp4`. */
+export function reelPath(slug: string): string {
+  return path.join(ASSETS_ROOT, '..', 'reels', slug, `${slug}.mp4`);
 }
 
 export async function ensureDirFor(filePath: string): Promise<void> {

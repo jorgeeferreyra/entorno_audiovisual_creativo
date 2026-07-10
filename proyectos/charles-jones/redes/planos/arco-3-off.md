@@ -1,13 +1,13 @@
 # Arco 3 — Voz en off (texto literal)
 
 > Texto literal del **off documental** del Arco 3, listo para grabar (voz propia) o TTS. Antes solo existían indicaciones por clip en [arco-3-planos.md](arco-3.md) ("off documental (presenta la familia)"); acá está la locución palabra por palabra.
-> - Registro: **Attenborough sincero**, sin chistes verbales. El humor es estructural (solemnidad extrema aplicada a ornitorrincos), nunca de diálogo. Tesis del arco en [../redes/arco-3-ornitorrincos.md](../redes/arco-3-ornitorrincos.md).
+> - Registro: **Attenborough sincero**, sin chistes verbales. El humor es estructural (solemnidad extrema aplicada a ornitorrincos), nunca de diálogo. Tesis del arco en [arco-3-ornitorrincos.md](../arco-3-ornitorrincos.md).
 > - Idioma: **español** (títulos, audio y montaje van en español; solo los prompts de modelo van en inglés).
 > - Sincronía: cada línea está asociada a su clip; la duración objetivo es la del clip (5s salvo aclaración). El **hook** (primeros ~3s de cada reel) va marcado para la auditoría de Polish Pro.
 
 ---
 
-## Reel A — "La grieta"
+## Bloque A — "La grieta"
 
 | Clip | Off (ES) | Nota |
 |---|---|---|
@@ -18,11 +18,11 @@
 | a3-a5 (la grieta) | "Pero bajo sus patas, la tierra ya había empezado a partirse." | Transición-gancho |
 | **a3-a5b** (caos Revenant) | *(SIN off — el caos habla solo: rumble + crujidos)* | Silencio de locución deliberado |
 | a3-a5c (respiro poético) | "Cuando todo se detuvo, donde antes hubo un mundo, ahora había dos." | La escala de lo ocurrido |
-| a3-a6 (la separación) | "De un lado del mar quedó ella. Del otro, todo lo que amaba." | La despedida; cierra el Reel A |
+| a3-a6 (la separación) | "De un lado del mar quedó ella. Del otro, todo lo que amaba." | La despedida; cierra el Bloque A |
 
 ---
 
-## Reel B — "Vidas paralelas"
+## Bloque B — "Vidas paralelas"
 
 | Clip | Off (ES) | Nota |
 |---|---|---|
@@ -33,7 +33,7 @@
 
 ---
 
-## Reel C — "El último" (pieza estrella)
+## Bloque C — "El último" (remate del hilo)
 
 | Clip | Off (ES) | Nota |
 |---|---|---|
@@ -44,7 +44,7 @@
 
 ---
 
-## Stories S1–S5 (off derivado por recorte, sin locución nueva)
+## Destacadas del arco (S1–S5, off derivado por recorte, sin locución nueva)
 
 Reutilizan las líneas de arriba; cero grabación extra.
 
@@ -64,12 +64,12 @@ Pasar este off por Polish Pro para validar gancho y naturalidad antes de grabar:
 
 - **UI:** `/dashboard/polish` · **API:** `POST /api/polish-script`
 - **Config:** modo **pro**, estilo **documental**, intensidad **ligera** (el registro ya está definido; solo pulir, no reescribir el tono).
-- **Qué mirar:** `hook.strength` (weak/ok/strong) en los primeros 3s de cada reel (líneas **HOOK**), `aigcReadiness.score` (0–100), diálogos "on the nose", y consistencia de registro sincero.
+- **Qué mirar:** `hook.strength` (weak/ok/strong) en los primeros 3s de cada bloque (líneas **HOOK**), `aigcReadiness.score` (0–100), diálogos "on the nose", y consistencia de registro sincero.
 - El LLM creativo ya está configurado (`OPENAI_CREATIVE_MODEL` en `.env.local`), así que corre sin keys extra.
 
 ### Registro de resultados (completar tras correr)
 
-| Reel | hook.strength | aigcReadiness.score | Notas de Polish Pro | Estado |
+| Bloque | hook.strength | aigcReadiness.score | Notas de Polish Pro | Estado |
 |---|---|---|---|---|
 | A | — | — | — | pendiente |
 | B | — | — | — | pendiente |

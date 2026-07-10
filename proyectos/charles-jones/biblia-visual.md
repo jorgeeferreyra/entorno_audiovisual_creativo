@@ -40,7 +40,7 @@ Los 8 presets "expresivos" estaban dormidos; su lugar natural es el quiebre foto
 
 Recurso **transversal y estructural** del arco (no un adorno puntual): el registro cuaderno/silueta y el fotorrealismo se cruzan A PROPÓSITO en rupturas, puentes y verdades. No está ligado a ningún personaje.
 
-**Dosificación (Arco 3):** los switches cuento↔real son la **columna vertebral de las transiciones** del arco — no un "único quiebre" aislado. Incluyen: el par caos→respiro (`a3-a5b`/`a3-a5c`), los puentes FLF cruzados (cuento→real / real→cuento: `a3-a5x`, `a3-a5y`, `a3-c0`) y el salto clínico de cierre (`a3-c3`/`a3-c4`). Tope operativo: **no inventar switches fuera de la cadena de transiciones aprobada** en [arco-3-planos.md](episodio-1/planos/arco-3.md); cada eslabón nuevo requiere decisión de dirección. El impacto se sostiene por **función narrativa** (cada switch hace un trabajo distinto), no por rareza absoluta.
+**Dosificación (Arco 3):** los switches cuento↔real son la **columna vertebral de las transiciones** del arco — no un "único quiebre" aislado. Incluyen: el par caos→respiro (`a3-a5b`/`a3-a5c`), los puentes FLF cruzados (cuento→real / real→cuento: `a3-a5x`, `a3-a5y`, `a3-c0`) y el salto clínico de cierre (`a3-c3`/`a3-c4`). Tope operativo: **no inventar switches fuera de la cadena de transiciones aprobada** en [arco-3-planos.md](redes/planos/arco-3.md); cada eslabón nuevo requiere decisión de dirección. El impacto se sostiene por **función narrativa** (cada switch hace un trabajo distinto), no por rareza absoluta.
 
 Tres variantes del mismo recurso, cada una con su momento:
 
@@ -74,7 +74,7 @@ Del primer e2e real quedó un híbrido "cuaderno naturalista semi-realista" (ni 
 
 - Máximo **1–2 apariciones en todo el arco**; nunca como lock de consistencia ni firstFrame de clips canónicos.
 - Los archivos llevan sufijo `-hibrid-N`: jamás ocupan el path canónico de una imagen madre o clip (`a3-m01-madre-ornitorrinco.png` queda reservado a la silueta Reiniger).
-- Contador de uso en el [roadmap del Arco 3](episodio-1/arco-3-roadmap.md).
+- Contador de uso en el [PROGRESS del Arco 3](redes/PROGRESS.md).
 
 #### Guardas anti-error de IA (obligatorias en todo quiebre)
 
@@ -110,12 +110,12 @@ El caos se diseña **alrededor** de las debilidades de los modelos, no a pesar d
 
 ### Arco 3 — Ornitorrincos
 
-> Prompts finales de producción (en inglés, plano a plano) en [arco-3-planos.md](episodio-1/planos/arco-3.md). Acá quedan solo los conceptos base.
+> Prompts finales de producción (en inglés, plano a plano) en [arco-3-planos.md](redes/planos/arco-3.md). Acá quedan solo los conceptos base.
 
 - **Familia de ornitorrincos**: generar una imagen madre POR animal (madre, padre, joven) + el huevo, para lockear cada uno como primer frame de sus clips. El joven (`a3-m02`) hereda silueta de la madre (`Ref: a3-m01`), más chico/esbelto — el concepto "cría bebé" quedó eliminado. "silueta negra recortada de ornitorrinco de perfil expresivo, teatro de sombras, fondo de papel tintado, 9:16". La distinción entre animales es por contorno (tamaño, postura, muescas del recorte), no por pelaje.
 - **Pantalla partida Australia/Argentina**: dos ambientes contrastados por **tinte de fondo** (verde saturado próspero / gris frío desaturado) — se arma en montaje, pero conviene una imagen madre por ambiente.
 - **Fosilización**: "silueta de ornitorrinco recostada sobre roca colorada que se congela y se rellena de textura de piedra, transición, 9:16".
-- **Salto a la realidad (remate)**: no existe plano de archivo del fósil del Ep.1. El fósil en el yacimiento actual se genera en registro fotográfico (`a3-m13` en [arco-3-planos.md](episodio-1/planos/arco-3.md)) y el corte final es la foto real de la locación (`assets/fuentes/rocas-coloradas-real.jpg`).
+- **Salto a la realidad (remate)**: no existe plano de archivo del fósil del Ep.1. El fósil en el yacimiento actual se genera en registro fotográfico (`a3-m13` en [arco-3-planos.md](redes/planos/arco-3.md)) y el corte final es la foto real de la locación (`assets/fuentes/rocas-coloradas-real.jpg`).
 
 ---
 
@@ -125,5 +125,5 @@ El caos se diseña **alrededor** de las debilidades de los modelos, no a pesar d
 2. Todo clip parte de su imagen madre como **primer frame** (I2V) o **referencia de sujeto**.
 3. Los cruces entre personajes NO se generan juntos: se resuelven en montaje (ver [pipeline](../../metodo/pipeline.md)).
 4. **Coherencia entre madres**: las madres de un mismo beat/locación comparten composición base (encuadre, capas, posición del sujeto) — la continuidad de los clips se hereda de esa coherencia. Las madres **emparejadas** (par first/last de un clip FLF) son la forma fuerte: mismo encuadre exacto, solo cambia el estado. Ejemplos canónicos: `a3-m05`→`a3-m06` (Pangea → Pangea partida), `a3-m10`→`a3-m11` (ornitorrinco vivo → fósil; la Ref de generación puede ir en la dirección que preserve la madre ya aprobada — hoy `m10` hereda de `m11`).
-5. **Secuencia de madres por clip (keyframes)**: para clips de transformación/transición, generar DOS madres (estado inicial y final, ambos aprobados) y usar U2V-FLF, en vez de confiar el estado final al motion prompt — el motor solo interpola entre keyframes ya aprobados. Límite duro: FLF acepta solo 2 keyframes y 5 o 10s; si un plano necesita más de 2 estados, se parte en sub-clips unidos por corte (regla 3). Cadena de transiciones del Arco 3: ver [arco-3-planos.md](episodio-1/planos/arco-3.md) §Cadena de transiciones.
-6. **Mecanismo de la coherencia entre madres emparejadas**: la madre hija se genera usando la madre padre (ya aprobada) como **referencia de imagen** (`subject_reference`), no solo describiéndola en el prompt — describir "the same landscape..." sin una referencia real es frágil, el modelo reinventa el encuadre en cada corrida. La relación se declara en [arco-3-planos.md](episodio-1/planos/arco-3.md) con el campo `ref: a3-mNN` en el bloque YAML de la ficha de la madre hija; `engine/wind-mcp/src/lib/motor.ts` la resuelve automáticamente (data-driven, sin flags manuales). La dirección de la Ref sigue a la madre **ya aprobada y querida**, no necesariamente al orden temporal del clip FLF.
+5. **Secuencia de madres por clip (keyframes)**: para clips de transformación/transición, generar DOS madres (estado inicial y final, ambos aprobados) y usar U2V-FLF, en vez de confiar el estado final al motion prompt — el motor solo interpola entre keyframes ya aprobados. Límite duro: FLF acepta solo 2 keyframes y 5 o 10s; si un plano necesita más de 2 estados, se parte en sub-clips unidos por corte (regla 3). Cadena de transiciones del Arco 3: ver [arco-3-planos.md](redes/planos/arco-3.md) §Cadena de transiciones.
+6. **Mecanismo de la coherencia entre madres emparejadas**: la madre hija se genera usando la madre padre (ya aprobada) como **referencia de imagen** (`subject_reference`), no solo describiéndola en el prompt — describir "the same landscape..." sin una referencia real es frágil, el modelo reinventa el encuadre en cada corrida. La relación se declara en [arco-3-planos.md](redes/planos/arco-3.md) con el campo `ref: a3-mNN` en el bloque YAML de la ficha de la madre hija; `engine/wind-mcp/src/lib/motor.ts` la resuelve automáticamente (data-driven, sin flags manuales). La dirección de la Ref sigue a la madre **ya aprobada y querida**, no necesariamente al orden temporal del clip FLF.

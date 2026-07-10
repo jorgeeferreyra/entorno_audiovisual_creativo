@@ -27,7 +27,7 @@
 
 ## Arco 3 — Familia de ornitorrincos
 
-Las imágenes madre (`a3-m01`–`a3-m03`) ya están **generadas y aprobadas** ([arco-3-roadmap.md](episodio-1/arco-3-roadmap.md) §Checklist madres): las fichas están listas para cargar en Character Studio (`/dashboard/characters`) — subir el archivo y pegar la URL resultante en `imageUrls`. Ninguno habla: la voz del arco es el off documental.
+Las imágenes madre (`a3-m01`–`a3-m03`) ya están **generadas y aprobadas** ([PROGRESS.md](redes/PROGRESS.md) §Checklist madres): las fichas están listas para cargar en Character Studio (`/dashboard/characters`) — subir el archivo y pegar la URL resultante en `imageUrls`. Ninguno habla: la voz del arco es el off documental.
 
 ### Madre ornitorrinco
 
