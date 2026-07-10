@@ -186,4 +186,29 @@ registerImageProvider({
   },
 });
 
-if (process.env.NODE_ENV !== 'test') console.log('[ImageProviders] 4 built-ins registered (mj / minimax-multi / minimax-single / kontext)');
+// ─── Provider 5: OpenRouter / Nano Banana (gemini-flash-image) ────────────
+registerImageProvider({
+  id: 'openrouter',
+  name: 'OpenRouter (Nano Banana / gemini-flash-image)',
+  supportsRefs: true,
+  maxRefImages: 4,
+  // Default 130 = after builtins; set OPENROUTER_IMAGE_PRIORITY=50 to prefer as primary.
+  priority: Number(process.env.OPENROUTER_IMAGE_PRIORITY) || 130,
+  available: () => !!process.env.OPENROUTER_API_KEY,
+  async generate(input: ImageGenerateInput) {
+    const { generateOpenRouterImage } = await import('./openrouter-image');
+    const refs = [
+      ...(input.referenceImages || []),
+      ...(input.cref ? [input.cref] : []),
+      ...(input.sref ? [input.sref] : []),
+    ].filter((u) => u && (u.startsWith('http') || u.startsWith('data:image/'))).slice(0, 4);
+    const url = await generateOpenRouterImage(input.prompt, {
+      aspectRatio: input.aspectRatio,
+      referenceImages: refs.length ? refs : undefined,
+    });
+    if (!url) throw new Error('OpenRouter returned empty image');
+    return { imageUrl: url, provider: 'openrouter' };
+  },
+});
+
+if (process.env.NODE_ENV !== 'test') console.log('[ImageProviders] 5 built-ins registered (mj / minimax-multi / minimax-single / kontext / openrouter)');

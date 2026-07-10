@@ -22,6 +22,8 @@ export interface MadrePlano {
   prompt: string;
   /** Id de la madre padre a usar como referencia de imagen (subject_reference), si declarada con `- Ref:`. */
   ref?: string;
+  /** Fotos de anatomía (`- AnatomyRef: \`path\`` repetible). OpenRouter las recibe separadas; Minimax las compone. */
+  anatomyRefs?: string[];
 }
 
 export interface ClipPlano {
@@ -72,7 +74,16 @@ function parseMadres(md: string): MadrePlano[] {
     if (!destino || !prompt) continue;
     const slug = path.basename(destino, path.extname(destino)).replace(`${id}-`, '');
     const ref = bloque.match(/- Ref(?: obligatoria)?: (a3-m\d{2})/)?.[1];
-    madres.push({ id, titulo, archivoDestino: destino, slug, prompt, ref });
+    const anatomyRefs = [...bloque.matchAll(/- AnatomyRef: `([^`]+)`/g)].map((x) => x[1]);
+    madres.push({
+      id,
+      titulo,
+      archivoDestino: destino,
+      slug,
+      prompt,
+      ref,
+      anatomyRefs: anatomyRefs.length ? anatomyRefs : undefined,
+    });
   }
   return madres;
 }

@@ -693,6 +693,8 @@ export class MinimaxService {
     }
     // Official schema: subject_reference[].image_file is a STRING (URL or data URI), not an array.
     // Arrays / `image:[]` → 2013 invalid params or "disallowed image url".
+    // image-01 solo acepta UNA subject_reference (`2013: image_reference must be one`).
+    // Si hay varias refs, el caller ordena la más crítica primero (anatomía > estilo).
     const validRefs = (refs || [])
       .filter((u) => typeof u === 'string' && (u.startsWith('http') || u.startsWith('data:image/')))
       .slice(0, 1);

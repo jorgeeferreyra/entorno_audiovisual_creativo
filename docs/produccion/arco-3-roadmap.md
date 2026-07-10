@@ -17,14 +17,13 @@ Estados: `pendiente` → `generado` (existe el archivo) → `aprobado` (pasó el
 
 ### Próxima acción
 
-**Paso 1 (docs) listo → paso 2: regenerar madres en cascada.** Requiere wind-comic arriba. Criterio: silueta 100% negra estilo Lotte Reiniger recorte plano (NO fieltro/3D), tinte del beat correcto, 9:16.
+**Paso 2 (madres en cascada) listo** — m02/m03/m10/m17 aprobados vía **OpenRouter / Nano Banana** (`google/gemini-2.5-flash-image`), con multi-ref (m01 lock + anatomía en `assets/fuentes/ornitorrincos/`). Provider por defecto en `npm run madres:a3`; fallback `--provider minimax`.
+
+**Siguiente = paso 3: clips.** Reel B (b1–b4) → puentes / Reel C. Requiere wind-comic arriba.
 
 ```bash
 cd wind-comic && PLAN_GATE_DISABLED=1 npm run dev
-# Luego, en orden:
-cd wind-mcp && npm run madres:a3 -- --id a3-m03 --candidates 3
-# aprobar: npm run madres:a3 -- --id a3-m03 --pick N
-# seguir: a3-m02 → a3-m10 → a3-m17
+cd wind-mcp && npm run clips:a3 -- # (o el script/U2V que toque por clip)
 ```
 
 **Reel A:** a3-a1…a3-a6 aprobados; a3-a4 queda **obsoleto** (era cría; regenerar U2V sobre m04 huevo). a3-a5 aprobado como I2V degradado — regen FLF real pendiente. **Gate Kling resuelto** (FLF real vía gateway qingyuntop).
@@ -49,22 +48,24 @@ cd wind-mcp && npm run madres:a3 -- --id a3-m03 --candidates 3
 | ID | Título | Estado | Costo real | Nota |
 |---|---|---|---|---|
 | a3-m01 | Madre ornitorrinco | aprobado | ~¥0.3 | Lock de consistencia ✓ — no tocar |
-| a3-m02 | Ornitorrinco joven | pendiente regen | — | Concepto cría bebé ELIMINADO; nueva madre joven (Ref: m01). Archivo destino: `a3-m02-ornitorrinco-joven.png` |
-| a3-m03 | Padre ornitorrinco | pendiente regen | ~¥0.3 (prev) | Regenerar: matar drift fieltro/3D; prompt reforzado con lenguaje m01 |
+| a3-m02 | Ornitorrinco joven | aprobado | OpenRouter | Nano Banana multi-ref (m01 + foto + lámina); pick c2; path `a3-m02-ornitorrinco-joven.png` |
+| a3-m03 | Padre ornitorrinco | aprobado | OpenRouter | Nano Banana multi-ref; pick c3; muesca ceja + 5 rasgos ✓ |
 | a3-m04 | Huevo | aprobado | ~¥0.3 | Close-up nido; ahora firstFrame de a3-a4 ✓ |
 | a3-m05 | Paisaje Pangea | aprobado | ~¥0.3 | |
 | a3-m06 | Pangea partida | aprobado | ~¥0.3 | Grieta roja, agua en el gap ✓ |
 | a3-m07 | Rocas Coloradas | aprobado | ~¥0.6 | Retry ×1; firstFrame de a3-c1 (U2V) ✓ |
 | a3-m08 | Australia próspera | aprobado | ~¥0.3 | lastFrame de puente a3-a5y ✓ |
 | a3-m09 | Argentina en declive | aprobado | ~¥0.3 | firstFrame a3-b4 + eco montaje c3e ✓ |
-| a3-m10 | Ornitorrinco sobre roca | pendiente regen | ~¥0.3 (prev) | Regenerar con Ref: m11 (invertir dirección); vivo en encuadre del fósil |
+| a3-m10 | Ornitorrinco sobre roca | aprobado | OpenRouter | Nano Banana: Ref m11 + AnatomyRef m01 + foto; pick c2; vivo en marco fósil ✓ |
 | a3-m11 | Fósil de piedra | aprobado | ~¥0.3 | NO tocar — madre padre del par fosilización ✓ |
 | a3-m12 | Apertura cuaderno Charles | aprobado | ~¥0.3 | Intro transversal POV ✓ |
 | a3-m13 | Fósil en yacimiento | aprobado | ~¥0.3 | Salto realidad clínico ✓ |
 | a3-m14 | Grieta Revenant | aprobado | ~¥0.3 | REALITY-BLOCK-CHAOS; keyframe de a5x y c0 ✓ |
 | a3-m15 | Zoom-out poético | aprobado | ~¥0.6 | Retry ×1; firstFrame de a3-a5y ✓ |
 | ~~a3-m16~~ | ~~Ornitorrinco caminando~~ | **ELIMINADA** | — | Con m10 reencuadrada no comparte encuadre; a3-c1 = U2V sobre m07 |
-| a3-m17 | Argentina seca (estado final) | pendiente | — | Par con m09 (lastFrame de a3-b4); generar al encarar cascada |
+| a3-m17 | Argentina seca (estado final) | aprobado | OpenRouter | Par m09→m17; pick c2; mismo encuadre más seco/oscuro ✓ |
+
+> **Switch provider (2026-07-09):** madres con Ref/AnatomyRef pasan por `openrouter` (Nano Banana) en vez de Minimax. Minimax se queda como `--provider minimax` (composite 1-slot) por si hace falta.
 
 ## Checklist — Clips
 

@@ -14,6 +14,10 @@ export interface GenerarImagenInput {
   slug: string;
   /** Override del destino (absoluto o relativo a PROJECT_ROOT); por defecto assets/arco-N/madre/{id}-{slug}.png. Usado para candidatos. */
   destOverride?: string;
+  /** Preferir un provider del registry (ej. 'openrouter' = Nano Banana). Se pasa como prefer. */
+  provider?: string;
+  /** Si true, excluye el resto de la cadena: solo intenta `provider` (falla en vez de fallback silencioso). */
+  soloProvider?: boolean;
 }
 
 export interface GenerarImagenResult {
@@ -27,10 +31,15 @@ export interface GenerarImagenResult {
 export async function generarImagen(input: GenerarImagenInput): Promise<GenerarImagenResult> {
   loadWindComicEnv();
   await import('@/lib/image-providers/builtins');
-  const { dispatchImageGenerate } = await import('@/lib/image-providers/registry');
+  const { dispatchImageGenerate, listImageProviders } = await import('@/lib/image-providers/registry');
 
   const aspect = input.aspect ?? '9:16';
   const mock = process.env.MOCK_ENGINES === '1';
+  const preferProvider = input.provider
+    || (input.refs?.length ? 'minimax-multi' : undefined);
+  // OpenRouter acepta data-URIs: no hace falta subir refs a Minimax.
+  const useDataUriRefs = preferProvider === 'openrouter' || mock;
+
   const refUrls: string[] = [];
   for (const ref of input.refs ?? []) {
     if (/^https?:\/\//.test(ref)) {
@@ -38,7 +47,7 @@ export async function generarImagen(input: GenerarImagenInput): Promise<GenerarI
       continue;
     }
     const local = path.isAbsolute(ref) ? ref : path.join(PROJECT_ROOT, ref);
-    if (mock) {
+    if (useDataUriRefs) {
       refUrls.push(await fileToDataUri(local));
       continue;
     }
@@ -53,6 +62,15 @@ export async function generarImagen(input: GenerarImagenInput): Promise<GenerarI
     }
   }
 
+  let exclude: Set<string> | undefined;
+  if (input.soloProvider && preferProvider) {
+    exclude = new Set(
+      listImageProviders()
+        .map((p: { id: string }) => p.id)
+        .filter((id: string) => id !== preferProvider),
+    );
+  }
+
   const { result, tried } = await dispatchImageGenerate(
     {
       prompt: input.prompt,
@@ -60,7 +78,7 @@ export async function generarImagen(input: GenerarImagenInput): Promise<GenerarI
       referenceImages: refUrls.length ? refUrls : undefined,
       label: input.id,
     },
-    { refCount: refUrls.length, prefer: refUrls.length ? 'minimax-multi' : undefined },
+    { refCount: refUrls.length, prefer: preferProvider, exclude },
   );
 
   if (!result?.imageUrl) {

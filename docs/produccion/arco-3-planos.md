@@ -47,20 +47,24 @@ Black paper cutout silhouette of a mother platypus in expressive side profile, r
 
 **a3-m02 — Ornitorrinco joven**
 - Archivo destino: `assets/arco-3/madre/a3-m02-ornitorrinco-joven.png`
-- Ref: a3-m01 (misma silueta/anatomía/estilo; más chico y esbelto; subject_reference)
-- Nota: reemplaza el concepto "cría bebé" (eliminado). Misma silueta que m01, escala joven. En Reel A el huevo a3-m04 ocupa el beat familiar (clip a3-a4); m02 alimenta Reel B (a3-b2).
+- Ref: a3-m01 (master character lock — primera imagen)
+- AnatomyRef: `assets/fuentes/ornitorrincos/ornitorrinco.png` (anatomía real cuerpo entero)
+- AnatomyRef: `assets/fuentes/ornitorrincos/ornitorrincos-dibujo.png` (lámina de perfil — puente foto→ilustración)
+- Nota: reemplaza el concepto "cría bebé" (eliminado). Nano Banana: fidelidad 100% al estilo de m01; solo escala joven. Provider: openrouter.
 - Prompt (EN):
 ```
-Same platypus character as the reference image, black paper cutout silhouette, younger and smaller, same duck bill and flat paddle tail and woodcut etched delicate cut-out inner details, slender lighter body, same side-profile contour scaled down, standing alert among silhouetted Pangea ferns, flat 2D paper cutout not felt not 3D not plush, warm amber and saturated green tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+The first reference image is the master character: reproduce this exact platypus silhouette with 100% fidelity — same bill shape, same etched eye, same fur strokes, same cross-hatched paddle tail, same webbed feet, same woodcut cutout style. The other reference images show real platypus anatomy — use them only to keep the anatomy true (flat duck bill with nostrils, no ears, low quadruped body, webbed feet, beaver tail), never to change the art style. Younger and smaller slenderer version of the same character, every feature readable inside the black silhouette through fine gold etched lines like a woodcut print — never a plain solid blob: (1) wide flat duck bill clearly separated from the head by an etched line, smooth black, side profile facing left, (2) two small etched nostril dots on top of the bill near the tip, (3) one almond-shaped eye outlined in thin light etched line high on the head near the bill base, (4) broad flat beaver-like paddle tail with cross-hatched fur texture etched inside the black shape and short fur strokes etched along the back and chest, (5) short legs with webbed duck-like feet showing etched toe lines claws and clear webbing, resting among silhouetted Pangea ferns and fiddleheads, flat 2D paper cutout not felt not 3D not plush not photorealistic, warm amber and saturated green tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
 ```
 
 **a3-m03 — Padre ornitorrinco**
 - Archivo destino: `assets/arco-3/madre/a3-m03-padre-ornitorrinco.png`
-- Ref: a3-m01 (mismo personaje / anatomía / estilo; subject_reference)
-- Nota: regenerar — matar drift a fieltro/3D; heredar lenguaje de m01 (helechos, delicate cut-out, flat 2D, woodcut etched).
+- Ref: a3-m01 (master character lock — primera imagen)
+- AnatomyRef: `assets/fuentes/ornitorrincos/ornitorrinco.png` (anatomía real cuerpo entero)
+- AnatomyRef: `assets/fuentes/ornitorrincos/ornitorrincos-dibujo.png` (lámina de perfil — puente foto→ilustración)
+- Nota: regenerar — fidelidad 100% a m01; solo cambia: más angular + muesca en ceja. Provider: openrouter.
 - Prompt (EN):
 ```
-Same platypus character as the reference image, black paper cutout silhouette, adult male in side profile, same duck bill and flat paddle tail and woodcut etched delicate cut-out inner details, larger and more angular, distinctive notch cut into the brow outline, standing alert among silhouetted Pangea ferns, flat 2D paper cutout not felt not 3D not plush, warm amber and saturated green tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+The first reference image is the master character: reproduce this exact platypus silhouette with 100% fidelity — same bill shape, same etched eye, same fur strokes, same cross-hatched paddle tail, same webbed feet, same woodcut cutout style. The other reference images show real platypus anatomy — use them only to keep the anatomy true (flat duck bill with nostrils, no ears, low quadruped body, webbed feet, beaver tail), never to change the art style. Adult male version of the same character, larger and more angular, with a distinctive notch cut into the brow outline, every feature readable inside the black silhouette through fine gold etched lines like a woodcut print — never a plain solid blob: (1) wide flat duck bill clearly separated from the head by an etched line, smooth black, side profile facing left, (2) two small etched nostril dots on top of the bill near the tip, (3) one almond-shaped eye outlined in thin light etched line high on the head near the bill base, (4) broad flat beaver-like paddle tail with cross-hatched fur texture etched inside the black shape and short fur strokes etched along the back and chest, (5) short legs with webbed duck-like feet showing etched toe lines claws and clear webbing, resting among silhouetted Pangea ferns and fiddleheads, flat 2D paper cutout not felt not 3D not plush not photorealistic, warm amber and saturated green tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
 ```
 
 **a3-m04 — Huevo de ornitorrinco**
@@ -116,11 +120,13 @@ Layered black paper cutout landscape of an arid drying plain, silhouetted cracke
 
 **a3-m10 — Ornitorrinco recostado sobre roca colorada**
 - Archivo destino: `assets/arco-3/madre/a3-m10-ornitorrinco-roca.png`
-- Ref: a3-m11 (mismo encuadre/composición del fósil aprobado; solo cambia el estado a vivo; subject_reference)
-- Nota: regenerar — ornitorrinco VIVO recostado en el encuadre de m11; mezcla detalle grabado de m01 con el mundo rojo de m07.
+- Ref: a3-m11 (encuadre/pose del fósil aprobado — primera imagen)
+- AnatomyRef: `assets/arco-3/madre/a3-m01-madre-ornitorrinco.png` (master character lock — estilo a preservar)
+- AnatomyRef: `assets/fuentes/ornitorrincos/ornitorrinco.png` (anatomía viva)
+- Nota: regenerar — vivo recostado en encuadre de m11; fidelidad de personaje a m01. Provider: openrouter.
 - Prompt (EN):
 ```
-Same framing and composition as the reference fossil image, but the platypus is alive — black paper cutout silhouette of an old platypus lying down to rest on the silhouetted red rock formation, calm curled profile matching the fossil pose exactly, woodcut etched delicate cut-out inner details like the mother platypus character, flat 2D paper cutout not felt not 3D, deep red dusk tinted background of the Coloradas rock world, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+The first reference image is the fossil framing and composition to match exactly. The second reference image is the master platypus character: reproduce that exact silhouette style with 100% fidelity — same bill shape, same etched eye, same fur strokes, same cross-hatched paddle tail, same webbed feet, same woodcut cutout style — never change the art style. The third reference shows real platypus anatomy — use only to keep anatomy true. Same framing as the first reference, but the platypus is alive: black paper cutout silhouette of an old platypus lying down to rest on the silhouetted red rock formation, calm curled profile matching the fossil pose exactly, every feature readable inside the black silhouette through fine gold etched lines like a woodcut print — never a plain solid blob: (1) wide flat duck bill clearly separated from the head by an etched line, (2) two small etched nostril dots on top of the bill near the tip, (3) one almond-shaped eye outlined in thin light etched line high on the head near the bill base, (4) broad flat beaver-like paddle tail with cross-hatched fur texture and short fur strokes etched along the back and chest, (5) webbed duck-like feet with etched toe lines and claws if visible in the curled pose, no external ears, flat 2D paper cutout not felt not 3D, deep red dusk tinted background of the Coloradas rock world, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
 ```
 
 **a3-m11 — Fósil de piedra**
@@ -186,7 +192,13 @@ The same layered paper cutout arid plain now fully parched, dense deep crack lin
 
 ### Material de origen real (NO se genera)
 
-- **rocas-coloradas-real** — foto real de la locación: `assets/fuentes/rocas-coloradas-real.jpg` (16:9 apaisada). Remate del Reel C (clip `a3-c4`); reencuadrar a 9:16 en montaje.
+- **ornitorrincos/** — referencias de anatomía (composite panel derecho para m02/m03/m10):
+  - `ornitorrincos/ornitorrinco.png` — **PRIMARIA** (perfil bajo, fondo blanco; AnatomyRef canónica)
+  - `ornitorrincos/ornitorrinco_parado.png` — secundaria (pose más erguida)
+  - `ornitorrincos/ornitorrincos-dibujo.png` — lámina ilustrada de perfil (alternativa si foto arrastra a fotorrealismo)
+  - `ornitorrincos/cria-ornitorrinco.jpg`, `ornitorrincos/ornitorrinco_crias.jpeg` — madre + puggles (NO target; puggles rosados eliminados del concepto m02)
+- **charles/** — `charles-jones-referencia.jpeg`, `charles-jones-pintura.jpg`
+- **rocas-coloradas-real** — `assets/fuentes/rocas-coloradas-real.jpg` (16:9; reencuadrar a 9:16 en montaje para a3-c4)
 - **m-mano (reutilizada del Arco 1)** — imagen madre "mano con cadenita" de [biblia-visual.md](biblia-visual.md) §Arco 1. NO se genera nueva; se insertan 1–2 frames en montaje de `a3-a5`.
 
 ---

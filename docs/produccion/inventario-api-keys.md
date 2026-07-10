@@ -19,6 +19,7 @@
 | 6 (opcional, storyboards) | `MJ_API_KEY` | vectorengine (agregador MJ) | Midjourney para storyboards/refs de personaje (mejor calidad de imagen fija) | **No confirmado con certeza:** el `.env.example` apunta a `api.vectorengine.ai`, pero lo único verificable en la web es [api.vectorengine.cn](https://api.vectorengine.cn/) (mismo agregador, dominio `.cn`) con base URL `www.vectronode.com/v1`. Alternativa confirmada: la misma `QINGYUNTOP_API_KEY` cubre MJ | No |
 | 7 (opcional, T2V alternativo) | `VIDU_API_KEY` | Vidu | Motor T2V alternativo (clips largos 16s) | [platform.vidu.com](https://platform.vidu.com) → dashboard → API Keys (login con Google) | No |
 | 8 (opcional, consistencia) | `FAL_KEY` | fal.ai | FLUX Kontext para consistencia por imagen de referencia | [fal.ai/dashboard/keys](https://fal.ai/dashboard/keys) | No |
+| 9 (opcional, Nano Banana) | `OPENROUTER_API_KEY` | OpenRouter | Imagen vía `google/gemini-2.5-flash-image` (Nano Banana). Provider `openrouter` en el registry; desde MCP: `generar_imagen({ provider: 'openrouter' })`. Modelo/prioridad: `OPENROUTER_IMAGE_MODEL`, `OPENROUTER_IMAGE_PRIORITY` | [openrouter.ai/settings/keys](https://openrouter.ai/settings/keys) | Revisar `.env.local` |
 
 ### No hacen falta para el pipeline
 

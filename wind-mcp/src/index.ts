@@ -27,14 +27,16 @@ server.tool(
 
 server.tool(
   'generar_imagen',
-  'Genera imagen madre (dispatchImageGenerate) y guarda en assets/arco-N/madre/.',
+  'Genera imagen madre (dispatchImageGenerate) y guarda en assets/arco-N/madre/. provider=openrouter fuerza Nano Banana vía OpenRouter.',
   {
     prompt: z.string().describe('Prompt EN (con STYLE-BLOCK si aplica)'),
     arco: z.number().int().positive(),
     id: z.string().describe('Ej. a3-m01'),
     slug: z.string().describe('Ej. madre-ornitorrinco'),
     aspect: z.enum(['16:9', '9:16', '1:1', '2.35:1', '4:3', '3:4']).optional(),
-    refs: z.array(z.string()).optional().describe('URLs http de referencia'),
+    refs: z.array(z.string()).optional().describe('URLs http o rutas locales de referencia'),
+    provider: z.string().optional().describe("Preferir provider del registry: 'openrouter' | 'minimax-multi' | 'minimax-single' | 'mj' | 'kontext'"),
+    soloProvider: z.boolean().optional().describe('Si true, no hace fallback a otros providers (falla limpio)'),
   },
   async (args) => {
     const result = await generarImagen({
@@ -44,6 +46,8 @@ server.tool(
       slug: args.slug,
       aspect: args.aspect,
       refs: args.refs,
+      provider: args.provider,
+      soloProvider: args.soloProvider,
     });
     return {
       content: [{
