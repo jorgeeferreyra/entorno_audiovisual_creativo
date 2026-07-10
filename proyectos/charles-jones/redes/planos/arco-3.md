@@ -712,16 +712,18 @@ Dentro del presupuesto del [pipeline](../../../../metodo/pipeline.md) §3. Kling
 
 ---
 
-## Cadena de transiciones (sub-clips FLF de 5s, límite duro 2 keyframes)
+## Cadena de transiciones (sub-clips FLF de 5s, límite duro 2 keyframes por eslabón)
 
-| Eslabón | Clip | Tipo | Nota |
-|---|---|---|---|
-| m05→m06 | a3-a5 | FLF | Regenerar (hoy I2V degradado) |
-| m06→m14 | a3-a5x | FLF experimental | Gate morphs cruzados cuento→real; si salta feo → corte duro |
-| m15→m08 | a3-a5y | FLF | Cierra Bloque A / abre Bloque B; cubre hueco de m08 |
-| m14→m07 | a3-c0 | FLF | Abre Bloque C: grieta real se congela en cuento rojo |
-| m07→m10' | a3-c1 | U2V + corte | Push-in; NO FLF (no comparten encuadre) |
-| m13→m09 | a3-c3e | Solo montaje | Eco 1–2s de m09 tras pull-out de m13, antes de c4 |
+> Columna **Keyframes**: cuántas madres pide cada escena (taxonomía 1/2/N del [pipeline](../../../../metodo/pipeline.md) §2 paso 1). Hoy ninguna escena del arco supera 2 keyframes; una eventual cadena N>2 se declararía como eslabones FLF consecutivos que comparten el keyframe intermedio (`a3-mNN`→`a3-mNNa`→…).
+
+| Eslabón | Clip | Tipo | Keyframes | Nota |
+|---|---|---|---|---|
+| m05→m06 | a3-a5 | FLF | 2 (par) | Regenerar (hoy I2V degradado) |
+| m06→m14 | a3-a5x | FLF experimental | 2 (par) | Gate morphs cruzados cuento→real; si salta feo → corte duro |
+| m15→m08 | a3-a5y | FLF | 2 (par) | Cierra Bloque A / abre Bloque B; cubre hueco de m08 |
+| m14→m07 | a3-c0 | FLF | 2 (par) | Abre Bloque C: grieta real se congela en cuento rojo |
+| m07→m10' | a3-c1 | U2V + corte | 1 | Push-in; NO FLF (no comparten encuadre) |
+| m13→m09 | a3-c3e | Solo montaje | — | Eco 1–2s de m09 tras pull-out de m13, antes de c4 |
 
 ---
 

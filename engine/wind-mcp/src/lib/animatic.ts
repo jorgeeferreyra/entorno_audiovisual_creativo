@@ -237,17 +237,41 @@ async function segmentosDeSpec(
   return { segmentos: [{ id: spec.id, imagen, duracion, subtitulo }] };
 }
 
+/**
+ * Colapsa segmentos consecutivos con la misma imagen y el mismo subtítulo,
+ * sumando sus duraciones. En una cadena de keyframes (m_A→m_B→m_C, eslabones
+ * FLF que comparten el keyframe intermedio), el `lastFrame` de un eslabón y el
+ * `firstFrame` del siguiente son la MISMA madre: sin colapsar, m_B aparecería
+ * dos veces seguidas y duplicaría su tiempo en pantalla, distorsionando el
+ * ritmo que el gate debe evaluar. Si el subtítulo difiere, se conservan ambos
+ * (el texto manda).
+ */
+function colapsarKeyframesCompartidos(segmentos: Segmento[]): Segmento[] {
+  const out: Segmento[] = [];
+  for (const seg of segmentos) {
+    const prev = out[out.length - 1];
+    if (prev && prev.imagen === seg.imagen && prev.subtitulo === seg.subtitulo) {
+      prev.duracion += seg.duracion;
+    } else {
+      out.push({ ...seg });
+    }
+  }
+  return out;
+}
+
 /** Renderiza cada segmento y concatena en el MP4 de salida. */
 async function renderYConcat(segmentos: Segmento[], salida: string): Promise<string> {
   const outPath = resolveWritePath(salida);
   await ensureDirFor(outPath);
 
+  const colapsados = colapsarKeyframesCompartidos(segmentos);
+
   const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), 'wind-animatic-'));
   try {
     const fontFile = await resolveFont();
     const segPaths: string[] = [];
-    for (let i = 0; i < segmentos.length; i++) {
-      segPaths.push(await renderSegmento(segmentos[i], i, tmpDir, fontFile));
+    for (let i = 0; i < colapsados.length; i++) {
+      segPaths.push(await renderSegmento(colapsados[i], i, tmpDir, fontFile));
     }
 
     const listFile = path.join(tmpDir, 'concat.txt');
