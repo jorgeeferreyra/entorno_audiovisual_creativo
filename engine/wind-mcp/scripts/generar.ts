@@ -81,6 +81,17 @@ async function main() {
     await fs.mkdir(path.dirname(dest), { recursive: true });
     await fs.copyFile(src, dest);
     console.log(`Canónico ← ${path.relative(PROJECT_ROOT, src)} → ${spec.dest}`);
+
+    // Borrar candidatos no promovidos (+ sidecars).
+    const candDir = path.join(PROJECT_ROOT, 'assets', `arco-${arco}`, 'madre', '_candidates');
+    const re = new RegExp(`^${id}-c(\\d+)\\.png(\\.json)?$`);
+    for (const name of await fs.readdir(candDir)) {
+      const m = name.match(re);
+      if (!m) continue;
+      if (Number(m[1]) === pick) continue;
+      await fs.unlink(path.join(candDir, name));
+      console.log(`Borrado candidato: ${name}`);
+    }
     return;
   }
 

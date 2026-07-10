@@ -389,7 +389,7 @@ anatomyRefs:
 provider: openrouter
 ```
 
-Nota: establishing lejano — **ecosistema vivo siendo partido ahora mismo** (helechos, pastos, juncos, árboles; raíces colgando; laguna desagotándose; nada de páramo) y **punto de vista elevado y apartado** (repoussoir de loma, grieta chica en el valle ~1/4 del ancho, bruma/polvo). Cuatro siluetas ~3% de la altura, al borde mismo de la grieta a contraluz del canal rojo — legibles como contorno mínimo (el montaje 8.2a/b ya pagó la identidad). Refs: la propia `m24` como base composicional; `m22`/`m23` solo identidad de contorno a escala pequeña. El mensaje es la distancia irreversible. Pick canónico: pendiente (nueva tanda).
+Nota: establishing lejano — **ecosistema vivo siendo partido ahora mismo** (helechos, pastos, juncos, árboles; raíces colgando; laguna desagotándose; nada de páramo) y **punto de vista elevado y apartado** (repoussoir de loma, grieta chica en el valle ~1/4 del ancho, bruma/polvo). Cuatro siluetas ~3% de la altura, al borde mismo de la grieta a contraluz del canal rojo — legibles como contorno mínimo (el montaje 8.2a/b ya pagó la identidad). Refs: la propia `m24` como base composicional; `m22`/`m23` solo identidad de contorno a escala pequeña. El mensaje es la distancia irreversible. Pick canónico: `a3-m24-c2` (tanda regeneración: ecosistema vivo + lejanía).
 
 Prompt (EN):
 ```
