@@ -244,9 +244,11 @@ dest: assets/arco-3/madre/a3-m14-grieta-revenant.png
 styleBlock: false # Photographic documentary: embebe el REALITY-BLOCK-CHAOS
 ```
 
+Nota: Pick canónico: `a3-m14-c1` → `a3-m14-grieta-revenant.png`. Hermano de `a2-m07` (mismo quiebre Revenant) pero **sin figura** — el caos habla solo. Encuadre elevado y lejano desde una colina/pendiente: el valle verde partido queda abajo, chico en el cuadro pero colosal en escala (panorama, bruma, escombros como puntitos). La grieta es una herida fresca sobre ecosistema vivo (helechos, pastos, juncos, árboles, laguna drenando en cascada), no un páramo. Pick anterior (suelo pelado a nivel de piso) superado.
+
 Prompt (EN):
 ```
-Real earth tearing apart into a massive widening rift seen from ground level, cracked ground collapsing, rocks falling into the chasm, no people, no animals, handheld unstable camera, violent motion, heavy motion blur, dust and debris in the air, natural overcast light, cold muted earth tones, photorealistic, gritty documentary realism inspired by The Revenant, no illustration, no silhouette, no paper texture, vertical 9:16
+Seen from a high distant vantage point on a grassy hillside, far from the destruction: a lush thriving ecosystem — ferns, tall grasses, reeds and leafy trees — being torn open right now, a fresh colossal rift splitting the green land far below in the vast valley, plants and roots hanging over its newly broken edges, a lagoon draining into the chasm as a chaotic waterfall, the rift small in the frame yet immense in scale, haze and dust rising from the depths, debris like specks in the air, deep panorama with a far horizon giving sense of overwhelming scale, the world still verdant and alive, NOT a barren wasteland, no bare cracked desert, no dead ground, no people, no animals, handheld unstable camera, violent motion, heavy motion blur, dust and debris in the air, natural overcast light, cold muted earth tones, photorealistic, gritty documentary realism inspired by The Revenant, no illustration, no silhouette, no paper texture, vertical 9:16
 ```
 
 **a3-m15 — Zoom-out aéreo poético (continentes separados)**
@@ -380,18 +382,18 @@ The first reference image is the master character — the father platypus: repro
 ```yaml
 kind: image
 dest: assets/arco-3/madre/a3-m24-lejano-familia-grieta.png
-ref: a3-m21
+ref: a3-m24
 anatomyRefs:
   - assets/arco-3/madre/a3-m22-madre-cria-orilla.png
   - assets/arco-3/madre/a3-m23-padre-huevo-orilla.png
 provider: openrouter
 ```
 
-Nota: establishing lejano — la grieta/canal al centro (mundo de `m21`), **cuatro siluetas mínimas pero legibles** en ambas orillas. Refs: `m22` (madre+cría) y `m23` (padre+huevo) solo para identidad de contorno a escala pequeña — no copiar el encuadre cercano. El mensaje es la distancia irreversible. Pick canónico: `a3-m24-c1` (tanda 2).
+Nota: establishing lejano — **ecosistema vivo siendo partido ahora mismo** (helechos, pastos, juncos, árboles; raíces colgando; laguna desagotándose; nada de páramo) y **punto de vista elevado y apartado** (repoussoir de loma, grieta chica en el valle ~1/4 del ancho, bruma/polvo). Cuatro siluetas ~3% de la altura, al borde mismo de la grieta a contraluz del canal rojo — legibles como contorno mínimo (el montaje 8.2a/b ya pagó la identidad). Refs: la propia `m24` como base composicional; `m22`/`m23` solo identidad de contorno a escala pequeña. El mensaje es la distancia irreversible. Pick canónico: pendiente (nueva tanda).
 
 Prompt (EN):
 ```
-The first reference image is the world: the same open rift with a red glowing sea channel between two cutout shores — reproduce that exact flat 2D paper cutout landscape style and the deep canyon composition, stacked silhouette layers on a tinted paper background. The second reference shows a mother platypus beside a young platypus — use it ONLY to place two tiny matching silhouettes on the NEAR shore (left), never copy that close framing. The third reference shows a bulkier father platypus beside an egg nest — use it ONLY to place two tiny matching silhouettes on the FAR shore (right), never copy that close framing. CRITICAL: exactly FOUR tiny black platypus-family silhouettes must appear — left shore: larger adult + smaller young; right shore: bulkier adult + small egg nest — all four readable as small contour shapes against the red channel, wide distant establishing shot, figures occupy less than 10% of frame height, the irreversible divide is the subject, empty sky above, dramatic deep red tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+The first reference image is the base composition: the same open rift with a red glowing sea channel between two cutout shores and the four tiny platypus silhouettes — keep that exact flat 2D paper cutout landscape style and the stacked silhouette layers on tinted paper. Transform the framing and the world in three depth planes — FOREGROUND: a dark elevated ridge with silhouetted ferns and tall grasses occupying the bottom fifth of the frame, the high distant vantage point we stand on, far above and far from the destruction; MIDGROUND: far below in the vast valley, a fresh colossal rift splits a lush thriving ecosystem — ferns, tall grasses, reeds and leafy trees as delicate cutout layers — being torn open right now, plants and roots hanging over the newly broken edges, a lagoon draining into the chasm as a chaotic silhouetted waterfall, haze and dust rising, debris like specks in the air, the rift small in the frame (about a quarter of the frame width) yet immense in scale, the world still verdant and alive, NOT a barren wasteland, no bare cracked desert, no dead ground; BACKGROUND: deep panorama, far horizon giving sense of overwhelming scale through distance, empty sky above. The second reference shows a mother platypus beside a young platypus — use it ONLY for silhouette identity at tiny scale, never copy that close framing. The third reference shows a bulkier father platypus beside an egg nest — use it ONLY for silhouette identity at tiny scale, never copy that close framing. CRITICAL: exactly FOUR tiny black platypus-family silhouettes standing at the very rim of the rift, backlit against the red glow so their contours stay readable — near shore: larger rounded adult + smaller young; far shore: bulkier adult + small egg nest — each figure about 3% of frame height, minimal but legible contour shapes, no other characters, the irreversible divide is the subject, dramatic deep red tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
 ```
 
 ### Variaciones (unicidad por escena — madres variations)
@@ -464,11 +466,11 @@ provider: openrouter
 styleBlock: false # Photographic documentary: hereda el REALITY-BLOCK-CHAOS de m14
 ```
 
-Nota: firstFrame del clip FLF `a3-c0` (→ m07). Encuadre de la grieta compatible con el morph al cuento rojo de m07.
+Nota: firstFrame del clip FLF `a3-c0` (→ m07). Mismo encuadre lejano/elevado de m14 (valle verde partido visto desde la colina); el delta es de estado — polvo asentándose, colapso detenido — compatible con el morph al cuento rojo de m07.
 
 Prompt (EN):
 ```
-The reference image is the world: the same real earth rift seen from ground level — reproduce that exact photorealistic gritty documentary look and framing. The same massive chasm in a held, settling moment: falling debris coming to rest, dust hanging and thinning in the air, the collapse stilled just before it freezes over, no people, no animals, natural overcast light, cold muted earth tones, photorealistic, gritty documentary realism inspired by The Revenant, no illustration, no silhouette, no paper texture, vertical 9:16
+The reference image is the world: the same real earth rift seen from a high distant hillside vantage — reproduce that exact photorealistic gritty documentary look and framing, lush green valley far below with the colossal rift small in the frame. The same massive chasm in a held, settling moment: falling debris coming to rest, dust hanging and thinning in the air over the still-verdant land, the lagoon's cascade slowing, the collapse stilled just before it freezes over, no people, no animals, natural overcast light, cold muted earth tones, photorealistic, gritty documentary realism inspired by The Revenant, no illustration, no silhouette, no paper texture, vertical 9:16
 ```
 
 **a3-m15v1 — Aéreo hacia el humedal (variación para a3-a5y)**
@@ -609,9 +611,9 @@ cameraPreset handheld: la cámara en mano ES parte del REALITY-BLOCK-CHAOS; el t
 
 Motion prompt (EN):
 ```
-Real earth ripping apart violently, rocks and soil collapsing into the widening chasm, dust bursting into the air, heavy motion blur, no people, no animals, photorealistic gritty documentary realism.
+Far below in the green valley the lush land tears open violently, plants and roots ripping over the widening rift edges, a lagoon cascading into the chasm, dust and debris rising as distant specks, heavy motion blur, no people, no animals, photorealistic gritty documentary realism.
 ```
-- Vision-Audit (EN): sceneDescription: `real cracked earth splitting into a massive rift, dust and falling rocks` · action: `the ground tears apart violently, debris collapses into the chasm` · mood: `chaotic, violent, overwhelming`
+- Vision-Audit (EN): sceneDescription: `lush green valley torn by a colossal rift far below, lagoon cascading, dust rising` · action: `the verdant land tears apart violently, debris collapses into the chasm` · mood: `chaotic, violent, overwhelming`
 - Audio: SIN off (el caos habla solo); rumble fuerte, crujidos de tierra
 - Montaje: viene de a3-a5 con corte duro (silueta → real); corta a a3-a5c
 
@@ -648,9 +650,9 @@ cameraPreset locked-tripod: ambas grietas comparten composición; el morph pone 
 
 Motion prompt (EN):
 ```
-The torn paper-cutout Pangea rift morphs into a real earth chasm, silhouette layers dissolving into photoreal cracked ground and falling rocks, tinted aged paper giving way to cold muted earth tones, dust rising, no people, no animals, the same rift composition held steady.
+The torn paper-cutout Pangea rift morphs into a real green valley torn open, silhouette layers dissolving into photoreal lush land with plants hanging over the rift edges and a lagoon cascading into the chasm, tinted aged paper giving way to cold muted earth tones, dust rising, no people, no animals, the same elevated hillside vantage and rift composition held steady.
 ```
-- Vision-Audit (EN): sceneDescription: `cutout Pangea rift becoming a real earth chasm, same composition` · action: `silhouette world morphs into photoreal Revenant rift` · mood: `violent, uncanny, transitional`
+- Vision-Audit (EN): sceneDescription: `cutout Pangea rift becoming a photoreal green valley rift from a high hillside, same composition` · action: `silhouette world morphs into photoreal Revenant rift over living land` · mood: `violent, uncanny, transitional`
 - Audio: rumble continuo (puente a5→a5b)
 - Montaje: **gate de la estrategia de morphs cruzados** — si el morph salta feo, descartar y mantener el corte duro a5→a5b actual. Si aprueba, insertar entre a5 y a5b (o sustituir el corte duro).
 
@@ -844,9 +846,9 @@ FLF no acepta 6s.
 
 Motion prompt (EN):
 ```
-The real earth rift freezes and resolves into layered black paper cutout Martian rock formations, photoreal dust settling into tinted aged paper, deep red and orange dusk tint locking in, flat 2D silhouette animation, the chasm becoming the Coloradas badlands.
+The real green-valley rift seen from the distant hillside freezes and resolves into layered black paper cutout Martian rock formations, photoreal dust settling into tinted aged paper, deep red and orange dusk tint locking in, flat 2D silhouette animation, the living chasm becoming the Coloradas badlands.
 ```
-- Vision-Audit (EN): sceneDescription: `real rift morphing into cutout Coloradas rock landscape` · action: `photoreal chasm freezes into silhouette red world` · mood: `solemn, locking into fate`
+- Vision-Audit (EN): sceneDescription: `distant photoreal green-valley rift morphing into cutout Coloradas rock landscape` · action: `photoreal verdant chasm freezes into silhouette red world` · mood: `solemn, locking into fate`
 - Audio: rumble que se apaga + off documental breve
 - Montaje: abre el Bloque C — la grieta real se congela en el cuento rojo; corta a a3-c1
 
