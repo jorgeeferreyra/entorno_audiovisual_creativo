@@ -243,7 +243,7 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 | a2-m01 | Charles de espaldas | pendiente | Beat 9.1; **se maneja en otro chat — no tocar**. Vive en [planos/arco-2.md](planos/arco-2.md) |
 | a2-m03 | Manos levantan la cría (cuento) | aprobado | Beat 9.3; pick c2 (gesto de alzar); still `a2-a0b` |
 | a2-m06 | Manos + cría (Revenant) | pendiente (**reserva destacada**) | `styleBlock: false`; ref `ornitorrinco_crias.jpeg`; NO entra al reel |
-| a2-m04 | El lugar blanco | pendiente | Beat 13.2; `ref a2-m01` + `charles/` (OpenRouter), fondo blanco sin tinte (cuento sin tinte), palomas ausentes; still `a2-a2`. Vive en [planos/arco-2.md](planos/arco-2.md) |
+| a2-m04 | El lugar blanco | aprobado | Beat 13.2 Revenant; pick `revenant-c2` → canónico, `revenant-c3` → `a2-m04-lugar-blanco-c3.png`; still `a2-a2`. Vive en [planos/arco-2.md](planos/arco-2.md) |
 | a2-m05 | El despertar | pendiente | Beat 13.3; `ref a2-m01` + mundo `a3-m07` (OpenRouter), tinte rojo dusk; still `a2-a2b`. Vive en [planos/arco-2.md](planos/arco-2.md) |
 | a3-m01v1 | Madre al borde de la grieta (variación) | pendiente | Stage 4; `ref a3-m01` (OpenRouter), tinte rojo; firstFrame de a3-a6 |
 | a3-m01v2 | Madre en llanura seca (variación) | pendiente | Stage 4; `ref a3-m01` (OpenRouter), tinte gris; firstFrame de a3-b3 |
@@ -284,7 +284,7 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 | a3-a6e | A | ninguna | generado | Beat 8.2c; still m24 (~2s), solo montaje |
 | a2-a0 | A2 | ninguna | pendiente | Beat 9.1; still a2-m01 (~1.5s), solo montaje — otro chat |
 | a2-a0b | A2 | ninguna | generado | Beat 9.3; still a2-m03 (~1.5s), solo montaje |
-| a2-a2 | A2 | ninguna | pendiente | Beat 13.2; still a2-m04 (~1.5s), solo montaje; entre a3-c2 y a3-c3 |
+| a2-a2 | A2 | ninguna | listo (still) | Beat 13.2; still a2-m04 canónico (~1.5s); entre a3-c2 y a3-c3; c3 aprobada como A/B |
 | a2-a2b | A2 | ninguna | pendiente | Beat 13.3; still a2-m05 (~1.5s), solo montaje |
 
 ## Continuidad y QC (vision-audit por clip)

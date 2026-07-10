@@ -1,0 +1,12 @@
+{
+  "id": "a2-m04",
+  "kind": "image",
+  "prompt": "The reference image shows an elderly bearded explorer — use it ONLY for the identity and wardrobe of a man seen from behind (wide-brimmed fedora, long worn expedition coat, satchel), NEVER show his face. Photorealistic documentary full figure: the elderly explorer seated on a small low wooden stool, seen strictly from behind, one weathered hand tossing a scatter of corn kernels that fall through the air to the empty ground, absolutely no pigeons, no birds, no animals anywhere in the frame — only the falling seeds and bare empty ground, face never visible. Surrounded by an emptied dreamlike pure white void — featureless white space with no scenery and no walls, soft overexposed white light, sparse soft shadow under the stool, coarse film grain, handheld documentary framing, gritty realism inspired by The Revenant, no illustration, no silhouette, no paper texture, vertical 9:16",
+  "provider": "openrouter",
+  "refs": [
+    "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/assets/fuentes/charles/charles-jones-referencia.jpeg"
+  ],
+  "aspect": "9:16",
+  "mock": false,
+  "generatedAt": "2026-07-10T07:38:13.851Z"
+}

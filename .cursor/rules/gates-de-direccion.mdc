@@ -1,27 +1,35 @@
 ---
-description: Los gates de dirección (pick de candidatos, aprobaciones) son exclusivos del usuario; el agente nunca promueve
+description: Los gates de dirección (pick de candidatos, aprobaciones) requieren confirmación explícita del usuario; sin ella el agente no promueve
 alwaysApply: true
 ---
 
-# Gates de dirección: solo el usuario aprueba
+# Gates de dirección: el usuario confirma, el agente puede ejecutar
 
-Promover o elegir candidatos es una decisión de dirección **exclusiva del usuario**. El agente **nunca** la ejecuta, ni siquiera si el usuario eligió un candidato en una conversación: la promoción la corre él.
+Promover o elegir candidatos es una decisión de dirección del **usuario**. El agente **no** la inicia solo: presenta, recomienda y espera.
 
-## Prohibido para el agente
+## Cuándo el agente SÍ puede promover
 
-- Correr `npm run gen -- --pick N` (o cualquier equivalente de promoción).
-- Copiar un candidato de `_candidates/` a un slot canónico o aprobado (`assets/**/madre/*.png`).
-- Borrar candidatos, canónicos o aprobados existentes.
-- Marcar picks como resueltos en `planos/*` o `PROGRESS.md` sin que el usuario haya promovido.
+Solo si el usuario **confirma explícitamente** en la conversación (p. ej. "te lo confirmo", "promové el c2", "dale, pick 2"). Con esa confirmación, el agente puede:
 
-## Qué sí hace el agente
+- Correr `npm run gen -- --pick N` (o el equivalente de copia a canónico/aprobado).
+- Copiar el/los candidato(s) confirmados de `_candidates/` al slot canónico o aprobado.
+- Marcar el pick como resuelto en `planos/*` / `PROGRESS.md`.
+
+## Prohibido sin confirmación explícita
+
+- Correr `--pick` o copiar a canónico/aprobado solo porque el agente recomendó un candidato.
+- Inferir un pick de un "me gusta" ambiguo o de tener un archivo abierto.
+- Borrar candidatos, canónicos o aprobados que el usuario no pidió borrar.
+- Marcar picks como resueltos sin haber promovido (o sin confirmación de que el usuario ya promovió).
+
+## Qué hace el agente antes de la confirmación
 
 - Generar candidatos (`--candidates N`) cuando se lo piden.
-- Presentar los candidatos al usuario y **recomendar** uno, con argumentos.
-- Dejar listo el comando de promoción para que el usuario lo corra, p. ej.:
+- Presentar los candidatos y **recomendar** uno, con argumentos.
+- Dejar listo el comando de promoción por si el usuario prefiere correrlo él:
 
 ```bash
 npm run gen -- --arco 2 --id a2-m07 --pick 2
 ```
 
-Lo mismo aplica a los demás gates del pipeline (animatic, pares/cadenas FLF): el agente prepara y recomienda; la aprobación es del usuario.
+Lo mismo aplica a los demás gates del pipeline (animatic, pares/cadenas FLF): el agente prepara y recomienda; ejecuta la promoción **solo** con confirmación explícita.

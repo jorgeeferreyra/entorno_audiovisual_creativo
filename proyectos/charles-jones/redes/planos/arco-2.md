@@ -46,13 +46,18 @@ The reference images show an elderly bearded explorer — use them ONLY for iden
 ```yaml
 kind: image
 dest: assets/arco-2/madre/a2-m02-tronco-balancin.png
+ref: a2-m03
+anatomyRefs:
+  - assets/arco-3/madre/a3-m04-huevo.png
+  - assets/fuentes/charles/charles-jones-referencia.jpeg
+provider: openrouter
 ```
 
-Nota: **keyframe inicial** del par FLF de la palanca (`a2-m02` → `a2-m02a`, clip `a2-a1`). Huevo en un extremo; la bota de Charles entra por el borde sobre el otro extremo, **aún sin apoyar**. El disparador es una pisada, no una mano. El par se aprueba junto en el gate de madres keyframes (pipeline §2 paso 4) antes de generar `a2-m02a` ni el clip.
+Nota: **keyframe inicial** del par FLF de la palanca (`a2-m02` → `a2-m02a`, clip `a2-a1`). **Plano inteligente:** sinécdoque del descuido — solo la **pierna de Charles de la rodilla para abajo** entrando por el borde (mid-stride sobre el extremo del tronco); **nido vacío**; el **huevo girando/rodando** en pleno viaje sobre el tronco; la **grieta viniendo a lo lejos** (rompimiento que avanza hacia la escena, no abismo ya abierto bajo el tronco). Nano Banana: `ref: a2-m03` (mundo rojo + estilo); `a3-m04` = master huevo/nido; foto Charles = identidad de bota/pantalón (nunca la cara, nunca figura entera). El par se aprueba junto en el gate de madres keyframes antes de generar `a2-m02a` ni el clip.
 
 Prompt (EN):
 ```
-Black paper cutout silhouette of a fallen log balanced like a seesaw across a widening rift between two landmasses, a single platypus egg resting on one end of the log, at the opposite end a silhouetted explorer's boot entering from the frame edge hovering just above the log ready to step down but not yet touching, silhouetted water in the gap below, delicate cut-out details in the bark and the nest twigs, dramatic deep red tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+The first reference is the approved prior beat — inherit ONLY its world and style: dramatic deep red tinted paper, torn-paper rift mood, silhouetted ferns, woodcut cutout look; do NOT copy the cupped hands or the young platypus. The second reference is the platypus egg master — reproduce that exact egg silhouette with 100% fidelity (use the nest shape only as the empty nest left behind). The third reference shows an elderly explorer — use it ONLY for the identity of a worn expedition boot and trouser leg below the knee, NEVER show a face, NEVER show a full body. Intelligent close composition, NOT a literal diagram: a fallen log balanced like a seesaw across two landmasses; on the near end an EMPTY nest of twigs (no egg inside); a single platypus egg mid-roll spinning along the log toward the far end — frozen in motion, already out of the nest; from the frame edge, ONLY the explorer's leg from the knee down (boot + lower trouser) mid-stride lightly pressing the opposite end of the log as an accidental walking step — human scale, synecdoche of carelessness, NEVER a full figure, NEVER anything above the knee, NEVER a giant centered boot, NEVER a hovering foot, NEVER a deliberate stomp. In the far background a fresh narrow red rift is approaching toward the scene — the break coming closer, NOT yet a wide open chasm under the log. Nobody else in frame. Dramatic deep red tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
 ```
 
 **a2-m02a — El huevo cruza (keyframe final, beat 9.4) — diferido a keyframes**
@@ -64,11 +69,11 @@ ref: a2-m02
 provider: openrouter
 ```
 
-Nota: **keyframe final** del par FLF con `a2-m02` — mismo encuadre exacto, solo cambia el estado. La pisada ya apoyó: el tronco inclinado, el huevo cruzó al otro lado de la grieta. `ref: a2-m02` hereda composición/estilo. **Solo ficha por ahora** — se genera en el gate de madres keyframes, no en esta pasada.
+Nota: **keyframe final** del par FLF con `a2-m02` — mismo encuadre exacto, solo cambia el estado. La pierna ya salió de cuadro (o apenas al borde); tronco basculado; huevo llegado **al otro lado**; la grieta ya llegó/abierta entre ambas orillas. `ref: a2-m02` hereda composición/estilo. **Solo ficha por ahora** — se genera en el gate de madres keyframes, no en esta pasada.
 
 Prompt (EN):
 ```
-The first reference image is the master frame — reproduce this exact composition with 100% fidelity: same fallen log across the same rift, same camera angle, same silhouette style, same deep red tinted background. Only the state changes: the silhouetted explorer's boot has stepped down onto one end of the log, the log is tipped like a seesaw, the platypus egg has rolled to the far end and crossed onto the other landmass, silhouetted water in the gap below, delicate cut-out details in the bark, dramatic deep red tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+The first reference image is the master frame — reproduce this exact composition with 100% fidelity: same camera angle, same fallen log, same empty nest on the near end, same deep red tinted background, same silhouette style, same knee-down-only framing language. Only the state changes: the explorer's leg from the knee down has stepped off and left the frame (or is just exiting at the edge); the log is tipped like a seesaw; the platypus egg has finished rolling and rests on the far landmass; the approaching rift has arrived — a glowing red gap now open between the two shores under the tipped log. No full body, no face, no giant boot. Dramatic deep red tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
 ```
 
 **a2-m03 — Las manos de Charles levantan a la cría (beat 9.2–9.3)**
@@ -76,18 +81,19 @@ The first reference image is the master frame — reproduce this exact compositi
 ```yaml
 kind: image
 dest: assets/arco-2/madre/a2-m03-manos-levantan-cria.png
+ref: assets/arco-2/madre/_pre-gate/a2-m03-gesto-c1.png
 anatomyRefs:
-  - assets/fuentes/charles/charles-jones-referencia.jpeg
-  - assets/fuentes/ornitorrincos/ornitorrinco_crias.jpeg
+  - assets/arco-3/madre/a3-m19-separacion-ancha.png
   - assets/arco-3/madre/a3-m02-ornitorrinco-joven.png
+  - assets/fuentes/charles/charles-jones-referencia.jpeg
 provider: openrouter
 ```
 
-Nota: multi-ref (Nano Banana). El gesto mínimo del beat 9.3: las manos en silueta de Charles **alzan** a la cría (no entrega entre dos personas). **Solo el gesto** — sin tronco, sin grieta, sin huevo; la continuidad con la palanca la da el montaje (`a2-a0b` → `a2-a1`). Refs: Charles solo para identidad de manos/mangas (nunca la cara); `ornitorrinco_crias.jpeg` **solo para la pose**; la cría se dibuja como la silueta del joven (tercera ref, master), NO un puggle rosado. Silueta de espaldas por diseño. La versión realista vive en `a2-m06` (reserva destacada).
+Nota: multi-ref (Nano Banana). Beat 9.3: gesto de ternura — Charles se agacha y alza a una **cría perdida** en el rompimiento que ya viene del beat 8. **Ref 1** (`_pre-gate/a2-m03-gesto-c1`): composición aprobada de manos + cría (fidelidad alta). **Ref 2** (`a3-m19`): mundo — grieta **temprana** (paredes casi tocándose), helechos, tinte rojo. **Ref 3** (`a3-m02`): master de la cría. **Ref 4** (foto Charles): solo identidad de manos/mangas, nunca la cara. El fondo es el hábitat que se raja (rompimiento emergiendo); **no** el tronco-balancín ni el huevo (eso es `a2-m02`/`a2-m02a`). Continuidad con la palanca por montaje (`a2-a0b` → `a2-a1`). La versión realista vive en `a2-m06` (reserva destacada).
 
 Prompt (EN):
 ```
-The first reference shows an elderly explorer — use it ONLY for the identity of the hands and coat sleeves (aged rugged hands, worn expedition coat cuffs), NEVER show a face. The second reference shows a human hand gently cupping a small platypus baby — use it ONLY for the pose and gesture of hands lifting a small creature, NEVER for its style or its pink fleshy look. The third reference is the master character — the young platypus: reproduce this exact silhouette style with 100% fidelity — same bill shape, same etched eye, same fur strokes, same cross-hatched paddle tail, same webbed feet, same woodcut cutout style. Black paper cutout silhouette scene: the two hands of ONE single man, both reaching in together from the same lower corner of the frame in worn coat cuffs, palms cupped side by side, gently lifting a small young platypus that rests in direct physical contact inside the cupped palms — NEVER two people, NEVER a hand-off, NEVER hands entering from opposite sides of the frame, the creature must touch the palms, not float. The explorer's shoulder and arm only implied at that same frame corner from behind, no face visible. No fallen log, no rift, no egg — only the hands and the young platypus against the tinted background. The young platypus readable as a small slender silhouette through fine gold etched lines like a woodcut print — never a plain solid blob, never pink, never photographic, tender minimal almost accidental gesture, dramatic deep red tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+The first reference is the APPROVED gesture composition — keep it with near-100% fidelity: the same two cupped hands of ONE man entering from the same lower corner in worn coat cuffs, the same small young platypus resting in direct physical contact inside the palms, same woodcut etched line style, NEVER two people, NEVER a hand-off, NEVER floating. The second reference is the WORLD — the early emerging rift: jagged cliff walls almost touching with a narrow glowing red gap, silhouetted ferns at the base, layered paper-cutout landscape; use it ONLY for the background environment under and behind the hands — a lush habitat just beginning to split, NOT a barren wasteland, NOT the full distant panorama as the subject. The third reference is the young platypus master — reproduce that exact slender silhouette with 100% fidelity (bill, etched eye, fur strokes, paddle tail, webbed feet). The fourth reference shows an elderly explorer — use it ONLY for aged rugged hands and worn expedition coat cuffs, NEVER show a face. Black paper cutout silhouette scene: the approved hands-and-cria gesture in the foreground, set on a silhouetted ground of ferns and torn earth where a fresh narrow red rift is only just opening behind/below them — emerging break, not the seesaw action. NO fallen log seesaw, NO egg, NO nest tipping, NO full explorer body or face. The young platypus readable through fine gold etched lines like a woodcut print — never a plain solid blob, never pink, never photographic, tender minimal almost accidental gesture, dramatic deep red tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
 ```
 
 **a2-m06 — Manos levantan la cría (registro Revenant) — RESERVA destacada**
@@ -224,9 +230,9 @@ cameraPreset locked-tripod: el mundo de recortes es plano; el movimiento lo pone
 
 Motion prompt (EN):
 ```
-A silhouetted boot steps down onto one end of the balanced log, the log tips like a seesaw, the platypus egg rolls slowly to the far end and crosses to the other landmass, hinged paper puppet movement, flat 2D silhouette animation, dramatic deep red tinted background.
+A knee-down boot mid-stride presses the far end of the log then exits the frame, the log tips like a seesaw, the platypus egg finishes rolling across to the far landmass while the distant red rift advances and opens under the log, hinged paper puppet movement, flat 2D silhouette animation, dramatic deep red tinted background.
 ```
-- Vision-Audit (EN): sceneDescription: `a log balanced like a seesaw over a rift on a deep red tinted background, a platypus egg on one end, a boot hovering over the other` · action: `a silhouetted boot steps down, the log tips, the egg rolls across to the far side` · mood: `tender, accidental, hopeful`
+- Vision-Audit (EN): sceneDescription: `fallen log with empty nest, egg mid-roll, knee-down boot on the far end, distant approaching red rift` · action: `the walking step tips the log, the egg finishes crossing, the rift arrives and opens, the leg exits frame` · mood: `tender, accidental, hopeful`
 - Audio: off documental (la palanca) + música tenue
 - Montaje: cierra el zoom del beat 9 (`a2-a0` → `a2-a0b` → `a2-a1`) durante "vidas paralelas", entre `a3-b3` y `a3-b4`: el gesto mínimo que mandó la vida al lado que prosperó. La consecuencia (beat 9.6) no tiene plano propio — la resuelve el corte a `a3-b4` (Argentina seca) + off. Off en [arco-2-off.md](arco-2-off.md).
 
