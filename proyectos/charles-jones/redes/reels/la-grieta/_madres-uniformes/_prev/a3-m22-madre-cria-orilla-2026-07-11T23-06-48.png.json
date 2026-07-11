@@ -1,0 +1,22 @@
+{
+  "id": "a3-m22",
+  "kind": "uniformada",
+  "capa": 1,
+  "registro": "cuento",
+  "lock": "a3-m01",
+  "tinte": "dramatic deep red tinted background",
+  "preserva": "mother+young contours, channel at frame edge",
+  "grade": "full",
+  "outDims": {
+    "width": 1408,
+    "height": 736
+  },
+  "aspectoPendiente": true,
+  "lookHash": "d06c707c03f97424",
+  "refs": [
+    "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/assets/arco-3/madre/a3-m01-madre-ornitorrinco.png",
+    "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/assets/arco-3/madre/a3-m22-madre-cria-orilla.png"
+  ],
+  "provider": "ffmpeg-grade",
+  "generatedAt": "2026-07-11T21:47:36.316Z"
+}

@@ -7,6 +7,7 @@
   "tinte": "natural daylight, clinical documentary (no paper tint)",
   "preserva": "forensic stillness of the dig site",
   "grade": "full",
+  "intensidad": 1,
   "crop": {
     "x": 6,
     "y": 0,
@@ -19,11 +20,11 @@
     "height": 1344
   },
   "aspectoPendiente": false,
-  "lookHash": "d06c707c03f97424",
+  "lookHash": "57b01222a601b619",
   "refs": [
     "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/assets/arco-3/madre/a3-m14-grieta-revenant.png",
     "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/assets/arco-3/madre/a3-m13-fosil-yacimiento.png"
   ],
   "provider": "ffmpeg-grade",
-  "generatedAt": "2026-07-11T21:47:45.243Z"
+  "generatedAt": "2026-07-11T23:06:58.201Z"
 }

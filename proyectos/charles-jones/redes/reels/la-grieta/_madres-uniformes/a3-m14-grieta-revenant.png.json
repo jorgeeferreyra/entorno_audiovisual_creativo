@@ -6,7 +6,7 @@
   "registro": "real",
   "lock": "a3-m14",
   "tinte": "cold muted earth tones (REALITY-BLOCK-CHAOS)",
-  "preserva": "universe lock — copy as-is",
+  "preserva": "universe lock — copy as-is; crop 9:16 centro aprobado (sin outpaint)",
   "grade": "full",
   "crop": {
     "x": 224,
@@ -20,10 +20,10 @@
     "height": 1024
   },
   "aspectoPendiente": false,
-  "lookHash": "d06c707c03f97424",
+  "lookHash": "57b01222a601b619",
   "refs": [
     "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/assets/arco-3/madre/a3-m14-grieta-revenant.png"
   ],
   "provider": "ffmpeg-crop",
-  "generatedAt": "2026-07-11T21:47:27.079Z"
+  "generatedAt": "2026-07-11T23:06:40.439Z"
 }

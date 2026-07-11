@@ -7,6 +7,7 @@
   "tinte": "cold desaturated grey tinted background",
   "preserva": "EXACT framing (FLF pair with m17; also eco c3e)",
   "grade": "full",
+  "intensidad": 1,
   "crop": {
     "x": 6,
     "y": 0,
@@ -19,11 +20,11 @@
     "height": 1344
   },
   "aspectoPendiente": false,
-  "lookHash": "d06c707c03f97424",
+  "lookHash": "57b01222a601b619",
   "refs": [
     "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/assets/arco-3/madre/a3-m01-madre-ornitorrinco.png",
     "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/assets/arco-3/madre/a3-m09-argentina-declive.png"
   ],
   "provider": "ffmpeg-grade",
-  "generatedAt": "2026-07-11T21:47:32.728Z"
+  "generatedAt": "2026-07-11T23:06:44.817Z"
 }

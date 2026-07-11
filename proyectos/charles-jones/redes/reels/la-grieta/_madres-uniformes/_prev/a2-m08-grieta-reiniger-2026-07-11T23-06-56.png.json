@@ -1,0 +1,29 @@
+{
+  "id": "a2-m08",
+  "kind": "uniformada",
+  "capa": 1,
+  "registro": "cuento",
+  "lock": "a3-m01",
+  "tinte": "dramatic deep red tinted background",
+  "preserva": "SAME framing as a2-m07 (transversal switch pair)",
+  "grade": "full",
+  "crop": {
+    "x": 224,
+    "y": 0,
+    "w": 576,
+    "h": 1024,
+    "clase": "recorte"
+  },
+  "outDims": {
+    "width": 576,
+    "height": 1024
+  },
+  "aspectoPendiente": false,
+  "lookHash": "d06c707c03f97424",
+  "refs": [
+    "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/assets/arco-3/madre/a3-m01-madre-ornitorrinco.png",
+    "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/assets/arco-2/madre/a2-m08-grieta-reiniger.png"
+  ],
+  "provider": "ffmpeg-grade",
+  "generatedAt": "2026-07-11T21:47:44.048Z"
+}

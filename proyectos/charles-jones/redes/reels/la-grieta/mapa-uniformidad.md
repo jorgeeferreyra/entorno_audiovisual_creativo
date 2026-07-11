@@ -9,7 +9,7 @@ locks:
 madres:
   # --- Locks (copiados tal cual; no se re-pasan) ---
   - { id: a3-m01, lock: cuento, esLock: true, tinte: "warm amber and saturated green tinted background", preserva: "universe lock — copy as-is" }
-  - { id: a3-m14, lock: real, esLock: true, tinte: "cold muted earth tones (REALITY-BLOCK-CHAOS)", preserva: "universe lock — copy as-is" }
+  - { id: a3-m14, lock: real, esLock: true, tinte: "cold muted earth tones (REALITY-BLOCK-CHAOS)", preserva: "universe lock — copy as-is; crop 9:16 centro aprobado (sin outpaint)" }
 
   # --- Cuento → lock a3-m01 ---
   - { id: a3-m03, lock: cuento, tinte: "saturated lush green tinted background", preserva: "bulkier body, brow notch, all four legs, lake shore", aspecto: outpaint }
@@ -77,8 +77,11 @@ madres:
 | Tema | Decisión |
 |---|---|
 | Lock cuento | `a3-m01` (lock de consistencia del arco) |
-| Lock real | `a3-m14` (grieta Revenant canónica; hermana de `a2-m07`) — **outpaint PROHIBIDO** (es la referencia del universo real); crop-vs-nativo pendiente de lámina corregida |
-| `a3-m01` | Queda como lock de cuento y base de variaciones; ya no tiene slot propio (`a3-a3` cae del reel v3) |
+| Lock real | `a3-m14` — **crop 9:16 centro APROBADO** (576×1024); outpaint PROHIBIDO |
+| `a3-m01` | Lock cuento; crop 2:3→9:16 centro **APROBADO** |
+| `a2-m01` | Crop 1:1→9:16 centro **APROBADO** |
+| Par `a2-m07`/`a2-m08` | Pendiente: comparar centro vs derecha (OTS) en `_audit/aspecto/par-a2-m07-m08-variantes.png` |
+| Par `a3-m05`/`a3-m06` | Crop centro; morph check en `_audit/aspecto/par-a3-m05-m06-morph.png` |
 | `a3-m02` | Sale de la cutlist v3 con `a3-b2`; queda como referencia de estilo/anatomía, no se uniforma ahora |
 | Tinte `a3-m03` | Alineado al beat del reel (Bloque B próspero): `saturated lush green` — no al ámbar/verde de la ficha original (Pangea feliz) |
 | `a2-m07` | Fuente `-c3` (re-pick pendiente; canónico borrado) |

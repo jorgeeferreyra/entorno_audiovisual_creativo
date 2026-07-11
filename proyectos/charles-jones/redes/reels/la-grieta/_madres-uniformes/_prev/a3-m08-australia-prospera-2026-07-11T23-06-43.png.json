@@ -1,0 +1,30 @@
+{
+  "id": "a3-m08",
+  "kind": "uniformada",
+  "capa": 1,
+  "registro": "cuento",
+  "lock": "a3-m01",
+  "tinte": "saturated lush green tinted background, warm prosperous glow",
+  "preserva": "framing untouchable (lastFrame FLF a5y)",
+  "grade": "full",
+  "intensidad": 1,
+  "crop": {
+    "x": 6,
+    "y": 0,
+    "w": 756,
+    "h": 1344,
+    "clase": "trivial"
+  },
+  "outDims": {
+    "width": 756,
+    "height": 1344
+  },
+  "aspectoPendiente": false,
+  "lookHash": "57b01222a601b619",
+  "refs": [
+    "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/assets/arco-3/madre/a3-m01-madre-ornitorrinco.png",
+    "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/assets/arco-3/madre/a3-m08-australia-prospera.png"
+  ],
+  "provider": "ffmpeg-grade",
+  "generatedAt": "2026-07-11T22:46:32.768Z"
+}

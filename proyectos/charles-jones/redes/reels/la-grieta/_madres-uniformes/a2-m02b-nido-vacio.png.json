@@ -7,6 +7,7 @@
   "tinte": "dramatic deep red tinted background",
   "preserva": "empty nest on log only",
   "grade": "full",
+  "intensidad": 1,
   "crop": {
     "x": 6,
     "y": 0,
@@ -19,11 +20,11 @@
     "height": 1344
   },
   "aspectoPendiente": false,
-  "lookHash": "d06c707c03f97424",
+  "lookHash": "57b01222a601b619",
   "refs": [
     "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/assets/arco-3/madre/a3-m01-madre-ornitorrinco.png",
     "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/assets/arco-2/madre/a2-m02b-nido-vacio.png"
   ],
   "provider": "ffmpeg-grade",
-  "generatedAt": "2026-07-11T21:47:41.226Z"
+  "generatedAt": "2026-07-11T23:06:53.783Z"
 }

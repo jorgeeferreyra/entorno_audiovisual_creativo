@@ -1,7 +1,7 @@
 # Redes (Arco 3) — Build Progress
 
 _Last updated: 2026-07-11_
-_Current stage: Stage 4 — Uniformidad capa 1 (determinística) corrida; pendiente aprobación de `_madres-uniformes/`_
+_Current stage: Stage 4 — Look capa 1 aprobado; corrida completa; animatic uniformes para evaluar en secuencia_
 _Based on roadmap: [TECH.md](TECH.md) § 5_
 
 > Session log agency-os + seguimiento detallado de producción (estados, costos, gates). Absorbe el antiguo `arco-3-roadmap.md`. No duplica prompts ni fichas: la fuente de verdad de los prompts es [arco-3-planos.md](planos/arco-3.md); el STYLE-BLOCK y los switches cuento↔real viven en [biblia-visual.md](../biblia-visual.md); la convención de IDs/archivos en [pipeline.md](../../../metodo/pipeline.md) §5.
@@ -29,6 +29,14 @@ Espejo del roadmap de [TECH.md](TECH.md) § 5. Un stage se marca `[x]` solo cuan
 ## 2. Session Log
 
 Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
+
+### 2026-07-11 — Look aprobado + corrida completa + animatic uniformes
+
+- **Stage in flight:** Stage 4 capa 1 — look base **APROBADO**; corrida completa; animatic `--uniformes` para evaluar en secuencia.
+- **Aspecto:** `a2-m01`, `a3-m01`, `a3-m14` crop centro APROBADOS. Par `m05/m06`: morph check en `par-a3-m05-m06-morph.png` (centro alineado). Par `m07/m08`: variantes centro vs derecha (OTS) en `par-a2-m07-m08-variantes.png` — **pendiente pick de dirección**.
+- **Done this session:** `npm run uniformar -- --force` (2 locks + 25 madres, look `57b01222`); animatic `reels/la-grieta/animatic-la-grieta.mp4` (~73.6s, 16 excesos de off — gate de texto aparte).
+- **Next step:** (1) pick crop `a2-m08` centro vs derecha; (2) evaluar uniformidad EN SECUENCIA en el animatic — si des-uniforme, paper 0.05→0.10; (3) `--promover` bloqueado.
+- **New blockers / questions raised:** `a2-a0c` omitido en animatic (resuelve `a2-m07` canónico, no el `-c3`); re-pick `a2-m07` sigue pendiente.
 
 ### 2026-07-11 — Iteración look capa 1 (correcciones + piloto)
 
