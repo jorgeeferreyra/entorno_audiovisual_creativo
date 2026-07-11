@@ -2,9 +2,10 @@
  * Animatic de madres: milestone barato previo a generar video/audio.
  *
  * Arma un MP4 9:16 donde cada clip del reel aparece como su imagen madre fija,
- * durante el tiempo que tendrá el clip (default 5s), con el subtítulo (off ES)
- * de ese fragmento quemado. Sirve para aprobar ritmo, orden y texto ANTES de
- * gastar en video/audio (el mayor costo del presupuesto).
+ * con el subtítulo (off ES) quemado. Con `--off`, la duración de cada escena la
+ * determina su locución (`max(presupuesto, durOff + respiro)`): el `duration` de
+ * la ficha / `dur` de la cutlist es presupuesto/piso. Sirve para aprobar ritmo,
+ * orden, texto y convergencia texto/duración ANTES de gastar en video/audio.
  *
  * Es deliberadamente crudo: imagen fija + texto, sin Ken Burns ni transiciones.
  * Reutiliza el patrón ffmpeg de montaje.ts (spawn + concat demuxer).
@@ -29,6 +30,8 @@ const H = 1920;
 const DEFAULT_DURATION = 5;
 const FONT_SIZE = 48;
 const WRAP_CHARS = 30;
+/** Respiro tras la locución antes del corte (segundos). */
+const RESPIRO = 0.4;
 
 /** Fuentes candidatas por SO; se usa la primera existente (drawtext las exige). */
 const FONT_CANDIDATES = [
@@ -70,11 +73,21 @@ export interface Degradado {
   base: string;
 }
 
-/** Locución cuyo audio supera la duración del slot (señal para afinar durs). */
+/**
+ * Locución cuyo audio supera el presupuesto del slot.
+ * Señal del gate: refinar texto en `arco-N-off.md` (o subir `duration` al valor
+ * permitido por el motor). El animatic ya estira la escena para quedar escuchable.
+ */
 export interface OffAviso {
   id: string;
+  /** Duración real del audio TTS. */
   durOff: number;
+  /** Presupuesto original (ficha / cutlist), antes de estirar. */
   durSlot: number;
+  /** Duración final del slot tras estirar por audio. */
+  durFinal: number;
+  /** Segundos que el audio excede el presupuesto (`durOff - durSlot`, ≥ 0). */
+  exceso: number;
 }
 
 export interface MontarAnimaticResult {
@@ -84,8 +97,12 @@ export interface MontarAnimaticResult {
   degradados: Degradado[];
   /** Locuciones sintetizadas o cacheadas (0 si `--off` no está activo). */
   offLocuciones: number;
-  /** Offs que no entran en su slot. */
+  /** Offs que exceden su presupuesto (criterio de salida del gate: 0). */
   offAvisos: OffAviso[];
+  /** Duración total del animatic (suma de segmentos, post-ajuste por audio). */
+  durTotal: number;
+  /** Suma de presupuestos originales (pre-ajuste). */
+  durPresupuesto: number;
 }
 
 export interface MontarAnimaticReelOpts {
@@ -327,9 +344,11 @@ function colapsarKeyframesCompartidos(segmentos: Segmento[]): Segmento[] {
 interface OffEvento {
   id: string;
   texto: string;
-  /** Offset de inicio en segundos desde el arranque del animatic. */
-  start: number;
-  /** Duración acumulada del slot (suma de segmentos consecutivos con el mismo off). */
+  /** Índice del primer segmento del run en el array. */
+  startIdx: number;
+  /** Cantidad de segmentos del run (FLF = 2 mitades). */
+  count: number;
+  /** Duración acumulada del slot (suma de segmentos del run). */
   durSlot: number;
 }
 
@@ -339,62 +358,125 @@ interface OffEvento {
  */
 function eventosOff(segmentos: Segmento[]): OffEvento[] {
   const events: OffEvento[] = [];
-  let t = 0;
   let i = 0;
   while (i < segmentos.length) {
     const seg = segmentos[i];
     if (!seg.subtitulo) {
-      t += seg.duracion;
       i++;
       continue;
     }
     const texto = seg.subtitulo;
     const id = seg.id.replace(/-[ab]$/, '');
-    const start = t;
+    const startIdx = i;
     let durSlot = 0;
+    let count = 0;
     while (i < segmentos.length && segmentos[i].subtitulo === texto) {
       durSlot += segmentos[i].duracion;
-      t += segmentos[i].duracion;
+      count++;
       i++;
     }
-    events.push({ id, texto, start, durSlot });
+    events.push({ id, texto, startIdx, count, durSlot });
   }
   return events;
 }
 
+/** Redondeo a 2 decimales para reportes. */
+function round2(n: number): number {
+  return Math.round(n * 100) / 100;
+}
+
+interface OffPreparacion {
+  /** Rutas de audio ya sintetizadas, en orden de eventos. */
+  audioPaths: string[];
+  /** Offset de inicio (ms) de cada audio, recalculado tras estirar. */
+  delaysMs: number[];
+  locuciones: number;
+  avisos: OffAviso[];
+}
+
 /**
- * Sintetiza cada off, arma una pista única (silencio + adelay + amix) y la muxea
- * sobre el video. Devuelve avisos cuando la locución no entra en su slot.
+ * Sintetiza cada off, mide su duración y estira los segmentos del run cuando
+ * `durOff + RESPIRO > presupuesto`. Nunca acorta: el presupuesto es piso.
+ * Mutates `segmentos` in place. Devuelve paths + delays listos para muxear.
  */
-async function muxearOff(
-  videoPath: string,
+async function prepararYAjustarOff(
   segmentos: Segmento[],
   cacheDir: string,
   voz: string,
-): Promise<{ locuciones: number; avisos: OffAviso[] }> {
+): Promise<OffPreparacion> {
   const events = eventosOff(segmentos);
-  if (!events.length) return { locuciones: 0, avisos: [] };
+  if (!events.length) return { audioPaths: [], delaysMs: [], locuciones: 0, avisos: [] };
 
   await fs.mkdir(cacheDir, { recursive: true });
 
   const avisos: OffAviso[] = [];
   const audioPaths: string[] = [];
-  const delaysMs: number[] = [];
 
   for (const ev of events) {
     const dest = rutaCacheOff(cacheDir, ev.id, ev.texto, voz);
     await sintetizarOff(ev.texto, dest, voz);
     const durOff = await duracionAudio(dest);
-    if (durOff > ev.durSlot + 0.05) {
+    audioPaths.push(dest);
+
+    const target = durOff + RESPIRO;
+    let durFinal = ev.durSlot;
+    if (target > ev.durSlot + 0.05) {
+      const scale = target / ev.durSlot;
+      for (let j = 0; j < ev.count; j++) {
+        segmentos[ev.startIdx + j].duracion = round2(segmentos[ev.startIdx + j].duracion * scale);
+      }
+      // Corregir drift de redondeo: el último segmento absorbe el resto.
+      const sumScaled = Array.from({ length: ev.count }, (_, j) => segmentos[ev.startIdx + j].duracion)
+        .reduce((a, b) => a + b, 0);
+      const drift = round2(target - sumScaled);
+      if (drift !== 0) {
+        segmentos[ev.startIdx + ev.count - 1].duracion = round2(
+          segmentos[ev.startIdx + ev.count - 1].duracion + drift,
+        );
+      }
+      durFinal = target;
       avisos.push({
         id: ev.id,
-        durOff: Math.round(durOff * 100) / 100,
-        durSlot: Math.round(ev.durSlot * 100) / 100,
+        durOff: round2(durOff),
+        durSlot: round2(ev.durSlot),
+        durFinal: round2(durFinal),
+        exceso: round2(durOff - ev.durSlot),
       });
     }
-    audioPaths.push(dest);
-    delaysMs.push(Math.round(ev.start * 1000));
   }
+
+  // Offsets con las duraciones ya ajustadas.
+  const delaysMs: number[] = [];
+  let t = 0;
+  let evIdx = 0;
+  let i = 0;
+  while (i < segmentos.length && evIdx < events.length) {
+    const ev = events[evIdx];
+    if (i === ev.startIdx) {
+      delaysMs.push(Math.round(t * 1000));
+      for (let j = 0; j < ev.count; j++) t += segmentos[i + j].duracion;
+      i += ev.count;
+      evIdx++;
+      continue;
+    }
+    t += segmentos[i].duracion;
+    i++;
+  }
+
+  return { audioPaths, delaysMs, locuciones: events.length, avisos };
+}
+
+/**
+ * Arma una pista única (silencio + adelay + amix) y la muxea sobre el video.
+ * Los paths/delays ya vienen de `prepararYAjustarOff` (duraciones ya estiradas).
+ */
+async function muxearOffTrack(
+  videoPath: string,
+  segmentos: Segmento[],
+  audioPaths: string[],
+  delaysMs: number[],
+): Promise<void> {
+  if (!audioPaths.length) return;
 
   const totalDur = segmentos.reduce((s, seg) => s + seg.duracion, 0);
   const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), 'wind-off-'));
@@ -443,8 +525,6 @@ async function muxearOff(
     await fs.rm(tmpDir, { recursive: true, force: true });
     await fs.rm(muxedPath, { force: true }).catch(() => undefined);
   }
-
-  return { locuciones: events.length, avisos };
 }
 
 /** Renderiza cada segmento y concatena en el MP4 de salida. */
@@ -452,11 +532,27 @@ async function renderYConcat(
   segmentos: Segmento[],
   salida: string,
   offOpts?: { cacheDir: string; voz: string },
-): Promise<{ localPath: string; offLocuciones: number; offAvisos: OffAviso[] }> {
+): Promise<{
+  localPath: string;
+  offLocuciones: number;
+  offAvisos: OffAviso[];
+  durTotal: number;
+  durPresupuesto: number;
+}> {
   const outPath = resolveWritePath(salida);
   await ensureDirFor(outPath);
 
   const colapsados = colapsarKeyframesCompartidos(segmentos);
+  const durPresupuesto = round2(colapsados.reduce((s, seg) => s + seg.duracion, 0));
+
+  // Con --off: sintetizar y estirar ANTES de renderizar, para que la duración
+  // de cada escena la determine su audio (presupuesto = piso).
+  let prep: OffPreparacion | undefined;
+  if (offOpts) {
+    prep = await prepararYAjustarOff(colapsados, offOpts.cacheDir, offOpts.voz);
+  }
+
+  const durTotal = round2(colapsados.reduce((s, seg) => s + seg.duracion, 0));
 
   const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), 'wind-animatic-'));
   try {
@@ -475,9 +571,17 @@ async function renderYConcat(
     await fs.rm(tmpDir, { recursive: true, force: true });
   }
 
-  if (!offOpts) return { localPath: outPath, offLocuciones: 0, offAvisos: [] };
-  const { locuciones, avisos } = await muxearOff(outPath, colapsados, offOpts.cacheDir, offOpts.voz);
-  return { localPath: outPath, offLocuciones: locuciones, offAvisos: avisos };
+  if (prep?.audioPaths.length) {
+    await muxearOffTrack(outPath, colapsados, prep.audioPaths, prep.delaysMs);
+  }
+
+  return {
+    localPath: outPath,
+    offLocuciones: prep?.locuciones ?? 0,
+    offAvisos: prep?.avisos ?? [],
+    durTotal,
+    durPresupuesto,
+  };
 }
 
 /**
@@ -521,6 +625,8 @@ export async function montarAnimatic(input: MontarAnimaticInput): Promise<Montar
     degradados,
     offLocuciones: rendered.offLocuciones,
     offAvisos: rendered.offAvisos,
+    durTotal: rendered.durTotal,
+    durPresupuesto: rendered.durPresupuesto,
   };
 }
 
@@ -629,5 +735,7 @@ export async function montarAnimaticReel(
     degradados,
     offLocuciones: rendered.offLocuciones,
     offAvisos: rendered.offAvisos,
+    durTotal: rendered.durTotal,
+    durPresupuesto: rendered.durPresupuesto,
   };
 }

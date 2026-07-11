@@ -1,10 +1,11 @@
 /**
  * CLI del animatic: milestone barato previo a video/audio.
  *
- * Arma un MP4 9:16 donde cada clip es su imagen madre fija durante su duración
- * (default 5s) con el subtítulo (off ES) quemado; los FLF muestran first→last.
- * NO llama a wind-comic ni a APIs de imagen/video: es puro ffmpeg local sobre
- * las madres en disco. Con `--off` sintetiza la voz en off vía Edge TTS (gratis).
+ * Arma un MP4 9:16 donde cada clip es su imagen madre fija con el subtítulo
+ * (off ES) quemado; los FLF muestran first→last. Con `--off`, la duración de
+ * cada escena la determina su locución (presupuesto = piso) y el CLI reporta
+ * excesos para refinar texto. NO llama a wind-comic ni a APIs de imagen/video:
+ * es puro ffmpeg local + Edge TTS gratis.
  *
  * Dos modos:
  *   --arco N   animatic del hilo (todas las fichas de planos/arco-N.md, en orden).
@@ -15,7 +16,8 @@
  *   --borrador  las variaciones aún no generadas degradan a su madre base, para
  *               aprobar ritmo/orden ANTES de pagar las variaciones. No valida
  *               unicidad (las repeticiones son esperadas en esta pasada).
- *   --off       sintetiza la voz en off (Edge TTS, es-AR) y la muxea al MP4.
+ *   --off       sintetiza la voz en off (Edge TTS, es-AR) y la muxea al MP4;
+ *               estira escenas por audio y reporta excesos vs presupuesto.
  *   --voz NAME  voz Edge TTS (default: es-AR-TomasNeural).
  *
  * Uso:
@@ -46,6 +48,7 @@ function hasFlag(args: string[], name: string): boolean {
 function reportar(titulo: string, r: MontarAnimaticResult, borrador: boolean): void {
   console.log(`\n=== ${titulo}: ${r.segmentCount} segmento(s) ===`);
   console.log('  →', path.relative(WORK_DIR, r.localPath));
+  console.log(`  duración: ${r.durTotal}s (presupuesto ${r.durPresupuesto}s)`);
   if (borrador) {
     console.log('\n⚠ Modo borrador: pasada previa a las variaciones — NO valida unicidad.');
     console.log('  Aprueba solo ritmo, orden y subtítulos. Las imágenes repetidas son esperadas.');
@@ -62,10 +65,18 @@ function reportar(titulo: string, r: MontarAnimaticResult, borrador: boolean): v
     console.log(`\n${r.offLocuciones} locución(es) de off (Edge TTS).`);
   }
   if (r.offAvisos.length) {
-    console.log(`\n⚠ ${r.offAvisos.length} off(s) que no entran en su slot (afinar durs):`);
+    console.log(`\n⚠ ${r.offAvisos.length} off(s) exceden su presupuesto (refinar texto):`);
     for (const a of r.offAvisos) {
-      console.log(`  · ${a.id}: off ${a.durOff}s > slot ${a.durSlot}s`);
+      const arco = a.id.match(/^a(\d+)-/)?.[1];
+      const offDoc = arco ? `arco-${arco}-off.md` : 'arco-N-off.md';
+      console.log(
+        `  · ${a.id}: audio ${a.durOff}s > presupuesto ${a.durSlot}s (+${a.exceso}s)` +
+          ` → escena ${a.durFinal}s; refinar texto en ${offDoc}, o subir duration`,
+      );
     }
+    console.log('  Criterio de salida del gate: 0 excesos.');
+  } else if (r.offLocuciones > 0) {
+    console.log('  ✓ 0 excesos — texto entra en el presupuesto de cada escena.');
   }
   console.log('');
 }

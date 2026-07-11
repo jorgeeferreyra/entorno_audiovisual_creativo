@@ -1,7 +1,7 @@
 # Redes (Arco 3) — Build Progress
 
 _Last updated: 2026-07-10_
-_Current stage: Stage 6 — Alineamiento Arco 2 cerrado; pendiente re-correr animatic borrador y revisión de ritmo/orden_
+_Current stage: Stage 6 — Gate texto→audio→duración en el animatic; pendiente re-correr borrador con `--off` y refinar textos con exceso_
 _Based on roadmap: [TECH.md](TECH.md) § 5_
 
 > Session log agency-os + seguimiento detallado de producción (estados, costos, gates). Absorbe el antiguo `arco-3-roadmap.md`. No duplica prompts ni fichas: la fuente de verdad de los prompts es [arco-3-planos.md](planos/arco-3.md); el STYLE-BLOCK y los switches cuento↔real viven en [biblia-visual.md](../biblia-visual.md); la convención de IDs/archivos en [pipeline.md](../../../metodo/pipeline.md) §5.
@@ -20,7 +20,7 @@ Espejo del roadmap de [TECH.md](TECH.md) § 5. Un stage se marca `[x]` solo cuan
 - [ ] **Stage 3 — Imágenes madre en cascada** — 17 madres aprobadas (todas generadas/aprobadas; ver checklist)
 - [ ] **Stage 4 — Madres variations (unicidad por escena)** — 5 variaciones generadas/aprobadas; cero reutilización de firstFrame no exenta
 - [ ] **Stage 5 — Madres keyframes** — cada par/cadena FLF de la §Cadena de transiciones aprobado junto (sobre las variaciones); solo escenas de 2/N keyframes
-- [ ] **Stage 6 — Animatic (gate previo a video)** — dos pasadas: **borrador** (`--borrador`, bases en vez de variaciones, aprueba ritmo/orden ANTES de pagarlas) → **final** (variaciones reales + unicidad, gate que habilita clips)
+- [ ] **Stage 6 — Animatic (gate previo a video)** — dos pasadas: **borrador** (`--borrador [--off]`, bases + convergencia texto/duración) → **final** (variaciones + unicidad + 0 excesos de off, gate que habilita clips)
 - [ ] **Stage 7 — Clips** — bloques A/B/C generados y aprobados (Bloque A casi completo; B/C pendientes)
 - [ ] **Stage 8 — Montaje del reel transversal** — la-grieta montado desde los bloques
 - [ ] **Stage 9 — Destacadas del arco** — S1–S5 por recorte
@@ -28,6 +28,16 @@ Espejo del roadmap de [TECH.md](TECH.md) § 5. Un stage se marca `[x]` solo cuan
 ## 2. Session Log
 
 Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
+
+### 2026-07-10 — Gate texto → audio → duración en el animatic
+
+- **Stage in flight:** Stage 6 — tooling + método del animatic.
+- **Done this session:**
+  - Cadena causal formalizada: **texto → audio → duración de escena**. Con `--off`, el animatic mide cada locución y usa `max(presupuesto, durOff + respiro)` — el MP4 queda escuchable (sin solapamientos); el presupuesto (ficha/cutlist) es piso.
+  - CLI reencuadrado: los avisos apuntan a **refinar texto** en `arco-N-off.md` (no a "afinar durs"). Criterio de salida del gate: **0 excesos**.
+  - Método actualizado en [pipeline.md](../../../metodo/pipeline.md) §2 paso 5, [TECH.md](TECH.md) Stage 6 y criterios de este doc.
+- **Next step:** re-correr `npm run animatic -- --reel la-grieta --borrador --off` y refinar los offs que excedan presupuesto.
+- **New blockers / questions raised:** ninguno.
 
 ### 2026-07-10 — Alineamiento y balanceo Arco 2 (madres en disco como fuente de verdad)
 
@@ -251,13 +261,13 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 
 ### Próxima acción
 
-**Alineamiento Arco 2 cerrado** (docs): cadena `a2-m02*` re-letrada a los IDs de disco, switch `a2-m07`→`a2-m08` (real→cuento) con slots propios, coda `a2-m05`→`a2-m09` en secuencia; cutlist del README expandida y balanceada (~55.5s). El bloqueo de la sesión anterior ("cutlist del README aún tiene beat 9 viejo") queda resuelto.
+**Gate texto→audio→duración** listo en el tooling: el animatic con `--off` estira escenas por audio y reporta excesos para refinar texto.
 
-1. **Re-correr el animatic borrador** — `npm run animatic -- --reel la-grieta --borrador --off` — con la cutlist ya alineada (beat 9 completo, switch de la grieta, coda de 2 pasos).
-2. Afinar durs / offs según avisos de overflow.
+1. **Re-correr el animatic borrador** — `npm run animatic -- --reel la-grieta --borrador --off` — con la cutlist alineada.
+2. **Refinar textos** de los offs que excedan presupuesto (en `planos/arco-N-off.md`); re-correr hasta **0 excesos**. Solo subir `duration` si el motor lo permite (FLF: 5|10).
 3. **Huecos del intercut:** `a1-a1` espera `a1-m01a`; `a2-a1b` espera el par `a2-m02d`/`a2-m02c` — ambos diferidos al gate de madres keyframes (Stage 5).
 4. **Re-pick pendiente:** `a2-m07` (canónico borrado, solo queda `-c3` en disco) antes de que `a2-a0c` tenga still definitivo.
-5. Tras aprobar ritmo → variaciones sobrevivientes → animatic final.
+5. Tras aprobar ritmo + 0 excesos → variaciones sobrevivientes → animatic final.
 
 ---
 
@@ -267,6 +277,7 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 |---|---|
 | Madres | Silueta 100% negra recorte plano (NO fieltro/3D/plush), fondo tintado del beat correcto (guion de color de [arco-3-planos.md](planos/arco-3.md)), STYLE-BLOCK respetado (salvo m12–m15 que rompen a propósito), 9:16. Personajes distinguibles por contorno. Dirección de Ref: hereda de la madre ya aprobada/querida (hoy m10←m11). |
 | Madres keyframes (Stage 5) | Solo escenas de 2 o N keyframes. **Par emparejado** (par first/last de un FLF: m05v1/m06, m06/m14, m15v1/m08, m14v1/m07, m09/m17, m10'/m11): mismo encuadre y composición base, solo cambia el estado — el par se aprueba **junto** ([biblia-visual.md](../biblia-visual.md) §3, [pipeline.md](../../../metodo/pipeline.md) §2 paso 4). **Cadena** (N>2): eslabones aprobados juntos, `lastFrame` de un eslabón = `firstFrame` del siguiente (keyframe compartido). Sobre las variaciones del Stage 4, no sobre las madres base. |
+| Animatic (Stage 6) | Ritmo, orden, subtítulos. Con `--off`: **0 excesos** (cada locución entra en el presupuesto de su escena). Cadena causal: texto → audio → duración; el arreglo de un exceso es refinar el off en `arco-N-off.md`, no estirar la escena en producción. Final: + unicidad (ninguna imagen repetida no exenta). |
 | Clips | Arranca 1:1 de su imagen madre, movimiento tipo títere de papel plano (no 3D), tinte estable durante el clip, duración correcta. FLF: morph real primer→último (provider `Kling-FLF`, no fallback I2V). |
 | Reels | Continuidad de tinte entre clips, switches cuento↔real solo en la cadena de transiciones aprobada (ver abajo), audio off sincero sin chistes. |
 | Stories | 15s, legibles sin audio, sin generación extra. |
