@@ -70,8 +70,13 @@ export interface MadreMapa {
    * Default: centro.
    */
   crop?: number;
-  /** outpaint = diferir extensión 9:16 a capa generativa; grade sin crop. */
-  aspecto?: 'outpaint';
+  /**
+   * outpaint = diferir extensión 9:16 a capa generativa (grade sin crop; aspectoPendiente).
+   * nativo = conservar dims originales (sin crop ni marca de outpaint) — p.ej. lock a3-m14.
+   */
+  aspecto?: 'outpaint' | 'nativo';
+  /** 0..1 — escala el look hacia neutro (default 1 sobre el look ya suave). */
+  intensidad?: number;
 }
 
 export interface MapaUniformidad {
@@ -493,6 +498,8 @@ async function emitirPropuestas(ctx: {
       });
       continue;
     }
+    // nativo: igual se emite propuesta para que dirección vea qué se pierde al croppear
+    // (útil para decidir nativo vs crop, p.ej. a3-m14).
 
     let srcInfo: Awaited<ReturnType<typeof resolveMadreSrc>>;
     try {
@@ -599,17 +606,25 @@ async function uniformarCapa1(ctx: {
       await archiveIfExists(`${destAbs}.json`);
     }
 
-    const skipCrop = entrada.aspecto === 'outpaint';
+    const skipCrop = entrada.aspecto === 'outpaint' || entrada.aspecto === 'nativo';
+    const aspectoPendiente = entrada.aspecto === 'outpaint';
     const perfil: GradePerfil = entrada.grade ?? 'full';
+    const intensidad = entrada.intensidad ?? 1;
 
     // Locks: solo crop (sin grade); el look se deriva del canónico intacto.
     if (entrada.esLock) {
-      console.log(`  lock aspecto: ${entrada.id}${skipCrop ? ' (outpaint pendiente)' : ''}…`);
+      const note = entrada.aspecto === 'nativo'
+        ? ' (nativo)'
+        : aspectoPendiente
+          ? ' (outpaint pendiente)'
+          : '';
+      console.log(`  lock aspecto: ${entrada.id}${note}…`);
       const r = await applyCropOnly({
         srcAbs: srcInfo.abs,
         destAbs,
         cropOffset: entrada.crop,
         skipCrop,
+        aspectoPendiente,
       });
       await escribirSidecar(destAbs, {
         id: entrada.id,
@@ -621,6 +636,7 @@ async function uniformarCapa1(ctx: {
         tinte: entrada.tinte,
         preserva: entrada.preserva,
         grade: perfil,
+        aspecto: entrada.aspecto,
         crop: r.crop,
         outDims: r.outDims,
         aspectoPendiente: r.aspectoPendiente,
@@ -634,7 +650,8 @@ async function uniformarCapa1(ctx: {
 
     console.log(
       `  grade: ${entrada.id} (${entrada.lock}/${perfil}` +
-        `${skipCrop ? ', sin crop' : ''})…`,
+        `${skipCrop ? (aspectoPendiente ? ', sin crop/outpaint' : ', nativo') : ''}` +
+        `${intensidad !== 1 ? `, int=${intensidad}` : ''})…`,
     );
     const r = await applyGrade({
       srcAbs: srcInfo.abs,
@@ -644,7 +661,9 @@ async function uniformarCapa1(ctx: {
       look,
       lookDir: lookDirAbs,
       skipCrop,
+      aspectoPendiente,
       cropOffset: entrada.crop,
+      intensidad,
     });
 
     await escribirSidecar(destAbs, {
@@ -656,6 +675,8 @@ async function uniformarCapa1(ctx: {
       tinte: entrada.tinte,
       preserva: entrada.preserva,
       grade: perfil,
+      aspecto: entrada.aspecto,
+      intensidad,
       crop: r.crop,
       outDims: r.outDims,
       aspectoPendiente: r.aspectoPendiente,
@@ -664,7 +685,7 @@ async function uniformarCapa1(ctx: {
       provider: 'ffmpeg-grade',
     });
 
-    // Audit antes/después.
+    // Audit tríptico: ANTES | DESPUÉS | LOCK.
     const sheetAbs = path.join(auditRoot, `${entrada.id}-antes-despues.png`);
     try {
       await emitAuditSheet({
@@ -672,6 +693,8 @@ async function uniformarCapa1(ctx: {
         afterAbs: destAbs,
         destAbs: sheetAbs,
         label: entrada.id,
+        lockAbs: lockPaths[entrada.lock],
+        lockLabel: `LOCK ${mapa.locks[entrada.lock]}`,
       });
     } catch (e) {
       console.warn(`  audit sheet falló (${entrada.id}):`, e instanceof Error ? e.message : e);

@@ -7,6 +7,7 @@
   "tinte": "pure white void — NO paper tint",
   "preserva": "white void and absent pigeons; unify grain/light only — NEVER correct the white toward the lock palette",
   "grade": "grano",
+  "intensidad": 1,
   "crop": {
     "x": 6,
     "y": 0,
@@ -19,11 +20,11 @@
     "height": 1344
   },
   "aspectoPendiente": false,
-  "lookHash": "d06c707c03f97424",
+  "lookHash": "57b01222a601b619",
   "refs": [
     "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/assets/arco-3/madre/a3-m14-grieta-revenant.png",
     "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/assets/arco-2/madre/a2-m04-lugar-blanco.png"
   ],
   "provider": "ffmpeg-grade",
-  "generatedAt": "2026-07-11T21:47:46.538Z"
+  "generatedAt": "2026-07-11T22:46:31.229Z"
 }

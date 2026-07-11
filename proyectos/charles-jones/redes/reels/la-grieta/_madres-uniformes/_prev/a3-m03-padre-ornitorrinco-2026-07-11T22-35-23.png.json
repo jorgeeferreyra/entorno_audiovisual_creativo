@@ -1,0 +1,24 @@
+{
+  "id": "a3-m03",
+  "kind": "uniformada",
+  "capa": 1,
+  "registro": "cuento",
+  "lock": "a3-m01",
+  "tinte": "saturated lush green tinted background",
+  "preserva": "bulkier body, brow notch, all four legs, lake shore",
+  "grade": "full",
+  "aspecto": "outpaint",
+  "intensidad": 1,
+  "outDims": {
+    "width": 1408,
+    "height": 736
+  },
+  "aspectoPendiente": true,
+  "lookHash": "8fdfc8b2e4a198b5",
+  "refs": [
+    "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/assets/arco-3/madre/a3-m01-madre-ornitorrinco.png",
+    "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/assets/arco-3/madre/a3-m03-padre-ornitorrinco.png"
+  ],
+  "provider": "ffmpeg-grade",
+  "generatedAt": "2026-07-11T22:34:05.668Z"
+}

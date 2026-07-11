@@ -30,6 +30,19 @@ Espejo del roadmap de [TECH.md](TECH.md) § 5. Un stage se marca `[x]` solo cuan
 
 Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 
+### 2026-07-11 — Iteración look capa 1 (correcciones + piloto)
+
+- **Stage in flight:** Stage 4 — Uniformidad capa 1 (look NO aprobado; re-evaluación piloto).
+- **Causa raíz:** (1) `blend` no pondera alfa → textura/grano a intensidad plena; (2) placa de grano con fórmulas distintas por canal RGB → motas cromáticas; (3) hash `mod`/`sin` → retícula periódica; (4) láminas de aspecto con `blend=multiply` → tinte verde/oscuridad.
+- **Done this session:**
+  - **Grade:** opacidad real vía `all_opacity`; defaults suaves; papel = noise mono blureado sintético; grano = ruido luma-only (`noise=c0s…:c1s=0:c2s=0`, seed fijo) — sin placa, sin crominancia.
+  - **Campos:** `intensidad:` (0..1) y `aspecto: nativo` (dims originales sin marca outpaint). `--relook` archiva placas + look.json en `_look/_prev/`.
+  - **Láminas:** renderer nuevo (colores originales, fuera 50% luma, ventana 100%); regeneradas + pares FLF/switch.
+  - **Mapa:** nota dura outpaint `a1-m01` (solo fondo; titular+sello intocables); leyenda intensidad/nativo; lote trivial aprobado; outpaint `a1-m01`/`a3-m03`/`a3-m22` confirmados; `a3-m14` outpaint prohibido (crop-vs-nativo pendiente de lámina).
+  - **Piloto** (`--force`/`--relook`): `a3-m03`, `a3-m08`, `a2-m04`, `a3-m15` + trípticos ANTES|DESPUÉS|LOCK. Audit en `_audit/`; previas archivadas en `_prev/`.
+- **Next step:** aprobación de dirección del look (y reencuadres `a3-m14`/`a3-m01`/`a2-m01`/`a2-m07`+`m08`) → recién ahí corrida completa. `--promover` bloqueado.
+- **New blockers / questions raised:** ninguno técnico; gate de look pendiente.
+
 ### 2026-07-11 — Stage 4 capa 1: grade + crop 9:16 determinístico
 
 - **Stage in flight:** Stage 4 — Uniformidad de universo (capa 1).

@@ -24,22 +24,22 @@
     }
   },
   "cuento": {
-    "sat": 1.05,
-    "contrast": 1.04,
-    "brightness": 0.01,
+    "sat": 1.02,
+    "contrast": 1.02,
+    "brightness": 0.005,
     "gamma": 1,
-    "paperOpacity": 0.08,
-    "grainOpacity": 0.05,
-    "vignette": 0.14
+    "paperOpacity": 0.035,
+    "grainOpacity": 0.025,
+    "vignette": 0.08
   },
   "real": {
-    "sat": 0.95,
-    "contrast": 1.06,
-    "brightness": -0.01,
-    "gamma": 1.02,
+    "sat": 0.98,
+    "contrast": 1.03,
+    "brightness": 0,
+    "gamma": 1.01,
     "paperOpacity": 0,
-    "grainOpacity": 0.12,
-    "vignette": 0.1
+    "grainOpacity": 0.07,
+    "vignette": 0.06
   },
   "grano": {
     "sat": 1,
@@ -47,9 +47,9 @@
     "brightness": 0,
     "gamma": 1,
     "paperOpacity": 0,
-    "grainOpacity": 0.06,
-    "vignette": 0.04
+    "grainOpacity": 0.035,
+    "vignette": 0.025
   },
-  "derivedAt": "2026-07-11T21:45:08.317Z",
-  "hash": "d06c707c03f97424"
+  "derivedAt": "2026-07-11T22:46:30.540Z",
+  "hash": "57b01222a601b619"
 }

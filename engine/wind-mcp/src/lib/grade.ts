@@ -6,7 +6,7 @@ import { createHash } from 'node:crypto';
 import { spawn } from 'node:child_process';
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { WORK_DIR, resolveWritePath } from '../config.js';
+import { resolveWritePath } from '../config.js';
 import { runFfmpeg } from './montaje.js';
 import { ensureDirFor } from './paths.js';
 
@@ -65,10 +65,14 @@ export interface ApplyGradeOpts {
   perfil: GradePerfil;
   look: LookDoc;
   lookDir: string;
-  /** Si true, no aplica crop (outpaint pendiente). */
+  /** Si true, no aplica crop (outpaint pendiente o aspecto nativo). */
   skipCrop?: boolean;
+  /** Marca sidecar: true solo para outpaint diferido (no para nativo). */
+  aspectoPendiente?: boolean;
   /** Offset horizontal relativo al centro (−1..1) o px absolutos si |valor| ≥ 1. */
   cropOffset?: number;
+  /** 0..1 — escala el look hacia neutro (default 1). */
+  intensidad?: number;
 }
 
 async function existe(p: string): Promise<boolean> {
@@ -146,28 +150,28 @@ function buildLookRegistros(cuento: ImageStats, real: ImageStats): {
   real: LookRegistro;
   grano: LookRegistro;
 } {
-  // Cuento: papel cálido, siluetas negras → contraste suave, sat leve, papel+grano bajo.
-  const cuentoSat = cuento.meanV > 128 ? 1.05 : 1.0;
-  // Real: documental frío → más grano, sat ligeramente bajada, sin papel.
-  const realSat = real.meanU > 128 ? 0.92 : 0.95;
+  // Defaults suaves: el bug de opacidad previa aplicaba textura a intensidad plena.
+  // sat anclado leve al lock; contraste casi neutro para no aplastar negros.
+  const cuentoSat = cuento.meanV > 128 ? 1.02 : 1.0;
+  const realSat = real.meanU > 128 ? 0.96 : 0.98;
   return {
     cuento: {
       sat: cuentoSat,
-      contrast: 1.04,
-      brightness: 0.01,
+      contrast: 1.02,
+      brightness: 0.005,
       gamma: 1.0,
-      paperOpacity: 0.08,
-      grainOpacity: 0.05,
-      vignette: 0.14,
+      paperOpacity: 0.035,
+      grainOpacity: 0.025,
+      vignette: 0.08,
     },
     real: {
       sat: realSat,
-      contrast: 1.06,
-      brightness: -0.01,
-      gamma: 1.02,
+      contrast: 1.03,
+      brightness: 0,
+      gamma: 1.01,
       paperOpacity: 0,
-      grainOpacity: 0.12,
-      vignette: 0.1,
+      grainOpacity: 0.07,
+      vignette: 0.06,
     },
     grano: {
       sat: 1,
@@ -175,8 +179,8 @@ function buildLookRegistros(cuento: ImageStats, real: ImageStats): {
       brightness: 0,
       gamma: 1,
       paperOpacity: 0,
-      grainOpacity: 0.06,
-      vignette: 0.04,
+      grainOpacity: 0.035,
+      vignette: 0.025,
     },
   };
 }
@@ -239,55 +243,45 @@ function resolveOffset(margin: number, cropOffset?: number): number {
   return Math.max(0, Math.min(margin, Math.round(t * margin)));
 }
 
-async function ensurePaperPlate(lookDirAbs: string, lockCuentoAbs: string, w: number, h: number): Promise<string> {
+/**
+ * Placa de papel: mottle sintético = noise mono blureado a tamaño de salida.
+ * Seed fijo → reproducible; format=gray → cero crominancia.
+ */
+async function ensurePaperPlate(lookDirAbs: string, _lockCuentoAbs: string, w: number, h: number): Promise<string> {
   const name = `paper-${w}x${h}.png`;
   const out = path.join(lookDirAbs, name);
   if (await existe(out)) return out;
 
-  const dims = await probeDims(lockCuentoAbs);
-  // Muestra de papel: esquina superior-derecha (suele ser fondo tintado sin silueta).
-  const sw = Math.min(256, Math.floor(dims.width / 3));
-  const sh = Math.min(256, Math.floor(dims.height / 4));
-  const sx = Math.max(0, dims.width - sw - 16);
-  const sy = 16;
-
-  // High-pass: original − blur = textura; normalizar a gris medio y escalar al dest.
-  await ensureDirFor(out);
-  await runFfmpeg([
-    '-i', lockCuentoAbs,
-    '-filter_complex',
-    [
-      `[0:v]crop=${sw}:${sh}:${sx}:${sy},scale=${w}:${h}:flags=lanczos,format=rgb24,split=2[a][b]`,
-      `[b]gblur=sigma=12[blur]`,
-      `[a][blur]blend=all_mode=difference,eq=contrast=1.8:brightness=0.15,format=rgba[out]`,
-    ].join(';'),
-    '-map', '[out]',
-    out,
-  ]);
-  return out;
-}
-
-async function ensureGrainPlate(lookDirAbs: string, w: number, h: number): Promise<string> {
-  const name = `grain-${w}x${h}.png`;
-  const out = path.join(lookDirAbs, name);
-  if (await existe(out)) return out;
-
-  // Ruido determinístico vía geq (sin RNG): hash modular de coordenadas.
-  // Evita senos (producen bandas diagonales visibles).
-  const s = Math.max(1, Math.round(h / 200));
   await ensureDirFor(out);
   await runFfmpeg([
     '-f', 'lavfi',
     '-i', `color=c=gray:s=${w}x${h}:d=1`,
     '-vf',
-    `format=rgb24,geq=` +
-      `r='128+36*(mod(X*${s}*12+Y*${s}*7+X*Y,251)/251-0.5)*2+18*(mod(X*${s}*3+Y*${s}*11,127)/127-0.5)*2':` +
-      `g='128+36*(mod(X*${s}*13+Y*${s}*5+X*Y*2,241)/241-0.5)*2+18*(mod(X*${s}*7+Y*${s}*17,131)/131-0.5)*2':` +
-      `b='128+36*(mod(X*${s}*9+Y*${s}*19+X*Y*3,233)/233-0.5)*2+18*(mod(X*${s}*11+Y*${s}*3,137)/137-0.5)*2'`,
+    'format=gray,noise=alls=40:allf=u:all_seed=4242,gblur=sigma=12,eq=contrast=1.1:brightness=0.02,format=rgb24',
     '-frames:v', '1',
     out,
   ]);
   return out;
+}
+
+/** Archiva look.json + placas existentes en _look/_prev/ (nunca borra). */
+async function archiveLookArtifacts(lookDirAbs: string): Promise<void> {
+  const prev = path.join(lookDirAbs, '_prev');
+  await fs.mkdir(prev, { recursive: true });
+  const stamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
+  let entries: string[] = [];
+  try {
+    entries = await fs.readdir(lookDirAbs);
+  } catch {
+    return;
+  }
+  for (const name of entries) {
+    if (name === '_prev') continue;
+    if (!/\.(json|png)$/i.test(name)) continue;
+    const src = path.join(lookDirAbs, name);
+    const dest = path.join(prev, `${name.replace(/\.(json|png)$/i, '')}-${stamp}${(name.match(/\.(json|png)$/i) ?? [''])[0]}`);
+    await fs.rename(src, dest);
+  }
 }
 
 export async function deriveLook(opts: {
@@ -305,11 +299,8 @@ export async function deriveLook(opts: {
     return { look: raw, lookDirAbs };
   }
 
-  if (opts.force && (await existe(lookPath))) {
-    const prev = path.join(lookDirAbs, '_prev');
-    await fs.mkdir(prev, { recursive: true });
-    const stamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
-    await fs.rename(lookPath, path.join(prev, `look-${stamp}.json`));
+  if (opts.force) {
+    await archiveLookArtifacts(lookDirAbs);
   }
 
   const cuentoStats = await measureImage(opts.lockCuentoAbs);
@@ -331,18 +322,31 @@ export async function deriveLook(opts: {
     hash: hashLookPayload(base),
   };
 
-  // Placas base al tamaño del lock cuento (otras se generan on-demand).
   await ensurePaperPlate(lookDirAbs, opts.lockCuentoAbs, cuentoStats.width, cuentoStats.height);
-  await ensureGrainPlate(lookDirAbs, cuentoStats.width, cuentoStats.height);
-  await ensureGrainPlate(lookDirAbs, realStats.width, realStats.height);
 
   await fs.writeFile(lookPath, JSON.stringify(look, null, 2));
   return { look, lookDirAbs };
 }
 
-function pickParams(look: LookDoc, registro: RegistroGrade, perfil: GradePerfil): LookRegistro {
-  if (perfil === 'grano') return look.grano;
-  return registro === 'cuento' ? look.cuento : look.real;
+function pickParams(
+  look: LookDoc,
+  registro: RegistroGrade,
+  perfil: GradePerfil,
+  intensidad = 1,
+): LookRegistro {
+  const base = perfil === 'grano' ? look.grano : registro === 'cuento' ? look.cuento : look.real;
+  const t = Math.max(0, Math.min(1, intensidad));
+  if (t >= 1) return base;
+  // Interpola sat/contrast hacia neutro; multiplica opacidades/viñeta/brightness.
+  return {
+    sat: 1 + (base.sat - 1) * t,
+    contrast: 1 + (base.contrast - 1) * t,
+    brightness: base.brightness * t,
+    gamma: 1 + (base.gamma - 1) * t,
+    paperOpacity: base.paperOpacity * t,
+    grainOpacity: base.grainOpacity * t,
+    vignette: base.vignette * t,
+  };
 }
 
 /**
@@ -355,15 +359,15 @@ export async function applyGrade(opts: ApplyGradeOpts): Promise<{
   aspectoPendiente: boolean;
 }> {
   const dims = await probeDims(opts.srcAbs);
-  const params = pickParams(opts.look, opts.registro, opts.perfil);
-  const aspectoPendiente = !!opts.skipCrop;
+  const params = pickParams(opts.look, opts.registro, opts.perfil, opts.intensidad ?? 1);
+  // outpaint pendiente solo si el caller lo marca; skipCrop solo (nativo) no marca pendiente.
+  const aspectoPendiente = opts.aspectoPendiente ?? false;
 
   let crop: CropWindow | undefined;
   let outW = dims.width;
   let outH = dims.height;
 
   const filters: string[] = [];
-  // Input 0 = madre
   let last = '[0:v]';
 
   if (!opts.skipCrop) {
@@ -379,7 +383,6 @@ export async function applyGrade(opts: ApplyGradeOpts): Promise<{
     }
   }
 
-  // Curva / sat (hue intocado — eq no toca hue; saturation sí).
   if (params.contrast !== 1 || params.brightness !== 0 || params.gamma !== 1 || params.sat !== 1) {
     filters.push(
       `${last}eq=contrast=${params.contrast}:brightness=${params.brightness}:gamma=${params.gamma}:saturation=${params.sat}[eq]`,
@@ -390,34 +393,30 @@ export async function applyGrade(opts: ApplyGradeOpts): Promise<{
   const inputs: string[] = ['-i', opts.srcAbs];
   let inputIdx = 1;
 
-  // Papel (solo cuento full).
+  // Opacidad real vía all_opacity (blend NO pondera alfa del input).
   if (params.paperOpacity > 0) {
     const paper = await ensurePaperPlate(opts.lookDir, opts.look.locks.cuento.path, outW, outH);
     inputs.push('-i', paper);
     const pi = inputIdx++;
-    // softlight a baja opacidad vía colorchannelmixer / blend.
     filters.push(
-      `[${pi}:v]format=rgba,colorchannelmixer=aa=${params.paperOpacity}[pap]`,
-      `${last}format=rgba[basep]`,
-      `[basep][pap]blend=all_mode=softlight:all_opacity=1[p]`,
+      `${last}format=rgb24[basep]`,
+      `[${pi}:v]format=rgb24[pap]`,
+      `[basep][pap]blend=all_mode=softlight:all_opacity=${params.paperOpacity.toFixed(4)}[p]`,
     );
     last = '[p]';
   }
 
-  // Grano.
+  // Grano: ruido SOLO en luma (c0), seed fijo → mono, sin placa, sin retícula de overlay.
+  // Intensidad escalada ~0–25 (ffmpeg noise strength); opacity 0.04 ≈ strength ~6.
   if (params.grainOpacity > 0) {
-    const grain = await ensureGrainPlate(opts.lookDir, outW, outH);
-    inputs.push('-i', grain);
-    const gi = inputIdx++;
+    const strength = Math.max(1, Math.round(params.grainOpacity * 120));
+    const seed = opts.perfil === 'grano' ? 9001 : 7777;
     filters.push(
-      `[${gi}:v]format=rgba,colorchannelmixer=aa=${params.grainOpacity}[gr]`,
-      `${last}format=rgba[baseg]`,
-      `[baseg][gr]blend=all_mode=overlay:all_opacity=1[g]`,
+      `${last}format=yuv444p,noise=c0s=${strength}:c0f=u:c0_seed=${seed}:c1s=0:c2s=0,format=rgb24[g]`,
     );
     last = '[g]';
   }
 
-  // Viñeta.
   if (params.vignette > 0) {
     filters.push(`${last}vignette=PI/${(1 / params.vignette).toFixed(2)}:mode=backward[v]`);
     last = '[v]';
@@ -435,7 +434,7 @@ export async function applyGrade(opts: ApplyGradeOpts): Promise<{
   ]);
 
   return {
-    crop: crop?.clase === 'ya-916' ? crop : crop,
+    crop,
     outDims: { width: outW, height: outH },
     aspectoPendiente,
   };
@@ -447,18 +446,21 @@ export async function applyCropOnly(opts: {
   destAbs: string;
   cropOffset?: number;
   skipCrop?: boolean;
+  /** true solo para outpaint diferido (no para nativo). */
+  aspectoPendiente?: boolean;
 }): Promise<{ crop?: CropWindow; outDims: ImageDims; aspectoPendiente: boolean }> {
   const dims = await probeDims(opts.srcAbs);
+  const aspectoPendiente = opts.aspectoPendiente ?? false;
   if (opts.skipCrop) {
     await ensureDirFor(opts.destAbs);
     await fs.copyFile(opts.srcAbs, opts.destAbs);
-    return { outDims: dims, aspectoPendiente: true };
+    return { outDims: dims, aspectoPendiente };
   }
   const crop = computeCrop(dims, opts.cropOffset);
   await ensureDirFor(opts.destAbs);
   if (crop.clase === 'ya-916') {
     await fs.copyFile(opts.srcAbs, opts.destAbs);
-    return { crop, outDims: dims, aspectoPendiente: false };
+    return { crop, outDims: dims, aspectoPendiente };
   }
   await runFfmpeg([
     '-i', opts.srcAbs,
@@ -469,11 +471,11 @@ export async function applyCropOnly(opts: {
   return {
     crop,
     outDims: { width: crop.w, height: crop.h },
-    aspectoPendiente: false,
+    aspectoPendiente,
   };
 }
 
-/** Overlay de ventana 9:16 sobre la madre (propuesta de reencuadre). */
+/** Overlay de ventana 9:16: colores originales, fuera 50% luma, ventana 100% + borde. */
 export async function emitPropuestaAspecto(opts: {
   srcAbs: string;
   destAbs: string;
@@ -484,37 +486,23 @@ export async function emitPropuestaAspecto(opts: {
   const crop = computeCrop(dims, opts.cropOffset);
   await ensureDirFor(opts.destAbs);
 
-  // Rectángulo semitransparente fuera de la ventana + borde de la ventana.
-  const draw = [
-    `drawbox=x=0:y=0:w=${dims.width}:h=${dims.height}:color=black@0.45:t=fill`,
-    `drawbox=x=${crop.x}:y=${crop.y}:w=${crop.w}:h=${crop.h}:color=black@0:t=fill`,
-    `drawbox=x=${crop.x}:y=${crop.y}:w=${crop.w}:h=${crop.h}:color=yellow@0.9:t=4`,
-  ];
-  if (opts.label) {
-    const safe = opts.label.replace(/:/g, '\\:').replace(/'/g, '');
-    draw.push(
-      `drawtext=text='${safe}':x=20:y=20:fontsize=28:fontcolor=yellow:box=1:boxcolor=black@0.6`,
-    );
-  }
+  const labelFilter = opts.label
+    ? `,drawtext=text='${opts.label.replace(/:/g, '\\:').replace(/'/g, '')}':x=24:y=24:fontsize=32:fontcolor=yellow:box=1:boxcolor=black@0.7`
+    : '';
 
-  // Composición: original abajo, mask dim encima con agujero = ventana.
-  // Más simple: original + drawbox amarillo + shade fuera vía split.
+  // 1) atenuar solo luma (chroma intacto → sin tinte)
+  // 2) overlay de la ventana original al 100%
+  // 3) borde amarillo + label
   await runFfmpeg([
     '-i', opts.srcAbs,
     '-filter_complex',
     [
-      `[0:v]split=2[base][over]`,
-      `[over]drawbox=x=0:y=0:w=${dims.width}:h=${dims.height}:color=black@0.5:t=fill,` +
-        `drawbox=x=${crop.x}:y=${crop.y}:w=${crop.w}:h=${crop.h}:color=black@0:t=fill[mask]`,
-      // Re-extraer ventana limpia del base y componer
-      `[base]format=rgba[b]`,
-      `[mask]format=rgba[m]`,
-      `[b][m]blend=all_mode=multiply:all_opacity=1,` +
+      `[0:v]split=2[base][win]`,
+      `[base]lutyuv=y=val*0.5[dim]`,
+      `[win]crop=${crop.w}:${crop.h}:${crop.x}:${crop.y}[c]`,
+      `[dim][c]overlay=${crop.x}:${crop.y},` +
         `drawbox=x=${crop.x}:y=${crop.y}:w=${crop.w}:h=${crop.h}:color=yellow@0.95:t=6` +
-        (opts.label
-          ? `,drawtext=text='${opts.label.replace(/:/g, '\\:').replace(/'/g, '')}':x=24:y=24:fontsize=32:fontcolor=yellow:box=1:boxcolor=black@0.7`
-          : '') +
-        `[out]`,
+        `${labelFilter}[out]`,
     ].join(';'),
     '-map', '[out]',
     '-frames:v', '1',
@@ -523,24 +511,49 @@ export async function emitPropuestaAspecto(opts: {
   return crop;
 }
 
-/** Contact sheet lado a lado: original | uniforme. */
+/** Contact sheet: ANTES | DESPUÉS [| LOCK]. */
 export async function emitAuditSheet(opts: {
   beforeAbs: string;
   afterAbs: string;
   destAbs: string;
   label?: string;
+  lockAbs?: string;
+  lockLabel?: string;
 }): Promise<void> {
   await ensureDirFor(opts.destAbs);
   const label = opts.label?.replace(/:/g, '\\:').replace(/'/g, '') ?? '';
+  const lockLabel = (opts.lockLabel ?? 'LOCK').replace(/:/g, '\\:').replace(/'/g, '');
+
+  const cell = (idx: number, text: string, tag: string) =>
+    `[${idx}:v]scale=540:-1:flags=lanczos,pad=540:960:(ow-iw)/2:(oh-ih)/2:black,` +
+    `drawtext=text='${text}':x=16:y=16:fontsize=28:fontcolor=white:box=1:boxcolor=black@0.6[${tag}]`;
+
+  if (opts.lockAbs) {
+    await runFfmpeg([
+      '-i', opts.beforeAbs,
+      '-i', opts.afterAbs,
+      '-i', opts.lockAbs,
+      '-filter_complex',
+      [
+        cell(0, 'ANTES', 'a'),
+        cell(1, `DESPUES${label ? ' ' + label : ''}`, 'b'),
+        cell(2, lockLabel, 'c'),
+        `[a][b][c]hstack=inputs=3[out]`,
+      ].join(';'),
+      '-map', '[out]',
+      '-frames:v', '1',
+      opts.destAbs,
+    ]);
+    return;
+  }
+
   await runFfmpeg([
     '-i', opts.beforeAbs,
     '-i', opts.afterAbs,
     '-filter_complex',
     [
-      `[0:v]scale=540:-1:flags=lanczos,pad=540:960:(ow-iw)/2:(oh-ih)/2:black,` +
-        `drawtext=text='ANTES':x=16:y=16:fontsize=28:fontcolor=white:box=1:boxcolor=black@0.6[a]`,
-      `[1:v]scale=540:-1:flags=lanczos,pad=540:960:(ow-iw)/2:(oh-ih)/2:black,` +
-        `drawtext=text='DESPUES${label ? ' ' + label : ''}':x=16:y=16:fontsize=28:fontcolor=white:box=1:boxcolor=black@0.6[b]`,
+      cell(0, 'ANTES', 'a'),
+      cell(1, `DESPUES${label ? ' ' + label : ''}`, 'b'),
       `[a][b]hstack=inputs=2[out]`,
     ].join(';'),
     '-map', '[out]',
