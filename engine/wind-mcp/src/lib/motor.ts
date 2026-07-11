@@ -117,7 +117,7 @@ async function resolveImageRefs(
   return [basePath];
 }
 
-async function escribirSidecar(destAbs: string, data: Record<string, unknown>): Promise<void> {
+export async function escribirSidecar(destAbs: string, data: Record<string, unknown>): Promise<void> {
   const sidecar = `${destAbs}.json`;
   await fs.writeFile(sidecar, JSON.stringify({ ...data, generatedAt: new Date().toISOString() }, null, 2));
 }

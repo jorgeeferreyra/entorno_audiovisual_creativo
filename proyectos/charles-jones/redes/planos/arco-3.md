@@ -404,7 +404,7 @@ The first reference image is the APPROVED base composition — keep it with near
 |---|---|---|---|
 | `a3-m01v1` | `a3-m01` | `a3-a6` (la despedida) | Madre al borde de la grieta, tinte rojo profundo |
 | `a3-m01v2` | `a3-m01` | `a3-b3` (la madre en declive) | Madre debilitada en llanura agrietada, tinte gris frío |
-| `a3-m05v1` | `a3-m05` | `a3-a5` (firstFrame del FLF) | Pangea un beat antes del quiebre; **mismo encuadre que m05/m06** (integridad del par FLF), delta de estado |
+| ~~`a3-m05v1`~~ | `a3-m05` | ~~`a3-a5`~~ | **Cancelada por cadena v3:** al caer `a3-a2`, `a3-m05` ya no se reutiliza en pantalla y puede ser firstFrame directo de `a3-a5` |
 | `a3-m14v1` | `a3-m14` | `a3-c0` (firstFrame del FLF) | Grieta real con el polvo asentándose; encuadre compatible con el morph a m07 |
 | `a3-m15v1` | `a3-m15` | `a3-a5y` (firstFrame del FLF) | Aéreo con encuadre que baja hacia el humedal; compatible con el morph a m08 |
 
@@ -440,21 +440,9 @@ Prompt (EN):
 The first reference image is the master character — the mother platypus: reproduce this exact silhouette with 100% fidelity — same bill shape, same etched eye, same fur strokes, same cross-hatched paddle tail, same webbed feet, same woodcut cutout style. The other reference image shows real platypus anatomy — use it only to keep the anatomy true, never to change the art style. The same mother platypus weakened and moving slowly across a silhouetted cracked drying plain in side profile, head hanging low, halting exhausted posture, silhouetted withered plants and spreading crack lines around her, every feature readable inside the black silhouette through fine gold etched lines like a woodcut print — never a plain solid blob, cold desaturated grey tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
 ```
 
-**a3-m05v1 — Pangea antes del quiebre (variación para a3-a5)**
+**~~a3-m05v1 — Pangea antes del quiebre~~ (CANCELADA por cadena v3)**
 
-```yaml
-kind: image
-dest: assets/arco-3/madre/a3-m05v1-pangea-pre-quiebre.png
-ref: a3-m05
-provider: openrouter
-```
-
-Nota: firstFrame del clip FLF `a3-a5` (→ m06). **Mismo encuadre exacto que m05/m06** para que el morph a m06 quede garantizado; el delta es de estado (la calma tensa previa al quiebre), no de encuadre.
-
-Prompt (EN):
-```
-The reference image is the world: the same layered paper cutout Pangea landscape seen from a hill — reproduce that exact flat 2D cutout landscape style and identical framing, stacked silhouette layers on a tinted paper background. Hold the same composition as the base but a beat before the catastrophe: the silhouetted vegetation stilled, an ominous tension in the air, the light beginning to dim, the warm amber and saturated green tinted background just starting to bruise toward red at the edges, no rift yet, flat 2D silhouette animation, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
-```
+Nota: cancelada por la cadena v3. Al caer `a3-a2`, `a3-m05` no se reutiliza como establishing y puede ser el firstFrame directo de `a3-a5` (→ m06). No generar esta variación salvo que una cadena futura vuelva a reutilizar `a3-m05`.
 
 **a3-m14v1 — Grieta real, polvo asentándose (variación para a3-c0)**
 
@@ -527,7 +515,7 @@ Weathered explorer hands open the rugged hairy hardbound journal titled Charles 
 - Audio: off documental (intro) + música tenue
 - Montaje: intro transversal — abre TODOS los reels; el white-out final enmascara el corte al primer plano del reel (sin fade extra)
 
-**Clip a3-a2 — Establishing Pangea**
+**Clip a3-a2 — Establishing Pangea (fuera del reel v3)**
 
 ```yaml
 kind: video-i2v
@@ -543,9 +531,9 @@ Gentle drift across the layered paper cutout Pangea landscape, silhouetted veget
 ```
 - Vision-Audit (EN): sceneDescription: `wide layered silhouette view of the Pangea supercontinent on a tinted background` · action: `slow glide across the cutout landscape, paper vegetation swaying, layers in parallax` · mood: `majestic, serene`
 - Audio: off documental + música tenue
-- Montaje: viene de a3-a1; corta a a3-a3
+- Montaje: cae del reel v3. `a3-m05` se lee en el firstFrame de `a3-a5`; este clip queda como fuente del hilo o referencia de ritmo si hiciera falta.
 
-**Clip a3-a3 — La madre en su ritual cotidiano**
+**Clip a3-a3 — La madre en su ritual cotidiano (fuera del reel v3)**
 
 ```yaml
 kind: video-i2v
@@ -560,9 +548,9 @@ The mother platypus silhouette calmly grooming by a silhouetted stream, head til
 ```
 - Vision-Audit (EN): sceneDescription: `silhouetted stream in Pangea on a warm tinted background` · action: `the mother platypus silhouette grooms and moves calmly in profile` · mood: `tender, serene`
 - Audio: off documental (presenta la familia)
-- Montaje: intercut con a3-a4 para dar "familia unida" sin generarlos juntos
+- Montaje: cae del reel v3 por compresión; sigue disponible para destacadas o fuente del hilo.
 
-**Clip a3-a4 — El huevo (beat familiar)**
+**Clip a3-a4 — El huevo (beat familiar, fuera del reel v3)**
 
 ```yaml
 kind: video-i2v
@@ -577,13 +565,13 @@ The single egg silhouette rests in the small nest on the mossy log, soft breathi
 ```
 - Vision-Audit (EN): sceneDescription: `egg silhouette resting in a twig nest on a warm tinted background` · action: `the nest breathes softly, light shifts gently` · mood: `warm, expectant, peaceful`
 - Audio: off documental (continúa)
-- Montaje: intercut con a3-a3; cierra el bloque "unidad" (madre + huevo) y corta a a3-a5. El concepto cría bebé quedó eliminado; el joven aparece en el Bloque B.
+- Montaje: cae del reel v3 por compresión. El huevo sigue estructural en `a2-a1b` (cruza el océano) y `a3-a6d` (padre+huevo). Este clip queda como fuente/destacada si se necesita.
 
 **Clip a3-a5 — La grieta (transición-gancho)**
 
 ```yaml
 kind: video-flf
-firstFrame: a3-m05v1
+firstFrame: a3-m05
 lastFrame: a3-m06
 duration: 5
 ```
@@ -596,7 +584,7 @@ The layered cutout Pangea landscape trembles like shaken paper, the black cutout
 ```
 - Vision-Audit (EN): sceneDescription: `the layered cutout Pangea landscape breaking apart, tint shifting to red` · action: `the cutout ground trembles and rips in two, water floods the chasm` · mood: `dramatic, ominous`
 - Audio: off documental (el quiebre) + rumble grave
-- Montaje: insertar 1–2 frames subliminales de m-mano (mano con cadenita, Arco 1) en el pico del temblor; corte DURO a a3-a5b (switch cuento→real). **Regen pendiente:** hoy aprobado como I2V degradado; regenerar como FLF real (m05→m06).
+- Montaje: en el reel v3 viene de `a1-a1` (hook de crimen firmado) y contiene el establishing de Pangea en su firstFrame. Corte DURO a `a2-a0`/`a3-a5b` según ajuste del animatic. **Regen pendiente:** hoy aprobado como I2V degradado; regenerar como FLF real (m05→m06).
 
 **Clip a3-a5b — Switch cuento→real: el caos (Revenant)**
 
@@ -676,7 +664,7 @@ The wide aerial view of two separated landmasses softens into layered black pape
 - Audio: off documental (la línea que sobrevive) + música tenue
 - Montaje: cierra el Bloque A / abre el Bloque B; cubre el hueco de m08 (hoy sin clip). Tras el morph, corta a a3-a6 o entra directo a b1 según montaje final.
 
-**Clip a3-a6a — Separación: la grieta abriéndose (montaje, sin generación) — 8.1a**
+**Clip a3-a6a — Separación: la grieta abriéndose (montaje, sin generación) — fuera del reel v3**
 
 ```yaml
 kind: montaje
@@ -686,9 +674,9 @@ duration: 1.5
 
 duration (montaje): 1–1.5s
 - Audio: off documental (beat 8.1a: la grieta se abre)
-- Montaje: abre el zoom del beat 8 tras el respiro `a3-a5c`; still de m19 (paredes casi tocándose); corta a `a3-a6b`.
+- Montaje: cae del reel v3 porque la apertura de la grieta ya se cuenta en `a3-a5`/`a3-a5b`; still de m19 queda como referencia de estilo.
 
-**Clip a3-a6b — Separación: la grieta ya abierta (montaje, sin generación) — 8.1b**
+**Clip a3-a6b — Separación: la grieta ya abierta (montaje, sin generación) — fuera del reel v3**
 
 ```yaml
 kind: montaje
@@ -698,7 +686,7 @@ duration: 1.5
 
 duration (montaje): 1–1.5s
 - Audio: off documental (beat 8.1b: el mar entra)
-- Montaje: still de m21 (canal abierto); progresión de m19; corta a `a3-a6c`.
+- Montaje: cae del reel v3 por compresión; still de m21 queda como referencia de estilo. La separación empieza directo en `a3-a6c`.
 
 **Clip a3-a6c — Orilla cercana: madre + cría (montaje, sin generación) — 8.2a**
 
@@ -774,7 +762,7 @@ The male platypus silhouette gliding actively through silhouetted reeds and wate
 - Audio: off documental (adaptación)
 - Montaje: mitad de pantalla partida con a3-b3 (Australia arriba)
 
-**Clip a3-b2 — El joven explorando (línea próspera)**
+**Clip a3-b2 — El joven explorando (línea próspera, fuera del reel v3)**
 
 ```yaml
 kind: video-i2v
@@ -789,7 +777,7 @@ The young platypus silhouette exploring confidently among silhouetted wetland pl
 ```
 - Vision-Audit (EN): sceneDescription: `silhouetted wetland on a saturated green tinted background` · action: `the young platypus silhouette explores confidently, growing stronger` · mood: `hopeful, thriving`
 - Audio: off documental (la línea que prospera)
-- Montaje: intercut dentro del lado próspero
+- Montaje: cae del reel v3 para evitar meseta de prosperidad; queda como fuente del hilo o referencia de estilo/anatomía (`a3-m02`).
 
 **Clip a3-b3 — La madre en declive**
 
@@ -862,7 +850,7 @@ duration: 1.5
 
 duration (montaje): 1–1.5s
 - Audio: off en primera persona (beat 7.3: "Primero se fue el joven, entre las rocas coloradas.") — ver [arco-3-off.md](arco-3-off.md)
-- Montaje: still de m18 (joven sobre roca colorada, cabeza colgando); **absorción** de `a3-m18`. Lectura: la cría que quedó de este lado creció y murió acá (no contradice al joven próspero de Australia, `a3-b2`, que es la línea del huevo). En el reel v2 abre la muerte del beat 7; corta a `a3-c2` (la fosilización de la madre).
+- Montaje: still de m18 (joven sobre roca colorada, cabeza colgando); **absorción** de `a3-m18`. Lectura v3: la cría que quedó de este lado creció y murió acá; al caer `a3-b2`, no hay plano paralelo del joven próspero. Abre la huella (beat 6); corta a `a3-c2` (la fosilización de la madre).
 
 **Clip a3-c1 — Establishing Rocas Coloradas (push-in hacia la roca)**
 
@@ -942,7 +930,7 @@ duration: 1.5
 
 duration (montaje): 1–1.5s
 - Audio: *(SIN off — el caos habla solo)*
-- Montaje: **eco deliberado** de la grieta Revenant (`a3-m14`, exento de variación como el eco de `a3-m09` en `a3-c3e`) — en el reel v2 cierra el sueño: tras el despertar en la selva (`a2-a2c`), todo vuelve a romperse un instante antes del corte a lo real. Reutiliza la madre `a3-m14` (REALITY-BLOCK-CHAOS); corta DURO a `a3-c4`.
+- Montaje: **eco deliberado** de la grieta Revenant (`a3-m14`, exento de variación como el eco de `a3-m09` en `a3-c3e`) — en el reel v3 cierra el sueño comprimido: tras los ojos (`a2-a2b`), todo vuelve a romperse un instante antes del corte a lo real. Reutiliza la madre `a3-m14` (REALITY-BLOCK-CHAOS); corta DURO a `a3-c4`.
 
 **Clip a3-c4 — Foto real de Rocas Coloradas (remate final)**
 
@@ -953,9 +941,9 @@ duration: 4
 ```
 
 duration (montaje): 3–4s (16:9; reencuadrar a 9:16)
-- Sobreimpreso: "Área Natural Protegida Rocas Coloradas — Comodoro Rivadavia" — **la verdad**: la locación es real (decisión de dirección v2 2026-07-10). El humor negro de la Fundación sale del reel; sigue como recurso del hilo en [../arco-3-ornitorrincos.md](../arco-3-ornitorrincos.md).
+- Sobreimpreso: "Área Natural Protegida Rocas Coloradas — Comodoro Rivadavia" — **la verdad**: la locación es real (decisión de dirección v3 2026-07-11). El humor negro de la Fundación sale del reel; sigue como recurso del hilo en [../arco-3-ornitorrincos.md](../arco-3-ornitorrincos.md).
 - Audio: off breve ("Esta parte es real.") o silencio
-- Montaje: **cierre del reel v2** — tras el eco de caos `a3-c5`, corte a la foto real; es el pago emocional (se dice la verdad de la locación). En el hilo/destacadas del Arco 3 sigue sirviendo como remate del "salto a la realidad" (a3-c2 → a3-c3 → eco m09 → a3-c4).
+- Montaje: **cierre del reel v3** — tras el eco de caos `a3-c5`, corte a la foto real; es el pago emocional (se dice la verdad de la locación). En el hilo/destacadas del Arco 3 sigue sirviendo como remate del "salto a la realidad" (a3-c2 → a3-c3 → eco m09 → a3-c4).
 
 ---
 
@@ -986,7 +974,7 @@ Kling (FLF) se reserva a la cadena de transiciones (a3-a5, a3-a5x experimental, 
 
 | Eslabón | Clip | Tipo | Keyframes | Nota |
 |---|---|---|---|---|
-| m05v1→m06 | a3-a5 | FLF | 2 (par) | firstFrame variado (unicidad, §Variaciones); regenerar (hoy I2V degradado) |
+| m05→m06 | a3-a5 | FLF | 2 (par) | v3 usa `a3-m05` directo; `a3-m05v1` cancelada por no haber reutilización de `m05` |
 | m06→m14 | a3-a5x | FLF experimental | 2 (par) | Gate morphs cruzados cuento→real; si salta feo → corte duro |
 | m15v1→m08 | a3-a5y | FLF | 2 (par) | firstFrame variado (unicidad); cierra Bloque A / abre Bloque B; cubre hueco de m08 |
 | m14v1→m07 | a3-c0 | FLF | 2 (par) | firstFrame variado (unicidad); abre Bloque C: grieta real se congela en cuento rojo |

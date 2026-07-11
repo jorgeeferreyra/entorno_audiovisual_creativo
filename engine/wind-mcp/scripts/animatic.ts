@@ -16,6 +16,8 @@
  *   --borrador  las variaciones aún no generadas degradan a su madre base, para
  *               aprobar ritmo/orden ANTES de pagar las variaciones. No valida
  *               unicidad (las repeticiones son esperadas en esta pasada).
+ *   --uniformes preferir reels/<reel>/_madres-uniformes/ si existe el basename
+ *               (gate de uniformidad de universo, previo a promover canónicos).
  *   --off       sintetiza la voz en off (Edge TTS, es-AR) y la muxea al MP4;
  *               estira escenas por audio y reporta excesos vs presupuesto.
  *   --voz NAME  voz Edge TTS (default: es-AR-TomasNeural).
@@ -25,6 +27,7 @@
  *   npm run animatic -- --arco 3
  *   npm run animatic -- --reel la-grieta             (→ animatic-la-grieta.mp4)
  *   npm run animatic -- --reel la-grieta --borrador  (bases en vez de variaciones)
+ *   npm run animatic -- --reel la-grieta --uniformes (madres del gate de universo)
  *   npm run animatic -- --reel la-grieta --borrador --off
  *   npm run animatic -- --reel la-grieta --off --voz es-AR-ElenaNeural
  *   npm run animatic -- --reel la-grieta --out reels/la-grieta/animatic-v2.mp4
@@ -84,15 +87,16 @@ function reportar(titulo: string, r: MontarAnimaticResult, borrador: boolean): v
 async function main() {
   const args = process.argv.slice(2);
   const borrador = hasFlag(args, '--borrador');
+  const uniformes = hasFlag(args, '--uniformes');
   const off = hasFlag(args, '--off');
   const voz = flag(args, '--voz') ?? DEFAULT_VOZ;
   const reel = flag(args, '--reel');
 
   if (reel) {
     const salida = flag(args, '--out') ?? `reels/${reel}/animatic-${reel}.mp4`;
-    const r = await montarAnimaticReel(reel, salida, { borrador, off, voz });
+    const r = await montarAnimaticReel(reel, salida, { borrador, uniformes, off, voz });
     reportar(
-      `Animatic reel ${reel}${borrador ? ' (borrador)' : ''}${off ? ' +off' : ''}`,
+      `Animatic reel ${reel}${borrador ? ' (borrador)' : ''}${uniformes ? ' +uniformes' : ''}${off ? ' +off' : ''}`,
       r,
       borrador,
     );
@@ -107,10 +111,19 @@ async function main() {
   if (!borrador) for (const w of validarUnicidad(specs)) console.warn(`⚠ ${w}`);
   const offMap = await parseOff(arco);
 
-  const r = await montarAnimatic({ arco, specs, offMap, salida, borrador, off, voz });
+  const r = await montarAnimatic({
+    arco,
+    specs,
+    offMap,
+    salida,
+    borrador,
+    uniformesReel: uniformes ? 'la-grieta' : undefined,
+    off,
+    voz,
+  });
 
   reportar(
-    `Animatic Arco ${arco}${borrador ? ' (borrador)' : ''}${off ? ' +off' : ''}`,
+    `Animatic Arco ${arco}${borrador ? ' (borrador)' : ''}${uniformes ? ' +uniformes' : ''}${off ? ' +off' : ''}`,
     r,
     borrador,
   );

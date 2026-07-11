@@ -44,12 +44,13 @@ npm run gen -- --id a3-m01              # generar un asset (madre o clip)
 npm run gen -- --id a3-m03 --candidates 3   # candidatos en _candidates/
 npm run gen -- --id a3-m03 --pick 2     # promover candidato (SOLO con confirmación del usuario)
 npm run gen -- --reel a | --todas | --force | --provider X
+npm run uniformar -- --reel la-grieta   # gate uniformidad → _madres-uniformes/
 npm run animatic -- --arco 3            # animatic de hilo
-npm run animatic -- --reel la-grieta [--borrador] [--off]   # animatic de reel
+npm run animatic -- --reel la-grieta [--borrador] [--uniformes] [--off]   # animatic de reel
 npm run audio:a3                        # BGM arco 3
 ```
 
-Detalle de flags y lógica: `engine/wind-mcp/scripts/generar.ts`, `scripts/animatic.ts`, `src/lib/`. Unidad activa vía `--project` o `WIND_PROJECT` (default `charles-jones/redes`).
+Detalle de flags y lógica: `engine/wind-mcp/scripts/generar.ts`, `scripts/uniformar.ts`, `scripts/animatic.ts`, `src/lib/`. Unidad activa vía `--project` o `WIND_PROJECT` (default `charles-jones/redes`).
 
 ## Convenciones de assets
 
@@ -61,9 +62,9 @@ Detalle de flags y lógica: `engine/wind-mcp/scripts/generar.ts`, `scripts/anima
 
 ## Pipeline y gates
 
-Flujo: cadena narrativa → madres (candidatos + pick) → variations/keyframes FLF → animatic (borrador y final) → clips → montaje → off → export 9:16. Stages y exit criteria: `TECH.md` §5.
+Flujo: cadena narrativa → madres (candidatos + pick) → **uniformidad de universo** → variations/keyframes FLF → animatic (borrador y final) → clips → montaje → off → export 9:16. Stages y exit criteria: `TECH.md` §5.
 
-Gates de dirección (el usuario confirma, el agente prepara y recomienda): pick de candidatos, cadena narrativa, pares/cadenas FLF, animatic final. Reglas duras en `.cursor/rules/gates-de-direccion.mdc`.
+Gates de dirección (el usuario confirma, el agente prepara y recomienda): pick de candidatos, cadena narrativa, locks/mapa de uniformidad, pares/cadenas FLF, animatic final. Reglas duras en `.cursor/rules/gates-de-direccion.mdc`.
 
 ## Reglas siempre activas
 

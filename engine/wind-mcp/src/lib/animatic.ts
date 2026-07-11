@@ -58,6 +58,11 @@ export interface MontarAnimaticInput {
    */
   borrador?: boolean;
   /**
+   * Si se setea (slug del reel), al resolver una madre preferir
+   * `reels/<slug>/_madres-uniformes/{basename}` cuando exista.
+   */
+  uniformesReel?: string;
+  /**
    * Sintetiza la voz en off (Edge TTS, gratis) y la muxea sobre el animatic.
    * Opt-in: sin el flag el MP4 sigue mudo (solo subtítulos quemados).
    */
@@ -107,6 +112,8 @@ export interface MontarAnimaticResult {
 
 export interface MontarAnimaticReelOpts {
   borrador?: boolean;
+  /** Preferir reels/<reel>/_madres-uniformes/ al resolver madres. */
+  uniformes?: boolean;
   off?: boolean;
   voz?: string;
 }
@@ -273,13 +280,17 @@ async function segmentosDeSpec(
   specs: AssetSpec[],
   offMap: Map<string, string>,
   durOverride?: number,
-  opts?: { borrador?: boolean; degradados?: Degradado[] },
+  opts?: { borrador?: boolean; uniformesReel?: string; degradados?: Degradado[] },
 ): Promise<{ segmentos: Segmento[]; omitido?: Omitido }> {
   const subtitulo = offMap.get(spec.id);
   const duracion = durOverride ?? duracionDe(spec);
 
   const resolver = async (ref: string): Promise<string | Omitido> => {
-    const imagen = resolveReadPath(resolveAssetRef(ref, arco, specs));
+    let imagen = resolveReadPath(resolveAssetRef(ref, arco, specs));
+    if (opts?.uniformesReel) {
+      const { resolvePreferUniforme } = await import('./uniformar.js');
+      imagen = await resolvePreferUniforme(opts.uniformesReel, imagen);
+    }
     if (await existe(imagen)) return imagen;
     // Borrador: una variación aún no generada degrada a su madre base, que ya
     // está en disco. Deja registro en `degradados` para que la salida lo avise.
@@ -287,7 +298,11 @@ async function segmentosDeSpec(
       const m = ref.match(VARIATION_RE);
       if (m) {
         const base = m[1];
-        const baseImagen = resolveReadPath(resolveAssetRef(base, arco, specs));
+        let baseImagen = resolveReadPath(resolveAssetRef(base, arco, specs));
+        if (opts.uniformesReel) {
+          const { resolvePreferUniforme } = await import('./uniformar.js');
+          baseImagen = await resolvePreferUniforme(opts.uniformesReel, baseImagen);
+        }
         if (await existe(baseImagen)) {
           opts.degradados?.push({ id: spec.id, ref, base });
           return baseImagen;
@@ -589,7 +604,7 @@ async function renderYConcat(
  * documento. Útil para aprobar la fuente y las destacadas de ese arco.
  */
 export async function montarAnimatic(input: MontarAnimaticInput): Promise<MontarAnimaticResult> {
-  const { arco, specs, offMap, borrador, off, voz } = input;
+  const { arco, specs, offMap, borrador, uniformesReel, off, voz } = input;
 
   const clips = specs.filter(
     (s) => s.kind === 'video-i2v' || s.kind === 'video-flf' || s.kind === 'montaje',
@@ -600,7 +615,11 @@ export async function montarAnimatic(input: MontarAnimaticInput): Promise<Montar
   const segmentos: Segmento[] = [];
 
   for (const spec of clips) {
-    const r = await segmentosDeSpec(spec, arco, specs, offMap, undefined, { borrador, degradados });
+    const r = await segmentosDeSpec(spec, arco, specs, offMap, undefined, {
+      borrador,
+      uniformesReel,
+      degradados,
+    });
     if (r.omitido) omitidos.push(r.omitido);
     segmentos.push(...r.segmentos);
   }
@@ -670,7 +689,7 @@ export async function montarAnimaticReel(
   opts: MontarAnimaticReelOpts | boolean = {},
 ): Promise<MontarAnimaticResult> {
   // Compat: firma vieja `montarAnimaticReel(reel, salida, borrador: boolean)`.
-  const { borrador, off, voz } = typeof opts === 'boolean' ? { borrador: opts } : opts;
+  const { borrador, uniformes, off, voz } = typeof opts === 'boolean' ? { borrador: opts } : opts;
   const items = await parseCutlist(reel);
 
   // Carga perezosa por arco: null = el arco aún no tiene planos.
@@ -680,6 +699,7 @@ export async function montarAnimaticReel(
   const omitidos: Omitido[] = [];
   const degradados: Degradado[] = [];
   const segmentos: Segmento[] = [];
+  const uniformesReel = uniformes ? reel : undefined;
 
   for (const item of items) {
     const arco = arcoDeClip(item.clip);
@@ -710,7 +730,11 @@ export async function montarAnimaticReel(
       continue;
     }
     const offMap = offCache.get(arco) ?? new Map<string, string>();
-    const r = await segmentosDeSpec(spec, arco, specs, offMap, item.dur, { borrador, degradados });
+    const r = await segmentosDeSpec(spec, arco, specs, offMap, item.dur, {
+      borrador,
+      uniformesReel,
+      degradados,
+    });
     if (r.omitido) omitidos.push(r.omitido);
     segmentos.push(...r.segmentos);
   }

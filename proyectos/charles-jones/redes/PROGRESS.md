@@ -1,7 +1,7 @@
 # Redes (Arco 3) — Build Progress
 
-_Last updated: 2026-07-10_
-_Current stage: Stage 6 — Gate texto→audio→duración en el animatic; pendiente re-correr borrador con `--off` y refinar textos con exceso_
+_Last updated: 2026-07-11_
+_Current stage: Stage 7 — Animatic borrador pendiente tras Cadena v3 (Fase 0 docs cerrada; sin generación)_
 _Based on roadmap: [TECH.md](TECH.md) § 5_
 
 > Session log agency-os + seguimiento detallado de producción (estados, costos, gates). Absorbe el antiguo `arco-3-roadmap.md`. No duplica prompts ni fichas: la fuente de verdad de los prompts es [arco-3-planos.md](planos/arco-3.md); el STYLE-BLOCK y los switches cuento↔real viven en [biblia-visual.md](../biblia-visual.md); la convención de IDs/archivos en [pipeline.md](../../../metodo/pipeline.md) §5.
@@ -16,18 +16,45 @@ Estados: `pendiente` → `generado` (existe el archivo) → `aprobado` (pasó el
 Espejo del roadmap de [TECH.md](TECH.md) § 5. Un stage se marca `[x]` solo cuando cumple sus Exit criteria.
 
 - [x] **Stage 1 — Docs y spec** — fichas de planos/arco-3.md válidas
-- [x] **Stage 2 — Cadena narrativa** — cadena del reel aprobada 2026-07-10 ([reels/la-grieta/cadena-narrativa.md](reels/la-grieta/cadena-narrativa.md)); gate previo a imágenes
+- [x] **Stage 2 — Cadena narrativa** — cadena v3 del reel aprobada 2026-07-11 ([reels/la-grieta/cadena-narrativa.md](reels/la-grieta/cadena-narrativa.md)); gate previo a imágenes
 - [ ] **Stage 3 — Imágenes madre en cascada** — 17 madres aprobadas (todas generadas/aprobadas; ver checklist)
-- [ ] **Stage 4 — Madres variations (unicidad por escena)** — 5 variaciones generadas/aprobadas; cero reutilización de firstFrame no exenta
-- [ ] **Stage 5 — Madres keyframes** — cada par/cadena FLF de la §Cadena de transiciones aprobado junto (sobre las variaciones); solo escenas de 2/N keyframes
-- [ ] **Stage 6 — Animatic (gate previo a video)** — dos pasadas: **borrador** (`--borrador [--off]`, bases + convergencia texto/duración) → **final** (variaciones + unicidad + 0 excesos de off, gate que habilita clips)
-- [ ] **Stage 7 — Clips** — bloques A/B/C generados y aprobados (Bloque A casi completo; B/C pendientes)
-- [ ] **Stage 8 — Montaje del reel transversal** — la-grieta montado desde los bloques
-- [ ] **Stage 9 — Destacadas del arco** — S1–S5 por recorte
+- [ ] **Stage 4 — Uniformidad de universo** — locks + mapa + `_madres-uniformes/` ([mapa-uniformidad.md](reels/la-grieta/mapa-uniformidad.md))
+- [ ] **Stage 5 — Madres variations (unicidad por escena)** — 4 variaciones vigentes generadas/aprobadas; cero reutilización de firstFrame no exenta
+- [ ] **Stage 6 — Madres keyframes** — cada par/cadena FLF de la §Cadena de transiciones aprobado junto (sobre las variaciones); solo escenas de 2/N keyframes
+- [ ] **Stage 7 — Animatic (gate previo a video)** — dos pasadas: **borrador** (`--borrador [--off]`, bases + convergencia texto/duración) → **final** (variaciones + unicidad + 0 excesos de off, gate que habilita clips)
+- [ ] **Stage 8 — Clips** — bloques A/B/C generados y aprobados (Bloque A casi completo; B/C pendientes)
+- [ ] **Stage 9 — Montaje del reel transversal** — la-grieta montado desde los bloques
+- [ ] **Stage 10 — Destacadas del arco** — S1–S5 por recorte
 
 ## 2. Session Log
 
 Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
+
+### 2026-07-11 — Cadena v3 "La grieta" (Fase 0: reescritura de dirección)
+
+- **Stage in flight:** Stage 2 (cadena narrativa) → prep Stage 7 (animatic borrador).
+- **Decisión de dirección (usuario):** la v3 prioriza esencia y retención short-form: crimen firmado → Charles testigo → culpa → víctimas → dos destinos → huella → verdad real de Rocas Coloradas. Sale la poda mecánica de "hacer entrar todo"; no se borra ni mueve ningún asset.
+- **Done this session:**
+  - **Cadena v3** en [reels/la-grieta/cadena-narrativa.md](reels/la-grieta/cadena-narrativa.md): esencia explícita (qué/cómo/por qué), 7 beats y diff conceptual v2→v3.
+  - **Cutlist v3** en [reels/la-grieta/README.md](reels/la-grieta/README.md): 27 slots compactos (~40s de presupuesto antes del ajuste texto→audio→duración). Hook pasa a `a1-a1` + `a3-a5`; caen cuaderno, establishing, ritual, huevo close-up, dos stills de grieta, `a3-b2`, `a2-a2d` y `a2-a2c`.
+  - **Offs** de [arco-1-off.md](planos/arco-1-off.md), [arco-2-off.md](planos/arco-2-off.md) y [arco-3-off.md](planos/arco-3-off.md) compactados al orden v3.
+  - **Mapa de uniformidad** re-derivado: solo madres alcanzadas por la cutlist v3; `a3-m05v1` cancelada porque `a3-m05` ya no se reutiliza en pantalla.
+  - **Política de imágenes desplazadas:** `a3-m12`, `a3-m04`, `a3-m19`, `a3-m21`, `a3-m02`, `a2-m04-c3` y `a2-m09` quedan como **referencia de estilo** en disco. `a3-m01` queda como lock de cuento sin slot propio.
+- **Sin generación / sin assets tocados:** no se corrió `gen`, `uniformar` ni animatic; no se borró ni movió ningún archivo.
+- **Next step:** re-correr `npm run animatic -- --reel la-grieta --borrador --off` para validar ritmo, orden y 0 excesos antes de avanzar con uniformidad/variaciones.
+- **New blockers / questions raised:** `a2-m07` sigue con re-pick pendiente; validar en animatic si el hook `a1-a1`→`a3-a5` entra claro sin el cuaderno.
+
+### 2026-07-10 — Gate Uniformidad de universo (Stage 4): mapa + CLI
+
+- **Stage in flight:** Stage 4 — Uniformidad de universo.
+- **Decisión de dirección (plan aprobado):** las madres respetan el STYLE-BLOCK por separado pero leen como "distintos universos"; se resuelve con locks + mapa + re-pase Nano Banana a `_madres-uniformes/` (nunca pisa canónicos).
+- **Done this session:**
+  - **Mapa** propuesto en [reels/la-grieta/mapa-uniformidad.md](reels/la-grieta/mapa-uniformidad.md): locks `a3-m01` (cuento) / `a3-m14` (real); filas por madre con tinte + preserva; exenta `a3-m12`; diferidas variations/keyframes.
+  - **CLI** `npm run uniformar` (`scripts/uniformar.ts` + `src/lib/uniformar.ts`): lee cutlist + mapa, copia locks, re-pasa el resto vía `generarImagen()` openrouter, sidecars, `--force`/`--id`/`--promover` (archiva en `_prev/`).
+  - **Animatic** gana `--uniformes` (prefiere `_madres-uniformes/` al resolver paths).
+  - **Docs:** Stage 4 en [TECH.md](TECH.md), paso 3 en [pipeline.md](../../../metodo/pipeline.md), criterios acá, [AGENTS.md](../../../AGENTS.md), [biblia-visual.md](../biblia-visual.md) §3 regla 4.
+- **Next step:** aprobar mapa (dirección) → dry-run mock → confirmar corrida real → aprobar carpeta → (posterior) `--promover`.
+- **New blockers / questions raised:** tinte de `a3-m02`/`a3-m03` alineado al beat del reel (lush green Bloque B); `a2-m07` usa fuente `-c3` (re-pick pendiente).
 
 ### 2026-07-10 — Cadena v2: Charles narra "La grieta" (reordenamiento + cierre real)
 
@@ -264,23 +291,22 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 1. **Docs** — planos / biblia / progreso alineados a las decisiones de dirección.
 2. **Cadena narrativa (gate)** — [reels/la-grieta/cadena-narrativa.md](reels/la-grieta/cadena-narrativa.md): mapa de beats en lenguaje de historia aprobado ANTES de generar imágenes; gobierna la cutlist.
 3. **Madres en cascada** — regenerar/generar con `--candidates 3` y aprobar con `--pick`, en orden: **m03' → m02' joven → m10' → m17**.
-4. **Animatic borrador (gratis)** — `npm run animatic -- --reel la-grieta --borrador`: las variaciones aún inexistentes degradan a su madre base; aprobar ritmo/orden/subtítulos ANTES de pagar las variaciones.
-5. **Madres variations** — generar **solo las variaciones de los slots que sobrevivieron** al borrador (un slot recortado/muerto no paga su variación).
-6. **Madres keyframes (gate)** — cada par/cadena FLF de la [§Cadena de transiciones](planos/arco-3.md) aprobado junto (mismo encuadre, solo cambia el estado), sobre las variaciones; ANTES del animatic final.
-7. **Animatic final (gate)** — `npm run animatic -- --reel la-grieta` (sin `--borrador`) → con variaciones reales + unicidad; aprobar ANTES de gastar en video.
-8. **Clips** — solo lo que el reel aprobado necesita: regen `a3-a4` (huevo) y `a3-c1` (push-in m07), generar `a3-c3`, re-auditar `b1`–`c2`, y las madres+clips de A1/A2. Puentes FLF (`a5x`/`a5y`/`c0`) y regen FLF de `a3-a5` **diferidos a destacadas**.
-9. **Montaje del reel transversal** — desde la cut-list (inserts: eco m09 tras c3, foto real en a3-c4).
-10. **Destacadas** — S1–S5 derivadas por recorte, cero generación.
+4. **Uniformidad de universo (gate)** — locks + [mapa-uniformidad.md](reels/la-grieta/mapa-uniformidad.md) aprobados → `npm run uniformar -- --reel la-grieta` → aprobar `_madres-uniformes/` (animatic `--uniformes`); promoción a canónicos con `--promover` solo con confirmación explícita. Orden con aspecto 9:16: uniformar → aspecto.
+5. **Animatic borrador (gratis)** — `npm run animatic -- --reel la-grieta --borrador --off`: validar ritmo/orden/subtítulos y 0 excesos de off con la cutlist v3 ANTES de pagar variaciones o correr uniformidad.
+6. **Madres variations** — generar **solo las variaciones de los slots que sobrevivieron** al borrador (un slot recortado/muerto no paga su variación); heredan uniformidad vía `ref`. Vigentes tras v3: `a3-m01v1`, `a3-m01v2`, `a3-m14v1`, `a3-m15v1`.
+7. **Madres keyframes (gate)** — cada par/cadena FLF de la [§Cadena de transiciones](planos/arco-3.md) aprobado junto (mismo encuadre, solo cambia el estado), sobre las variaciones; ANTES del animatic final.
+8. **Animatic final (gate)** — `npm run animatic -- --reel la-grieta` (sin `--borrador`) → con variaciones reales + unicidad; aprobar ANTES de gastar en video.
+9. **Clips** — solo lo que el reel aprobado necesita tras animatic: `a3-c1`, `a3-c3`, re-auditar `b1`/`b3`/`b4`/`c2`, y las madres+clips de A1/A2 vigentes. `a3-a4` y `a3-b2` salen del reel v3; quedan para fuente/destacadas si se usan. Puentes FLF (`a5x`/`c0`) y regen FLF de `a3-a5` siguen diferidos a destacadas; `a3-a5y` permanece en el reel v3 como puente de prosperidad.
+10. **Montaje del reel transversal** — desde la cut-list (inserts: eco m09 tras c3, foto real en a3-c4).
+11. **Destacadas** — S1–S5 derivadas por recorte, cero generación.
 
 ### Próxima acción
 
-**Gate texto→audio→duración** listo en el tooling: el animatic con `--off` estira escenas por audio y reporta excesos para refinar texto.
+**Animatic borrador v3** (Stage 7): cadena/cutlist/off re-derivados; falta validar ritmo.
 
-1. **Re-correr el animatic borrador** — `npm run animatic -- --reel la-grieta --borrador --off` — con la cutlist alineada.
-2. **Refinar textos** de los offs que excedan presupuesto (en `planos/arco-N-off.md`); re-correr hasta **0 excesos**. Solo subir `duration` si el motor lo permite (FLF: 5|10).
-3. **Huecos del intercut:** `a1-a1` espera `a1-m01a`; `a2-a1b` espera el par `a2-m02d`/`a2-m02c` — ambos diferidos al gate de madres keyframes (Stage 5).
-4. **Re-pick pendiente:** `a2-m07` (canónico borrado, solo queda `-c3` en disco) antes de que `a2-a0c` tenga still definitivo.
-5. Tras aprobar ritmo + 0 excesos → variaciones sobrevivientes → animatic final.
+1. **Correr borrador** — `npm run animatic -- --reel la-grieta --borrador --off`.
+2. **Revisar** hook, progresión sin mesetas, legibilidad de subtítulos y 0 excesos de off.
+3. **Después del gate de ritmo:** uniformidad v3 → variations sobrevivientes → keyframes → animatic final.
 
 ---
 
@@ -289,8 +315,9 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 | Etapa | Criterio |
 |---|---|
 | Madres | Silueta 100% negra recorte plano (NO fieltro/3D/plush), fondo tintado del beat correcto (guion de color de [arco-3-planos.md](planos/arco-3.md)), STYLE-BLOCK respetado (salvo m12–m15 que rompen a propósito), 9:16. Personajes distinguibles por contorno. Dirección de Ref: hereda de la madre ya aprobada/querida (hoy m10←m11). |
-| Madres keyframes (Stage 5) | Solo escenas de 2 o N keyframes. **Par emparejado** (par first/last de un FLF: m05v1/m06, m06/m14, m15v1/m08, m14v1/m07, m09/m17, m10'/m11): mismo encuadre y composición base, solo cambia el estado — el par se aprueba **junto** ([biblia-visual.md](../biblia-visual.md) §3, [pipeline.md](../../../metodo/pipeline.md) §2 paso 4). **Cadena** (N>2): eslabones aprobados juntos, `lastFrame` de un eslabón = `firstFrame` del siguiente (keyframe compartido). Sobre las variaciones del Stage 4, no sobre las madres base. |
-| Animatic (Stage 6) | Ritmo, orden, subtítulos. Con `--off`: **0 excesos** (cada locución entra en el presupuesto de su escena). Cadena causal: texto → audio → duración; el arreglo de un exceso es refinar el off en `arco-N-off.md`, no estirar la escena en producción. Final: + unicidad (ninguna imagen repetida no exenta). |
+| Madres uniformes (Stage 4) | Paleta / textura de papel / peso de línea (cuento) o grano / color science documental (real) coherentes con el lock de su registro; tinte del beat conservado (no aplanado hacia el lock); encuadres de pares FLF intactos; texto legible intacto en `a1-m01`. Locks copiados tal cual. Carpeta `_madres-uniformes/` aprobada antes de `--promover`. |
+| Madres keyframes (Stage 6) | Solo escenas de 2 o N keyframes. **Par emparejado** (par first/last de un FLF: m05/m06, m06/m14, m15v1/m08, m14v1/m07, m09/m17, m10'/m11): mismo encuadre y composición base, solo cambia el estado — el par se aprueba **junto** ([biblia-visual.md](../biblia-visual.md) §3, [pipeline.md](../../../metodo/pipeline.md) §2 paso 5). **Cadena** (N>2): eslabones aprobados juntos, `lastFrame` de un eslabón = `firstFrame` del siguiente (keyframe compartido). Sobre las variaciones del Stage 5 cuando existan, no sobre las madres base. |
+| Animatic (Stage 7) | Ritmo, orden, subtítulos. Con `--off`: **0 excesos** (cada locución entra en el presupuesto de su escena). Cadena causal: texto → audio → duración; el arreglo de un exceso es refinar el off en `arco-N-off.md`, no estirar la escena en producción. Final: + unicidad (ninguna imagen repetida no exenta). |
 | Clips | Arranca 1:1 de su imagen madre, movimiento tipo títere de papel plano (no 3D), tinte estable durante el clip, duración correcta. FLF: morph real primer→último (provider `Kling-FLF`, no fallback I2V). |
 | Reels | Continuidad de tinte entre clips, switches cuento↔real solo en la cadena de transiciones aprobada (ver abajo), audio off sincero sin chistes. |
 | Stories | 15s, legibles sin audio, sin generación extra. |
@@ -303,27 +330,27 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 
 | ID | Título | Estado | Nota |
 |---|---|---|---|
-| a3-m01 | Madre ornitorrinco | aprobado | Lock de consistencia ✓ — no tocar |
-| a3-m02 | Ornitorrinco joven | aprobado | Nano Banana multi-ref; pick c1 (más chico, panza arriba); path `a3-m02-ornitorrinco-joven.png` |
+| a3-m01 | Madre ornitorrinco | aprobado | Lock de consistencia ✓ — no tocar; sin slot propio en reel v3 |
+| a3-m02 | Ornitorrinco joven | aprobado (**referencia de estilo, sin slot reel v3**) | Nano Banana multi-ref; pick c1 (más chico, panza arriba); path `a3-m02-ornitorrinco-joven.png`; reusable como anatomy/ref |
 | a3-m03 | Padre ornitorrinco | aprobado | Nano Banana multi-ref; pick c3 (fornido, 4 patas, orilla de lago) |
-| a3-m04 | Huevo | aprobado | Close-up nido; ahora firstFrame de a3-a4 ✓ |
-| a3-m05 | Paisaje Pangea | aprobado | |
+| a3-m04 | Huevo | aprobado (**referencia de estilo, sin slot reel v3**) | Close-up nido; el huevo sigue estructural en `a2-a1b` y `a3-a6d`; no borrar |
+| a3-m05 | Paisaje Pangea | aprobado | FirstFrame directo de `a3-a5` en v3; `a3-a2` cae |
 | a3-m06 | Pangea partida | aprobado | Grieta roja, agua en el gap ✓ |
 | a3-m07 | Rocas Coloradas | aprobado | Retry ×1; firstFrame de a3-c1 (U2V) ✓ |
 | a3-m08 | Australia próspera | aprobado | lastFrame de puente a3-a5y ✓ |
 | a3-m09 | Argentina en declive | aprobado | firstFrame a3-b4 + eco montaje c3e ✓ |
 | a3-m10 | Ornitorrinco sobre roca | aprobado | Nano Banana: Ref m01 + mundo m07 + foto; pick c3; MADRE muriendo junto al agua ✓ |
 | a3-m11 | Fósil de piedra | aprobado | NO tocar — madre padre del par fosilización ✓ |
-| a3-m12 | Apertura cuaderno Charles | aprobado | Intro transversal POV ✓ |
+| a3-m12 | Apertura cuaderno Charles | aprobado (**referencia de estilo, sin slot reel v3**) | Intro transversal POV ✓; sale como hook de `la-grieta`, no borrar |
 | a3-m13 | Fósil en yacimiento | aprobado | Salto realidad clínico ✓ |
 | a3-m14 | Grieta Revenant | aprobado | REALITY-BLOCK-CHAOS; keyframe de a5x y c0 ✓ |
 | a3-m15 | Zoom-out poético | aprobado | Retry ×1; firstFrame de a3-a5y ✓ |
 | ~~a3-m16~~ | ~~Ornitorrinco caminando~~ | **ELIMINADA** | Con m10 reencuadrada no comparte encuadre; a3-c1 = U2V sobre m07 |
 | a3-m17 | Argentina seca (estado final) | aprobado | Par m09→m17; pick c2; mismo encuadre más seco/oscuro ✓ |
-| a3-m18 | Joven muriendo sobre roca | aprobado (**reserva, sin uso**) | Nueva: Ref m02 + mundo m07 + foto; pick c2; JOVEN muriendo en cornisa. **Huérfana**: ninguna ficha de clip la usa y contradice el off (el joven prospera en Australia, b2). No usar hasta resolver la ambigüedad narrativa (auditoría §0/§C). |
-| a3-m19 | Separación: grieta abriéndose | aprobado | Beat 8.1a; pick c1; still `a3-a6a` |
+| a3-m18 | Joven muriendo sobre roca | aprobado | Absorbida por reel v3 como `a3-c1b`: mi amigo muere entre las rocas coloradas. |
+| a3-m19 | Separación: grieta abriéndose | aprobado (**referencia de estilo, sin slot reel v3**) | Beat 8.1a v2; pick c1; still `a3-a6a` cae por compresión; no borrar |
 | ~~a3-m20~~ | ~~Familia repartida (frame único)~~ | **RETIRADA** | Reemplazada por estrategia de 3 (`m22`/`m23`/`m24`); candidatos c1–c3 quedan como ref visual |
-| a3-m21 | Separación: grieta ya abierta | aprobado | Beat 8.1b; copia de `a3-m19-c2`; still `a3-a6b` |
+| a3-m21 | Separación: grieta ya abierta | aprobado (**referencia de estilo, sin slot reel v3**) | Beat 8.1b v2; copia de `a3-m19-c2`; still `a3-a6b` cae por compresión; no borrar |
 | a3-m22 | Orilla cercana: madre + cría | aprobado | Beat 8.2a; pick c1; still `a3-a6c` |
 | a3-m23 | Orilla lejana: padre + huevo | aprobado | Beat 8.2b; pick c3; still `a3-a6d` |
 | a3-m24 | Plano lejano: los 4 + grieta | aprobado | Beat 8.2c; pick c1 (tanda 2); still `a3-a6e` |
@@ -336,16 +363,16 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 | a2-m02d | El huevo de este lado | pendiente (**diferida a keyframes — Stage 5**) | Keyframe inicial FLF con `a2-m02c` (clip `a2-a1b`); aprobar el par junto. **Re-letrado** (era `a2-m02a`) |
 | a2-m03 | Manos levantan la cría (cuento) | aprobado | Beat 9.3; pick c2 (gesto de alzar); still `a2-a0b` |
 | a2-m06 | Manos + cría (Revenant) | pendiente (**reserva destacada**) | `styleBlock: false`; ref `ornitorrinco_crias.jpeg`; NO entra al reel |
-| a2-m04 | El lugar blanco | aprobado | Beat 13.2 Revenant; pick `revenant-c2` → canónico, `revenant-c3` → `a2-m04-lugar-blanco-c3.png`; still `a2-a2`. Vive en [planos/arco-2.md](planos/arco-2.md) |
+| a2-m04 | El lugar blanco | aprobado | Beat 13.2 Revenant; pick `revenant-c2` → canónico, `revenant-c3` → `a2-m04-lugar-blanco-c3.png` (**referencia de estilo, sin slot reel v3**); still `a2-a2`. Vive en [planos/arco-2.md](planos/arco-2.md) |
 | a2-m05 | El despertar (Coloradas) | aprobado | Beat 13.3, **primer paso** de la coda (secuencia con `a2-m09`); pick c3 → `a2-m05-despertar.png`; ECU ojos Reiniger; still `a2-a2b`. Vive en [planos/arco-2.md](planos/arco-2.md) |
-| a2-m09 | El despertar en la selva | aprobado | Beat 13.3 post-sueño, **segundo paso** de la coda (cierra secuencia `a2-m05`→`a2-m09`, empalma Bloque C); pick c1 (mate a la salida de la carpa); Reiniger, cara visible; tinte rojo dusk; still `a2-a2c`. Vive en [planos/arco-2.md](planos/arco-2.md) |
+| a2-m09 | El despertar en la selva | aprobado (**referencia de estilo, sin slot reel v3**) | Beat 13.3 post-sueño v2; pick c1 (mate a la salida de la carpa); Reiniger, cara visible; tinte rojo dusk; still `a2-a2c` cae por compresión. Vive en [planos/arco-2.md](planos/arco-2.md) |
 | a2-m07 | La grieta (Revenant) | **generado, re-pick pendiente** | Beat 9.2, **primer eslabón** del switch transversal con `a2-m08`; canónico borrado, solo `a2-m07-grieta-revenant-c3.png` en disco; still `a2-a0c`. Vive en [planos/arco-2.md](planos/arco-2.md) |
 | a2-m08 | La grieta (Reiniger) | aprobado | Beat 9.2, **segundo eslabón** del switch (vuelta al cuento, mismo encuadre que `a2-m07`); pick c3 → `a2-m08-grieta-reiniger.png`; still `a2-a0d`. Vive en [planos/arco-2.md](planos/arco-2.md) |
-| a3-m01v1 | Madre al borde de la grieta (variación) | pendiente | Stage 4; `ref a3-m01` (OpenRouter), tinte rojo; firstFrame de a3-a6 |
-| a3-m01v2 | Madre en llanura seca (variación) | pendiente | Stage 4; `ref a3-m01` (OpenRouter), tinte gris; firstFrame de a3-b3 |
-| a3-m05v1 | Pangea antes del quiebre (variación) | pendiente | Stage 4; `ref a3-m05`; mismo encuadre que m05/m06 (par FLF); firstFrame de a3-a5 |
-| a3-m14v1 | Grieta real, polvo asentándose (variación) | pendiente | Stage 4; `ref a3-m14`, styleBlock false; firstFrame de a3-c0 |
-| a3-m15v1 | Aéreo hacia el humedal (variación) | pendiente | Stage 4; `ref a3-m15`, styleBlock false; firstFrame de a3-a5y |
+| a3-m01v1 | Madre al borde de la grieta (variación) | pendiente | Stage 5; `ref a3-m01` (OpenRouter), tinte rojo; firstFrame de a3-a6 |
+| a3-m01v2 | Madre en llanura seca (variación) | pendiente | Stage 5; `ref a3-m01` (OpenRouter), tinte gris; firstFrame de a3-b3 |
+| ~~a3-m05v1~~ | ~~Pangea antes del quiebre (variación)~~ | **CANCELADA por v3** | Al caer `a3-a2`, `a3-m05` ya no se reutiliza en pantalla y puede ser firstFrame directo de `a3-a5` |
+| a3-m14v1 | Grieta real, polvo asentándose (variación) | pendiente | Stage 5; `ref a3-m14`, styleBlock false; firstFrame de a3-c0 |
+| a3-m15v1 | Aéreo hacia el humedal (variación) | pendiente | Stage 5; `ref a3-m15`, styleBlock false; firstFrame de a3-a5y |
 
 > **Switch provider (2026-07-09):** madres con Ref/AnatomyRef pasan por `openrouter` (Nano Banana) en vez de Minimax. Minimax se queda como `--provider minimax` (composite 1-slot) por si hace falta.
 
@@ -353,10 +380,10 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 
 | ID | Bloque | Herramienta | Estado | Nota |
 |---|---|---|---|---|
-| a3-a1 | A | U2V | aprobado | Intro transversal ✓ |
-| a3-a2 | A | U2V | aprobado | Establishing Pangea ✓ |
-| a3-a3 | A | U2V | aprobado | Ritual madre ✓ |
-| a3-a4 | A | U2V | **obsoleto → regen** | Regenerar: firstFrame m04 huevo (ya no cría) |
+| a3-a1 | A | U2V | aprobado (**fuera reel v3**) | Intro/cuaderno queda como fuente o marco para otras salidas; no borrar |
+| a3-a2 | A | U2V | aprobado (**fuera reel v3**) | Establishing Pangea cae; `a3-a5` contiene el firstFrame de Pangea |
+| a3-a3 | A | U2V | aprobado (**fuera reel v3**) | Ritual madre cae del reel; sigue útil para destacadas/fuente |
+| a3-a4 | A | U2V | **fuera reel v3** | El huevo close-up cae del reel; no regenerar para `la-grieta` v3 salvo necesidad de destacada |
 | a3-a5 | A | U2V-FLF | aprobado (I2V degradado) | En el reel se tolera recortado a ~2s; **regen FLF m05→m06 diferido a la destacada S2** (auditoría §D) |
 | a3-a5b | A | U2V | aprobado | Switch caos Revenant ✓ |
 | a3-a5c | A | U2V | aprobado | Switch respiro crane-up ✓ |
@@ -364,7 +391,7 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 | a3-a5y | A/B | U2V-FLF | pendiente (diferido) | Puente m15→m08; **diferido a destacadas** (auditoría §D) |
 | a3-a6 | A | U2V | aprobado | |
 | a3-b1 | B | U2V | **generado (pre-rediseño) → re-auditar** | mp4 en disco de una pasada previa; si el contorno del padre calza con m03' aprobada, reutiliza |
-| a3-b2 | B | U2V | **generado (pre-rediseño) → re-auditar/regen** | mp4 `cria-eclosionada` (concepto viejo); ficha ahora es joven (firstFrame m02) |
+| a3-b2 | B | U2V | **fuera reel v3** | Sale por ritmo; madre `a3-m02` queda como referencia de estilo/anatomía |
 | a3-b3 | B | U2V | **generado (pre-rediseño) → re-auditar** | mp4 en disco; probable reutiliza |
 | a3-b4 | B | U2V-FLF | **generado (pre-rediseño) → re-auditar** | mp4 en disco; ficha es FLF m09→m17 (verificar morph) |
 | a3-c0 | C | U2V-FLF | pendiente (diferido) | Puente m14→m07; **diferido a destacadas** (auditoría §D) |
@@ -373,8 +400,8 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 | a3-c3 | C | U2V | pendiente | |
 | a3-c3e | C | ninguna | pendiente | Eco 1–2s m09 (solo montaje) |
 | a3-c4 | C | ninguna | pendiente | Solo montaje (foto real) |
-| a3-a6a | A | ninguna | generado | Beat 8.1a; still m19 (~1.5s), solo montaje |
-| a3-a6b | A | ninguna | generado | Beat 8.1b; still m21 (~1.5s), solo montaje |
+| a3-a6a | A | ninguna | generado (**fuera reel v3**) | Beat 8.1a v2; still m19 queda como referencia de estilo |
+| a3-a6b | A | ninguna | generado (**fuera reel v3**) | Beat 8.1b v2; still m21 queda como referencia de estilo |
 | a3-a6c | A | ninguna | generado | Beat 8.2a; still m22 (~1.5s), solo montaje |
 | a3-a6d | A | ninguna | generado | Beat 8.2b; still m23 (~1.5s), solo montaje |
 | a3-a6e | A | ninguna | generado | Beat 8.2c; still m24 (~2s), solo montaje |
@@ -386,8 +413,9 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 | a2-a1b | A2 | U2V-FLF | pendiente (diferido) | Beat 9.4; FLF a2-m02d→a2-m02c (el huevo cruza); **diferido a Stage 5** (par de keyframes) |
 | a2-a0b | A2 | ninguna | generado | Beat 9.3; still a2-m03 (~1.5s), solo montaje |
 | a2-a2 | A2 | ninguna | listo (still) | Beat 13.2; still a2-m04 canónico (~1.5s); entre a3-c2 y a3-c3; c3 aprobada como A/B |
+| a2-a2d | A2 | ninguna | listo (still, **fuera reel v3**) | Beat 13.2 v2; segundo ángulo `a2-m04-c3`, referencia de estilo |
 | a2-a2b | A2 | ninguna | listo (still) | Beat 13.3; still a2-m05 (~1.5s), primer paso de la coda |
-| a2-a2c | A2 | ninguna | listo (still) | Beat 13.3; still a2-m09 (~1.5s), segundo paso, cierra la coda |
+| a2-a2c | A2 | ninguna | listo (still, **fuera reel v3**) | Beat 13.3 v2; `a2-m09` queda como referencia de estilo |
 
 ## Continuidad y QC (vision-audit por clip)
 
@@ -398,9 +426,9 @@ Formaliza el QC que ya se hace informalmente (carpetas `_candidates`/`_audit`). 
 | Clip | Vision-audit (scene/action/mood) | Contorno OK | Tinte estable | Estado |
 |---|---|---|---|---|
 | a3-a1 | — | ✓ | ✓ | aprobado |
-| a3-a2 | — | ✓ | ✓ | aprobado |
-| a3-a3 | — | ✓ | ✓ | aprobado |
-| a3-a4 | (prev: baby) → regen huevo | — | — | obsoleto |
+| a3-a2 | — | ✓ | ✓ | aprobado (fuera reel v3) |
+| a3-a3 | — | ✓ | ✓ | aprobado (fuera reel v3) |
+| a3-a4 | (prev: baby) → fuera reel v3 | — | — | no auditar para v3 |
 | a3-a5b | real earth splitting, debris | ✓ | ✓ | aprobado |
 | a3-a5c | aerial two landmasses, golden dusk | ✓ | ✓ | aprobado |
 | a3-a6 | mother at chasm edge, head lowering | ✓ | ✓ | aprobado |
@@ -408,13 +436,14 @@ Formaliza el QC que ya se hace informalmente (carpetas `_candidates`/`_audit`). 
 
 ## Checklist — Salidas (montaje, sin costo de generación)
 
-**Reel transversal** ([reels/la-grieta/](reels/la-grieta/)): intercala clips de los hilos. Hoy solo hay fuente del Arco 3; los bloques que la alimentan:
+**Reel transversal** ([reels/la-grieta/](reels/la-grieta/)): intercala clips de los hilos. La v3 usa solo los slots que sirven crimen/testigo/víctimas/verdad; lo demás queda como fuente o referencia:
 
 | Aporte (Arco 3) | Fuente | Estado |
 |---|---|---|
-| Bloque A "La grieta" | a3-a1…a3-a6 (+a5x/a5y si aprueban; +1–2 frames m-mano en a3-a5) | pendiente |
-| Bloque B "Vidas paralelas" | a3-b1…a3-b4 (pantalla partida) | pendiente |
-| Bloque C "El último" | a3-c0…a3-c4 (+eco m09) | pendiente |
+| Hook + quiebre | `a1-a1`, `a3-a5`, `a3-a5b`, `a2-a0c`/`a2-a0d`, `a3-a5c` | pendiente animatic v3 |
+| Culpa + separación | `a2-a1`, `a2-a1c`, `a2-a1b`, `a2-a0b`, `a3-a6c`…`a3-a6` | pendiente animatic v3 |
+| Dos destinos + huella | `a3-a5y`, `a3-b1`, `a3-b3`, `a3-b4`, `a3-c1b`, `a3-c2`, `a3-c3` | pendiente animatic v3 |
+| Sueño + verdad | `a2-a2`, `a3-c1`, `a2-a2b`, `a3-c5`, `a3-c4` | pendiente animatic v3 |
 
 **Destacadas del Arco 3** (`destacadas/arco-3/`, carpeta se crea al montar la primera):
 
