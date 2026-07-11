@@ -256,8 +256,8 @@ duration: 1.5
 ```
 
 duration (montaje): 1–1.5s
-- Audio: off documental (beat 9.1: aparece Charles, no puede frenar la grieta)
-- Montaje: abre el zoom del beat 9 en el reel (durante "vidas paralelas"); still de m01 (silueta de espaldas); corta a `a2-a0c` (el golpe de la grieta). El animatic decide si asciende a clip U2V.
+- Audio: off en primera persona (beat 2.1: "Yo estuve en esos tiempos.") — ver [arco-2-off.md](arco-2-off.md)
+- Montaje (reel v2): abre el testimonio de Charles (beat 2, "yo estuve en esos tiempos"); still de m01 (silueta de espaldas); corta a `a3-a2` (Pangea). El golpe de la grieta (`a2-a0c`) llega en el beat 3, cuando Charles cuenta "cuando la partieron". El animatic decide si asciende a clip U2V.
 
 **Clip a2-a0c — El golpe de la grieta, Revenant (montaje, sin generación) — switch real→cuento**
 
@@ -268,8 +268,8 @@ duration: 1.5
 ```
 
 duration (montaje): 1–1.5s
-- Audio: off documental (el golpe visceral de la palanca) — ver [arco-2-off.md](arco-2-off.md)
-- Montaje: still de m07 (OTS extremo fotorrealista, colapso en acción); **primer eslabón** del switch transversal real→cuento (hermano de `a3-m14`). Corta a `a2-a0d` (vuelta al cuento). El animatic decide si asciende a clip U2V o si el par sube a FLF real→dibujo en el gate de keyframes.
+- Audio: off en primera persona (beat 3.4: "Yo lo vi desde la loma. No pude hacer nada.") — ver [arco-2-off.md](arco-2-off.md)
+- Montaje: still de m07 (OTS extremo fotorrealista, colapso en acción); **primer eslabón** del switch transversal real→cuento (hermano de `a3-m14`). En el reel v2 llega tras el caos `a3-a5b`: Charles presencia el golpe. Corta a `a2-a0d` (vuelta al cuento). El animatic decide si asciende a clip U2V o si el par sube a FLF real→dibujo en el gate de keyframes.
 
 **Clip a2-a0d — Vuelta al cuento, Reiniger (montaje, sin generación) — cierra el switch**
 
@@ -281,9 +281,9 @@ duration: 1.5
 
 duration (montaje): 1–1.5s
 - Audio: *(silencio)* — respira tras el golpe
-- Montaje: still de m08 (mismo encuadre en silueta); **segundo eslabón**, cierra el switch iniciado en `a2-a0c` y devuelve el registro al cuento antes de retomar la palanca. Corta a `a2-a1` (la pisada).
+- Montaje: still de m08 (mismo encuadre en silueta); **segundo eslabón**, cierra el switch iniciado en `a2-a0c` y devuelve el registro al cuento. En el reel v2 corta a `a3-a5c` (dos mundos), que cierra el beat 3. La pisada (`a2-a1`) llega en el beat 4 ("un gran amigo").
 
-**Clip a2-a1 — La pisada / Charles pasa (montaje, sin generación) — beat 9.4**
+**Clip a2-a1 — La pisada / Charles pasa (montaje, sin generación) — beat 4.1**
 
 ```yaml
 kind: montaje
@@ -292,10 +292,10 @@ duration: 1.5
 ```
 
 duration (montaje): 1–1.5s
-- Audio: *(silencio)* — respira; el off de la palanca vive en `a2-a1b`
+- Audio: off en primera persona (beat 4.1: "Por un descuido mío…") — ver [arco-2-off.md](arco-2-off.md)
 - Montaje: still de m02a (solo la bota sobre el tronco); corta a `a2-a1c` (nido vacío).
 
-**Clip a2-a1c — El nido vacío (montaje, sin generación) — beat 9.4**
+**Clip a2-a1c — El nido vacío (montaje, sin generación) — beat 4.2**
 
 ```yaml
 kind: montaje
@@ -307,7 +307,7 @@ duration (montaje): 1–1.5s
 - Audio: *(silencio)* — respiro entre la pisada y el FLF
 - Montaje: still de m02b (solo el nido vacío sobre el tronco); corta a `a2-a1b` (el huevo cruza).
 
-**Clip a2-a1b — El huevo cruza (beat 9.4)**
+**Clip a2-a1b — El huevo cruza (beat 4.3)**
 
 ```yaml
 kind: video-flf
@@ -324,10 +324,10 @@ Motion prompt (EN):
 The platypus egg tumbles from the fallen log and comes to rest lying on its side on the prosperous far bank among green ferns, hinged paper puppet movement, flat 2D silhouette animation, dramatic deep red tinted background, NO log in the final state, NO rift.
 ```
 - Vision-Audit (EN): sceneDescription: `a speckled platypus egg lying on its side on a prosperous fern bank, deep red tinted background` · action: `the egg tumbles across and lands off-balance on the far side` · mood: `tender, accidental, hopeful`
-- Audio: off documental (la palanca) + música tenue — ver [arco-2-off.md](arco-2-off.md)
-- Montaje: tras el nido vacío; corta a `a2-a0b` (alzada de la cría, cierre del zoom). Orden del beat 9: `a2-a0` → `a2-a0c` → `a2-a0d` → `a2-a1` → `a2-a1c` → `a2-a1b` → `a2-a0b`, entre `a3-b3` y `a3-b4`. La consecuencia (beat 9.6) no tiene plano propio — la resuelve el corte a `a3-b4` (Argentina seca) + off.
+- Audio: off en primera persona (beat 4.3: "…y una vida entera cruzó el océano.") + música tenue — ver [arco-2-off.md](arco-2-off.md)
+- Montaje: tras el nido vacío; corta a `a2-a0b` (alzada de la cría, cierre del beat). Orden del beat 4 en el reel v2: `a2-a1` → `a2-a1c` → `a2-a1b` → `a2-a0b`, dentro de "un gran amigo" (antes de la separación de la familia, beat 5).
 
-**Clip a2-a0b — Las manos levantan a la cría (montaje, sin generación) — cierre del zoom 9**
+**Clip a2-a0b — Las manos levantan a la cría (montaje, sin generación) — cierre del beat 4**
 
 ```yaml
 kind: montaje
@@ -336,10 +336,10 @@ duration: 1.5
 ```
 
 duration (montaje): 1–1.5s
-- Audio: off documental (beat 9.3: un gesto de ternura, casi accidental) — remate tierno tras el huevo
-- Montaje: still de m03 (manos alzando la cría); cierra el zoom del beat 9. Corta a `a3-b4` (Argentina seca).
+- Audio: off en primera persona (beat 4.4: "Me agaché a levantar a una cría perdida. Así conocí a un gran amigo.") — remate tierno tras el huevo
+- Montaje: still de m03 (manos alzando la cría); cierra el beat 4. En el reel v2 corta a `a3-a3` (la familia, beat 5).
 
-**Clip a2-a2 — El lugar blanco (montaje, sin generación) — beat 13.2**
+**Clip a2-a2 — El lugar blanco (montaje, sin generación) — beat 8.1**
 
 ```yaml
 kind: montaje
@@ -349,9 +349,21 @@ duration: 1.5
 
 duration (montaje): 1–1.5s
 - Audio: susurro casi subliminal "…es en Rocas Coloradas…" bajo la música (no lectura documental); ver [arco-2-off.md](arco-2-off.md)
-- Montaje: entra en el ZOOM 13 del reel, **entre `a3-c2` (fosilización) y `a3-c3` (el fósil hoy)**. El tinte gris piedra en el que cierra `a3-c2` se drena hasta el blanco puro de m04 (transición por color, sin corte duro); still de m04 (Charles de espaldas, maíz que cae, palomas ausentes); corta a `a2-a2b`. El animatic decide si asciende a clip U2V.
+- Montaje (reel v2): abre el sueño (beat 8), **después de `a3-c3` (el fósil real)** — el salto de la foto/fósil real al void blanco puro de m04 (ambos registro Revenant/fotográfico, empalme suave); still de m04 (Charles de espaldas, maíz que cae, palomas ausentes); corta a `a2-a2d`. El animatic decide si asciende a clip U2V.
 
-**Clip a2-a2b — El despertar (montaje, sin generación) — beat 13.3**
+**Clip a2-a2d — El lugar blanco c3 (montaje, sin generación) — beat 8.1**
+
+```yaml
+kind: montaje
+fuente: assets/arco-2/madre/a2-m04-lugar-blanco-c3.png
+duration: 1.5
+```
+
+duration (montaje): 1–1.5s
+- Audio: *(silencio)* — el susurro ya sonó en `a2-a2`
+- Montaje: still de la segunda madre aprobada del lugar blanco (**absorción** de `a2-m04-c3`); misma escena, segundo ángulo. En el reel v2 corta a `a3-c1` (las coloradas del cuento).
+
+**Clip a2-a2b — El despertar (montaje, sin generación) — beat 8.3**
 
 ```yaml
 kind: montaje
@@ -361,9 +373,9 @@ duration: 1.5
 
 duration (montaje): 1–1.5s
 - Audio: sin off (silencio; respira antes del segundo paso del despertar)
-- Montaje: still de m05 (ECU de ojos Reiniger, tinte rojo dusk + Coloradas); **primer paso** del despertar. Corta a `a2-a2c` (despertar selvático), que cierra la coda.
+- Montaje: still de m05 (ECU de ojos Reiniger, tinte rojo dusk + Coloradas); **primer paso** del despertar. En el reel v2 llega tras `a3-c1` (las coloradas del cuento). Corta a `a2-a2c` (despertar selvático).
 
-**Clip a2-a2c — El despertar en la selva (montaje, sin generación) — beat 13.3, cierre de la coda**
+**Clip a2-a2c — El despertar en la selva (montaje, sin generación) — beat 8.4, cierre de la coda**
 
 ```yaml
 kind: montaje
@@ -372,5 +384,5 @@ duration: 1.5
 ```
 
 duration (montaje): 1–1.5s
-- Audio: sin off (silencio; respira antes del salto a la realidad de `a3-c3`)
-- Montaje: still de m09 (mate a la salida de la carpa, cara visible Reiniger); **segundo paso**, cierra la coda del despertar (`a2-a2b` → `a2-a2c`) y empalma el rojo dusk de vuelta con el Bloque C. Corta a `a3-c3` (el fósil hoy, salto a la realidad). Cierra el ZOOM 13.
+- Audio: sin off (silencio; respira antes del eco de caos)
+- Montaje: still de m09 (mate a la salida de la carpa, cara visible Reiniger); **segundo paso**, cierra la coda del despertar (`a2-a2b` → `a2-a2c`). En el reel v2 corta a `a3-c5` (eco de caos Revenant), que precede al corte a lo real (`a3-c4`).

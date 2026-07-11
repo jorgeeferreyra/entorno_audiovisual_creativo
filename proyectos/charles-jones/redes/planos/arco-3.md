@@ -852,6 +852,18 @@ The real green-valley rift seen from the distant hillside freezes and resolves i
 - Audio: rumble que se apaga + off documental breve
 - Montaje: abre el Bloque C — la grieta real se congela en el cuento rojo; corta a a3-c1
 
+**Clip a3-c1b — El joven muriendo (montaje, sin generación) — beat 7.3**
+
+```yaml
+kind: montaje
+fuente: a3-m18
+duration: 1.5
+```
+
+duration (montaje): 1–1.5s
+- Audio: off en primera persona (beat 7.3: "Primero se fue el joven, entre las rocas coloradas.") — ver [arco-3-off.md](arco-3-off.md)
+- Montaje: still de m18 (joven sobre roca colorada, cabeza colgando); **absorción** de `a3-m18`. Lectura: la cría que quedó de este lado creció y murió acá (no contradice al joven próspero de Australia, `a3-b2`, que es la línea del huevo). En el reel v2 abre la muerte del beat 7; corta a `a3-c2` (la fosilización de la madre).
+
 **Clip a3-c1 — Establishing Rocas Coloradas (push-in hacia la roca)**
 
 ```yaml
@@ -920,6 +932,18 @@ duration (montaje): 1–2s
 - Audio: silencio o cola del off de c3
 - Montaje: eco breve tras el pull-out de a3-c3, antes de la foto real c4 — puente emocional declive→yacimiento; SOLO montaje
 
+**Clip a3-c5 — Eco de caos Revenant (montaje, sin generación) — beat 8.5**
+
+```yaml
+kind: montaje
+fuente: a3-m14
+duration: 1.5
+```
+
+duration (montaje): 1–1.5s
+- Audio: *(SIN off — el caos habla solo)*
+- Montaje: **eco deliberado** de la grieta Revenant (`a3-m14`, exento de variación como el eco de `a3-m09` en `a3-c3e`) — en el reel v2 cierra el sueño: tras el despertar en la selva (`a2-a2c`), todo vuelve a romperse un instante antes del corte a lo real. Reutiliza la madre `a3-m14` (REALITY-BLOCK-CHAOS); corta DURO a `a3-c4`.
+
 **Clip a3-c4 — Foto real de Rocas Coloradas (remate final)**
 
 ```yaml
@@ -929,9 +953,9 @@ duration: 4
 ```
 
 duration (montaje): 3–4s (16:9; reencuadrar a 9:16)
-- Sobreimpreso (opcional): "La Fundación protege hoy este yacimiento" — humor negro (el criminal custodiando la escena del crimen)
-- Audio: silencio u off breve
-- Montaje: cierra el "salto a la realidad" a3-c2 → a3-c3 → eco m09 → a3-c4; es el pago emocional del arco
+- Sobreimpreso: "Área Natural Protegida Rocas Coloradas — Comodoro Rivadavia" — **la verdad**: la locación es real (decisión de dirección v2 2026-07-10). El humor negro de la Fundación sale del reel; sigue como recurso del hilo en [../arco-3-ornitorrincos.md](../arco-3-ornitorrincos.md).
+- Audio: off breve ("Esta parte es real.") o silencio
+- Montaje: **cierre del reel v2** — tras el eco de caos `a3-c5`, corte a la foto real; es el pago emocional (se dice la verdad de la locación). En el hilo/destacadas del Arco 3 sigue sirviendo como remate del "salto a la realidad" (a3-c2 → a3-c3 → eco m09 → a3-c4).
 
 ---
 

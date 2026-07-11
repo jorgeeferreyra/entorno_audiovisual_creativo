@@ -29,6 +29,19 @@ Espejo del roadmap de [TECH.md](TECH.md) § 5. Un stage se marca `[x]` solo cuan
 
 Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 
+### 2026-07-10 — Cadena v2: Charles narra "La grieta" (reordenamiento + cierre real)
+
+- **Stage in flight:** Stage 2 (cadena narrativa) → re-deriva Stage 6 (animatic).
+- **Decisión de dirección (usuario):** el reel transversal pasa a ser el **testimonio de Charles en primera persona** ("yo estuve en esos tiempos"). Reordenamiento completo de la cadena y cierre **con la verdad de la locación** (no la ironía de la Fundación).
+- **Done this session:**
+  - **Cadena v2** en [reels/la-grieta/cadena-narrativa.md](reels/la-grieta/cadena-narrativa.md) (`estado: propuesto`): 8 beats en primera persona — (1) el cuaderno, (2) yo estuve en esos tiempos, (3) cuando la partieron [la mano firma **abre** el crimen], (4) un gran amigo [la palanca sube antes de la separación], (5) su familia se vio separada, (6) los de aquel lado prósperos, (7) los de este lado dejaron su huella, (8) el sueño [despertar → **caos** → realidad]. Mapa beat→clip reescrito.
+  - **Cutlist** de [reels/la-grieta/README.md](reels/la-grieta/README.md) re-derivada al orden v2 (~55–60s). **Todas** las madres de los tres arcos entran (desafío "hacerlas caber"): se suman `a3-b2` (joven explorando) y `a3-c5` (eco de caos). Cierre `a3-c4` = foto real + verdad.
+  - **Off a primera persona** en [arco-1-off.md](planos/arco-1-off.md) (la mano abre), [arco-2-off.md](planos/arco-2-off.md) (Charles/palanca + coda) y [arco-3-off.md](planos/arco-3-off.md) (testimonio, tablas por beat v2). El sobreimpreso final pasa de "La Fundación protege…" a **"Área Natural Protegida Rocas Coloradas — Comodoro Rivadavia"** (locación real); la Fundación queda como recurso del hilo en [arco-3-ornitorrincos.md](arco-3-ornitorrincos.md).
+  - **Planos sincronizados:** ficha de montaje nueva `a3-c5` (eco caos, `fuente a3-m14`, exento de variación como `a3-c3e`) y `a3-c4` con el texto de la verdad en [planos/arco-3.md](planos/arco-3.md); ficha de montaje `a2-a2d` reincorporada y notas de posición del reel actualizadas a la v2 en [planos/arco-2.md](planos/arco-2.md).
+- **Sin generación nueva:** ninguna madre se genera; `a3-c5` reutiliza `a3-m14`. Costo de video sin cambios.
+- **Next step:** re-correr `npm run animatic -- --reel la-grieta --borrador --off` (regenera TTS de las líneas nuevas), revisar ritmo/orden/0-excesos y aprobar el gate (dirección) antes de producir.
+- **New blockers / questions raised:** re-pick de `a2-m07` sigue pendiente (still `a2-a0c`); el eco de caos final reusa `a3-m14` (validar que no sature de switches en el animatic).
+
 ### 2026-07-10 — Gate texto → audio → duración en el animatic
 
 - **Stage in flight:** Stage 6 — tooling + método del animatic.

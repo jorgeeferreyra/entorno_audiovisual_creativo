@@ -1,13 +1,15 @@
 ---
 reel: la-grieta
 doc: cadena-narrativa
-estado: aprobado
+estado: propuesto
 fecha: 2026-07-10
 ---
 
 # La grieta — Cadena narrativa
 
 > Mapa narrativo del reel transversal, en lenguaje de historia (no de producción). **Gobierna** la `cutlist` del [README.md](README.md): la cutlist implementa esta cadena, no al revés. Es el **gate previo a generar imágenes** (Stage 2 en [../../TECH.md](../../TECH.md) §5): se aprueba el mapa de beats antes de gastar en madres o clips.
+>
+> **v2 2026-07-10 — Charles narra en primera persona.** Reordenamiento de dirección: el relato deja de ser tercera persona Attenborough y pasa a ser el **testimonio de Charles** ("yo estuve en esos tiempos"). Cambia el orden (la mano firma al principio; la palanca —Charles y su amigo— sube antes de la separación; el remate invierte a sueño → despertar → caos → realidad) y el cierre se dice **con la verdad**: hoy es el Área Natural Protegida Rocas Coloradas, Comodoro Rivadavia (es una locación real). El humor negro de la Fundación sale del reel (sigue vivo como recurso del hilo en [../../arco-3-ornitorrincos.md](../../arco-3-ornitorrincos.md)). No se genera ninguna madre nueva: todas las madres de los tres arcos entran (el desafío era hacerlas caber). Absorciones previas (`a3-m18`, `a2-m04-c3`) siguen vigentes; ver [auditoria-refinamiento.md](auditoria-refinamiento.md).
 
 ## Cómo leer / iterar
 
@@ -15,73 +17,57 @@ Regla general del gate (lenguaje de historia y zoom-in por cobertura) en [pipeli
 
 ---
 
-## La cadena (aprobada)
+## La cadena (v2 — Charles narra)
 
 ```text
 1  El cuaderno
-   Una historia que el tiempo intentó borrar.
+   Se abre. Hay una historia que solo yo puedo contar.
 
-2  Pangea
-   Un solo continente. Un solo hogar.
+2  Yo estuve en esos tiempos
+   2.1  Yo, de espaldas, al borde de un mundo entero.
+   2.2  Ciento ochenta millones de años atrás: un solo continente.
 
-3  La familia unida
-   Madre · padre · cría · huevo. Ritual cotidiano.
+3  Cuando la partieron
+   3.1  Una mano con cadenita de oro firma el informe. (muda)
+   3.2  El suelo se rasga. El cuento se tiñe de rojo.
+   3.3  El caos: sin palabras, solo el ruido.
+   3.4  Yo lo vi desde la loma. El golpe — y la vuelta al cuento.
+   3.5  Cuando todo se detuvo, donde hubo un mundo había dos.
 
-4  El temblor
-   Bajo sus patas, la tierra ya se parte.
+4  Un gran amigo
+   4.1  Por un descuido mío, una bota apoya en un tronco.
+   4.2  El nido quedó vacío.
+   4.3  Y un huevo cruzó el océano.
+   4.4  Me agaché a levantar a una cría perdida. Así lo conocí.
 
-5  El caos de la grieta
-   El mundo se rompe. Sin palabras: solo el ruido.
+5  Su familia se vio separada
+   5.1  La madre, cada mañana, el mismo gesto. Y el huevo.
+   5.2  La grieta se abre: las paredes casi se tocan → el mar entra.
+   5.3  De un lado la madre y su cría; del otro, el padre y el huevo.
+        Y los cuatro, ya lejos.
+   5.4  La despedida: el último instante antes del agua.
 
-6  ZOOM — La Mano Negra (reveal)
-   6.1  Una mano con cadenita de oro traza la fractura en el mapa.
-   6.2  Se entiende: no fue un accidente. Fue un crimen.
+6  Los de aquel lado fueron prósperos
+   6.1  Switch de estilo: del otro lado del océano, la vida floreció.
+   6.2  El padre, fuerte, en aguas generosas.
+   6.3  El joven creció sin conocer la sed.
 
-7  Dos mundos
-   Cuando todo se detiene, donde hubo uno ahora hay dos.
+7  Los de este lado dejaron su huella
+   7.1  Acá la madre envejeció sola.
+   7.2  Año tras año, la tierra verde se cerró sobre sí misma.
+   7.3  Primero se fue el joven, entre las rocas coloradas.
+   7.4  Después ella: la última. El tiempo la volvió piedra.
+   7.5  Switch a Revenant: el fósil, tal como quedó.
 
-8  ZOOM — La separación (quién quedó de cada lado)
-   8.1  La grieta se abre
-        8.1a  Las paredes casi se tocan.
-        8.1b  El mar ya entra; la herida es irreversible.
-   8.2  Quién quedó de cada lado (por corte)
-        8.2a  Orilla cercana: la madre y su cría.
-        8.2b  Orilla lejana: el padre y el huevo.
-        8.2c  Plano lejano: los cuatro y la grieta.
-   8.3  La despedida: el último instante antes de que el mar los separe.
-
-9  ZOOM — Charles y la palanca
-   9.1  Charles aparece de espaldas (sombrero, silueta; nunca de frente).
-        No puede frenar la grieta.
-   9.2  Encuentra a la familia partida. Actúa por ternura, no por plan.
-   9.4  Charles pasa (pisada) → nido vacío → el tronco bascula;
-        el huevo rueda y cruza al lado que será Australia.
-   9.3  Sus manos levantan a la cría — gesto mínimo, casi accidental
-        (cierre tierno del zoom, tras el huevo).
-   9.5  Devuelve la cría junto a la madre (lado que será Argentina)
-        y sigue su camino sin registrar lo que causó.
-   9.6  Se entiende la consecuencia:
-        ese gesto de dos segundos explica 62 millones de años.
-        Por eso hoy hay ornitorrincos en Australia.
-
-10 Vidas paralelas
-   10.1  Del lado del huevo: la vida florece.
-   10.2  Del lado de la madre: la orilla se seca; ella envejece sola.
-
-11 La sequía
-   Año tras año, la tierra se cierra sobre sí misma.
-
-12 El último
-   De aquella familia queda uno solo, entre las rocas coloradas.
-
-13 ZOOM — Remate (puente al episodio 1)
-   13.1  Se echa a descansar. El tiempo lo vuelve piedra.
-   13.2  El lugar blanco: Charles, de espaldas, alimenta palomas que no están.
-         Susurra dónde. El mensaje viaja 62 millones de años.
-   13.3  El despertar: Charles abre los ojos en el mundo rojo. Ya lo dijo.
-   13.4  Hoy, en esas mismas rocas, la piedra todavía recuerda su forma.
-   13.5  Sobreimpreso: La Fundación protege este yacimiento.
-         El criminal custodia la escena del crimen.
+8  El sueño (coda)
+   8.1  El lugar blanco: doy de comer a palomas que no están.
+        Susurro dónde. (…es en Rocas Coloradas…)
+   8.2  Las coloradas del cuento.
+   8.3  Se abren los ojos.
+   8.4  Despierta la selva: mate a la salida de la carpa.
+   8.5  Switch a Revenant caos: todo vuelve a romperse.
+   8.6  Corte a lo real: hoy es el Área Natural Protegida
+        Rocas Coloradas, Comodoro Rivadavia. Porque es verdad.
 ```
 
 ---
@@ -93,17 +79,12 @@ Cruza cada beat con la [`cutlist`](README.md) actual. Expone qué está cubierto
 | Beat | Clip(s) en cutlist | Cobertura |
 |---|---|---|
 | 1 · El cuaderno | `a3-a1` | Cubierto |
-| 2 · Pangea | `a3-a2` | Cubierto |
-| 3 · La familia unida | `a3-a3`, `a3-a4` | Cubierto |
-| 4 · El temblor | `a3-a5` (arranque) | Cubierto |
-| 5 · El caos de la grieta | `a3-a5`, `a3-a5b` | Cubierto |
-| 6 · ZOOM Mano Negra | `a1-a1` | Cubierto (plano parcial [arco-1.md](../../planos/arco-1.md)) |
-| 7 · Dos mundos | `a3-a5c` | Cubierto |
-| **8 · ZOOM separación** | `a3-a6a` (8.1a), `a3-a6b` (8.1b), `a3-a6c` (8.2a), `a3-a6d` (8.2b), `a3-a6e` (8.2c), `a3-a6` (8.3) | Cubierto: estrategia de 3 + progresión de la grieta en [arco-3.md](../../planos/arco-3.md) — `m19`→`m21` (grieta), `m22`/`m23` (orillas), `m24` (lejano). ~~`m20`~~ RETIRADA. |
-| **9 · ZOOM Charles / palanca** | `a2-a0` (9.1), `a2-a1` (9.4 pisada), `a2-a1c` (9.4 nido), `a2-a1b` (9.4 huevo FLF), `a2-a0b` (9.3 alzada, cierre) | Cubierto: fichas en [arco-2.md](../../planos/arco-2.md) — un sujeto por plano; orden montaje pasa → nido → huevo → cría. `a2-m06` Revenant es **reserva destacada**, no reel. La consecuencia (9.6) la resuelve el corte a `a3-b4` + off. |
-| 10 · Vidas paralelas | `a3-b1`, `a3-b3` | Cubierto |
-| 11 · La sequía | `a3-b4` | Cubierto |
-| 12 · El último | `a3-c1` | Cubierto |
-| **13 · ZOOM remate** | `a3-c2` (13.1), `a2-a2` (13.2), `a2-a2b` (13.3), `a3-c3` (13.4), `a3-c4` (13.5) | Cubierto: coda del lugar blanco bajada en [arco-2.md](../../planos/arco-2.md) — madres `a2-m04` (lugar blanco) y `a2-m05` (despertar) montadas como stills entre la fosilización y el fósil de hoy; el mensaje "es en Rocas Coloradas" cruza al Ep.1. |
+| 2 · Yo estuve en esos tiempos | `a2-a0` (Charles espaldas m01), `a3-a2` (Pangea m05) | Cubierto |
+| **3 · Cuando la partieron** | `a1-a1` (la mano firma), `a3-a5` (grieta rasga, FLF), `a3-a5b` (caos Revenant), `a2-a0c`→`a2-a0d` (Charles lo ve: switch real→cuento), `a3-a5c` (dos mundos) | Cubierto: la mano abre el crimen (parcial [arco-1.md](../../planos/arco-1.md)); `a2-m07` re-pick pendiente. |
+| **4 · Un gran amigo** | `a2-a1` (pisada m02a), `a2-a1c` (nido m02b), `a2-a1b` (huevo cruza, FLF m02d→m02c), `a2-a0b` (alza la cría m03) | Cubierto: fichas en [arco-2.md](../../planos/arco-2.md); `a2-a1b` FLF diferido al gate de keyframes. |
+| **5 · Su familia se vio separada** | `a3-a3` (ritual m01), `a3-a4` (huevo m04), `a3-a6a`…`a3-a6e` (grieta+orillas m19/m21/m22/m23/m24), `a3-a6` (despedida m01v1) | Cubierto: estrategia de 3 + progresión de la grieta en [arco-3.md](../../planos/arco-3.md). |
+| 6 · Los de aquel lado fueron prósperos | `a3-a5y` (switch real→cuento, FLF m15v1→m08), `a3-b1` (padre m03), `a3-b2` (joven m02) | Cubierto |
+| **7 · Su huella** | `a3-b3` (madre débil m01v2), `a3-b4` (sequía, FLF m09→m17), `a3-c1b` (el joven m18), `a3-c2` (fosilización, FLF m10→m11), `a3-c3` (fósil real m13, switch Revenant) | Cubierto: ambos ornitorrincos mueren y se vuelven fósil; cierra con el salto a lo real. |
+| **8 · El sueño (coda)** | `a2-a2`/`a2-a2d` (lugar blanco m04/-c3, susurro "es en Rocas Coloradas"), `a3-c1` (coloradas del cuento m07), `a2-a2b` (ojos m05), `a2-a2c` (selva m09), `a3-c5` (eco caos Revenant m14), `a3-c4` (foto real + la verdad) | Cubierto: `a3-c5` es el **eco de caos** nuevo (montaje sobre m14); el cierre dice la verdad (Área Natural Protegida Rocas Coloradas, Comodoro Rivadavia). |
 
-**Beat 8 reestructurado (2026-07-10):** se retira el frame único `a3-m20` y se cuenta la separación por corte (`m22`/`m23`/`m24`) + progresión de la grieta (`m19`→`m21`). Pendiente: pick de `m22`/`m23`/`m24` y animatic borrador (Stage 6) para afinar durs.
+**v2 2026-07-10:** todas las madres de los tres arcos entran (desafío "hacerlas caber"). Reordenamiento en primera persona; la mano abre, la palanca sube antes de la separación, el remate invierte a sueño→despertar→caos→realidad. El cierre pasa de la ironía de la Fundación a **la verdad de la locación**. Pendiente: animatic (Stage 6) para afinar durs y `a3-c5` (eco caos).
