@@ -1,7 +1,7 @@
 # Redes (Arco 3) — Build Progress
 
 _Last updated: 2026-07-11_
-_Current stage: Stage 7 — Animatic borrador pendiente tras Cadena v3 (Fase 0 docs cerrada; sin generación)_
+_Current stage: Stage 4 — Uniformidad capa 1 (determinística) corrida; pendiente aprobación de `_madres-uniformes/`_
 _Based on roadmap: [TECH.md](TECH.md) § 5_
 
 > Session log agency-os + seguimiento detallado de producción (estados, costos, gates). Absorbe el antiguo `arco-3-roadmap.md`. No duplica prompts ni fichas: la fuente de verdad de los prompts es [arco-3-planos.md](planos/arco-3.md); el STYLE-BLOCK y los switches cuento↔real viven en [biblia-visual.md](../biblia-visual.md); la convención de IDs/archivos en [pipeline.md](../../../metodo/pipeline.md) §5.
@@ -29,6 +29,18 @@ Espejo del roadmap de [TECH.md](TECH.md) § 5. Un stage se marca `[x]` solo cuan
 ## 2. Session Log
 
 Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
+
+### 2026-07-11 — Stage 4 capa 1: grade + crop 9:16 determinístico
+
+- **Stage in flight:** Stage 4 — Uniformidad de universo (capa 1).
+- **Decisión de dirección (plan aprobado):** el re-pase generativo (Nano Banana) contaminaba contenido y aplanaba textura; la uniformidad se separa en **dos capas**. Esta fase implementa la capa 1 sin modelos: grade clásico + crop 9:16 vía ffmpeg. El gate absorbe el antiguo `_madres-916/`.
+- **Done this session:**
+  - **`grade.ts`**: look derivado de locks (`_look/look.json` + placas papel/grano), crop 9:16, grade por registro/perfil, propuestas de aspecto, audit sheets.
+  - **`uniformar`**: capa 1 default; `--capa 2` legado; flags `--relook` / `--propuestas`; campos de mapa `grade` / `crop` / `aspecto`.
+  - **Mapa:** `grade: grano` en `a2-m04`; `aspecto: outpaint` en `a3-m03`, `a3-m22`, `a1-m01` (extender a 9:16 en Fase 2).
+  - **Corrida completa:** 2 locks + 25 madres en `_madres-uniformes/`; audit en `_audit/` + propuestas en `_audit/aspecto/`. Outpaint reciben grade sin crop (`aspectoPendiente`).
+- **Next step:** aprobar carpeta `_madres-uniformes/` (y reencuadres 1:1 no-triviales: `a2-m01`, `a2-m08`, lock `a3-m14`); animatic `--uniformes`; `--promover` solo con confirmación explícita. Fase 2: outpaint + re-grade.
+- **New blockers / questions raised:** reencuadres 1:1 agresivos pendientes de OK de dirección; re-pick de `a2-m07` sigue pendiente.
 
 ### 2026-07-11 — Cadena v3 "La grieta" (Fase 0: reescritura de dirección)
 
@@ -291,7 +303,7 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 1. **Docs** — planos / biblia / progreso alineados a las decisiones de dirección.
 2. **Cadena narrativa (gate)** — [reels/la-grieta/cadena-narrativa.md](reels/la-grieta/cadena-narrativa.md): mapa de beats en lenguaje de historia aprobado ANTES de generar imágenes; gobierna la cutlist.
 3. **Madres en cascada** — regenerar/generar con `--candidates 3` y aprobar con `--pick`, en orden: **m03' → m02' joven → m10' → m17**.
-4. **Uniformidad de universo (gate)** — locks + [mapa-uniformidad.md](reels/la-grieta/mapa-uniformidad.md) aprobados → `npm run uniformar -- --reel la-grieta` → aprobar `_madres-uniformes/` (animatic `--uniformes`); promoción a canónicos con `--promover` solo con confirmación explícita. Orden con aspecto 9:16: uniformar → aspecto.
+4. **Uniformidad de universo (gate)** — locks + [mapa-uniformidad.md](reels/la-grieta/mapa-uniformidad.md) aprobados → propuestas `--propuestas` → `npm run uniformar -- --reel la-grieta` (capa 1: grade + crop 9:16) → aprobar `_madres-uniformes/` (animatic `--uniformes`); promoción a canónicos con `--promover` solo con confirmación explícita. Outpaint diferido a capa 2 / Fase 2.
 5. **Animatic borrador (gratis)** — `npm run animatic -- --reel la-grieta --borrador --off`: validar ritmo/orden/subtítulos y 0 excesos de off con la cutlist v3 ANTES de pagar variaciones o correr uniformidad.
 6. **Madres variations** — generar **solo las variaciones de los slots que sobrevivieron** al borrador (un slot recortado/muerto no paga su variación); heredan uniformidad vía `ref`. Vigentes tras v3: `a3-m01v1`, `a3-m01v2`, `a3-m14v1`, `a3-m15v1`.
 7. **Madres keyframes (gate)** — cada par/cadena FLF de la [§Cadena de transiciones](planos/arco-3.md) aprobado junto (mismo encuadre, solo cambia el estado), sobre las variaciones; ANTES del animatic final.
@@ -302,11 +314,12 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 
 ### Próxima acción
 
-**Animatic borrador v3** (Stage 7): cadena/cutlist/off re-derivados; falta validar ritmo.
+**Aprobar `_madres-uniformes/` (Stage 4 capa 1)** y resolver reencuadres pendientes.
 
-1. **Correr borrador** — `npm run animatic -- --reel la-grieta --borrador --off`.
-2. **Revisar** hook, progresión sin mesetas, legibilidad de subtítulos y 0 excesos de off.
-3. **Después del gate de ritmo:** uniformidad v3 → variations sobrevivientes → keyframes → animatic final.
+1. Revisar audit sheets en `reels/la-grieta/_audit/` y propuestas en `_audit/aspecto/` (sobre todo 1:1: `a2-m01`, `a2-m08`, `a3-m14`; apaisadas/outpaint ya marcadas).
+2. Persistí `crop:` / `aspecto: outpaint` en el mapa si hace falta re-correr.
+3. Validar en contexto: `npm run animatic -- --reel la-grieta --borrador --uniformes --off`.
+4. `--promover` solo con confirmación explícita. Luego variations / keyframes / animatic final.
 
 ---
 
@@ -315,7 +328,7 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 | Etapa | Criterio |
 |---|---|
 | Madres | Silueta 100% negra recorte plano (NO fieltro/3D/plush), fondo tintado del beat correcto (guion de color de [arco-3-planos.md](planos/arco-3.md)), STYLE-BLOCK respetado (salvo m12–m15 que rompen a propósito), 9:16. Personajes distinguibles por contorno. Dirección de Ref: hereda de la madre ya aprobada/querida (hoy m10←m11). |
-| Madres uniformes (Stage 4) | Paleta / textura de papel / peso de línea (cuento) o grano / color science documental (real) coherentes con el lock de su registro; tinte del beat conservado (no aplanado hacia el lock); encuadres de pares FLF intactos; texto legible intacto en `a1-m01`. Locks copiados tal cual. Carpeta `_madres-uniformes/` aprobada antes de `--promover`. |
+| Madres uniformes (Stage 4) | **Capa 1:** paleta / textura de papel / grano / viñeta coherentes con el lock de su registro; tinte del beat conservado (hue intocado); crop 9:16 aprobado (o `aspecto: outpaint` con grade sin crop); encuadres de pares FLF con tratamiento idéntico; texto legible intacto en `a1-m01` (outpaint diferido). Locks: solo crop, sin grade. Carpeta `_madres-uniformes/` aprobada antes de `--promover`. **Capa 2 (diferida):** peso de línea/filigrana + outpaint 9:16. |
 | Madres keyframes (Stage 6) | Solo escenas de 2 o N keyframes. **Par emparejado** (par first/last de un FLF: m05/m06, m06/m14, m15v1/m08, m14v1/m07, m09/m17, m10'/m11): mismo encuadre y composición base, solo cambia el estado — el par se aprueba **junto** ([biblia-visual.md](../biblia-visual.md) §3, [pipeline.md](../../../metodo/pipeline.md) §2 paso 5). **Cadena** (N>2): eslabones aprobados juntos, `lastFrame` de un eslabón = `firstFrame` del siguiente (keyframe compartido). Sobre las variaciones del Stage 5 cuando existan, no sobre las madres base. |
 | Animatic (Stage 7) | Ritmo, orden, subtítulos. Con `--off`: **0 excesos** (cada locución entra en el presupuesto de su escena). Cadena causal: texto → audio → duración; el arreglo de un exceso es refinar el off en `arco-N-off.md`, no estirar la escena en producción. Final: + unicidad (ninguna imagen repetida no exenta). |
 | Clips | Arranca 1:1 de su imagen madre, movimiento tipo títere de papel plano (no 3D), tinte estable durante el clip, duración correcta. FLF: morph real primer→último (provider `Kling-FLF`, no fallback I2V). |

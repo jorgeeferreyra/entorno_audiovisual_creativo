@@ -1,0 +1,29 @@
+{
+  "id": "a3-m01",
+  "kind": "uniformada",
+  "capa": 1,
+  "esLock": true,
+  "registro": "cuento",
+  "lock": "a3-m01",
+  "tinte": "warm amber and saturated green tinted background",
+  "preserva": "universe lock — copy as-is",
+  "grade": "full",
+  "crop": {
+    "x": 80,
+    "y": 0,
+    "w": 864,
+    "h": 1536,
+    "clase": "recorte"
+  },
+  "outDims": {
+    "width": 864,
+    "height": 1536
+  },
+  "aspectoPendiente": false,
+  "lookHash": "50725b2e6ed3ffc7",
+  "refs": [
+    "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/assets/arco-3/madre/a3-m01-madre-ornitorrinco.png"
+  ],
+  "provider": "ffmpeg-crop",
+  "generatedAt": "2026-07-11T21:43:32.360Z"
+}

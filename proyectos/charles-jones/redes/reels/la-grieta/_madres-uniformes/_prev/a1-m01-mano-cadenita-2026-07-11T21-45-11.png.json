@@ -1,0 +1,29 @@
+{
+  "id": "a1-m01",
+  "kind": "uniformada",
+  "capa": 1,
+  "registro": "cuento",
+  "lock": "a3-m01",
+  "tinte": "dramatic deep red tinted background",
+  "preserva": "legible text UNTOUCHABLE (headline DOS CONTINENTES SE VENDEN MEJOR QUE UNO + APROBADO stamp); EXACT framing (FLF pair with a1-m01a)",
+  "grade": "full",
+  "crop": {
+    "x": 224,
+    "y": 0,
+    "w": 576,
+    "h": 1024,
+    "clase": "recorte"
+  },
+  "outDims": {
+    "width": 576,
+    "height": 1024
+  },
+  "aspectoPendiente": false,
+  "lookHash": "50725b2e6ed3ffc7",
+  "refs": [
+    "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/assets/arco-3/madre/a3-m01-madre-ornitorrinco.png",
+    "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/assets/arco-1/madre/a1-m01-mano-cadenita.png"
+  ],
+  "provider": "ffmpeg-grade",
+  "generatedAt": "2026-07-11T21:43:33.600Z"
+}

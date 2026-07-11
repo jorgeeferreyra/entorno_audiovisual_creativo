@@ -1,8 +1,10 @@
 /**
- * Gate de uniformidad de universo: re-pasa madres del reel contra locks
- * (cuento/real) vía Nano Banana, escribiendo en reels/<reel>/_madres-uniformes/
- * sin tocar canónicos de assets/arco-N/madre/.
+ * Gate de uniformidad de universo.
  *
+ * Capa 1 (default): grade + crop 9:16 determinístico (ffmpeg), sin modelos.
+ * Capa 2 (--capa 2): re-pase generativo vía Nano Banana (legado / Fase 2).
+ *
+ * Escribe en reels/<reel>/_madres-uniformes/ sin tocar canónicos.
  * Fuente de verdad del mapa: reels/<reel>/mapa-uniformidad.md (front-matter).
  */
 import fs from 'node:fs/promises';
@@ -10,6 +12,19 @@ import path from 'node:path';
 import YAML from 'yaml';
 import { WORK_DIR, resolveReadPath, resolveWritePath } from '../config.js';
 import { parseCutlist } from './animatic.js';
+import {
+  applyCropOnly,
+  applyGrade,
+  auditDir,
+  computeCrop,
+  deriveLook,
+  emitAuditSheet,
+  emitParPropuesta,
+  emitPropuestaAspecto,
+  emitTitularCrop,
+  probeDims,
+  type GradePerfil,
+} from './grade.js';
 import { generarImagen } from './image.js';
 import { escribirSidecar } from './motor.js';
 import {
@@ -26,6 +41,14 @@ const STYLE_BLOCK_FALLBACK =
 const REALITY_GUARD =
   'photorealistic documentary realism, no illustration, no silhouette, no paper texture, vertical 9:16';
 
+/** Pares FLF / switch a mostrar juntos en propuestas de aspecto. */
+const PARES_ASPECTO: [string, string][] = [
+  ['a3-m05', 'a3-m06'],
+  ['a3-m09', 'a3-m17'],
+  ['a3-m10', 'a3-m11'],
+  ['a2-m07', 'a2-m08'],
+];
+
 export type Registro = 'cuento' | 'real';
 
 export interface MadreMapa {
@@ -40,6 +63,15 @@ export interface MadreMapa {
   /** Cutlist la alcanza pero se genera después (variations/keyframes). */
   diferido?: boolean;
   motivo?: string;
+  /** Perfil de grade: full (default) | grano (solo grano/luz, sin papel). */
+  grade?: GradePerfil;
+  /**
+   * Offset de crop horizontal: fracción −1..1 (relativo al margen) o px si |n|≥1.
+   * Default: centro.
+   */
+  crop?: number;
+  /** outpaint = diferir extensión 9:16 a capa generativa; grade sin crop. */
+  aspecto?: 'outpaint';
 }
 
 export interface MapaUniformidad {
@@ -56,6 +88,12 @@ export interface UniformarOpts {
   force?: boolean;
   /** Promover _madres-uniformes/ → canónicos (archiva originales en _prev/). */
   promover?: boolean;
+  /** 1 = determinístico (default); 2 = generativo (Nano Banana). */
+  capa?: 1 | 2;
+  /** Regenerar _look/ aunque exista. */
+  relook?: boolean;
+  /** Solo emitir propuestas de reencuadre en _audit/aspecto/; no escribe uniformes. */
+  propuestas?: boolean;
 }
 
 export interface UniformarResultado {
@@ -65,6 +103,7 @@ export interface UniformarResultado {
   exentos: string[];
   diferidos: string[];
   omitidos: { id: string; motivo: string }[];
+  propuestas?: string[];
   promovidos?: string[];
 }
 
@@ -280,10 +319,12 @@ function slugFromBasename(id: string, basename: string): string {
 }
 
 /**
- * Corre el gate: copia locks, re-pasa el resto, escribe sidecars.
+ * Corre el gate: capa 1 (grade+crop) por defecto, o capa 2 (Nano Banana).
  * Con `promover: true`, copia uniformes → canónicos archivando originales.
+ * Con `propuestas: true`, solo emite overlays de reencuadre en `_audit/aspecto/`.
  */
 export async function uniformar(opts: UniformarOpts): Promise<UniformarResultado> {
+  const capa = opts.capa ?? 1;
   const mapa = await parseMapaUniformidad(opts.reel);
   const cutlistKeys = await madresDeCutlist(opts.reel);
   const mapaIds = new Set(mapa.madres.map((m) => m.id));
@@ -311,13 +352,6 @@ export async function uniformar(opts: UniformarOpts): Promise<UniformarResultado
   const outDir = uniformesAbs(opts.reel);
   await fs.mkdir(outDir, { recursive: true });
 
-  let styleBlock = STYLE_BLOCK_FALLBACK;
-  try {
-    styleBlock = await leerStyleBlock();
-  } catch {
-    /* biblia no legible: fallback */
-  }
-
   const result: UniformarResultado = {
     copiados: [],
     generados: [],
@@ -335,55 +369,348 @@ export async function uniformar(opts: UniformarOpts): Promise<UniformarResultado
   }
 
   if (opts.promover) {
-    result.promovidos = [];
-    for (const entrada of entradas) {
-      if (entrada.exento || entrada.diferido) {
-        if (entrada.exento) result.exentos.push(entrada.id);
-        if (entrada.diferido) result.diferidos.push(entrada.id);
-        continue;
-      }
-      let srcInfo: Awaited<ReturnType<typeof resolveMadreSrc>>;
-      try {
-        srcInfo = await resolveMadreSrc(entrada, specsByArco);
-      } catch (e) {
-        result.omitidos.push({
-          id: entrada.id,
-          motivo: e instanceof Error ? e.message : String(e),
-        });
-        continue;
-      }
-      const uniformeAbs = path.join(outDir, srcInfo.basename);
-      if (!(await existe(uniformeAbs))) {
-        result.omitidos.push({ id: entrada.id, motivo: `uniforme aún no generada (${srcInfo.basename})` });
-        continue;
-      }
-      // Destino canónico: dest de ficha, o fuente si es override (a2-m07 → path -c3, o canónico dest).
-      let destCanónico: string;
-      if (entrada.fuente && entrada.id.endsWith('-c3')) {
-        destCanónico = resolveWritePath(entrada.fuente);
-      } else if (entrada.fuente && entrada.id === 'a2-m07') {
-        // Promover la uniforme al dest canónico de la ficha (no al -c3).
-        const specs = specsByArco.get(2);
-        const img = specs?.find((s): s is ImageSpec => s.kind === 'image' && s.id === 'a2-m07');
-        destCanónico = img ? resolveWritePath(img.dest) : resolveWritePath(entrada.fuente);
-      } else {
-        const specs = specsByArco.get(srcInfo.arco);
-        const img = specs?.find((s): s is ImageSpec => s.kind === 'image' && s.id === entrada.id);
-        destCanónico = img ? resolveWritePath(img.dest) : resolveWritePath(srcInfo.destRel);
-      }
-      await fs.mkdir(path.dirname(destCanónico), { recursive: true });
-      const archived = await archiveIfExists(destCanónico);
-      if (archived) console.log(`  archivado: ${path.relative(WORK_DIR, archived)}`);
-      await archiveIfExists(`${destCanónico}.json`);
-      await fs.copyFile(uniformeAbs, destCanónico);
-      const sideSrc = `${uniformeAbs}.json`;
-      if (await existe(sideSrc)) {
-        await fs.copyFile(sideSrc, `${destCanónico}.json`);
-      }
-      result.promovidos.push(entrada.id);
-      console.log(`  promovido: ${entrada.id} → ${path.relative(WORK_DIR, destCanónico)}`);
+    return promoverUniformes({ mapa, entradas, specsByArco, outDir, result });
+  }
+
+  if (opts.propuestas) {
+    return emitirPropuestas({
+      reel: opts.reel,
+      entradas,
+      specsByArco,
+      result,
+    });
+  }
+
+  if (capa === 1) {
+    return uniformarCapa1({
+      reel: opts.reel,
+      mapa,
+      entradas,
+      specsByArco,
+      lockPaths,
+      outDir,
+      force: !!opts.force,
+      relook: !!opts.relook,
+      result,
+    });
+  }
+
+  return uniformarCapa2({
+    reel: opts.reel,
+    mapa,
+    entradas,
+    specsByArco,
+    lockPaths,
+    outDir,
+    force: !!opts.force,
+    result,
+  });
+}
+
+async function promoverUniformes(ctx: {
+  mapa: MapaUniformidad;
+  entradas: MadreMapa[];
+  specsByArco: Map<number, AssetSpec[]>;
+  outDir: string;
+  result: UniformarResultado;
+}): Promise<UniformarResultado> {
+  const { entradas, specsByArco, outDir, result } = ctx;
+  result.promovidos = [];
+  for (const entrada of entradas) {
+    if (entrada.exento || entrada.diferido) {
+      if (entrada.exento) result.exentos.push(entrada.id);
+      if (entrada.diferido) result.diferidos.push(entrada.id);
+      continue;
     }
-    return result;
+    let srcInfo: Awaited<ReturnType<typeof resolveMadreSrc>>;
+    try {
+      srcInfo = await resolveMadreSrc(entrada, specsByArco);
+    } catch (e) {
+      result.omitidos.push({
+        id: entrada.id,
+        motivo: e instanceof Error ? e.message : String(e),
+      });
+      continue;
+    }
+    const uniformeAbs = path.join(outDir, srcInfo.basename);
+    if (!(await existe(uniformeAbs))) {
+      result.omitidos.push({ id: entrada.id, motivo: `uniforme aún no generada (${srcInfo.basename})` });
+      continue;
+    }
+    let destCanónico: string;
+    if (entrada.fuente && entrada.id.endsWith('-c3')) {
+      destCanónico = resolveWritePath(entrada.fuente);
+    } else if (entrada.fuente && entrada.id === 'a2-m07') {
+      const specs = specsByArco.get(2);
+      const img = specs?.find((s): s is ImageSpec => s.kind === 'image' && s.id === 'a2-m07');
+      destCanónico = img ? resolveWritePath(img.dest) : resolveWritePath(entrada.fuente);
+    } else {
+      const specs = specsByArco.get(srcInfo.arco);
+      const img = specs?.find((s): s is ImageSpec => s.kind === 'image' && s.id === entrada.id);
+      destCanónico = img ? resolveWritePath(img.dest) : resolveWritePath(srcInfo.destRel);
+    }
+    await fs.mkdir(path.dirname(destCanónico), { recursive: true });
+    const archived = await archiveIfExists(destCanónico);
+    if (archived) console.log(`  archivado: ${path.relative(WORK_DIR, archived)}`);
+    await archiveIfExists(`${destCanónico}.json`);
+    await fs.copyFile(uniformeAbs, destCanónico);
+    const sideSrc = `${uniformeAbs}.json`;
+    if (await existe(sideSrc)) {
+      await fs.copyFile(sideSrc, `${destCanónico}.json`);
+    }
+    result.promovidos.push(entrada.id);
+    console.log(`  promovido: ${entrada.id} → ${path.relative(WORK_DIR, destCanónico)}`);
+  }
+  return result;
+}
+
+async function emitirPropuestas(ctx: {
+  reel: string;
+  entradas: MadreMapa[];
+  specsByArco: Map<number, AssetSpec[]>;
+  result: UniformarResultado;
+}): Promise<UniformarResultado> {
+  const { reel, entradas, specsByArco, result } = ctx;
+  result.propuestas = [];
+  const aspectoDir = path.join(auditDir(reel), 'aspecto');
+  await fs.mkdir(aspectoDir, { recursive: true });
+  const propuestaById = new Map<string, string>();
+
+  for (const entrada of entradas) {
+    if (entrada.exento || entrada.diferido) {
+      if (entrada.exento) result.exentos.push(entrada.id);
+      if (entrada.diferido) result.diferidos.push(entrada.id);
+      continue;
+    }
+    if (!entrada.lock) {
+      result.omitidos.push({ id: entrada.id, motivo: 'sin lock ni exento/diferido' });
+      continue;
+    }
+    if (entrada.aspecto === 'outpaint') {
+      result.omitidos.push({
+        id: entrada.id,
+        motivo: 'aspecto: outpaint — diferida a capa generativa (sin propuesta de crop)',
+      });
+      continue;
+    }
+
+    let srcInfo: Awaited<ReturnType<typeof resolveMadreSrc>>;
+    try {
+      srcInfo = await resolveMadreSrc(entrada, specsByArco);
+    } catch (e) {
+      result.omitidos.push({
+        id: entrada.id,
+        motivo: e instanceof Error ? e.message : String(e),
+      });
+      continue;
+    }
+
+    const dims = await probeDims(srcInfo.abs);
+    const crop = computeCrop(dims, entrada.crop);
+    const destAbs = path.join(aspectoDir, `${entrada.id}-propuesta.png`);
+    const label = `${entrada.id} ${dims.width}x${dims.height} → ${crop.w}x${crop.h} (${crop.clase})`;
+    await emitPropuestaAspecto({
+      srcAbs: srcInfo.abs,
+      destAbs,
+      cropOffset: entrada.crop,
+      label,
+    });
+    propuestaById.set(entrada.id, destAbs);
+    result.propuestas.push(entrada.id);
+    console.log(`  propuesta: ${label}`);
+  }
+
+  // Sheets de pares FLF/switch.
+  for (const [a, b] of PARES_ASPECTO) {
+    const left = propuestaById.get(a);
+    const right = propuestaById.get(b);
+    if (!left || !right) continue;
+    const dest = path.join(aspectoDir, `par-${a}-${b}.png`);
+    await emitParPropuesta({
+      leftAbs: left,
+      rightAbs: right,
+      destAbs: dest,
+      leftLabel: a,
+      rightLabel: b,
+    });
+    console.log(`  par: ${a} + ${b}`);
+  }
+
+  console.log(`\nPropuestas en: reels/${reel}/_audit/aspecto/`);
+  return result;
+}
+
+async function uniformarCapa1(ctx: {
+  reel: string;
+  mapa: MapaUniformidad;
+  entradas: MadreMapa[];
+  specsByArco: Map<number, AssetSpec[]>;
+  lockPaths: Record<Registro, string>;
+  outDir: string;
+  force: boolean;
+  relook: boolean;
+  result: UniformarResultado;
+}): Promise<UniformarResultado> {
+  const { reel, mapa, entradas, specsByArco, lockPaths, outDir, force, relook, result } = ctx;
+
+  const { look, lookDirAbs } = await deriveLook({
+    reel,
+    lockCuentoAbs: lockPaths.cuento,
+    lockRealAbs: lockPaths.real,
+    force: relook,
+  });
+  console.log(`  look: ${look.hash} (${lookDirAbs})`);
+
+  const auditRoot = auditDir(reel);
+  await fs.mkdir(auditRoot, { recursive: true });
+
+  for (const entrada of entradas) {
+    if (entrada.exento) {
+      result.exentos.push(`${entrada.id}${entrada.motivo ? ` (${entrada.motivo})` : ''}`);
+      continue;
+    }
+    if (entrada.diferido) {
+      result.diferidos.push(`${entrada.id}${entrada.motivo ? ` (${entrada.motivo})` : ''}`);
+      continue;
+    }
+    if (!entrada.lock) {
+      result.omitidos.push({ id: entrada.id, motivo: 'sin lock ni exento/diferido' });
+      continue;
+    }
+
+    let srcInfo: Awaited<ReturnType<typeof resolveMadreSrc>>;
+    try {
+      srcInfo = await resolveMadreSrc(entrada, specsByArco);
+    } catch (e) {
+      result.omitidos.push({
+        id: entrada.id,
+        motivo: e instanceof Error ? e.message : String(e),
+      });
+      continue;
+    }
+
+    const destAbs = path.join(outDir, srcInfo.basename);
+    if (!force && (await existe(destAbs))) {
+      result.skipped.push(entrada.id);
+      continue;
+    }
+    if (force && (await existe(destAbs))) {
+      await archiveIfExists(destAbs);
+      await archiveIfExists(`${destAbs}.json`);
+    }
+
+    const skipCrop = entrada.aspecto === 'outpaint';
+    const perfil: GradePerfil = entrada.grade ?? 'full';
+
+    // Locks: solo crop (sin grade); el look se deriva del canónico intacto.
+    if (entrada.esLock) {
+      console.log(`  lock aspecto: ${entrada.id}${skipCrop ? ' (outpaint pendiente)' : ''}…`);
+      const r = await applyCropOnly({
+        srcAbs: srcInfo.abs,
+        destAbs,
+        cropOffset: entrada.crop,
+        skipCrop,
+      });
+      await escribirSidecar(destAbs, {
+        id: entrada.id,
+        kind: 'uniformada',
+        capa: 1,
+        esLock: true,
+        registro: entrada.lock,
+        lock: mapa.locks[entrada.lock],
+        tinte: entrada.tinte,
+        preserva: entrada.preserva,
+        grade: perfil,
+        crop: r.crop,
+        outDims: r.outDims,
+        aspectoPendiente: r.aspectoPendiente,
+        lookHash: look.hash,
+        refs: [srcInfo.abs],
+        provider: 'ffmpeg-crop',
+      });
+      result.copiados.push(entrada.id);
+      continue;
+    }
+
+    console.log(
+      `  grade: ${entrada.id} (${entrada.lock}/${perfil}` +
+        `${skipCrop ? ', sin crop' : ''})…`,
+    );
+    const r = await applyGrade({
+      srcAbs: srcInfo.abs,
+      destAbs,
+      registro: entrada.lock,
+      perfil,
+      look,
+      lookDir: lookDirAbs,
+      skipCrop,
+      cropOffset: entrada.crop,
+    });
+
+    await escribirSidecar(destAbs, {
+      id: entrada.id,
+      kind: 'uniformada',
+      capa: 1,
+      registro: entrada.lock,
+      lock: mapa.locks[entrada.lock],
+      tinte: entrada.tinte,
+      preserva: entrada.preserva,
+      grade: perfil,
+      crop: r.crop,
+      outDims: r.outDims,
+      aspectoPendiente: r.aspectoPendiente,
+      lookHash: look.hash,
+      refs: [lockPaths[entrada.lock], srcInfo.abs],
+      provider: 'ffmpeg-grade',
+    });
+
+    // Audit antes/después.
+    const sheetAbs = path.join(auditRoot, `${entrada.id}-antes-despues.png`);
+    try {
+      await emitAuditSheet({
+        beforeAbs: srcInfo.abs,
+        afterAbs: destAbs,
+        destAbs: sheetAbs,
+        label: entrada.id,
+      });
+    } catch (e) {
+      console.warn(`  audit sheet falló (${entrada.id}):`, e instanceof Error ? e.message : e);
+    }
+
+    if (entrada.id === 'a1-m01') {
+      try {
+        await emitTitularCrop({
+          srcAbs: destAbs,
+          destAbs: path.join(auditRoot, 'a1-m01-titular.png'),
+        });
+      } catch (e) {
+        console.warn('  titular crop falló:', e instanceof Error ? e.message : e);
+      }
+    }
+
+    result.generados.push(entrada.id);
+  }
+
+  return result;
+}
+
+async function uniformarCapa2(ctx: {
+  reel: string;
+  mapa: MapaUniformidad;
+  entradas: MadreMapa[];
+  specsByArco: Map<number, AssetSpec[]>;
+  lockPaths: Record<Registro, string>;
+  outDir: string;
+  force: boolean;
+  result: UniformarResultado;
+}): Promise<UniformarResultado> {
+  const { reel, mapa, entradas, specsByArco, lockPaths, outDir, force, result } = ctx;
+
+  let styleBlock = STYLE_BLOCK_FALLBACK;
+  try {
+    styleBlock = await leerStyleBlock();
+  } catch {
+    /* biblia no legible: fallback */
   }
 
   for (const entrada of entradas) {
@@ -412,23 +739,23 @@ export async function uniformar(opts: UniformarOpts): Promise<UniformarResultado
     }
 
     const destAbs = path.join(outDir, srcInfo.basename);
-    const destRel = path.join(uniformesDir(opts.reel), srcInfo.basename);
+    const destRel = path.join(uniformesDir(reel), srcInfo.basename);
 
-    if (!opts.force && (await existe(destAbs))) {
+    if (!force && (await existe(destAbs))) {
       result.skipped.push(entrada.id);
       continue;
     }
-    if (opts.force && (await existe(destAbs))) {
+    if (force && (await existe(destAbs))) {
       await archiveIfExists(destAbs);
       await archiveIfExists(`${destAbs}.json`);
     }
 
-    // Locks: copiar tal cual.
     if (entrada.esLock) {
       await fs.copyFile(srcInfo.abs, destAbs);
       await escribirSidecar(destAbs, {
         id: entrada.id,
         kind: 'uniformada',
+        capa: 2,
         esLock: true,
         registro: entrada.lock,
         lock: mapa.locks[entrada.lock],
@@ -447,7 +774,7 @@ export async function uniformar(opts: UniformarOpts): Promise<UniformarResultado
     const prompt = buildPrompt(entrada, entrada.lock, styleBlock);
     const slug = slugFromBasename(entrada.id, srcInfo.basename);
 
-    console.log(`  generando: ${entrada.id} (lock ${entrada.lock} ← ${mapa.locks[entrada.lock]})…`);
+    console.log(`  generando (capa 2): ${entrada.id} (lock ${entrada.lock})…`);
     const img = await generarImagen({
       prompt,
       aspect: '9:16',
@@ -463,6 +790,7 @@ export async function uniformar(opts: UniformarOpts): Promise<UniformarResultado
     await escribirSidecar(img.localPath, {
       id: entrada.id,
       kind: 'uniformada',
+      capa: 2,
       registro: entrada.lock,
       lock: mapa.locks[entrada.lock],
       tinte: entrada.tinte,

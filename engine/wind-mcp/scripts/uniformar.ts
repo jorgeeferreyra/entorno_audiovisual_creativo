@@ -1,17 +1,21 @@
 /**
  * CLI del gate de uniformidad de universo.
  *
- * Re-pasa las madres del reel contra locks (cuento/real) vía Nano Banana
- * (openrouter), escribiendo en reels/<reel>/_madres-uniformes/ sin tocar
- * canónicos. El mapa (reels/<reel>/mapa-uniformidad.md) es el gate: toda
- * madre de la cutlist debe figurar ahí.
+ * Capa 1 (default): grade + crop 9:16 determinístico (ffmpeg).
+ * Capa 2 (--capa 2): re-pase generativo vía Nano Banana (legado / Fase 2).
+ *
+ * Escribe en reels/<reel>/_madres-uniformes/ sin tocar canónicos.
+ * El mapa (reels/<reel>/mapa-uniformidad.md) es el gate: toda madre de la
+ * cutlist debe figurar ahí.
  *
  * Uso:
  *   npm run uniformar -- --reel la-grieta
  *   npm run uniformar -- --reel la-grieta --id a3-m05
  *   npm run uniformar -- --reel la-grieta --force
+ *   npm run uniformar -- --reel la-grieta --propuestas
+ *   npm run uniformar -- --reel la-grieta --relook
+ *   npm run uniformar -- --reel la-grieta --capa 2
  *   npm run uniformar -- --reel la-grieta --promover   (SOLO con confirmación)
- *   npm run uniformar -- --project charles-jones/redes --reel la-grieta
  */
 import { WORK_DIR } from '../src/config.js';
 import { uniformar } from '../src/lib/uniformar.js';
@@ -30,17 +34,24 @@ async function main() {
   const id = flag(args, '--id');
   const force = args.includes('--force');
   const promover = args.includes('--promover');
+  const relook = args.includes('--relook');
+  const propuestas = args.includes('--propuestas');
+  const capaRaw = flag(args, '--capa');
+  const capa = capaRaw === '2' ? 2 : 1;
 
   console.log(`\n=== Uniformar universo: reel ${reel}${promover ? ' (PROMOVER)' : ''} ===`);
   console.log(`  unidad: ${WORK_DIR}`);
+  console.log(`  capa: ${capa}${capa === 1 ? ' (determinística)' : ' (generativa)'}`);
   if (id) console.log(`  id: ${id}`);
   if (force) console.log('  force: sí');
+  if (relook) console.log('  relook: sí');
+  if (propuestas) console.log('  propuestas: sí (solo _audit/aspecto/)');
   if (promover) {
     console.log('  ⚠ --promover archiva canónicos y los reemplaza por uniformes.');
     console.log('    Solo correr con confirmación explícita de dirección.\n');
   }
 
-  const r = await uniformar({ reel, id, force, promover });
+  const r = await uniformar({ reel, id, force, promover, capa, relook, propuestas });
 
   if (promover) {
     console.log(`\nPromovidos: ${r.promovidos?.length ?? 0}`);
@@ -55,7 +66,18 @@ async function main() {
     return;
   }
 
-  console.log(`\nLocks copiados: ${r.copiados.length}`);
+  if (propuestas) {
+    console.log(`\nPropuestas: ${r.propuestas?.length ?? 0}`);
+    for (const p of r.propuestas ?? []) console.log(`  · ${p}`);
+    if (r.omitidos.length) {
+      console.log(`Omitidos: ${r.omitidos.length}`);
+      for (const o of r.omitidos) console.log(`  · ${o.id}: ${o.motivo}`);
+    }
+    console.log(`\nSalida: reels/${reel}/_audit/aspecto/\n`);
+    return;
+  }
+
+  console.log(`\nLocks: ${r.copiados.length}`);
   for (const id of r.copiados) console.log(`  · ${id}`);
   console.log(`Generados: ${r.generados.length}`);
   for (const id of r.generados) console.log(`  · ${id}`);

@@ -1,0 +1,29 @@
+{
+  "id": "a3-m15",
+  "kind": "uniformada",
+  "capa": 1,
+  "registro": "real",
+  "lock": "a3-m14",
+  "tinte": "golden dusk light (REALITY-BLOCK-POETIC)",
+  "preserva": "aerial stillness, immense scale",
+  "grade": "full",
+  "crop": {
+    "x": 6,
+    "y": 0,
+    "w": 756,
+    "h": 1344,
+    "clase": "trivial"
+  },
+  "outDims": {
+    "width": 756,
+    "height": 1344
+  },
+  "aspectoPendiente": false,
+  "lookHash": "50725b2e6ed3ffc7",
+  "refs": [
+    "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/assets/arco-3/madre/a3-m14-grieta-revenant.png",
+    "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/assets/arco-3/madre/a3-m15-zoomout-poetico.png"
+  ],
+  "provider": "ffmpeg-grade",
+  "generatedAt": "2026-07-11T21:43:29.857Z"
+}

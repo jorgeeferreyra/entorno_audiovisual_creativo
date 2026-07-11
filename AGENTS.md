@@ -44,7 +44,8 @@ npm run gen -- --id a3-m01              # generar un asset (madre o clip)
 npm run gen -- --id a3-m03 --candidates 3   # candidatos en _candidates/
 npm run gen -- --id a3-m03 --pick 2     # promover candidato (SOLO con confirmación del usuario)
 npm run gen -- --reel a | --todas | --force | --provider X
-npm run uniformar -- --reel la-grieta   # gate uniformidad → _madres-uniformes/
+npm run uniformar -- --reel la-grieta   # gate uniformidad capa 1 (grade+crop 9:16) → _madres-uniformes/
+npm run uniformar -- --reel la-grieta --propuestas   # propuestas de reencuadre → _audit/aspecto/
 npm run animatic -- --arco 3            # animatic de hilo
 npm run animatic -- --reel la-grieta [--borrador] [--uniformes] [--off]   # animatic de reel
 npm run audio:a3                        # BGM arco 3
@@ -62,7 +63,7 @@ Detalle de flags y lógica: `engine/wind-mcp/scripts/generar.ts`, `scripts/unifo
 
 ## Pipeline y gates
 
-Flujo: cadena narrativa → madres (candidatos + pick) → **uniformidad de universo** → variations/keyframes FLF → animatic (borrador y final) → clips → montaje → off → export 9:16. Stages y exit criteria: `TECH.md` §5.
+Flujo: cadena narrativa → madres (candidatos + pick) → **uniformidad de universo** (capa 1 determinística: grade+crop 9:16; capa 2 generativa diferida) → variations/keyframes FLF → animatic (borrador y final) → clips → montaje → off → export 9:16. Stages y exit criteria: `TECH.md` §5.
 
 Gates de dirección (el usuario confirma, el agente prepara y recomienda): pick de candidatos, cadena narrativa, locks/mapa de uniformidad, pares/cadenas FLF, animatic final. Reglas duras en `.cursor/rules/gates-de-direccion.mdc`.
 

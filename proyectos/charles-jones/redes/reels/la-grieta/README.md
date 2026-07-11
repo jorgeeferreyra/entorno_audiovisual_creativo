@@ -62,6 +62,6 @@ Salida transversal: intercala clips de los tres hilos (Mano Negra, Charles/palan
 
 **Gate — animatic transversal:** antes de generar video/audio, `npm run animatic -- --reel la-grieta` cae acá como `animatic-la-grieta.mp4` (cada slot de la cut-list = su madre fija por su `dur`, con el off ES quemado; los FLF muestran first→last). Es el gate de aprobación de ritmo/orden/subtítulos previo a la generación cara (el video es el mayor costo). El animatic por hilo (`--arco 3` → `animatic-arco-3.mp4`) sirve para aprobar la fuente y las destacadas de un arco. Detalle en [../../TECH.md](../../TECH.md) §Stage 7.
 
-**Gate — uniformidad de universo:** [mapa-uniformidad.md](mapa-uniformidad.md) + `npm run uniformar -- --reel la-grieta` → `_madres-uniformes/`. Aprobar con `npm run animatic -- --reel la-grieta --uniformes` antes de `--promover`. Orden con aspecto 9:16: uniformar → aspecto. Detalle en [../../TECH.md](../../TECH.md) §Stage 4.
+**Gate — uniformidad de universo:** [mapa-uniformidad.md](mapa-uniformidad.md) + `npm run uniformar -- --reel la-grieta` → `_madres-uniformes/` (capa 1 determinística: grade + crop 9:16; este gate absorbe el antiguo `_madres-916/`). Aprobar con `npm run animatic -- --reel la-grieta --uniformes` antes de `--promover`. Detalle en [../../TECH.md](../../TECH.md) §Stage 4.
 
 El montaje final (`montar_secuencia`) cae en esta carpeta.

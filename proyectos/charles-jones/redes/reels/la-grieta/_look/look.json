@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "reel": "la-grieta",
+  "locks": {
+    "cuento": {
+      "path": "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/assets/arco-3/madre/a3-m01-madre-ornitorrinco.png",
+      "stats": {
+        "width": 1024,
+        "height": 1536,
+        "meanY": 54.86,
+        "meanU": 111.811,
+        "meanV": 137.75
+      }
+    },
+    "real": {
+      "path": "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/assets/arco-3/madre/a3-m14-grieta-revenant.png",
+      "stats": {
+        "width": 1024,
+        "height": 1024,
+        "meanY": 97.6401,
+        "meanU": 119.476,
+        "meanV": 125.473
+      }
+    }
+  },
+  "cuento": {
+    "sat": 1.05,
+    "contrast": 1.04,
+    "brightness": 0.01,
+    "gamma": 1,
+    "paperOpacity": 0.08,
+    "grainOpacity": 0.05,
+    "vignette": 0.14
+  },
+  "real": {
+    "sat": 0.95,
+    "contrast": 1.06,
+    "brightness": -0.01,
+    "gamma": 1.02,
+    "paperOpacity": 0,
+    "grainOpacity": 0.12,
+    "vignette": 0.1
+  },
+  "grano": {
+    "sat": 1,
+    "contrast": 1,
+    "brightness": 0,
+    "gamma": 1,
+    "paperOpacity": 0,
+    "grainOpacity": 0.06,
+    "vignette": 0.04
+  },
+  "derivedAt": "2026-07-11T21:45:08.317Z",
+  "hash": "d06c707c03f97424"
+}

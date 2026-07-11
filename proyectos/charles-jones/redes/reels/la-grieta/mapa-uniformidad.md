@@ -12,7 +12,7 @@ madres:
   - { id: a3-m14, lock: real, esLock: true, tinte: "cold muted earth tones (REALITY-BLOCK-CHAOS)", preserva: "universe lock — copy as-is" }
 
   # --- Cuento → lock a3-m01 ---
-  - { id: a3-m03, lock: cuento, tinte: "saturated lush green tinted background", preserva: "bulkier body, brow notch, all four legs, lake shore" }
+  - { id: a3-m03, lock: cuento, tinte: "saturated lush green tinted background", preserva: "bulkier body, brow notch, all four legs, lake shore", aspecto: outpaint }
   - { id: a3-m05, lock: cuento, tinte: "warm amber and saturated green tinted background sky", preserva: "EXACT framing (FLF pair base with m06)" }
   - { id: a3-m06, lock: cuento, tinte: "dramatic deep red tinted background sky", preserva: "EXACT framing = m05 (FLF pair)" }
   - { id: a3-m07, lock: cuento, tinte: "deep red and orange tinted background", preserva: "Coloradas stacked cutout layers; firstFrame of U2V c1" }
@@ -22,10 +22,10 @@ madres:
   - { id: a3-m10, lock: cuento, tinte: "deep red dusk tinted background", preserva: "EXACT framing (FLF pair with m11), exhausted sprawl pose" }
   - { id: a3-m11, lock: cuento, tinte: "red tint fading to stone grey", preserva: "EXACT framing = m10 (FLF pair; beloved madre)" }
   - { id: a3-m18, lock: cuento, tinte: "deep red dusk tinted background", preserva: "small young on ledge, head drooping" }
-  - { id: a3-m22, lock: cuento, tinte: "dramatic deep red tinted background", preserva: "mother+young contours, channel at frame edge" }
+  - { id: a3-m22, lock: cuento, tinte: "dramatic deep red tinted background", preserva: "mother+young contours, channel at frame edge", aspecto: outpaint }
   - { id: a3-m23, lock: cuento, tinte: "dramatic deep red tinted background", preserva: "father brow notch, egg in nest" }
   - { id: a3-m24, lock: cuento, tinte: "dramatic deep red tinted background", preserva: "exactly FOUR tiny silhouettes, distance between groups" }
-  - { id: a1-m01, lock: cuento, tinte: "dramatic deep red tinted background", preserva: "legible text UNTOUCHABLE (headline DOS CONTINENTES SE VENDEN MEJOR QUE UNO + APROBADO stamp); EXACT framing (FLF pair with a1-m01a)" }
+  - { id: a1-m01, lock: cuento, tinte: "dramatic deep red tinted background", preserva: "legible text UNTOUCHABLE (headline DOS CONTINENTES SE VENDEN MEJOR QUE UNO + APROBADO stamp); EXACT framing (FLF pair with a1-m01a)", aspecto: outpaint }
   - { id: a2-m01, lock: cuento, tinte: "dramatic deep red tinted background", preserva: "full-body back silhouette master, never the face" }
   - { id: a2-m02a, lock: cuento, tinte: "dramatic deep red tinted background", preserva: "boot+log only, nothing else in frame" }
   - { id: a2-m02b, lock: cuento, tinte: "dramatic deep red tinted background", preserva: "empty nest on log only" }
@@ -38,7 +38,7 @@ madres:
   - { id: a3-m15, lock: real, tinte: "golden dusk light (REALITY-BLOCK-POETIC)", preserva: "aerial stillness, immense scale" }
   - { id: a3-m13, lock: real, tinte: "natural daylight, clinical documentary (no paper tint)", preserva: "forensic stillness of the dig site" }
   - { id: a2-m07, lock: real, fuente: "assets/arco-2/madre/a2-m07-grieta-revenant-c3.png", tinte: "deep blood-red overcast dusk light", preserva: "SAME framing as a2-m08, extreme OTS" }
-  - { id: a2-m04, lock: real, tinte: "pure white void — NO paper tint", preserva: "white void and absent pigeons; unify grain/light only — NEVER correct the white toward the lock palette" }
+  - { id: a2-m04, lock: real, tinte: "pure white void — NO paper tint", preserva: "white void and absent pigeons; unify grain/light only — NEVER correct the white toward the lock palette", grade: grano }
 
   # --- Exentas ---
   - { id: a3-m12, exento: true, motivo: "marco POV del cuaderno — registro propio, fuera de la cutlist v3; se conserva como referencia de estilo" }
@@ -54,18 +54,21 @@ madres:
 
 # La grieta — Mapa de uniformidad de universo
 
-> Gate de dirección: re-pasa las madres del reel contra **2 locks de universo** (cuento / real) para que compartan paleta, textura de papel y peso de línea/filigrana (o grano/color science documental), **sin** pisar los canónicos de `assets/arco-N/madre/`. Salida: [`_madres-uniformes/`](_madres-uniformes/).
+> Gate de dirección: unifica las madres del reel contra **2 locks de universo** (cuento / real) en **dos capas**. **Capa 1 (determinística, default):** grade clásico (paleta/textura/grano/viñeta) + crop 9:16 vía ffmpeg — sin modelos, margen de error cero sobre composición/texto. **Capa 2 (generativa, diferida):** outpainting a 9:16 y atributos que requieren modelo (peso de línea/filigrana). Salida: [`_madres-uniformes/`](_madres-uniformes/) ya en 9:16 (este gate **absorbe** el antiguo gate hermano `_madres-916/`).
 >
 > Gobierna el comando `npm run uniformar -- --reel la-grieta`. El mapa se aprueba **antes** de gastar. DRY: el tinte se deriva del guion de color / fichas de `planos/arco-N.md`; acá solo se declara, no se inventa.
 
 ## Cómo leer / iterar
 
-1. **Locks** (`locks.cuento` / `locks.real`): madres ya aprobadas que definen el universo. Se copian tal cual (`esLock: true`); no se re-pasan.
-2. **Fila por madre**: `id → lock → tinte → preserva`. El tinte es variación legítima del beat (el modelo no debe "corregirlo" hacia el lock). `preserva` protege encuadres FLF, texto legible y motivos de trama.
+1. **Locks** (`locks.cuento` / `locks.real`): madres ya aprobadas que definen el universo. El look se deriva de sus canónicos; en capa 1 pasan solo por crop 9:16 (sin grade), salvo `aspecto: outpaint`.
+2. **Fila por madre**: `id → lock → tinte → preserva`. El tinte es variación legítima del beat (el grade **no** lo aplana hacia el lock: el hue no se toca). `preserva` protege encuadres FLF, texto legible y motivos de trama.
 3. **`fuente`**: override de path cuando el canónico de la ficha no está en disco (ej. `a2-m07` solo tiene `-c3`) o cuando el slot usa un archivo literal (ej. `a2-m04-c3`).
-4. **`exento: true`**: no entra al re-pase (motivo obligatorio).
-5. **`diferido: true`**: la cutlist la alcanza pero aún no existe / se genera después (variations, keyframes); hereda uniformidad vía `ref` post-promoción.
-6. Si la cutlist suma una madre nueva → agregar fila acá **antes** de correr el comando (el CLI falla si falta).
+4. **`grade`**: perfil del pase determinístico. Default `full`. `grade: grano` = solo grano/luz/viñeta (sin textura de papel ni curva) — usado en el void blanco `a2-m04`.
+5. **`crop`**: offset horizontal de la ventana 9:16 (fracción −1..1 o px si |n|≥1). Default: centro. Decisión de dirección; se persiste acá tras aprobar propuestas (`--propuestas`).
+6. **`aspecto: outpaint`**: no se recorta en capa 1 (recibe grade sin crop; sidecar `aspectoPendiente`). Extensión a 9:16 va a la capa generativa (Fase 2); el grade se re-aplica como paso final.
+7. **`exento: true`**: no entra al re-pase (motivo obligatorio).
+8. **`diferido: true`**: la cutlist la alcanza pero aún no existe / se genera después (variations/keyframes); hereda uniformidad vía `ref` post-promoción.
+9. Si la cutlist suma una madre nueva → agregar fila acá **antes** de correr el comando (el CLI falla si falta).
 
 ## Decisiones de este mapa
 
@@ -77,7 +80,8 @@ madres:
 | `a3-m02` | Sale de la cutlist v3 con `a3-b2`; queda como referencia de estilo/anatomía, no se uniforma ahora |
 | Tinte `a3-m03` | Alineado al beat del reel (Bloque B próspero): `saturated lush green` — no al ámbar/verde de la ficha original (Pangea feliz) |
 | `a2-m07` | Fuente `-c3` (re-pick pendiente; canónico borrado) |
-| `a2-m04` | Void blanco: unificar solo grano/luz; **nunca** teñir hacia el lock. `a2-m04-c3` cae del reel v3 y queda como referencia de estilo |
+| `a2-m04` | Void blanco: `grade: grano` — unificar solo grano/luz; **nunca** teñir hacia el lock. `a2-m04-c3` cae del reel v3 y queda como referencia de estilo |
+| Aspecto 9:16 | Absorbido por este gate (capa 1). Propuestas en `_audit/aspecto/`; crop persistido en `crop:`; outpaint diferido con `aspecto: outpaint` |
 | Exenta | `a3-m12` (marco POV fuera de cutlist v3). `a3-c4` no es madre. Eco `a3-c5` = mismo archivo que `a3-m14` (lock) |
 | Referencias de estilo fuera de mapa | `a3-m04`, `a3-m19`, `a3-m21`, `a3-m02`, `a2-m04-c3`, `a2-m09` se conservan en disco y se registran en [../../PROGRESS.md](../../PROGRESS.md) |
 
@@ -87,6 +91,4 @@ Se generan post-promoción con `ref` a canónicos ya uniformes: `a1-m01a`, `a2-m
 
 ## Secuencia de confirmaciones
 
-1. Locks designados → 2. **Este mapa aprobado** → 3. `npm run uniformar` → 4. Carpeta `_madres-uniformes/` aprobada → (posterior) `--promover` con confirmación explícita.
-
-Orden recomendado con el gate hermano de aspecto: **uniformar → 9:16** (`_madres-916/`, fuera de alcance de este gate).
+1. Locks designados → 2. **Este mapa aprobado** → 3. Propuestas de reencuadre (`--propuestas`) aprobadas y persistidas → 4. `npm run uniformar` (capa 1) → 5. Carpeta `_madres-uniformes/` aprobada → (posterior) `--promover` con confirmación explícita. Capa 2 (outpaint / filigrana) es Fase 2.
