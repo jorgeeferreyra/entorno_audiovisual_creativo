@@ -77,6 +77,11 @@ export interface MadreMapa {
   aspecto?: 'outpaint' | 'nativo';
   /** 0..1 — escala el look hacia neutro (default 1 sobre el look ya suave). */
   intensidad?: number;
+  /**
+   * Override absoluto de opacidad de papel (0..1).
+   * Default: valor del look del registro. Útil cuando el tinte del beat lava la textura.
+   */
+  paper?: number;
 }
 
 export interface MapaUniformidad {
@@ -610,6 +615,7 @@ async function uniformarCapa1(ctx: {
     const aspectoPendiente = entrada.aspecto === 'outpaint';
     const perfil: GradePerfil = entrada.grade ?? 'full';
     const intensidad = entrada.intensidad ?? 1;
+    const paperOpacity = entrada.paper;
 
     // Locks: solo crop (sin grade); el look se deriva del canónico intacto.
     if (entrada.esLock) {
@@ -651,7 +657,8 @@ async function uniformarCapa1(ctx: {
     console.log(
       `  grade: ${entrada.id} (${entrada.lock}/${perfil}` +
         `${skipCrop ? (aspectoPendiente ? ', sin crop/outpaint' : ', nativo') : ''}` +
-        `${intensidad !== 1 ? `, int=${intensidad}` : ''})…`,
+        `${intensidad !== 1 ? `, int=${intensidad}` : ''}` +
+        `${paperOpacity != null ? `, paper=${paperOpacity}` : ''})…`,
     );
     const r = await applyGrade({
       srcAbs: srcInfo.abs,
@@ -664,6 +671,7 @@ async function uniformarCapa1(ctx: {
       aspectoPendiente,
       cropOffset: entrada.crop,
       intensidad,
+      paperOpacity,
     });
 
     await escribirSidecar(destAbs, {
@@ -677,6 +685,7 @@ async function uniformarCapa1(ctx: {
       grade: perfil,
       aspecto: entrada.aspecto,
       intensidad,
+      ...(paperOpacity != null ? { paper: paperOpacity } : {}),
       crop: r.crop,
       outDims: r.outDims,
       aspectoPendiente: r.aspectoPendiente,

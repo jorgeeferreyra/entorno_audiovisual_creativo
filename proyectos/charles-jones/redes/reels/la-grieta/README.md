@@ -4,10 +4,10 @@ titulo: "La grieta"
 arcos: [1, 2, 3]
 origen: episodios/episodio-1 (precuela)
 estado: pendiente
-# Cut-list del intercut transversal — v3 2026-07-11: crimen firmado → testigo
+# Cut-list del intercut transversal — v3.1 2026-07-12: crimen firmado → testigo
 # → culpa → víctimas → dos destinos → huella → verdad real (ver
 # cadena-narrativa.md). Cada entrada es un slot: clip fuente + duración
-# recortada (s). Objetivo short-form: 27 slots, ~40.5s de presupuesto antes
+# recortada (s). Objetivo short-form: 26 slots, ~39s de presupuesto antes
 # del ajuste texto→audio→duración del animatic.
 cutlist:
   # Beat 1 — El crimen (HOOK)
@@ -17,8 +17,7 @@ cutlist:
   - { clip: a2-a0,  dur: 1 }   # Charles de espaldas: testigo
   - { clip: a3-a5b, dur: 1.5 } # caos Revenant (m14)
   - { clip: a2-a0c, dur: 1 }   # Charles ve el golpe (a2-m07, re-pick pendiente)
-  - { clip: a2-a0d, dur: 1 }   # vuelta al cuento (a2-m08)
-  - { clip: a3-a5c, dur: 1.5 } # donde hubo un mundo, había dos
+  - { clip: a2-a0d, dur: 1 }   # vuelta al cuento (a2-m08) + "había dos"
   # Beat 3 — Un gran amigo (la culpa)
   - { clip: a2-a1,  dur: 1 }   # la pisada (still a2-m02a)
   - { clip: a2-a1c, dur: 1 }   # el nido vacío (still a2-m02b)
@@ -50,7 +49,7 @@ cutlist:
 
 Salida transversal: intercala clips de los tres hilos (Mano Negra, Charles/palanca, Ornitorrincos) para contar las tres historias en una sola pieza vertical (IG/TikTok). No es la salida de un arco; los arcos son la **fuente**.
 
-- **Arcos que cruza**: `arcos: [1, 2, 3]`. La `cutlist` del front-matter implementa la **v3 2026-07-11** ([cadena-narrativa.md](cadena-narrativa.md)): Charles narra en primera persona, pero el hook ya no es el cuaderno sino el **crimen firmado** (`a1-a1` → `a3-a5`). Orden v3: crimen → testigo (`a2-a0`, caos, switch `a2-a0c`/`a2-a0d`, `a3-a5c`) → culpa (`a2-a1` → `a2-a1c` → `a2-a1b` → `a2-a0b`) → víctimas (`a3-a6c`/`a3-a6d`/`a3-a6e`/`a3-a6`) → dos destinos (`a3-a5y`, `a3-b1`, `a3-b3`, `a3-b4`) → huella (`a3-c1b`, `a3-c2`, `a3-c3`) → sueño comprimido y verdad (`a2-a2`, `a3-c1`, `a2-a2b`, `a3-c5`, `a3-c4`).
+- **Arcos que cruza**: `arcos: [1, 2, 3]`. La `cutlist` del front-matter implementa la **v3.1 2026-07-12** ([cadena-narrativa.md](cadena-narrativa.md)): Charles narra en primera persona; hook = **crimen firmado** (`a1-a1` → `a3-a5`). Orden: crimen → testigo (`a2-a0`, caos, switch `a2-a0c`/`a2-a0d` — una sola excursión a Revenant; `a3-a5c` sale) → culpa (`a2-a1` → `a2-a1c` → `a2-a1b` → `a2-a0b`) → víctimas (`a3-a6c`/`a3-a6d`/`a3-a6e`/`a3-a6`) → dos destinos (`a3-a5y`, `a3-b1`, `a3-b3`, `a3-b4`) → huella (`a3-c1b`, `a3-c2`, `a3-c3`) → sueño comprimido y verdad (`a2-a2`, `a3-c1`, `a2-a2b`, `a3-c5`, `a3-c4`).
 - **Cierre con la verdad**: el slot final `a3-c4` cierra con la **foto real** de la locación y el sobreimpreso verdadero — hoy es el **Área Natural Protegida Rocas Coloradas, Comodoro Rivadavia** (locación real). El humor negro de la Fundación sale del reel; sigue como recurso del hilo en [../../arco-3-ornitorrincos.md](../../arco-3-ornitorrincos.md).
 - **Mapa narrativo que gobierna**: [cadena-narrativa.md](cadena-narrativa.md) es la cadena de beats aprobada (gate previo a imágenes, Stage 2). La `cutlist` la **implementa**: cada slot responde a un beat de esa cadena, no al revés. Si la cadena cambia, la cutlist se re-deriva.
 - **Assets desplazados**: la v3 no borra ni mueve nada. `a3-m12`, `a3-m04`, `a3-m19`, `a3-m21`, `a3-m02`, `a2-m04-c3` y `a2-m09` quedan como referencias de estilo en [../../PROGRESS.md](../../PROGRESS.md). `a3-m01` queda como lock de cuento; `a3-m05` sigue como firstFrame de `a3-a5`.

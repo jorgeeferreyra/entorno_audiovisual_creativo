@@ -21,3 +21,6 @@ coverage/
 *.bak
 # Caché local de voz en off del animatic (Edge TTS, regenerable)
 **/_off-tts/
+
+# ComfyUI: clone + venv + modelos (binarios; no versionar)
+engine/comfyui/ComfyUI/

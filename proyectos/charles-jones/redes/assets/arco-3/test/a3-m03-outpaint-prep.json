@@ -1,0 +1,17 @@
+{
+  "source": "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/reels/la-grieta/_madres-uniformes/a3-m03-padre-ornitorrinco.png",
+  "lock": "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/reels/la-grieta/_madres-uniformes/a3-m01-madre-ornitorrinco.png",
+  "target": [
+    864,
+    1536
+  ],
+  "placed": {
+    "left": 0,
+    "top": 542,
+    "width": 864,
+    "height": 452
+  },
+  "feather": 24,
+  "pad": "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/assets/arco-3/test/a3-m03-outpaint-pad.png",
+  "mask": "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/assets/arco-3/test/a3-m03-outpaint-mask.png"
+}

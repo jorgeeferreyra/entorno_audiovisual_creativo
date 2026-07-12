@@ -19,7 +19,7 @@
 | Clip | Off (ES) | Nota |
 |---|---|---|
 | **a3-a5b** (caos Revenant) | *(SIN off — el caos habla solo: rumble + crujidos)* | Silencio de locución deliberado |
-| a3-a5c (dos mundos) | "Donde hubo un mundo, había dos." | Cierra el golpe antes de la culpa de Charles |
+| ~~a3-a5c (dos mundos)~~ | ~~"Donde hubo un mundo, había dos."~~ | **Fuera reel v3.1** — off movido a `a2-a0d`; clip queda como fuente/destacadas |
 
 ## Beat 4 — La separación
 

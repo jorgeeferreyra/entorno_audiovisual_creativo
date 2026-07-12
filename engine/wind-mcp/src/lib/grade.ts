@@ -73,6 +73,11 @@ export interface ApplyGradeOpts {
   cropOffset?: number;
   /** 0..1 — escala el look hacia neutro (default 1). */
   intensidad?: number;
+  /**
+   * Override absoluto de opacidad de papel (0..1).
+   * Si se setea, reemplaza el del look del registro (no se re-escala por intensidad).
+   */
+  paperOpacity?: number;
 }
 
 async function existe(p: string): Promise<boolean> {
@@ -360,6 +365,9 @@ export async function applyGrade(opts: ApplyGradeOpts): Promise<{
 }> {
   const dims = await probeDims(opts.srcAbs);
   const params = pickParams(opts.look, opts.registro, opts.perfil, opts.intensidad ?? 1);
+  if (opts.paperOpacity != null) {
+    params.paperOpacity = Math.max(0, Math.min(1, opts.paperOpacity));
+  }
   // outpaint pendiente solo si el caller lo marca; skipCrop solo (nativo) no marca pendiente.
   const aspectoPendiente = opts.aspectoPendiente ?? false;
 

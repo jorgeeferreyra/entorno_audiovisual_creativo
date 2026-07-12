@@ -40,7 +40,8 @@ Cada beat debe servir crimen / testimonio / víctimas / verdad. Lo que no lo sir
    2.1  Yo, de espaldas: "Yo estuve en esos tiempos."
    2.2  El caos: sin palabras, solo el ruido.
    2.3  Lo vi desde la loma. El golpe — y la vuelta al cuento.
-   2.4  Donde hubo un mundo, había dos.
+        "Donde hubo un mundo, había dos."
+        (una sola excursión a Revenant; el aéreo poético sale del reel)
 
 3  Un gran amigo (la culpa)
    3.1  Por un descuido mío, una bota apoya en un tronco.
@@ -83,7 +84,7 @@ Cruza cada beat con la [`cutlist`](README.md) actual. Expone qué está cubierto
 | Beat | Clip(s) en cutlist v3 | Cobertura |
 |---|---|---|
 | **1 · El crimen (HOOK)** | `a1-a1` (mano firma), `a3-a5` (Pangea se rasga, FLF m05→m06) | Cubierto. La mano pasa a hook absoluto; la información de Pangea vive en el firstFrame de `a3-a5`, sin establishing aparte. |
-| **2 · Yo estuve ahí** | `a2-a0` (Charles espaldas m01), `a3-a5b` (caos Revenant), `a2-a0c`→`a2-a0d` (Charles lo ve: switch real→cuento), `a3-a5c` (dos mundos) | Cubierto. `a2-m07` sigue con re-pick pendiente, como en v2. |
+| **2 · Yo estuve ahí** | `a2-a0` (Charles espaldas m01), `a3-a5b` (caos Revenant), `a2-a0c`→`a2-a0d` (Charles lo ve: switch real→cuento; off "había dos" en `a2-a0d`) | Cubierto. **v3.1:** sale `a3-a5c` (segunda ida a Revenant) — una sola excursión cuento→real→cuento. `a2-m07` sigue con re-pick pendiente. |
 | **3 · Un gran amigo** | `a2-a1` (pisada m02a), `a2-a1c` (nido m02b), `a2-a1b` (huevo cruza, FLF m02d→m02c), `a2-a0b` (alza la cría m03) | Cubierto. El huevo sigue estructural en la culpa de Charles; `a2-a1b` FLF queda diferido al gate de keyframes. |
 | **4 · La separación** | `a3-a6c` (madre+cría), `a3-a6d` (padre+huevo), `a3-a6e` (los cuatro lejos), `a3-a6` (despedida m01v1) | Cubierto. Caen `a3-a6a`/`a3-a6b` porque repiten la grieta ya contada a escala planetaria. |
 | **5 · Dos destinos** | `a3-a5y` (switch real→cuento próspero, FLF m15v1→m08), `a3-b1` (padre m03), `a3-b3` (madre débil m01v2), `a3-b4` (sequía, FLF m09→m17) | Cubierto. Cae `a3-b2` para evitar meseta de prosperidad. |
@@ -101,6 +102,8 @@ Cruza cada beat con la [`cutlist`](README.md) actual. Expone qué está cubierto
 | `a3-a6a` / `a3-a6b` | `a3-m19` / `a3-m21` | Referencias de estilo; no se borran |
 | `a3-b2` (joven explorando) | `a3-m02` | Referencia de estilo / anatomy-ref |
 | `a2-a2d` (lugar blanco c3) | `a2-m04-c3` | Referencia de estilo |
-| `a2-a2c` (despierta selva) | `a2-m09` | Referencia de estilo |
+| `a3-a5c` (aéreo poético) | `a3-m15` | Referencia de estilo / fuente; sale del reel v3.1 para evitar ping-pong Reiniger↔Revenant en el beat 2 |
 
-**v3 2026-07-11:** el reel deja de intentar "hacer entrar todo" y prioriza retención short-form: hook en el crimen firmado, progresión sin mesetas, coda comprimida y cierre compartible con la verdad de Rocas Coloradas. Pendiente: re-correr animatic borrador con off para validar ritmo, orden y 0 excesos antes de uniformar/generar.
+**v3.1 2026-07-12:** el beat 2 queda con una sola excursión a Revenant (`a2-a0` → `a3-a5b` [+ `a2-a0c` cuando haya canónico] → `a2-a0d`). Sale `a3-a5c`; su off pasa a `a2-a0d`. Tooling: `--borrador` degrada FLF con keyframe faltante a still del existente (recupera hook `a1-a1` y huevo `a2-a1b` en el animatic).
+
+**v3 2026-07-11:** el reel deja de intentar "hacer entrar todo" y prioriza retención short-form: hook en el crimen firmado, progresión sin mesetas, coda comprimida y cierre compartible con la verdad de Rocas Coloradas.

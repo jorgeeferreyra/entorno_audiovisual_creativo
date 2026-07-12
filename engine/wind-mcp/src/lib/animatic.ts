@@ -51,10 +51,10 @@ export interface MontarAnimaticInput {
   /** Ruta de salida, relativa a la unidad o absoluta. */
   salida: string;
   /**
-   * Modo borrador: si un `firstFrame`/`lastFrame` apunta a una variación aún no
-   * generada (`a{arco}-m{nn}v{k}`), degrada a su madre base (`a{arco}-m{nn}`).
-   * Habilita aprobar ritmo/orden ANTES de pagar las variaciones. No valida
-   * unicidad: las repeticiones son esperadas en esta pasada.
+   * Modo borrador: (1) variación aún no generada (`a{arco}-m{nn}v{k}`) → madre
+   * base; (2) FLF con un keyframe faltante → still del keyframe que sí existe
+   * por la duración completa. Habilita aprobar ritmo/orden ANTES de pagar
+   * variaciones/keyframes. No valida unicidad: las repeticiones son esperadas.
    */
   borrador?: boolean;
   /**
@@ -71,7 +71,10 @@ export interface MontarAnimaticInput {
   voz?: string;
 }
 
-/** Slot cuyo frame de variación se resolvió a la madre base (solo modo borrador). */
+/**
+ * Slot degradado en modo borrador: variación→madre base, o FLF incompleto
+ * (keyframe faltante → keyframe existente). `ref` = lo pedido; `base` = lo usado.
+ */
 export interface Degradado {
   id: string;
   ref: string;
@@ -314,16 +317,34 @@ async function segmentosDeSpec(
 
   if (spec.kind === 'video-flf') {
     const first = await resolver(spec.firstFrame);
-    if (typeof first !== 'string') return { segmentos: [], omitido: first };
     const last = await resolver(spec.lastFrame);
-    if (typeof last !== 'string') return { segmentos: [], omitido: last };
-    const half = duracion / 2;
-    return {
-      segmentos: [
-        { id: `${spec.id}-a`, imagen: first, duracion: half, subtitulo },
-        { id: `${spec.id}-b`, imagen: last, duracion: half, subtitulo },
-      ],
-    };
+    const firstOk = typeof first === 'string';
+    const lastOk = typeof last === 'string';
+
+    if (firstOk && lastOk) {
+      const half = duracion / 2;
+      return {
+        segmentos: [
+          { id: `${spec.id}-a`, imagen: first, duracion: half, subtitulo },
+          { id: `${spec.id}-b`, imagen: last, duracion: half, subtitulo },
+        ],
+      };
+    }
+
+    // Borrador: FLF con un solo keyframe en disco → still de ese keyframe
+    // (duración completa). Evita omitir el slot entero (hook a1-a1, huevo a2-a1b).
+    if (opts?.borrador && (firstOk || lastOk)) {
+      const imagen = firstOk ? first : last;
+      const refFaltante = firstOk ? spec.lastFrame : spec.firstFrame;
+      const baseUsada = firstOk ? spec.firstFrame : spec.lastFrame;
+      opts.degradados?.push({ id: spec.id, ref: refFaltante, base: baseUsada });
+      return {
+        segmentos: [{ id: spec.id, imagen: imagen as string, duracion, subtitulo }],
+      };
+    }
+
+    if (!firstOk) return { segmentos: [], omitido: first as Omitido };
+    return { segmentos: [], omitido: last as Omitido };
   }
 
   const fuente = fuenteDe(spec);
@@ -679,8 +700,9 @@ export async function parseCutlist(reel: string): Promise<CutlistItem[]> {
  * las duraciones de la cut-list del README. Es el gate que protege el mayor
  * costo (video). Los clips cuyo `planos/arco-N.md` aún no existe, o cuya imagen
  * madre no está en disco, se reportan como omitidos (animatic parcial).
- * En modo `borrador`, las variaciones aún no generadas degradan a su madre base
- * para aprobar ritmo/orden antes de pagarlas (ver MontarAnimaticInput.borrador).
+ * En modo `borrador`, las variaciones faltantes degradan a madre base y los FLF
+ * con un keyframe faltante degradan a still del existente, para aprobar
+ * ritmo/orden antes de pagarlos (ver MontarAnimaticInput.borrador).
  * Con `off`, sintetiza la voz en off (Edge TTS) y la muxea sobre el MP4.
  */
 export async function montarAnimaticReel(

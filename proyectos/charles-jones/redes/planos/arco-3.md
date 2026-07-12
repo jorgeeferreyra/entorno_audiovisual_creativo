@@ -603,7 +603,7 @@ Far below in the green valley the lush land tears open violently, plants and roo
 ```
 - Vision-Audit (EN): sceneDescription: `lush green valley torn by a colossal rift far below, lagoon cascading, dust rising` · action: `the verdant land tears apart violently, debris collapses into the chasm` · mood: `chaotic, violent, overwhelming`
 - Audio: SIN off (el caos habla solo); rumble fuerte, crujidos de tierra
-- Montaje: viene de a3-a5 con corte duro (silueta → real); corta a a3-a5c
+- Montaje: viene de a3-a5 / `a2-a0` con corte duro (silueta → real); en el reel v3.1 corta a `a2-a0c`/`a2-a0d` (switch). En el hilo Arco 3 puede seguir a a3-a5c.
 
 **Clip a3-a5c — Switch real (respiro): zoom-out poético**
 
@@ -622,7 +622,7 @@ Slow aerial drift high above two vast landmasses separated by a calm sea channel
 ```
 - Vision-Audit (EN): sceneDescription: `aerial view of two landmasses separated by a sea channel at golden dusk` · action: `slow wide drift revealing the water between the lands` · mood: `elegiac, serene, immense`
 - Audio: off documental (la escala de lo ocurrido) + música mínima
-- Montaje: el respiro después del caos; corta a a3-a5x (puente FLF experimental m06→m14) o, si el gate experimental falla, corte duro a a3-a6
+- Montaje: **fuera del reel v3.1** (ping-pong Reiniger↔Revenant en beat 2). Queda como fuente/destacadas; el off "Donde hubo un mundo, había dos" pasó a `a2-a0d`. En el hilo Arco 3 sigue disponible tras el caos (`a3-a5b`) hacia `a3-a5x` o `a3-a6`.
 
 **Clip a3-a5x — Puente FLF experimental: cuento→real (m06→m14)**
 

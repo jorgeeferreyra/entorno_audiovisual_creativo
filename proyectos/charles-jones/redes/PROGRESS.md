@@ -1,7 +1,7 @@
 # Redes (Arco 3) — Build Progress
 
-_Last updated: 2026-07-11_
-_Current stage: Stage 4 — Look capa 1 aprobado; corrida completa; animatic uniformes para evaluar en secuencia_
+_Last updated: 2026-07-12_
+_Current stage: Stage 7 — animatic v3.1 (FLF degradado + beat 2 sin ping-pong); pendiente revisión de dirección_
 _Based on roadmap: [TECH.md](TECH.md) § 5_
 
 > Session log agency-os + seguimiento detallado de producción (estados, costos, gates). Absorbe el antiguo `arco-3-roadmap.md`. No duplica prompts ni fichas: la fuente de verdad de los prompts es [arco-3-planos.md](planos/arco-3.md); el STYLE-BLOCK y los switches cuento↔real viven en [biblia-visual.md](../biblia-visual.md); la convención de IDs/archivos en [pipeline.md](../../../metodo/pipeline.md) §5.
@@ -29,6 +29,28 @@ Espejo del roadmap de [TECH.md](TECH.md) § 5. Un stage se marca `[x]` solo cuan
 ## 2. Session Log
 
 Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
+
+### 2026-07-12 — Animatic v3.1: FLF degradado + beat 2 sin ping-pong
+
+- **Stage in flight:** Stage 7 — animatic borrador v3.1 (ritmo/orden/registros).
+- **Decisión de dirección:** una sola excursión Reiniger→Revenant en beat 2; sacar `a3-a5c`; recuperar hook y huevo en borrador vía tooling (no revertir poda del close-up `a3-a4`).
+- **Done this session:**
+  - **Tooling:** `--borrador` degrada FLF con un keyframe faltante a still del existente (duración completa) en `animatic.ts`; CLI surfacea "variación→base o FLF incompleto".
+  - **Cutlist v3.1:** sale `{ clip: a3-a5c }`; off "Donde hubo un mundo, había dos" pasa a `a2-a0d`. Cadena + planos sincronizados; `a3-a5c` queda como fuente/destacadas.
+  - **Animatic:** `animatic-la-grieta.mp4` (~79.4s / presupuesto 38s). Degradados: `a1-a1` (`m01a`→`m01`), `a2-a1b` (`m02d`→`m02c`), + 3 variaciones. Único omitido: `a2-a0c` (re-pick `a2-m07`). 18 excesos de off (gate de texto aparte).
+- **Next step:** (1) usuario revisa MP4 — hook, huevo, beat 2 cuento→real→cuento; (2) gate de off → 0 excesos; (3) re-pick `a2-m07`; (4) `--promover` uniformes solo con confirmación.
+- **New blockers / questions raised:** ninguno nuevo; duración sube vs v3 porque el hook y el huevo vuelven a pantalla (antes se omitían).
+
+### 2026-07-11 — Cierre técnico Fase 1: paper m08 + crop DERECHA m07/m08
+
+- **Stage in flight:** Stage 4 capa 1 — ajustes finales aplicados; pendiente revisión MP4 de dirección y `--promover`.
+- **Done this session:**
+  - **Tooling:** campo `paper:` por-madre en mapa → override absoluto de `paperOpacity` en `grade.ts` / `uniformar.ts` (el look por registro no alcanza para verdes lush).
+  - **Mapa:** `a3-m08` `paper: 0.10`; par `a2-m07`/`a2-m08` `crop: 360` (DERECHA/OTS) persistido y documentado.
+  - **Re-corrida:** `--id a3-m08` / `a2-m08` / `a2-m07` `--force` (previas en `_prev/`). Sidecars: m08 `paper:0.1`, m08 crop `x:360`, m07 crop trivial clamped `x:12`.
+  - **Animatic:** `animatic-la-grieta.mp4` re-corrido (`--borrador --uniformes --off`) ~73.6s; 16 excesos de off (gate de texto aparte).
+- **Next step:** (1) usuario revisa MP4 + verifica textura de `a3-m08`; (2) `--promover` solo con confirmación explícita; (3) gate de off → 0 excesos; (4) Fase 2 clasificación capa generativa.
+- **New blockers / questions raised:** `a2-a0c` sigue omitido (falta canónico `a2-m07`, no el `-c3`); re-pick pendiente.
 
 ### 2026-07-11 — Look aprobado + corrida completa + animatic uniformes
 
@@ -335,12 +357,12 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 
 ### Próxima acción
 
-**Aprobar `_madres-uniformes/` (Stage 4 capa 1)** y resolver reencuadres pendientes.
+**Revisar animatic v3.1** (`reels/la-grieta/animatic-la-grieta.mp4`).
 
-1. Revisar audit sheets en `reels/la-grieta/_audit/` y propuestas en `_audit/aspecto/` (sobre todo 1:1: `a2-m01`, `a2-m08`, `a3-m14`; apaisadas/outpaint ya marcadas).
-2. Persistí `crop:` / `aspecto: outpaint` en el mapa si hace falta re-correr.
-3. Validar en contexto: `npm run animatic -- --reel la-grieta --borrador --uniformes --off`.
-4. `--promover` solo con confirmación explícita. Luego variations / keyframes / animatic final.
+1. Verificar: hook `a1-a1` presente; huevo `a2-a1b` presente; beat 2 = cuento → real (caos) → cuento (sin segundo aéreo Revenant).
+2. Gate de off: refinar textos en `arco-N-off.md` hasta 0 excesos → re-animatic.
+3. Re-pick `a2-m07` (canónico) para que entre `a2-a0c`.
+4. `--promover` de `_madres-uniformes/` solo con confirmación explícita.
 
 ---
 
@@ -420,7 +442,7 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 | a3-a4 | A | U2V | **fuera reel v3** | El huevo close-up cae del reel; no regenerar para `la-grieta` v3 salvo necesidad de destacada |
 | a3-a5 | A | U2V-FLF | aprobado (I2V degradado) | En el reel se tolera recortado a ~2s; **regen FLF m05→m06 diferido a la destacada S2** (auditoría §D) |
 | a3-a5b | A | U2V | aprobado | Switch caos Revenant ✓ |
-| a3-a5c | A | U2V | aprobado | Switch respiro crane-up ✓ |
+| a3-a5c | A | U2V | aprobado (**fuera reel v3.1**) | Switch respiro crane-up; sale para evitar ping-pong Reiniger↔Revenant; off pasó a `a2-a0d`; queda fuente/destacadas |
 | a3-a5x | A | U2V-FLF | pendiente (diferido) | **EXPERIMENTAL** m06→m14; **diferido a destacadas** — en el reel el corte duro alcanza (auditoría §D) |
 | a3-a5y | A/B | U2V-FLF | pendiente (diferido) | Puente m15→m08; **diferido a destacadas** (auditoría §D) |
 | a3-a6 | A | U2V | aprobado | |
@@ -474,7 +496,7 @@ Formaliza el QC que ya se hace informalmente (carpetas `_candidates`/`_audit`). 
 
 | Aporte (Arco 3) | Fuente | Estado |
 |---|---|---|
-| Hook + quiebre | `a1-a1`, `a3-a5`, `a3-a5b`, `a2-a0c`/`a2-a0d`, `a3-a5c` | pendiente animatic v3 |
+| Hook + quiebre | `a1-a1`, `a3-a5`, `a3-a5b`, `a2-a0c`/`a2-a0d` | pendiente revisión animatic v3.1 |
 | Culpa + separación | `a2-a1`, `a2-a1c`, `a2-a1b`, `a2-a0b`, `a3-a6c`…`a3-a6` | pendiente animatic v3 |
 | Dos destinos + huella | `a3-a5y`, `a3-b1`, `a3-b3`, `a3-b4`, `a3-c1b`, `a3-c2`, `a3-c3` | pendiente animatic v3 |
 | Sueño + verdad | `a2-a2`, `a3-c1`, `a2-a2b`, `a3-c5`, `a3-c4` | pendiente animatic v3 |

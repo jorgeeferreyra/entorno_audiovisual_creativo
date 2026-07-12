@@ -16,7 +16,7 @@ madres:
   - { id: a3-m05, lock: cuento, tinte: "warm amber and saturated green tinted background sky", preserva: "EXACT framing (FLF pair base with m06)" }
   - { id: a3-m06, lock: cuento, tinte: "dramatic deep red tinted background sky", preserva: "EXACT framing = m05 (FLF pair)" }
   - { id: a3-m07, lock: cuento, tinte: "deep red and orange tinted background", preserva: "Coloradas stacked cutout layers; firstFrame of U2V c1" }
-  - { id: a3-m08, lock: cuento, tinte: "saturated lush green tinted background, warm prosperous glow", preserva: "framing untouchable (lastFrame FLF a5y)" }
+  - { id: a3-m08, lock: cuento, tinte: "saturated lush green tinted background, warm prosperous glow", preserva: "framing untouchable (lastFrame FLF a5y)", paper: 0.10 }
   - { id: a3-m09, lock: cuento, tinte: "cold desaturated grey tinted background", preserva: "EXACT framing (FLF pair with m17; also eco c3e)" }
   - { id: a3-m17, lock: cuento, tinte: "cold desaturated grey tinted background, darker and dimmer", preserva: "EXACT framing = m09 (FLF pair)" }
   - { id: a3-m10, lock: cuento, tinte: "deep red dusk tinted background", preserva: "EXACT framing (FLF pair with m11), exhausted sprawl pose" }
@@ -32,12 +32,12 @@ madres:
   - { id: a2-m02c, lock: cuento, tinte: "dramatic deep red tinted background with living green vegetation accents", preserva: "egg lying on its side, prosperous bank (FLF lastFrame with a2-m02d pending)" }
   - { id: a2-m03, lock: cuento, tinte: "dramatic deep red tinted background", preserva: "hands+cria gesture, early rift background" }
   - { id: a2-m05, lock: cuento, tinte: "deep red dusk tinted background", preserva: "ECU eyes, filigree facial detail" }
-  - { id: a2-m08, lock: cuento, tinte: "dramatic deep red tinted background", preserva: "SAME framing as a2-m07 (transversal switch pair)" }
+  - { id: a2-m08, lock: cuento, tinte: "dramatic deep red tinted background", preserva: "SAME framing as a2-m07 (transversal switch pair)", crop: 360 }
 
   # --- Real → lock a3-m14 ---
   - { id: a3-m15, lock: real, tinte: "golden dusk light (REALITY-BLOCK-POETIC)", preserva: "aerial stillness, immense scale" }
   - { id: a3-m13, lock: real, tinte: "natural daylight, clinical documentary (no paper tint)", preserva: "forensic stillness of the dig site" }
-  - { id: a2-m07, lock: real, fuente: "assets/arco-2/madre/a2-m07-grieta-revenant-c3.png", tinte: "deep blood-red overcast dusk light", preserva: "SAME framing as a2-m08, extreme OTS" }
+  - { id: a2-m07, lock: real, fuente: "assets/arco-2/madre/a2-m07-grieta-revenant-c3.png", tinte: "deep blood-red overcast dusk light", preserva: "SAME framing as a2-m08, extreme OTS", crop: 360 }
   - { id: a2-m04, lock: real, tinte: "pure white void — NO paper tint", preserva: "white void and absent pigeons; unify grain/light only — NEVER correct the white toward the lock palette", grade: grano }
 
   # --- Exentas ---
@@ -68,9 +68,10 @@ madres:
 6. **`aspecto: outpaint`**: no se recorta en capa 1 (recibe grade sin crop; sidecar `aspectoPendiente`). Extensión a 9:16 va a la capa generativa (Fase 2); el grade se re-aplica como paso final. En `a1-m01` el outpaint **solo puede extender fondo** — titular y sello APROBADO son intocables.
 7. **`aspecto: nativo`**: conserva dims originales (sin crop ni marca de outpaint). Pensado para locks que no deben recibir píxeles generados (p.ej. `a3-m14`); los usos de cutlist pueden croppear aparte.
 8. **`intensidad`**: 0..1 (default 1). Escala el look hacia neutro (sat/contrast → 1; opacidades/viñeta × intensidad). Parámetro fijo por madre — nunca adaptativo por imagen (pares FLF intactos).
-9. **`exento: true`**: no entra al re-pase (motivo obligatorio).
-10. **`diferido: true`**: la cutlist la alcanza pero aún no existe / se genera después (variations/keyframes); hereda uniformidad vía `ref` post-promoción.
-11. Si la cutlist suma una madre nueva → agregar fila acá **antes** de correr el comando (el CLI falla si falta).
+9. **`paper`**: 0..1. Override absoluto de opacidad de papel (default: valor del look del registro). Útil cuando el tinte del beat lava la textura (ej. verdes lush).
+10. **`exento: true`**: no entra al re-pase (motivo obligatorio).
+11. **`diferido: true`**: la cutlist la alcanza pero aún no existe / se genera después (variations/keyframes); hereda uniformidad vía `ref` post-promoción.
+12. Si la cutlist suma una madre nueva → agregar fila acá **antes** de correr el comando (el CLI falla si falta).
 
 ## Decisiones de este mapa
 
@@ -80,8 +81,9 @@ madres:
 | Lock real | `a3-m14` — **crop 9:16 centro APROBADO** (576×1024); outpaint PROHIBIDO |
 | `a3-m01` | Lock cuento; crop 2:3→9:16 centro **APROBADO** |
 | `a2-m01` | Crop 1:1→9:16 centro **APROBADO** |
-| Par `a2-m07`/`a2-m08` | Pendiente: comparar centro vs derecha (OTS) en `_audit/aspecto/par-a2-m07-m08-variantes.png` |
+| Par `a2-m07`/`a2-m08` | Crop **DERECHA** `crop: 360` APROBADO (OTS; idéntico a ambos). Variantes en `_audit/aspecto/par-a2-m07-m08-variantes.png` |
 | Par `a3-m05`/`a3-m06` | Crop centro; morph check en `_audit/aspecto/par-a3-m05-m06-morph.png` |
+| `a3-m08` | `paper: 0.10` — el verde lush lava la textura al default del look (0.035) |
 | `a3-m02` | Sale de la cutlist v3 con `a3-b2`; queda como referencia de estilo/anatomía, no se uniforma ahora |
 | Tinte `a3-m03` | Alineado al beat del reel (Bloque B próspero): `saturated lush green` — no al ámbar/verde de la ficha original (Pangea feliz) |
 | `a2-m07` | Fuente `-c3` (re-pick pendiente; canónico borrado) |

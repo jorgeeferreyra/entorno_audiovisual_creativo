@@ -13,9 +13,9 @@
  *              front-matter de reels/S/README.md; cruza varios arcos).
  *
  * Flags transversales:
- *   --borrador  las variaciones aún no generadas degradan a su madre base, para
- *               aprobar ritmo/orden ANTES de pagar las variaciones. No valida
- *               unicidad (las repeticiones son esperadas en esta pasada).
+ *   --borrador  variaciones faltantes → madre base; FLF con un keyframe faltante
+ *               → still del existente (duración completa). Para aprobar ritmo/
+ *               orden ANTES de pagar variaciones/keyframes. No valida unicidad.
  *   --uniformes preferir reels/<reel>/_madres-uniformes/ si existe el basename
  *               (gate de uniformidad de universo, previo a promover canónicos).
  *   --off       sintetiza la voz en off (Edge TTS, es-AR) y la muxea al MP4;
@@ -57,7 +57,7 @@ function reportar(titulo: string, r: MontarAnimaticResult, borrador: boolean): v
     console.log('  Aprueba solo ritmo, orden y subtítulos. Las imágenes repetidas son esperadas.');
   }
   if (r.degradados.length) {
-    console.log(`\n${r.degradados.length} slot(s) con madre base en vez de variación:`);
+    console.log(`\n${r.degradados.length} slot(s) degradado(s) (variación→base o FLF incompleto):`);
     for (const d of r.degradados) console.log(`  · ${d.id}: ${d.ref} → ${d.base}`);
   }
   if (r.omitidos.length) {

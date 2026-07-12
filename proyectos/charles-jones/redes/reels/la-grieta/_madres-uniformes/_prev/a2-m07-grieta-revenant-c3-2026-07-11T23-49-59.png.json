@@ -9,7 +9,7 @@
   "grade": "full",
   "intensidad": 1,
   "crop": {
-    "x": 12,
+    "x": 6,
     "y": 0,
     "w": 756,
     "h": 1344,
@@ -26,5 +26,5 @@
     "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/assets/arco-2/madre/a2-m07-grieta-revenant-c3.png"
   ],
   "provider": "ffmpeg-grade",
-  "generatedAt": "2026-07-11T23:49:59.980Z"
+  "generatedAt": "2026-07-11T23:06:58.854Z"
 }

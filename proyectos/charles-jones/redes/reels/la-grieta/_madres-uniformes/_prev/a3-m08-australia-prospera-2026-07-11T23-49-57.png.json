@@ -8,7 +8,6 @@
   "preserva": "framing untouchable (lastFrame FLF a5y)",
   "grade": "full",
   "intensidad": 1,
-  "paper": 0.1,
   "crop": {
     "x": 6,
     "y": 0,
@@ -27,5 +26,5 @@
     "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/assets/arco-3/madre/a3-m08-australia-prospera.png"
   ],
   "provider": "ffmpeg-grade",
-  "generatedAt": "2026-07-11T23:49:57.605Z"
+  "generatedAt": "2026-07-11T23:06:44.062Z"
 }

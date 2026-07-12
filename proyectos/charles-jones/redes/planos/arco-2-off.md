@@ -17,7 +17,7 @@
 | ---------------------------------------------------- | --------------------------------------------------------------------- | -------------------------------------------------------------------------- |
 | a2-a0 (Charles de espaldas, montaje ~1s)             | "Yo estuve en esos tiempos."                                          | Beat 2.1: testigo tras el hook de crimen firmado                           |
 | a2-a0c (golpe de la grieta, Revenant, montaje ~1s)   | "Lo vi desde la loma."                                                | Beat 2.3: presencia el golpe; primer eslabón del switch real→cuento        |
-| a2-a0d (vuelta al cuento, Reiniger, montaje ~1s)     | *(silencio)*                                                          | Beat 2.3: cierra el switch; respira tras el golpe                          |
+| a2-a0d (vuelta al cuento, Reiniger, montaje ~1s)     | "Donde hubo un mundo, había dos."                                     | Beat 2.3–2.4: cierra el switch + escala de lo ocurrido (off heredado de `a3-a5c`, fuera del reel v3.1) |
 | a2-a1 (la pisada / Charles pasa, montaje ~1s)        | "Por un descuido mío…"                                                | Beat 3.1: la bota sobre el tronco; la culpa de Charles                     |
 | a2-a1c (nido vacío, montaje ~1s)                     | *(silencio)*                                                          | Beat 3.2: still del nido; respiro antes del FLF                            |
 | **a2-a1b** (el huevo cruza)                          | "…un huevo cruzó el océano."                                          | Beat 3.3: el huevo sigue siendo estructural                                |
