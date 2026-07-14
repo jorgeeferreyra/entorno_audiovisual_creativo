@@ -9,21 +9,21 @@ fecha: 2026-07-14
 
 > Mapa narrativo del reel transversal, en lenguaje de historia (no de producción). **Gobierna** la `cutlist` del [README.md](README.md): la cutlist implementa esta cadena, no al revés. Es el **gate previo a generar imágenes** (Stage 2 en [../../TECH.md](../../TECH.md) §5): se aprueba el mapa de beats antes de gastar en madres o clips.
 >
-> **v4.1 2026-07-14 — huella comprimida + CTA poético.** El lado víctima deja de nombrarse uno a uno: "envejecieron solos" junta madre + joven; "El tiempo los volvió piedra" (plural) hace la fosilización. Sale la sequía (m09/m17). Cierre: frase poética sobre la huella en Rocas Coloradas (no CTA literal). No se borra ni se mueve ningún asset: lo desplazado queda como **referencia de estilo** / fuente.
+> **v4.1 2026-07-14 — huella comprimida; coda en cuento.** El lado víctima deja de nombrarse uno a uno. Cierre: lugar blanco → cara → Coloradas Reiniger. Salen foto real (`a3-c4`) y eco de caos (`a3-c5`). No se borra ni se mueve ningún asset.
 
 ## Cómo leer / iterar
 
-Regla general del gate (lenguaje de historia y zoom-in por cobertura) en [pipeline.md](../../../../../metodo/pipeline.md) §2 paso 1. Acá, en concreto: cada número es un **beat** que se lee solo; la sangría marca un **zoom-in** (el beat se parte en varias imágenes); si un beat no se lee → se expande, si sobra → se comprime; orden de arriba hacia abajo, sin ramas.
+Regla general del gate (lenguaje de historia y zoom-in por cobertura) en [pipeline.md](../../../../../metodo/pipeline.md) §2 paso 1. Acá, en concreto: cada número es un **beat** que se lee solo; la sangría marca un **zoom-in**; orden de arriba hacia abajo, sin ramas.
 
 ---
 
 ## Esencia (criterio de corte)
 
-- **Qué:** la partición del mundo no fue geología, fue un **crimen firmado** — y Charles fue testigo. Las víctimas tienen nombre: una familia de ornitorrincos separada para siempre. La evidencia existe de verdad: un fósil en Rocas Coloradas.
-- **Cómo:** **testimonio de Charles en primera persona**, con culpa propia ("por mi descuido"). Cuento de siluetas interrumpido por golpes de realidad (Revenant). Arco: **testigo → crimen → culpa → víctimas → dos destinos → huella → invitación**. Patrón: cada línea de off ancla una madre; las transiciones respiran en silencio.
-- **Por qué:** el remate invita a reflexionar — en Rocas Coloradas quedó **la huella de lo que fue**. La fábula se vuelve verificable y accionable.
+- **Qué:** la partición del mundo no fue geología, fue un **crimen firmado** — y Charles fue testigo. Las víctimas: una familia de ornitorrincos separada para siempre. La evidencia existe: un fósil en Rocas Coloradas (en el cuerpo del reel; el cierre no corta a foto real).
+- **Cómo:** **testimonio de Charles en primera persona**, con culpa propia ("por mi descuido"). Cuento de siluetas interrumpido por golpes de realidad (Revenant). Arco: **testigo → crimen → culpa → víctimas → dos destinos → huella → sueño**. Patrón: línea-ancla + transiciones mudas.
+- **Por qué:** el remate cierra en el cuento — el susurro nombra el lugar y las Coloradas Reiniger lo muestran.
 
-Cada beat debe servir testimonio / crimen / víctimas / verdad. Lo que no lo sirve sale; lo que lo sirve débilmente se comprime. La amistad de Charles con el joven **sale del reel**.
+Cada beat debe servir testimonio / crimen / víctimas / verdad. La amistad de Charles con el joven **sale del reel**.
 
 ---
 
@@ -63,13 +63,8 @@ Cada beat debe servir testimonio / crimen / víctimas / verdad. Lo que no lo sir
 
 6  El sueño (coda / remate)
    6.1  El lugar blanco. Susurro: "…es en Rocas Coloradas…"
-   6.2  Transición: las coloradas del cuento.
-   6.3  Se abren los ojos.
-   6.4  Eco de caos: reprise de la grieta Revenant (cierra el loop).
-   6.5  Corte a lo real: "En Rocas Coloradas quedó la huella
-        de lo que fue."
-        Sobreimpreso: Área Natural Protegida Rocas Coloradas,
-        Comodoro Rivadavia.
+   6.2  Transición: la cara de Charles.
+   6.3  Remate: las coloradas del cuento (Reiniger, sin cara).
 ```
 
 ---
@@ -78,24 +73,19 @@ Cada beat debe servir testimonio / crimen / víctimas / verdad. Lo que no lo sir
 
 | Beat | Clip(s) en cutlist v4.1 | Cobertura |
 |---|---|---|
-| **1 · Yo estuve ahí (HOOK)** | `a2-a0c` (m07), `a2-a0d` (m08, silencio) | Cubierto. |
-| **2 · El crimen** | `a1-a1` (mano), `a3-a5` (FLF m05→m06) | Cubierto. |
-| **3 · La culpa** | `a2-a0`, `a2-a1`, `a2-a1c`, `a2-a1b`, `a2-a0b` | Cubierto. Offs: "Por mi descuido…" / "Otra vida quedó de este lado." |
+| **1 · Yo estuve ahí (HOOK)** | `a2-a0c`, `a2-a0d` | Cubierto. |
+| **2 · El crimen** | `a1-a1`, `a3-a5` | Cubierto. |
+| **3 · La culpa** | `a2-a0`, `a2-a1`, `a2-a1c`, `a2-a1b`, `a2-a0b` | Cubierto. |
 | **4 · La separación** | `a3-a6c`, `a3-a6d`, `a3-a6e` | Cubierto. |
-| **5 · Dos destinos + huella** | `a3-b0` (m08), `a3-b1` (padre), `a3-b3` (madre), `a3-c1b` (joven m18, silencio), `a3-c2` (FLF m10→m11), `a3-c3` (m13, silencio) | Cubierto. **Sale** `a3-b4` (sequía m09→m17). Huella absorbida en el beat 5. |
-| **6 · El sueño / remate** | `a2-a2`, `a3-c1`, `a2-a2b`, `a3-c5` (reprise m07), `a3-c4` | Cubierto. CTA poético: "En Rocas Coloradas quedó la huella de lo que fue." |
+| **5 · Dos destinos + huella** | `a3-b0`, `a3-b1`, `a3-b3`, `a3-c1b`, `a3-c2`, `a3-c3` | Cubierto. Sale `a3-b4`. |
+| **6 · El sueño / remate** | `a2-a2` → `a2-a2b` → `a3-c1` | Cubierto. **Salen** `a3-c5` y `a3-c4`. |
 
-## Diff conceptual v4 → v4.1
+## Diff conceptual (cierre)
 
 | Cambio | Destino |
 |---|---|
-| Offs "Primero se fue el joven" / "Después la madre…" | Salen; m18 pasa a transición muda tras "envejecieron solos" |
-| Off "Y la piedra todavía guarda su forma" | Sale; m13 es transición muda |
-| `a3-b4` (FLF m09→m17 sequía) | Sale del reel; queda fuente/destacadas |
-| "Por un descuido…" | → "Por mi descuido…" |
-| "Y la otra quedó de este lado" | → "Otra vida quedó de este lado." |
-| "Ir a Rocas Coloradas" | → "En Rocas Coloradas quedó la huella de lo que fue." |
+| `a3-c4` + "En Rocas Coloradas quedó la huella…" | **Sale del reel**; cierre = Coloradas Reiniger (`a3-c1`) |
+| `a3-c5` eco de caos | **Sale del reel** |
+| `a3-b4` sequía | Sale del reel (v4.1) |
 
-**v4.1 2026-07-14:** huella comprimida (plural), sequía fuera, CTA poético.
-
-**v4 2026-07-14:** testigo abre; crimen con agencia; sin amistad; cierre CTA.
+**v4.1 2026-07-14:** huella comprimida; coda = lugar blanco → cara → Coloradas Reiniger (sin foto real).

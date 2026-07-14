@@ -1,7 +1,7 @@
 # Redes (Arco 3) — Build Progress
 
 _Last updated: 2026-07-14_
-_Current stage: Stage 7 — animatic v4.1 (huella comprimida + remate poético); pendiente revisión de dirección_
+_Current stage: Stage 7 — animatic final v4.1 (0 excesos, sin --borrador); pendiente aprobación de dirección del MP4_
 _Based on roadmap: [TECH.md](TECH.md) § 5_
 
 > Session log agency-os + seguimiento detallado de producción (estados, costos, gates). Absorbe el antiguo `arco-3-roadmap.md`. No duplica prompts ni fichas: la fuente de verdad de los prompts es [arco-3-planos.md](planos/arco-3.md); el STYLE-BLOCK y los switches cuento↔real viven en [biblia-visual.md](../biblia-visual.md); la convención de IDs/archivos en [pipeline.md](../../../metodo/pipeline.md) §5.
@@ -29,6 +29,14 @@ Espejo del roadmap de [TECH.md](TECH.md) § 5. Un stage se marca `[x]` solo cuan
 ## 2. Session Log
 
 Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
+
+### 2026-07-14 — Aspecto 9:16 + animatic final
+
+- **Stage in flight:** Stage 4→7 — outpaint/crops + variaciones mínimas del cutlist + animatic final.
+- **Decisión de dirección:** lock real = `a2-m07` (`a3-m14` eliminada); outpaint `a3-m03`←c1, `a3-m22`←c2, `a1-m01`←c2; `a3-m01v2`←c3 (slot `a3-b3`); `a2-m02d` = copia de `a2-m02c`; `a1-m01a`←c3 (grieta solo en zona de firma).
+- **Done this session:** mapa/look con lock `a2-m07`; madres outpaint + uniformes 9:16; offs acortados + cutlist con respiro → **0 excesos**; animatic final `reels/la-grieta/animatic-la-grieta.mp4` (~46s / presupuesto 46s, 27 segmentos, sin `--borrador`, `--uniformes --off`).
+- **Next step:** (1) usuario aprueba el MP4 final; (2) `--promover` uniformes solo con OK explícito; (3) Stage 8 clips.
+- **New blockers / questions raised:** ninguno para el gate de animatic; `--promover` pendiente.
 
 ### 2026-07-14 — Cadena v4.1: huella comprimida + remate poético
 

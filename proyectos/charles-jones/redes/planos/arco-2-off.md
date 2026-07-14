@@ -23,4 +23,4 @@
 | **a2-a1b** (el huevo cruza)                          | "Una vida cruzó el planeta."                                          | Beat 3.4: el huevo sigue siendo estructural                                |
 | a2-a0b (levanta la cría, montaje ~1.5s)              | "Otra vida quedó de este lado."                                       | Beat 3.5: espejo del huevo; sin amistad                                    |
 | a2-a2 (lugar blanco, montaje ~1.5s)                  | *(susurro casi subliminal, bajo la música)* "…es en Rocas Coloradas…" | Beat 6.1: mensaje mínimo del sueño; NO lectura documental                  |
-| a2-a2b (se abren los ojos, montaje ~1s)              | *(silencio)*                                                          | Beat 6.3: respira; el sueño habla solo antes del eco de caos               |
+| a2-a2b (se abren los ojos / cara, montaje ~1s)       | *(silencio)*                                                          | Beat 6.2: cara de Charles tras el lugar blanco; luego `a3-c1` (Coloradas)  |

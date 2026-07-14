@@ -1,0 +1,13 @@
+{
+  "id": "a1-m01",
+  "kind": "image",
+  "prompt": "OUTPAINT to vertical 9:16. The first reference is the APPROVED square madre — preserve with near-100% fidelity the exact same clean aged paper sheet, the exact headline text \"DOS CONTINENTES SE VENDEN MEJOR QUE UNO\" in clear Spanish capital letters, the exact circular \"APROBADO\" stamp, the same rubber stamp and inkwell silhouette props, the same black paper-cutout hand with thick gold chain bracelet and fountain pen on the signature line — NEVER rewrite, move, crop, or alter the headline or the APROBADO stamp; they are UNTOUCHABLE. The second reference is the universe lock — adopt only aged-paper texture and filigree line weight, never its subject. Extend ONLY the dramatic deep red tinted background above and below into a tall vertical frame; keep the parchment and hand at the same relative size and placement in the center; NO other text, NO grids, NO charts, NO pseudo-text, fine lace-like hand-cut paper detail — NOT flat vector shapes, in the manner of Lotte Reiniger's Die Abenteuer des Prinzen Achmed, flat 2D layered paper theater, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16",
+  "provider": "openrouter",
+  "refs": [
+    "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/assets/arco-1/madre/a1-m01-mano-cadenita.png",
+    "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/assets/arco-3/madre/a3-m01-madre-ornitorrinco.png"
+  ],
+  "aspect": "9:16",
+  "mock": false,
+  "generatedAt": "2026-07-14T17:29:25.231Z"
+}

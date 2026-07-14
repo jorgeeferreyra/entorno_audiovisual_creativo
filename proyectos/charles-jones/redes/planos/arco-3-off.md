@@ -1,10 +1,9 @@
 # Arco 3 — Voz en off (texto literal)
 
 > Texto literal del **off** del Arco 3, listo para grabar (voz propia) o TTS.
-> - **v4.1 2026-07-14 — huella comprimida + remate poético.** "Envejecieron solos" junta madre + joven; "El tiempo los volvió piedra" (plural); cierre: "En Rocas Coloradas quedó la huella de lo que fue." Cadena v4.1 en [../reels/la-grieta/cadena-narrativa.md](../reels/la-grieta/cadena-narrativa.md).
+> - **v4.1 2026-07-14 — huella comprimida; coda en cuento.** Cierre: lugar blanco → cara → Coloradas Reiniger. Salen foto real y eco de caos. Cadena en [../reels/la-grieta/cadena-narrativa.md](../reels/la-grieta/cadena-narrativa.md).
 > - Idioma: **español**.
-> - Sincronía: cada línea está asociada a su clip; el orden sigue los beats de la v4.1. El **hook** vive en [arco-2-off.md](arco-2-off.md) (`a2-a0c`).
-> - El **cierre invita a reflexionar**: la huella de lo que fue está en Rocas Coloradas + sobreimpreso del Área Natural Protegida Rocas Coloradas, Comodoro Rivadavia.
+> - El **hook** vive en [arco-2-off.md](arco-2-off.md) (`a2-a0c`). El remate del reel es visual (Coloradas Reiniger); no hay CTA hablado al final.
 
 ---
 
@@ -39,9 +38,9 @@
 
 | Clip | Off (ES) | Nota |
 |---|---|---|
-| a3-c1 (las coloradas del cuento, push-in) | *(silencio)* | Beat 6.2: el susurro ya sonó en a2-a2 |
-| a3-c5 (eco de caos, reprise a2-m07, montaje ~1s) | *(SIN off — el caos habla solo)* | Beat 6.4: cierra el loop con el hook |
-| a3-c4 (foto real, 3–4s) | "En Rocas Coloradas quedó la huella de lo que fue." · Sobreimpreso: "Área Natural Protegida Rocas Coloradas — Comodoro Rivadavia" | Beat 6.5: remate poético + verdad de la locación |
+| a3-c1 (las coloradas del cuento, push-in) | *(silencio)* | Beat 6.3: **remate del reel** — Coloradas Reiniger tras la cara de Charles |
+| ~~a3-c5 (eco de caos)~~ | ~~*(SIN off)*~~ | **Fuera reel** — queda como fuente |
+| ~~a3-c4 (foto real)~~ | ~~"En Rocas Coloradas quedó la huella de lo que fue."~~ | **Fuera reel** — CTA/foto real salen del cierre |
 
 ---
 

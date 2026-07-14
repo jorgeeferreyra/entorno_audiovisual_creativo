@@ -1,0 +1,12 @@
+{
+  "id": "a1-m01a",
+  "kind": "image",
+  "prompt": "The reference image is the APPROVED first keyframe — keep near-100% fidelity of the exact same composition: same clean aged paper sheet, same headline \"DOS CONTINENTES SE VENDEN MEJOR QUE UNO\", same circular \"APROBADO\" stamp, same rubber stamp and inkwell props, same black paper-cutout hand with thick gold chain bracelet and fountain pen, same dramatic deep red tinted background, same Lotte Reiniger layered paper theater. ONLY change the state of the signature line: the hand has finished the stroke; where the signature was, a jagged black paper tear / rift now rips the sheet from side to side — a cracked fissure through the parchment with the deep red background showing through the tear, like the continental rift made of torn paper, NOT ink handwriting, NOT a drawn line, a physical rip. Same gold chain filigree, fine lace-like hand-cut paper detail — NOT flat vector shapes, in the manner of Lotte Reiniger's Die Abenteuer des Prinzen Achmed, flat 2D layered paper theater, dramatic deep red tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16",
+  "provider": "openrouter",
+  "refs": [
+    "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/assets/arco-1/madre/a1-m01-mano-cadenita.png"
+  ],
+  "aspect": "9:16",
+  "mock": false,
+  "generatedAt": "2026-07-14T17:35:28.274Z"
+}

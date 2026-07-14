@@ -74,18 +74,17 @@ The first reference image is the master character: reproduce this exact platypus
 ```yaml
 kind: image
 dest: assets/arco-3/madre/a3-m03-padre-ornitorrinco.png
-ref: a3-m01
+ref: assets/arco-3/madre/a3-m03-padre-ornitorrinco.png
 anatomyRefs:
-  - assets/fuentes/ornitorrincos/ornitorrinco.png
-  - assets/fuentes/ornitorrincos/ornitorrincos-dibujo.png
+  - a3-m01
 provider: openrouter
 ```
 
-Nota: regenerar — fidelidad 100% a m01; más fornido; **en 4 patas** a la orilla de un lago.
+Nota: **outpaint a 9:16** (fuente apaisada 1408×736). Ref 1 = madre aprobada (composición/sujeto intocable); ref 2 = lock cuento `a3-m01` (estilo/filigrana). Extender cielo y suelo arriba/abajo; no recortar pico ni cola; tinte del beat reel = lush green.
 
 Prompt (EN):
 ```
-The first reference image is the master character: reproduce this exact platypus silhouette with 100% fidelity — same bill shape, same etched eye, same fur strokes, same cross-hatched paddle tail, same webbed feet, same woodcut cutout style. The other reference images show real platypus anatomy and posture — use them for a true quadruped stance on all four legs and lake-shore habitat, never to change the art style. Adult male version of the same character, bulkier and more muscular (thicker neck, broader chest and shoulders, heavier body), distinctive notch cut into the brow outline, standing on all four short legs in side profile facing left at the edge of a silhouetted lake — water and reeds in cutout layers at the shore, every feature readable inside the black silhouette through fine gold etched lines like a woodcut print — never a plain solid blob, never upright or sitting on hind legs: (1) wide flat duck bill clearly separated from the head by an etched line, (2) two small etched nostril dots on top of the bill near the tip, (3) one almond-shaped eye outlined in thin light etched line high on the head near the bill base, (4) broad flat beaver-like paddle tail with cross-hatched fur texture and short fur strokes etched along the back and chest, (5) all four webbed duck-like feet planted on the ground with etched toe lines claws and clear webbing, flat 2D paper cutout not felt not 3D not plush not photorealistic, warm amber and saturated green tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+OUTPAINT to vertical 9:16. The first reference is the APPROVED landscape madre — preserve the exact same bulkier adult male platypus silhouette with near-100% fidelity: same brow notch, same bill, same etched eye, same fur strokes, same cross-hatched paddle tail, same all-four-legs stance facing left at the lake shore, same reeds and water ripples, same woodcut cutout style. Do NOT crop the bill or the tail; keep the full animal readable. The second reference is the universe lock — adopt only its line weight, filigree density and aged-paper texture, never its pose. Extend ONLY the tinted paper background above and below into a tall vertical frame: more sky and more shore/reeds, saturated lush green tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
 ```
 
 **a3-m04 — Huevo de ornitorrinco**
@@ -344,18 +343,17 @@ The reference image is the world: the same split Pangea landscape with a red glo
 ```yaml
 kind: image
 dest: assets/arco-3/madre/a3-m22-madre-cria-orilla.png
-ref: a3-m01
+ref: assets/arco-3/madre/a3-m22-madre-cria-orilla.png
 anatomyRefs:
-  - assets/arco-3/madre/a3-m02-ornitorrinco-joven.png
-  - assets/fuentes/ornitorrincos/ornitorrincos-dibujo.png
+  - a3-m01
 provider: openrouter
 ```
 
-Nota: solo la orilla cercana (lado que será Argentina). Distinción por contorno: madre redondeada + cría más chica/esbelta (master `a3-m02`). El canal rojo queda al borde del frame (hacia la orilla lejana), no el foco.
+Nota: **outpaint a 9:16** (fuente apaisada 1408×736). Ref 1 = madre aprobada (madre+cría+canal al borde); ref 2 = lock `a3-m01`. Extender cielo/acantilado arriba y abajo; no cortar contornos ni perder el canal al borde del frame.
 
 Prompt (EN):
 ```
-The first reference image is the master character — the mother platypus: reproduce this exact silhouette style with 100% fidelity — same bill shape, same etched eye, same fur strokes, same cross-hatched paddle tail, same webbed feet, same woodcut cutout style. The second reference is the young platypus master — reproduce that exact smaller slender silhouette with 100% fidelity. The third reference is an illustrated plate — use only to keep anatomy true, never the style. Near-shore reading shot: an adult mother platypus with a rounded gentle contour standing beside a much smaller slender young platypus on a layered cutout cliff edge, both in profile looking toward a red glowing sea channel that occupies only the far edge of the frame, no other characters, every feature readable inside the black silhouettes through fine gold etched lines like a woodcut print — never plain solid blobs, dramatic deep red tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+OUTPAINT to vertical 9:16. The first reference is the APPROVED landscape madre — preserve with near-100% fidelity the same mother platypus (rounded gentle contour) standing beside the same smaller slender young platypus on the same layered cutout cliff edge, both in profile looking toward the red glowing sea channel that stays at the far edge of the frame — same woodcut etched line style, same fern, same rock ledge. Do NOT crop the mother's tail or the young; keep both full silhouettes and the channel readable at the frame edge. The second reference is the universe lock — adopt only its line weight, filigree density and aged-paper texture, never its pose. Extend ONLY the tinted paper background above and below into a tall vertical frame: more dramatic deep red sky and more cliff/shore below, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
 ```
 
 **a3-m23 — Orilla lejana: padre + huevo (8.2b)**
@@ -878,8 +876,8 @@ Motion prompt (EN):
 Slow push-in across the layered paper cutout Coloradas rock formations and lagoons, cutout layers sliding in gentle parallax, settling toward a silhouetted red rock where the last platypus will rest, flat 2D silhouette animation, deep red dusk tinted background.
 ```
 - Vision-Audit (EN): sceneDescription: `layered cutout Coloradas badlands on a deep red dusk tinted background` · action: `slow push-in toward the resting rock` · mood: `calm acceptance, solemn`
-- Audio: off documental (el final del linaje argentino)
-- Montaje: viene de a3-c0 (o de a3-b4 si se salta el puente); **NO es FLF** — m07 y m10' no comparten encuadre; corte a a3-c2 (m10' ya en pose de reposo)
+- Audio: *(silencio)* — en el reel v4.1 el susurro ya sonó en `a2-a2`
+- Montaje: **remate del reel v4.1** — llega después de `a2-a2b` (cara) y cierra el reel. Coloradas Reiniger sin cara. En el hilo Arco 3 sigue como U2V push-in tras `a3-c0`.
 
 **Clip a3-c2 — La fosilización (transición-gancho)**
 
@@ -942,7 +940,7 @@ duration: 1.5
 
 duration (montaje): 1–1.5s
 - Audio: *(SIN off — el caos habla solo)*
-- Montaje: **reprise deliberada** del hook (`a2-m07` / `a2-a0c`) — en el reel v4 cierra el sueño: tras los ojos (`a2-a2b`), todo vuelve a romperse un instante antes del corte a lo real. Ruta literal al canónico de arco 2 (el id `a2-m07` no resuelve desde planos del arco 3). Misma dependencia de re-pick que `a2-a0c`. Corta DURO a `a3-c4`.
+- Montaje: **fuera del reel v4.1** (cierre en Coloradas Reiniger `a3-c1`; no hay eco de caos). Reprise del hook queda como fuente.
 
 **Clip a3-c4 — Foto real de Rocas Coloradas (remate final)**
 
@@ -954,8 +952,8 @@ duration: 4
 
 duration (montaje): 3–4s (16:9; reencuadrar a 9:16)
 - Sobreimpreso: "Área Natural Protegida Rocas Coloradas — Comodoro Rivadavia" — **la verdad**: la locación es real. El humor negro de la Fundación sale del reel; sigue como recurso del hilo en [../arco-3-ornitorrincos.md](../arco-3-ornitorrincos.md).
-- Audio: off poético (beat 6.5 v4.1: "En Rocas Coloradas quedó la huella de lo que fue.") — ver [arco-3-off.md](arco-3-off.md)
-- Montaje: **cierre del reel v4.1** — tras el eco de caos `a3-c5` (reprise m07), corte a la foto real; remate poético + verdad de la locación. En el hilo/destacadas del Arco 3 sigue sirviendo como remate del "salto a la realidad" (a3-c2 → a3-c3 → eco m09 → a3-c4).
+- Audio: off poético (fuera del reel v4.1; queda para destacadas/hilo)
+- Montaje: **fuera del reel v4.1** (cierre = `a3-c1` Coloradas Reiniger). Queda como remate del hilo Arco 3 / destacadas.
 
 ---
 

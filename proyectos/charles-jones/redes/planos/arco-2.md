@@ -107,11 +107,11 @@ anatomyRefs:
 provider: openrouter
 ```
 
-Nota: **un sujeto** — el huevo sobre el tronco, aún de este lado. Keyframe inicial del par FLF `a2-m02d` → `a2-m02c` (clip `a2-a1b`). Sin bota, sin nido, sin grieta. `ref: a2-m02a` hereda mundo/tronco; `a3-m04` = master del huevo. `a2-m02c` espera al canónico de esta ficha; ambas se generan y aprueban juntas en el gate de madres keyframes (pipeline §2 paso 4).
+Nota: **Decisión de dirección 2026-07-14:** el canónico es **copia de `a2-m02c-huevo-otro-lado.png`** (aprobada). Los candidatos con portal/grieta se descartaron. El FLF `a2-a1b` (`m02d`→`m02c`) queda como still efectivo del huevo aprobado (mismo frame). Sin bota, sin nido.
 
 Prompt (EN):
 ```
-The first reference is the approved prior beat — inherit ONLY its world and style and the fallen log: dramatic deep red tinted paper, woodcut cutout look; do NOT copy the boot or leg. The second reference is the platypus egg master — reproduce that exact egg silhouette with 100% fidelity. Single-subject black paper cutout silhouette: a fallen log across the frame, a single platypus egg resting on the near end of the log — still, not yet rolling. NOTHING else: NO nest, NO boot, NO leg, NO rift, NO other characters. Dramatic deep red tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
+The first reference is the APPROVED prior beat — inherit ONLY its world and style and the fallen log: dramatic deep red tinted paper, woodcut cutout look, same log; do NOT copy the boot or leg. The second reference is the platypus egg master — reproduce that exact egg silhouette with 100% fidelity. Single-subject black paper cutout silhouette: a fallen log across the frame, a single platypus egg resting on the near end of the log — still, not yet rolling. NOTHING else: NO nest, NO boot, NO leg, NO rift, NO crack, NO chasm, NO glowing red portal, NO V-shaped tear, NO canyon, NO torn-paper window, NO other characters. Flat continuous red tinted paper background behind the log — NOT a hole looking into fire. Dramatic deep red tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16
 ```
 
 **a2-m03 — Las manos de Charles levantan a la cría (beat 9.2–9.3)**
@@ -349,7 +349,7 @@ duration: 1.5
 
 duration (montaje): 1–1.5s
 - Audio: susurro casi subliminal "…es en Rocas Coloradas…" bajo la música (no lectura documental); ver [arco-2-off.md](arco-2-off.md)
-- Montaje (reel v3): abre el sueño comprimido (beat 7), después de `a3-c3`; still de m04 (Charles de espaldas, maíz que cae, palomas ausentes); corta a `a3-c1`. El animatic decide si asciende a clip U2V.
+- Montaje (reel v4.1): abre el sueño comprimido, después de `a3-c3`; still de m04; corta a `a2-a2b` (cara). El animatic decide si asciende a clip U2V.
 
 **Clip a2-a2d — El lugar blanco c3 (montaje, sin generación) — referencia de estilo desde v3**
 
@@ -373,7 +373,7 @@ duration: 1.5
 
 duration (montaje): 1–1.5s
 - Audio: sin off (silencio; respira antes del segundo paso del despertar)
-- Montaje: still de m05 (ECU de ojos Reiniger, tinte rojo dusk + Coloradas); despertar comprimido. En el reel v4 llega tras `a3-c1` (las coloradas del cuento) y corta a `a3-c5` (eco de caos: reprise de `a2-m07`).
+- Montaje: still de m05 (ECU de ojos Reiniger, tinte rojo dusk + Coloradas). En el reel v4.1 llega **justo tras** el lugar blanco (`a2-a2`) y corta a `a3-c1` (**remate**: Coloradas Reiniger).
 
 **Clip a2-a2c — El despertar en la selva (montaje, sin generación) — referencia de estilo desde v3**
 

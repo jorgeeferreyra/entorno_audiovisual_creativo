@@ -1,0 +1,13 @@
+{
+  "id": "a3-m03",
+  "kind": "image",
+  "prompt": "OUTPAINT to vertical 9:16. The first reference is the APPROVED landscape madre — preserve the exact same bulkier adult male platypus silhouette with near-100% fidelity: same brow notch, same bill, same etched eye, same fur strokes, same cross-hatched paddle tail, same all-four-legs stance facing left at the lake shore, same reeds and water ripples, same woodcut cutout style. Do NOT crop the bill or the tail; keep the full animal readable. The second reference is the universe lock — adopt only its line weight, filigree density and aged-paper texture, never its pose. Extend ONLY the tinted paper background above and below into a tall vertical frame: more sky and more shore/reeds, saturated lush green tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16",
+  "provider": "openrouter",
+  "refs": [
+    "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/assets/arco-3/madre/a3-m03-padre-ornitorrinco.png",
+    "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/assets/arco-3/madre/a3-m01-madre-ornitorrinco.png"
+  ],
+  "aspect": "9:16",
+  "mock": false,
+  "generatedAt": "2026-07-14T17:26:29.510Z"
+}

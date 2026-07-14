@@ -1,0 +1,13 @@
+{
+  "id": "a2-m02d",
+  "kind": "image",
+  "prompt": "The first reference is the APPROVED prior beat — inherit ONLY its world and style and the fallen log: dramatic deep red tinted paper, woodcut cutout look, same log; do NOT copy the boot or leg. The second reference is the platypus egg master — reproduce that exact egg silhouette with 100% fidelity. Single-subject black paper cutout silhouette: a fallen log across the frame, a single platypus egg resting on the near end of the log — still, not yet rolling. NOTHING else: NO nest, NO boot, NO leg, NO rift, NO crack, NO chasm, NO glowing red portal, NO V-shaped tear, NO canyon, NO torn-paper window, NO other characters. Flat continuous red tinted paper background behind the log — NOT a hole looking into fire. Dramatic deep red tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16",
+  "provider": "openrouter",
+  "refs": [
+    "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/assets/arco-2/madre/a2-m02a-pisada.png",
+    "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/assets/arco-3/madre/a3-m04-huevo.png"
+  ],
+  "aspect": "9:16",
+  "mock": false,
+  "generatedAt": "2026-07-14T17:45:26.448Z"
+}

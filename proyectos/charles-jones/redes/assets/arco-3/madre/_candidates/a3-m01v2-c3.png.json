@@ -1,0 +1,13 @@
+{
+  "id": "a3-m01v2",
+  "kind": "image",
+  "prompt": "The first reference image is the master character — the mother platypus: reproduce this exact silhouette with 100% fidelity — same bill shape, same etched eye, same fur strokes, same cross-hatched paddle tail, same webbed feet, same woodcut cutout style. The other reference image shows real platypus anatomy — use it only to keep the anatomy true, never to change the art style. The same mother platypus weakened and moving slowly across a silhouetted cracked drying plain in side profile, head hanging low, halting exhausted posture, silhouetted withered plants and spreading crack lines around her, every feature readable inside the black silhouette through fine gold etched lines like a woodcut print — never a plain solid blob, cold desaturated grey tinted background, Lotte Reiniger inspired paper cutout silhouette animation, shadow puppet theater, black silhouettes with delicate cut-out inner details, tinted aged-paper background, dark fairy tale mood, sepia edges, vertical 9:16",
+  "provider": "openrouter",
+  "refs": [
+    "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/assets/arco-3/madre/a3-m01-madre-ornitorrinco.png",
+    "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/assets/fuentes/ornitorrincos/ornitorrinco.png"
+  ],
+  "aspect": "9:16",
+  "mock": false,
+  "generatedAt": "2026-07-14T17:34:17.962Z"
+}

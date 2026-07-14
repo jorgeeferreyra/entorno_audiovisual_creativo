@@ -13,13 +13,13 @@
       }
     },
     "real": {
-      "path": "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/assets/arco-3/madre/a3-m14-grieta-revenant.png",
+      "path": "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/assets/arco-2/madre/a2-m07-grieta-revenant.png",
       "stats": {
-        "width": 1024,
-        "height": 1024,
-        "meanY": 97.6401,
-        "meanU": 119.476,
-        "meanV": 125.473
+        "width": 768,
+        "height": 1344,
+        "meanY": 63.1703,
+        "meanU": 119.791,
+        "meanV": 139.161
       }
     }
   },
@@ -50,6 +50,6 @@
     "grainOpacity": 0.035,
     "vignette": 0.025
   },
-  "derivedAt": "2026-07-11T22:46:30.540Z",
-  "hash": "57b01222a601b619"
+  "derivedAt": "2026-07-14T17:28:28.581Z",
+  "hash": "d2598edd661363d4"
 }

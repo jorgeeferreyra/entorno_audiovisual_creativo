@@ -1,0 +1,30 @@
+{
+  "id": "a2-m02d",
+  "kind": "uniformada",
+  "capa": 1,
+  "registro": "cuento",
+  "lock": "a3-m01",
+  "tinte": "dramatic deep red tinted background with living green vegetation accents",
+  "preserva": "canónico = copia de a2-m02c (dirección 2026-07-14)",
+  "grade": "full",
+  "intensidad": 1,
+  "crop": {
+    "x": 6,
+    "y": 0,
+    "w": 756,
+    "h": 1344,
+    "clase": "trivial"
+  },
+  "outDims": {
+    "width": 756,
+    "height": 1344
+  },
+  "aspectoPendiente": false,
+  "lookHash": "d2598edd661363d4",
+  "refs": [
+    "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/assets/arco-3/madre/a3-m01-madre-ornitorrinco.png",
+    "/Users/jorgeferreyra/Code/charles jones/proyectos/charles-jones/redes/assets/arco-2/madre/a2-m02d-huevo-este-lado.png"
+  ],
+  "provider": "ffmpeg-grade",
+  "generatedAt": "2026-07-14T18:18:18.170Z"
+}
