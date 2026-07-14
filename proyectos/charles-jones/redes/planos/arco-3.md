@@ -584,9 +584,9 @@ The layered cutout Pangea landscape trembles like shaken paper, the black cutout
 ```
 - Vision-Audit (EN): sceneDescription: `the layered cutout Pangea landscape breaking apart, tint shifting to red` · action: `the cutout ground trembles and rips in two, water floods the chasm` · mood: `dramatic, ominous`
 - Audio: off documental (el quiebre) + rumble grave
-- Montaje: en el reel v3 viene de `a1-a1` (hook de crimen firmado) y contiene el establishing de Pangea en su firstFrame. Corte DURO a `a2-a0`/`a3-a5b` según ajuste del animatic. **Regen pendiente:** hoy aprobado como I2V degradado; regenerar como FLF real (m05→m06).
+- Montaje: en el reel v4 viene de `a1-a1` (crimen firmado, beat 2) y cubre las transiciones mudas Pangea → partida (slots 4–5). Corte DURO a `a2-a0` (culpa). **Regen pendiente:** hoy aprobado como I2V degradado; regenerar como FLF real (m05→m06).
 
-**Clip a3-a5b — Switch cuento→real: el caos (Revenant)**
+**Clip a3-a5b — Switch cuento→real: el caos (Revenant) — fuera del reel v4**
 
 ```yaml
 kind: video-i2v
@@ -603,7 +603,7 @@ Far below in the green valley the lush land tears open violently, plants and roo
 ```
 - Vision-Audit (EN): sceneDescription: `lush green valley torn by a colossal rift far below, lagoon cascading, dust rising` · action: `the verdant land tears apart violently, debris collapses into the chasm` · mood: `chaotic, violent, overwhelming`
 - Audio: SIN off (el caos habla solo); rumble fuerte, crujidos de tierra
-- Montaje: viene de a3-a5 / `a2-a0` con corte duro (silueta → real); en el reel v3.1 corta a `a2-a0c`/`a2-a0d` (switch). En el hilo Arco 3 puede seguir a a3-a5c.
+- Montaje: **fuera del reel v4** (el hook Revenant pasó a `a2-a0c` / m07). Queda como fuente/destacadas del hilo Arco 3; puede seguir a a3-a5c.
 
 **Clip a3-a5c — Switch real (respiro): zoom-out poético**
 
@@ -662,7 +662,7 @@ The wide aerial view of two separated landmasses softens into layered black pape
 ```
 - Vision-Audit (EN): sceneDescription: `aerial real continents morphing into cutout Australian wetland` · action: `photoreal world settles into silhouette prosperity` · mood: `hopeful, bridging`
 - Audio: off documental (la línea que sobrevive) + música tenue
-- Montaje: cierra el Bloque A / abre el Bloque B; cubre el hueco de m08 (hoy sin clip). Tras el morph, corta a a3-a6 o entra directo a b1 según montaje final.
+- Montaje: **fuera del reel v4** (el switch real→cuento próspero ya no existe en este punto; reemplazado por still `a3-b0` de m08). Queda como fuente/destacadas; en el hilo Arco 3 sigue cubriendo el hueco de m08 hacia b1.
 
 **Clip a3-a6a — Separación: la grieta abriéndose (montaje, sin generación) — fuera del reel v3**
 
@@ -697,10 +697,10 @@ duration: 1.5
 ```
 
 duration (montaje): 1–1.5s
-- Audio: off documental (beat 8.2a: de este lado, la madre y su cría)
-- Montaje: still de m22; corta a `a3-a6d` (la otra orilla).
+- Audio: off documental (beat 4.1 v4: "Familias separadas por la grieta.") — ver [arco-3-off.md](arco-3-off.md)
+- Montaje: still de m22; línea-ancla del beat 4; corta a `a3-a6d` (transición muda).
 
-**Clip a3-a6d — Orilla lejana: padre + huevo (montaje, sin generación) — 8.2b**
+**Clip a3-a6d — Orilla lejana: padre + huevo (montaje, sin generación) — 4.2**
 
 ```yaml
 kind: montaje
@@ -709,10 +709,10 @@ duration: 1.5
 ```
 
 duration (montaje): 1–1.5s
-- Audio: off documental (beat 8.2b: del otro, el padre y el huevo)
+- Audio: *(silencio)* — transición muda
 - Montaje: still de m23; corta a `a3-a6e` (plano lejano).
 
-**Clip a3-a6e — Plano lejano: los cuatro y la grieta (montaje, sin generación) — 8.2c**
+**Clip a3-a6e — Plano lejano: los cuatro y la grieta (montaje, sin generación) — 4.3**
 
 ```yaml
 kind: montaje
@@ -720,11 +720,11 @@ fuente: a3-m24
 duration: 2
 ```
 
-duration (montaje): ~2s (el lejano respira)
-- Audio: off documental (beat 8.2c: la distancia ya es irreversible)
-- Montaje: still de m24 (los 4 a lo lejos); cierra la lectura del beat 8; corta a `a3-a6` (la despedida).
+duration (montaje): ~1.5–2s (el lejano respira)
+- Audio: *(silencio)* — transición muda; cierra la lectura espacial
+- Montaje: still de m24 (los 4 a lo lejos); en el reel v4 corta a `a3-b0` (prosperidad). Sale `a3-a6` (despedida).
 
-**Clip a3-a6 — La separación (la despedida, beat 8.3)**
+**Clip a3-a6 — La separación (la despedida) — fuera del reel v4**
 
 ```yaml
 kind: video-i2v
@@ -739,11 +739,23 @@ The mother platypus silhouette stands at the edge of the cutout chasm in profile
 ```
 - Vision-Audit (EN): sceneDescription: `the edge of the cutout chasm on a deep red tinted background, far shore in the distance` · action: `the mother platypus silhouette stands still in profile, head slowly lowering` · mood: `grief, restrained sorrow`
 - Audio: off documental (la despedida)
-- Montaje: vuelve a silueta tras los switches; corta contra el padre con el huevo (a3-m03 + a3-m04) al otro lado de la grieta; cierra el Bloque A
+- Montaje: **fuera del reel v4** (compresión; la separación cierra en `a3-a6e`). Queda como referencia de estilo / destacadas S3.
 
 ### Bloque B — "Vidas paralelas" (~30s, pantalla partida por montaje)
 
 > La pantalla partida = dos clips independientes montados (mitad superior/inferior del 9:16). No se generan personajes juntos. El contraste próspero/árido lo aporta el **tinte de fondo** (verde saturado vs. gris frío, ver guion de color); si el fondo no acompaña, cutaways con a3-m08/a3-m09.
+
+**Clip a3-b0 — Australia próspera (montaje, sin generación) — beat 5.1**
+
+```yaml
+kind: montaje
+fuente: a3-m08
+duration: 1.5
+```
+
+duration (montaje): 1–1.5s
+- Audio: off documental (beat 5.1 v4: "De aquel lado tuvieron prosperidad.") — ver [arco-3-off.md](arco-3-off.md)
+- Montaje: still de m08; abre el beat 5 en el reel v4 (reemplaza el FLF `a3-a5y`). Corta a `a3-b1` (el padre).
 
 **Clip a3-b1 — Padre próspero en Australia**
 
@@ -759,8 +771,8 @@ Motion prompt (EN):
 The male platypus silhouette gliding actively through silhouetted reeds and water, energetic confident movement, hinged paper puppet movement, flat 2D silhouette animation, saturated lush green tinted background, warm prosperous glow.
 ```
 - Vision-Audit (EN): sceneDescription: `silhouetted Australian wetland on a saturated green tinted background` · action: `the male platypus silhouette swims and moves actively, healthy` · mood: `warm, prosperous`
-- Audio: off documental (adaptación)
-- Montaje: mitad de pantalla partida con a3-b3 (Australia arriba)
+- Audio: *(silencio)* — transición muda tras la línea-ancla de `a3-b0`
+- Montaje: en el reel v4 es transición del lado próspero; corta a `a3-b3`. En destacadas puede seguir como mitad de pantalla partida con a3-b3.
 
 **Clip a3-b2 — El joven explorando (línea próspera, fuera del reel v3)**
 
@@ -795,8 +807,8 @@ Motion prompt (EN):
 The mother platypus silhouette moving slowly across a silhouetted cracked plain, head low, weakened halting steps, hinged paper puppet movement, flat 2D silhouette animation, cold desaturated grey tinted background, sincere and mournful.
 ```
 - Vision-Audit (EN): sceneDescription: `silhouetted cracked Patagonian plain on a cold grey tinted background` · action: `the mother platypus silhouette moves slowly, weakened, head low` · mood: `mournful, sincere`
-- Audio: off documental (la pérdida)
-- Montaje: mitad de pantalla partida con a3-b1 (Argentina abajo)
+- Audio: off documental (beat 5.3 v4.1: "De este lado, envejecieron solos.") — ver [arco-3-off.md](arco-3-off.md)
+- Montaje: en el reel v4.1 abre el lado víctima; corta a `a3-c1b` (joven, transición muda). **Pendiente:** `a3-m01v2`; mientras tanto el animatic puede degradar a `a3-m01`. Sale `a3-b4` (sequía) del reel.
 
 **Clip a3-b4 — El ambiente argentino secándose**
 
@@ -815,8 +827,8 @@ Motion prompt (EN):
 Silhouetted crack lines spreading across the cutout plain, paper plants slowly wilting and folding down until fully parched, time-lapse feel, flat 2D silhouette animation, the grey tinted background growing colder and dimmer.
 ```
 - Vision-Audit (EN): sceneDescription: `arid cutout Patagonian plain on a cold grey tinted background` · action: `crack lines spread and paper vegetation wilts, time-lapse feel` · mood: `cold, desolate`
-- Audio: off documental (el ecosistema cambia)
-- Montaje: transición hacia el Bloque C; corta a a3-c1
+- Audio: *(silencio)* — transiciones mudas (declive → sequía)
+- Montaje: **fuera del reel v4.1** (la sequía sale; el lado víctima pasa de `a3-b3` a `a3-c1b`). Queda como fuente/destacadas.
 
 ### Bloque C — "El último" (REMATE DEL HILO, ~30s)
 
@@ -840,7 +852,7 @@ The real green-valley rift seen from the distant hillside freezes and resolves i
 - Audio: rumble que se apaga + off documental breve
 - Montaje: abre el Bloque C — la grieta real se congela en el cuento rojo; corta a a3-c1
 
-**Clip a3-c1b — El joven muriendo (montaje, sin generación) — beat 7.3**
+**Clip a3-c1b — El joven sobre la roca (montaje, sin generación) — beat 5.4**
 
 ```yaml
 kind: montaje
@@ -849,8 +861,8 @@ duration: 1.5
 ```
 
 duration (montaje): 1–1.5s
-- Audio: off en primera persona (beat 7.3: "Primero se fue el joven, entre las rocas coloradas.") — ver [arco-3-off.md](arco-3-off.md)
-- Montaje: still de m18 (joven sobre roca colorada, cabeza colgando); **absorción** de `a3-m18`. Lectura v3: la cría que quedó de este lado creció y murió acá; al caer `a3-b2`, no hay plano paralelo del joven próspero. Abre la huella (beat 6); corta a `a3-c2` (la fosilización de la madre).
+- Audio: *(silencio)* — transición muda tras "envejecieron solos"
+- Montaje: still de m18 (joven sobre roca colorada); en el reel v4.1 es transición del lado víctima (ya no tiene off propio). Corta a `a3-c2`.
 
 **Clip a3-c1 — Establishing Rocas Coloradas (push-in hacia la roca)**
 
@@ -886,8 +898,8 @@ Motion prompt (EN):
 The resting platypus silhouette slowly freezes and fills with stone texture, its black cutout becoming a fossil relief embedded in the silhouetted rock, fine bone detail emerging inside the contour, the red background tint fading to stone grey, flat 2D silhouette animation, solemn and beautiful.
 ```
 - Vision-Audit (EN): sceneDescription: `silhouetted red rock at dusk, the resting platypus silhouette` · action: `the silhouette freezes and fills with stone texture, becoming a fossil, the tint fades to grey` · mood: `solemn, beautiful, final`
-- Audio: off documental (se apaga) + silencio final
-- Montaje: corta DURO a a3-c3
+- Audio: off documental (beat 5.5 v4.1: "El tiempo los volvió piedra.") — ver [arco-3-off.md](arco-3-off.md)
+- Montaje: corta DURO a a3-c3 (transición muda al fósil real)
 
 **Clip a3-c3 — El fósil hoy (salto a la realidad)**
 
@@ -905,8 +917,8 @@ Motion prompt (EN):
 A platypus fossil embedded in red rock at a present-day excavation site, motionless, ambient daylight shifting subtly, faint dust drifting in the air, photographic documentary realism.
 ```
 - Vision-Audit (EN): sceneDescription: `present-day paleontological site in red rock badlands` · action: `the fossil rests motionless as the view widens` · mood: `real, quiet, revelatory`
-- Audio: off documental (remate: la tumba del protagonista de la trilogía)
-- Montaje: viene de a3-c2 con corte duro (silueta → foto); tras el pull-out, **eco breve (1–2s) de a3-m09** (Argentina en declive, solo montaje, sin generación) y corta a a3-c4
+- Audio: *(silencio)* — transición muda al fósil real
+- Montaje: viene de a3-c2 con corte duro (silueta → foto); en el reel v4.1 corta a `a2-a2` (sueño). En el hilo/destacadas: eco breve de a3-m09 y corta a a3-c4.
 
 **Clip a3-c3e — Eco m09 (montaje, sin generación)**
 
@@ -920,17 +932,17 @@ duration (montaje): 1–2s
 - Audio: silencio o cola del off de c3
 - Montaje: eco breve tras el pull-out de a3-c3, antes de la foto real c4 — puente emocional declive→yacimiento; SOLO montaje
 
-**Clip a3-c5 — Eco de caos Revenant (montaje, sin generación) — beat 8.5**
+**Clip a3-c5 — Eco de caos Revenant (montaje, sin generación) — beat 7.4**
 
 ```yaml
 kind: montaje
-fuente: a3-m14
+fuente: assets/arco-2/madre/a2-m07-grieta-revenant.png
 duration: 1.5
 ```
 
 duration (montaje): 1–1.5s
 - Audio: *(SIN off — el caos habla solo)*
-- Montaje: **eco deliberado** de la grieta Revenant (`a3-m14`, exento de variación como el eco de `a3-m09` en `a3-c3e`) — en el reel v3 cierra el sueño comprimido: tras los ojos (`a2-a2b`), todo vuelve a romperse un instante antes del corte a lo real. Reutiliza la madre `a3-m14` (REALITY-BLOCK-CHAOS); corta DURO a `a3-c4`.
+- Montaje: **reprise deliberada** del hook (`a2-m07` / `a2-a0c`) — en el reel v4 cierra el sueño: tras los ojos (`a2-a2b`), todo vuelve a romperse un instante antes del corte a lo real. Ruta literal al canónico de arco 2 (el id `a2-m07` no resuelve desde planos del arco 3). Misma dependencia de re-pick que `a2-a0c`. Corta DURO a `a3-c4`.
 
 **Clip a3-c4 — Foto real de Rocas Coloradas (remate final)**
 
@@ -941,9 +953,9 @@ duration: 4
 ```
 
 duration (montaje): 3–4s (16:9; reencuadrar a 9:16)
-- Sobreimpreso: "Área Natural Protegida Rocas Coloradas — Comodoro Rivadavia" — **la verdad**: la locación es real (decisión de dirección v3 2026-07-11). El humor negro de la Fundación sale del reel; sigue como recurso del hilo en [../arco-3-ornitorrincos.md](../arco-3-ornitorrincos.md).
-- Audio: off breve ("Esta parte es real.") o silencio
-- Montaje: **cierre del reel v3** — tras el eco de caos `a3-c5`, corte a la foto real; es el pago emocional (se dice la verdad de la locación). En el hilo/destacadas del Arco 3 sigue sirviendo como remate del "salto a la realidad" (a3-c2 → a3-c3 → eco m09 → a3-c4).
+- Sobreimpreso: "Área Natural Protegida Rocas Coloradas — Comodoro Rivadavia" — **la verdad**: la locación es real. El humor negro de la Fundación sale del reel; sigue como recurso del hilo en [../arco-3-ornitorrincos.md](../arco-3-ornitorrincos.md).
+- Audio: off poético (beat 6.5 v4.1: "En Rocas Coloradas quedó la huella de lo que fue.") — ver [arco-3-off.md](arco-3-off.md)
+- Montaje: **cierre del reel v4.1** — tras el eco de caos `a3-c5` (reprise m07), corte a la foto real; remate poético + verdad de la locación. En el hilo/destacadas del Arco 3 sigue sirviendo como remate del "salto a la realidad" (a3-c2 → a3-c3 → eco m09 → a3-c4).
 
 ---
 
@@ -976,13 +988,14 @@ Kling (FLF) se reserva a la cadena de transiciones (a3-a5, a3-a5x experimental, 
 |---|---|---|---|---|
 | m05→m06 | a3-a5 | FLF | 2 (par) | v3 usa `a3-m05` directo; `a3-m05v1` cancelada por no haber reutilización de `m05` |
 | m06→m14 | a3-a5x | FLF experimental | 2 (par) | Gate morphs cruzados cuento→real; si salta feo → corte duro |
-| m15v1→m08 | a3-a5y | FLF | 2 (par) | firstFrame variado (unicidad); cierra Bloque A / abre Bloque B; cubre hueco de m08 |
+| m15v1→m08 | a3-a5y | FLF | 2 (par) | **Fuera reel v4** (reemplazado por still `a3-b0`); queda fuente/destacadas |
 | m14v1→m07 | a3-c0 | FLF | 2 (par) | firstFrame variado (unicidad); abre Bloque C: grieta real se congela en cuento rojo |
-| m09→m17 | a3-b4 | FLF | 2 (par) | Par declive: Argentina en declive → Argentina seca; mismo encuadre, solo cambia el estado |
+| m09→m17 | a3-b4 | FLF | 2 (par) | **Fuera reel v4.1** (sequía); queda fuente/destacadas |
 | m10'→m11 | a3-c2 | FLF | 2 (par) | Par fosilización: ornitorrinco sobre roca → fósil de piedra; Ref hereda de m11 (madre aprobada) |
 | m07→m10' | a3-c1 | U2V + corte | 1 | Push-in; NO FLF (no comparten encuadre) — no pasa por el gate de keyframes |
 | m13→m09 | a3-c3e | Solo montaje | — | Eco 1–2s de m09 tras pull-out de m13, antes de c4 (eco deliberado, exento de variación) |
-| a2-m07→a2-m08 | a2-a0c→a2-a0d | Stills secuenciales (candidato FLF) | 2 (par) | Switch transversal real→cuento del **Arco 2** (mismo encuadre OTS extremo, ver [arco-2.md](arco-2.md)); hoy 2 stills por corte — si asciende a FLF real→dibujo, aprobar el par junto en este gate |
+| a2-m07→a2-m08 | a2-a0c→a2-a0d | Stills secuenciales (candidato FLF) | 2 (par) | **Hook v4** + switch transversal real→cuento del **Arco 2** (mismo encuadre OTS extremo, ver [arco-2.md](arco-2.md)); hoy 2 stills por corte — si asciende a FLF real→dibujo, aprobar el par junto en este gate |
+| a2-m07 (reprise) | a3-c5 | Solo montaje | — | Eco de caos en coda v4: reprise del hook; ruta literal a madre arco 2 |
 
 ---
 

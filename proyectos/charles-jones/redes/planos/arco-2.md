@@ -256,8 +256,8 @@ duration: 1.5
 ```
 
 duration (montaje): 1–1.5s
-- Audio: off en primera persona (beat 2.1: "Yo estuve en esos tiempos.") — ver [arco-2-off.md](arco-2-off.md)
-- Montaje (reel v3): responde al hook de crimen firmado; still de m01 (silueta de espaldas); corta al caos `a3-a5b`. El animatic decide si asciende a clip U2V.
+- Audio: off en primera persona (beat 3.1 v4: "Estaba todo muy inestable.") — ver [arco-2-off.md](arco-2-off.md)
+- Montaje (reel v4): tras el crimen (`a1-a1` → `a3-a5`); still de m01 (silueta de espaldas); corta a la pisada `a2-a1`. El animatic decide si asciende a clip U2V.
 
 **Clip a2-a0c — El golpe de la grieta, Revenant (montaje, sin generación) — switch real→cuento**
 
@@ -268,8 +268,8 @@ duration: 1.5
 ```
 
 duration (montaje): 1–1.5s
-- Audio: off en primera persona (beat 3.4: "Yo lo vi desde la loma. No pude hacer nada.") — ver [arco-2-off.md](arco-2-off.md)
-- Montaje: still de m07 (OTS extremo fotorrealista, colapso en acción); **primer eslabón** del switch transversal real→cuento (hermano de `a3-m14`). En el reel v3 llega tras el caos `a3-a5b`: Charles presencia el golpe. Corta a `a2-a0d` (vuelta al cuento). El animatic decide si asciende a clip U2V o si el par sube a FLF real→dibujo en el gate de keyframes.
+- Audio: off en primera persona (beat 1.1 v4 · **HOOK**: "Yo estuve ahí…") — ver [arco-2-off.md](arco-2-off.md)
+- Montaje: still de m07 (OTS extremo fotorrealista, colapso en acción); **abre el reel v4** como hook absoluto. Primer eslabón del switch transversal real→cuento. Corta a `a2-a0d` (vuelta al cuento). El animatic decide si asciende a clip U2V o si el par sube a FLF real→dibujo en el gate de keyframes.
 
 **Clip a2-a0d — Vuelta al cuento, Reiniger (montaje, sin generación) — cierra el switch**
 
@@ -280,8 +280,8 @@ duration: 1.5
 ```
 
 duration (montaje): 1–1.5s
-- Audio: *(silencio)* — respira tras el golpe
-- Montaje: still de m08 (mismo encuadre en silueta); **segundo eslabón**, cierra el switch iniciado en `a2-a0c` y devuelve el registro al cuento. En el reel v3 corta a `a3-a5c` (dos mundos), que cierra el beat 2. La pisada (`a2-a1`) llega en el beat 3 ("un gran amigo").
+- Audio: *(silencio)* — transición muda al cuento
+- Montaje: still de m08 (mismo encuadre en silueta); **segundo eslabón**, cierra el switch iniciado en `a2-a0c` y devuelve el registro al cuento. En el reel v4 corta a `a1-a1` (el crimen firmado, beat 2).
 
 **Clip a2-a1 — La pisada / Charles pasa (montaje, sin generación) — beat 4.1**
 
@@ -292,7 +292,7 @@ duration: 1.5
 ```
 
 duration (montaje): 1–1.5s
-- Audio: off en primera persona (beat 4.1: "Por un descuido mío…") — ver [arco-2-off.md](arco-2-off.md)
+- Audio: off en primera persona (beat 3.2 v4.1: "Por mi descuido…") — ver [arco-2-off.md](arco-2-off.md)
 - Montaje: still de m02a (solo la bota sobre el tronco); corta a `a2-a1c` (nido vacío).
 
 **Clip a2-a1c — El nido vacío (montaje, sin generación) — beat 4.2**
@@ -324,10 +324,10 @@ Motion prompt (EN):
 The platypus egg tumbles from the fallen log and comes to rest lying on its side on the prosperous far bank among green ferns, hinged paper puppet movement, flat 2D silhouette animation, dramatic deep red tinted background, NO log in the final state, NO rift.
 ```
 - Vision-Audit (EN): sceneDescription: `a speckled platypus egg lying on its side on a prosperous fern bank, deep red tinted background` · action: `the egg tumbles across and lands off-balance on the far side` · mood: `tender, accidental, hopeful`
-- Audio: off en primera persona (beat 4.3: "…y una vida entera cruzó el océano.") + música tenue — ver [arco-2-off.md](arco-2-off.md)
-- Montaje: tras el nido vacío; corta a `a2-a0b` (alzada de la cría, cierre del beat). Orden del beat 3 en el reel v3: `a2-a1` → `a2-a1c` → `a2-a1b` → `a2-a0b`, dentro de "un gran amigo" (antes de la separación de la familia, beat 4).
+- Audio: off en primera persona (beat 3.4 v4: "Una vida cruzó el planeta.") + música tenue — ver [arco-2-off.md](arco-2-off.md)
+- Montaje: tras el nido vacío; corta a `a2-a0b` (alzada de la cría). Orden del beat 3 en el reel v4: `a2-a0` → `a2-a1` → `a2-a1c` → `a2-a1b` → `a2-a0b` (antes de la separación, beat 4).
 
-**Clip a2-a0b — Las manos levantan a la cría (montaje, sin generación) — cierre del beat 4**
+**Clip a2-a0b — Las manos levantan a la cría (montaje, sin generación) — cierre del beat 3**
 
 ```yaml
 kind: montaje
@@ -336,8 +336,8 @@ duration: 1.5
 ```
 
 duration (montaje): 1–1.5s
-- Audio: off en primera persona (beat 4.4: "Me agaché a levantar a una cría perdida. Así conocí a un gran amigo.") — remate tierno tras el huevo
-- Montaje: still de m03 (manos alzando la cría); cierra el beat 3. En el reel v3 corta directo a `a3-a6c` (la familia ya separada, beat 4).
+- Audio: off en primera persona (beat 3.5 v4.1: "Otra vida quedó de este lado.") — espejo del huevo; sale la amistad
+- Montaje: still de m03 (manos alzando la cría); cierra el beat 3. En el reel v4 corta directo a `a3-a6c` (familias separadas, beat 4).
 
 **Clip a2-a2 — El lugar blanco (montaje, sin generación) — beat 8.1**
 
@@ -373,7 +373,7 @@ duration: 1.5
 
 duration (montaje): 1–1.5s
 - Audio: sin off (silencio; respira antes del segundo paso del despertar)
-- Montaje: still de m05 (ECU de ojos Reiniger, tinte rojo dusk + Coloradas); despertar comprimido. En el reel v3 llega tras `a3-c1` (las coloradas del cuento) y corta a `a3-c5` (eco de caos).
+- Montaje: still de m05 (ECU de ojos Reiniger, tinte rojo dusk + Coloradas); despertar comprimido. En el reel v4 llega tras `a3-c1` (las coloradas del cuento) y corta a `a3-c5` (eco de caos: reprise de `a2-m07`).
 
 **Clip a2-a2c — El despertar en la selva (montaje, sin generación) — referencia de estilo desde v3**
 

@@ -1,7 +1,7 @@
 # Redes (Arco 3) — Build Progress
 
-_Last updated: 2026-07-12_
-_Current stage: Stage 7 — animatic v3.1 (FLF degradado + beat 2 sin ping-pong); pendiente revisión de dirección_
+_Last updated: 2026-07-14_
+_Current stage: Stage 7 — animatic v4.1 (huella comprimida + remate poético); pendiente revisión de dirección_
 _Based on roadmap: [TECH.md](TECH.md) § 5_
 
 > Session log agency-os + seguimiento detallado de producción (estados, costos, gates). Absorbe el antiguo `arco-3-roadmap.md`. No duplica prompts ni fichas: la fuente de verdad de los prompts es [arco-3-planos.md](planos/arco-3.md); el STYLE-BLOCK y los switches cuento↔real viven en [biblia-visual.md](../biblia-visual.md); la convención de IDs/archivos en [pipeline.md](../../../metodo/pipeline.md) §5.
@@ -16,7 +16,7 @@ Estados: `pendiente` → `generado` (existe el archivo) → `aprobado` (pasó el
 Espejo del roadmap de [TECH.md](TECH.md) § 5. Un stage se marca `[x]` solo cuando cumple sus Exit criteria.
 
 - [x] **Stage 1 — Docs y spec** — fichas de planos/arco-3.md válidas
-- [x] **Stage 2 — Cadena narrativa** — cadena v3 del reel aprobada 2026-07-11 ([reels/la-grieta/cadena-narrativa.md](reels/la-grieta/cadena-narrativa.md)); gate previo a imágenes
+- [x] **Stage 2 — Cadena narrativa** — cadena v4 del reel aprobada 2026-07-14 ([reels/la-grieta/cadena-narrativa.md](reels/la-grieta/cadena-narrativa.md)); gate previo a imágenes
 - [ ] **Stage 3 — Imágenes madre en cascada** — 17 madres aprobadas (todas generadas/aprobadas; ver checklist)
 - [ ] **Stage 4 — Uniformidad de universo** — locks + mapa + `_madres-uniformes/` ([mapa-uniformidad.md](reels/la-grieta/mapa-uniformidad.md))
 - [ ] **Stage 5 — Madres variations (unicidad por escena)** — 4 variaciones vigentes generadas/aprobadas; cero reutilización de firstFrame no exenta
@@ -29,6 +29,27 @@ Espejo del roadmap de [TECH.md](TECH.md) § 5. Un stage se marca `[x]` solo cuan
 ## 2. Session Log
 
 Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
+
+### 2026-07-14 — Cadena v4.1: huella comprimida + remate poético
+
+- **Stage in flight:** Stage 2→7 — v4.1 bajada a cutlist/off; animatic borrador.
+- **Decisión de dirección:** sale "Primero el joven / Después la madre"; "envejecieron solos" junta madre+joven (m01→m18); "El tiempo los volvió piedra" (plural) ancla m10→m11→m13; sale sequía `a3-b4`. Offs: "Por mi descuido…" / "Otra vida quedó de este lado." / "En Rocas Coloradas quedó la huella de lo que fue."
+- **Done this session:** cadena + cutlist + offs + fichas; animatic `animatic-la-grieta.mp4` (~50.7s / presupuesto 34.5s, 25 segmentos, 0 omitidos, 11 excesos de off). Sale `a3-b4` del reel.
+- **Next step:** (1) usuario revisa MP4; (2) gate de off → 0 excesos; (3) `a3-m01v2` pendiente.
+- **New blockers / questions raised:** `a3-m01v2` pendiente (degrada a `a3-m01`).
+
+### 2026-07-14 — Cadena v4: testigo abre, crimen con agencia, sin amistad, cierre CTA
+
+- **Stage in flight:** Stage 2→7 — cadena v4 bajada a cutlist/off/fichas; animatic borrador para verificación.
+- **Decisión de dirección:** el hook pasa del crimen firmado al testigo en la grieta Revenant (`a2-a0c`); el crimen se revela en beat 2 con agencia ("hicieron dos"); la amistad sale del reel (roles de familia); cierre CTA "Ir a Rocas Coloradas"; patrón línea-ancla + transiciones mudas.
+- **Done this session:**
+  - **Cadena v4** en [cadena-narrativa.md](reels/la-grieta/cadena-narrativa.md) + cutlist 24 slots en [README.md](reels/la-grieta/README.md).
+  - **Off:** [arco-1-off.md](planos/arco-1-off.md), [arco-2-off.md](planos/arco-2-off.md), [arco-3-off.md](planos/arco-3-off.md) alineados a v4.
+  - **Fichas:** notas de montaje en [arco-1.md](planos/arco-1.md) / [arco-2.md](planos/arco-2.md) / [arco-3.md](planos/arco-3.md); slot nuevo `a3-b0` (still m08); `a3-c5` re-apuntado a reprise de `a2-m07`.
+  - **Salen del reel** (quedan fuente/destacadas, no se borra nada): `a3-a5b`, `a3-a6`, `a3-a5y`.
+  - **Animatic:** `animatic-la-grieta.mp4` (~54.3s / presupuesto 34s) con `--borrador --off`. Degradados: `a1-a1`, `a2-a1b`, `a3-b3` (m01v2→m01). Omitidos: `a2-a0c` + `a3-c5` (re-pick `a2-m07`). 12 excesos de off (gate de texto aparte).
+- **Next step:** (1) usuario revisa MP4 — hook testigo (hoy omitido), orden, CTA; (2) re-pick `a2-m07` (hoy solo `-c3`); (3) gate de off → 0 excesos; (4) `a3-m01v2` pendiente para `a3-b3`.
+- **New blockers / questions raised:** `a3-m01v2` pendiente (animatic degrada a `a3-m01`). **Resuelto 2026-07-14:** `a2-m07-c3` promovido a canónico `a2-m07-grieta-revenant.png`; animatic re-corrido (~57.5s / 27 segmentos, 0 omitidos, 13 excesos de off).
 
 ### 2026-07-12 — Animatic v3.1: FLF degradado + beat 2 sin ping-pong
 

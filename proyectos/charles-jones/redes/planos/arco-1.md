@@ -70,4 +70,4 @@ The silhouetted hand with the gold chain deliberately signs the bottom of the cl
 ```
 - Vision-Audit (EN): sceneDescription: `a silhouetted hand with a gold chain over a clean sheet whose headline reads DOS CONTINENTES SE VENDEN MEJOR QUE UNO, ending with a jagged paper rift as the signature, on a deep red tinted background` · action: `the hand signs and the stroke becomes a tear ripping the paper` · mood: `sinister, bureaucratic, dryly comic, revelatory`
 - Audio: off documental (el reveal) + rumble grave residual del caos
-- Montaje: entra en el reel "La Grieta" justo después de `a3-a5b` (caos Revenant) como reveal — "no fue un accidente"; corta a `a3-a5c` (respiro aéreo) — **raccord de forma**: la grieta del papel empalma con la grieta real de las dos masas. Off en [arco-1-off.md](arco-1-off.md).
+- Montaje: en el reel v4 entra tras `a2-a0d` (vuelta al cuento) como beat 2 — el crimen firmado con agencia ("hicieron dos"); corta a `a3-a5` (Pangea → partida). Off en [arco-1-off.md](arco-1-off.md).
