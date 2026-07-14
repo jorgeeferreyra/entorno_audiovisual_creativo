@@ -1,7 +1,7 @@
 # Redes (Arco 3) — Build Progress
 
 _Last updated: 2026-07-14_
-_Current stage: Stage 7 — animatic final v4.1 (0 excesos, sin --borrador); pendiente aprobación de dirección del MP4_
+_Current stage: Stage 8 — Clips (animatic v4.1 aprobado; uniformes promovidos a canónicos)_
 _Based on roadmap: [TECH.md](TECH.md) § 5_
 
 > Session log agency-os + seguimiento detallado de producción (estados, costos, gates). Absorbe el antiguo `arco-3-roadmap.md`. No duplica prompts ni fichas: la fuente de verdad de los prompts es [arco-3-planos.md](planos/arco-3.md); el STYLE-BLOCK y los switches cuento↔real viven en [biblia-visual.md](../biblia-visual.md); la convención de IDs/archivos en [pipeline.md](../../../metodo/pipeline.md) §5.
@@ -17,11 +17,11 @@ Espejo del roadmap de [TECH.md](TECH.md) § 5. Un stage se marca `[x]` solo cuan
 
 - [x] **Stage 1 — Docs y spec** — fichas de planos/arco-3.md válidas
 - [x] **Stage 2 — Cadena narrativa** — cadena v4 del reel aprobada 2026-07-14 ([reels/la-grieta/cadena-narrativa.md](reels/la-grieta/cadena-narrativa.md)); gate previo a imágenes
-- [ ] **Stage 3 — Imágenes madre en cascada** — 17 madres aprobadas (todas generadas/aprobadas; ver checklist)
-- [ ] **Stage 4 — Uniformidad de universo** — locks + mapa + `_madres-uniformes/` ([mapa-uniformidad.md](reels/la-grieta/mapa-uniformidad.md))
-- [ ] **Stage 5 — Madres variations (unicidad por escena)** — 4 variaciones vigentes generadas/aprobadas; cero reutilización de firstFrame no exenta
-- [ ] **Stage 6 — Madres keyframes** — cada par/cadena FLF de la §Cadena de transiciones aprobado junto (sobre las variaciones); solo escenas de 2/N keyframes
-- [ ] **Stage 7 — Animatic (gate previo a video)** — dos pasadas: **borrador** (`--borrador [--off]`, bases + convergencia texto/duración) → **final** (variaciones + unicidad + 0 excesos de off, gate que habilita clips)
+- [x] **Stage 3 — Imágenes madre en cascada** — madres del cutlist v4.1 generadas/aprobadas (ver checklist)
+- [x] **Stage 4 — Uniformidad de universo** — capa 1 aprobada; `--promover` 2026-07-14 (29 canónicos; exentos `a3-m12`, `a3-m14`)
+- [x] **Stage 5 — Madres variations (unicidad por escena)** — variación vigente del cutlist (`a3-m01v2`) generada/aprobada; slots fuera de reel diferidos
+- [x] **Stage 6 — Madres keyframes** — pares FLF del cutlist v4.1 aprobados en secuencia vía animatic final
+- [x] **Stage 7 — Animatic (gate previo a video)** — final v4.1 aprobado 2026-07-14 (0 excesos; sin `--borrador`)
 - [ ] **Stage 8 — Clips** — bloques A/B/C generados y aprobados (Bloque A casi completo; B/C pendientes)
 - [ ] **Stage 9 — Montaje del reel transversal** — la-grieta montado desde los bloques
 - [ ] **Stage 10 — Destacadas del arco** — S1–S5 por recorte
@@ -30,13 +30,21 @@ Espejo del roadmap de [TECH.md](TECH.md) § 5. Un stage se marca `[x]` solo cuan
 
 Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 
+### 2026-07-14 — Animatic aprobado + uniformes promovidos
+
+- **Stage in flight:** Stage 8 — Clips.
+- **Decisión de dirección:** animatic final v4.1 **aprobado**; `--promover` de `_madres-uniformes/` **confirmado** explícitamente.
+- **Done this session:** `npm run uniformar -- --reel la-grieta --promover` → **29 canónicos** (originales en `madre/_prev/` con timestamp); exentos `a3-m12`, `a3-m14`. Stages 3–7 marcados cerrados para el cutlist v4.1.
+- **Next step:** Stage 8 — generar/re-auditar clips del cutlist (B/C y gaps A1/A2); wind-comic en modo real.
+- **New blockers / questions raised:** ninguno.
+
 ### 2026-07-14 — Aspecto 9:16 + animatic final
 
 - **Stage in flight:** Stage 4→7 — outpaint/crops + variaciones mínimas del cutlist + animatic final.
 - **Decisión de dirección:** lock real = `a2-m07` (`a3-m14` eliminada); outpaint `a3-m03`←c1, `a3-m22`←c2, `a1-m01`←c2; `a3-m01v2`←c3 (slot `a3-b3`); `a2-m02d` = copia de `a2-m02c`; `a1-m01a`←c3 (grieta solo en zona de firma).
 - **Done this session:** mapa/look con lock `a2-m07`; madres outpaint + uniformes 9:16; offs acortados + cutlist con respiro → **0 excesos**; animatic final `reels/la-grieta/animatic-la-grieta.mp4` (~46s / presupuesto 46s, 27 segmentos, sin `--borrador`, `--uniformes --off`).
 - **Next step:** (1) usuario aprueba el MP4 final; (2) `--promover` uniformes solo con OK explícito; (3) Stage 8 clips.
-- **New blockers / questions raised:** ninguno para el gate de animatic; `--promover` pendiente.
+- **New blockers / questions raised:** ninguno para el gate de animatic; `--promover` pendiente. **Resuelto misma fecha:** animatic aprobado + uniformes promovidos.
 
 ### 2026-07-14 — Cadena v4.1: huella comprimida + remate poético
 
@@ -386,12 +394,11 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 
 ### Próxima acción
 
-**Revisar animatic v3.1** (`reels/la-grieta/animatic-la-grieta.mp4`).
+**Stage 8 — Clips** del cutlist v4.1 (canónicos ya uniformes 9:16).
 
-1. Verificar: hook `a1-a1` presente; huevo `a2-a1b` presente; beat 2 = cuento → real (caos) → cuento (sin segundo aéreo Revenant).
-2. Gate de off: refinar textos en `arco-N-off.md` hasta 0 excesos → re-animatic.
-3. Re-pick `a2-m07` (canónico) para que entre `a2-a0c`.
-4. `--promover` de `_madres-uniformes/` solo con confirmación explícita.
+1. Inventario: qué slots del cutlist ya tienen mp4 usable vs regenerar desde madres promovidas.
+2. Generar/re-auditar pendientes (B/C y gaps A1/A2); wind-comic en modo real (`MOCK_ENGINES=0`).
+3. FLF caros (`a3-a5` regen, puentes) siguen diferidos a destacadas salvo que dirección pida lo contrario.
 
 ---
 
@@ -440,21 +447,21 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 | a3-m23 | Orilla lejana: padre + huevo | aprobado | Beat 8.2b; pick c3; still `a3-a6d` |
 | a3-m24 | Plano lejano: los 4 + grieta | aprobado | Beat 8.2c; pick c1 (tanda 2); still `a3-a6e` |
 | a1-m01 | Mano con cadenita (informe) | aprobado | Beat 6 reveal; pick c3 → `a1-m01-mano-cadenita.png`; **keyframe inicial** del par FLF `m01`→`m01a`. Vive en [planos/arco-1.md](planos/arco-1.md) |
-| a1-m01a | La firma es la grieta | pendiente (**diferida a keyframes — Stage 5**) | Keyframe final FLF; `ref a1-m01`; mismo encuadre, firma = rasgadura del papel; raccord a `a3-a5c`. Vive en [planos/arco-1.md](planos/arco-1.md) |
+| a1-m01a | La firma es la grieta | aprobado | Keyframe final FLF; pick c3 (grieta solo en zona de firma); promovida uniforme 2026-07-14. Vive en [planos/arco-1.md](planos/arco-1.md) |
 | a2-m01 | Charles de espaldas | aprobado | Beat 9.1; pick c1 → `a2-m01-charles-espaldas.png` (silueta master). Vive en [planos/arco-2.md](planos/arco-2.md) |
 | a2-m02a | La pisada | aprobado | Beat 9.4; en disco `a2-m02a-pisada.png`; still `a2-a1`. **Re-letrado 2026-07-10** (era `a2-m02`) para calzar con el archivo en disco |
 | a2-m02b | El nido vacío | aprobado | Beat 9.4; en disco `a2-m02b-nido-vacio.png`; still `a2-a1c`. **Re-letrado** (era `a2-m02c`) |
 | a2-m02c | El huevo del otro lado | aprobado | Beat 9.4; en disco `a2-m02c-huevo-otro-lado.png`; keyframe final FLF con `a2-m02d` (clip `a2-a1b`). **Re-letrado** (era `a2-m02b`) |
-| a2-m02d | El huevo de este lado | pendiente (**diferida a keyframes — Stage 5**) | Keyframe inicial FLF con `a2-m02c` (clip `a2-a1b`); aprobar el par junto. **Re-letrado** (era `a2-m02a`) |
+| a2-m02d | El huevo de este lado | aprobado | Copia de `a2-m02c` + uniforme; keyframe inicial FLF con `a2-m02c` (clip `a2-a1b`); promovida 2026-07-14. **Re-letrado** (era `a2-m02a`) |
 | a2-m03 | Manos levantan la cría (cuento) | aprobado | Beat 9.3; pick c2 (gesto de alzar); still `a2-a0b` |
 | a2-m06 | Manos + cría (Revenant) | pendiente (**reserva destacada**) | `styleBlock: false`; ref `ornitorrinco_crias.jpeg`; NO entra al reel |
 | a2-m04 | El lugar blanco | aprobado | Beat 13.2 Revenant; pick `revenant-c2` → canónico, `revenant-c3` → `a2-m04-lugar-blanco-c3.png` (**referencia de estilo, sin slot reel v3**); still `a2-a2`. Vive en [planos/arco-2.md](planos/arco-2.md) |
 | a2-m05 | El despertar (Coloradas) | aprobado | Beat 13.3, **primer paso** de la coda (secuencia con `a2-m09`); pick c3 → `a2-m05-despertar.png`; ECU ojos Reiniger; still `a2-a2b`. Vive en [planos/arco-2.md](planos/arco-2.md) |
 | a2-m09 | El despertar en la selva | aprobado (**referencia de estilo, sin slot reel v3**) | Beat 13.3 post-sueño v2; pick c1 (mate a la salida de la carpa); Reiniger, cara visible; tinte rojo dusk; still `a2-a2c` cae por compresión. Vive en [planos/arco-2.md](planos/arco-2.md) |
-| a2-m07 | La grieta (Revenant) | **generado, re-pick pendiente** | Beat 9.2, **primer eslabón** del switch transversal con `a2-m08`; canónico borrado, solo `a2-m07-grieta-revenant-c3.png` en disco; still `a2-a0c`. Vive en [planos/arco-2.md](planos/arco-2.md) |
+| a2-m07 | La grieta (Revenant) | aprobado | Beat 9.2; lock real del reel; c3→canónico + uniforme promovido 2026-07-14; still `a2-a0c`. Vive en [planos/arco-2.md](planos/arco-2.md) |
 | a2-m08 | La grieta (Reiniger) | aprobado | Beat 9.2, **segundo eslabón** del switch (vuelta al cuento, mismo encuadre que `a2-m07`); pick c3 → `a2-m08-grieta-reiniger.png`; still `a2-a0d`. Vive en [planos/arco-2.md](planos/arco-2.md) |
 | a3-m01v1 | Madre al borde de la grieta (variación) | pendiente | Stage 5; `ref a3-m01` (OpenRouter), tinte rojo; firstFrame de a3-a6 |
-| a3-m01v2 | Madre en llanura seca (variación) | pendiente | Stage 5; `ref a3-m01` (OpenRouter), tinte gris; firstFrame de a3-b3 |
+| a3-m01v2 | Madre en llanura seca (variación) | aprobado | pick c3; firstFrame de a3-b3; uniforme promovida 2026-07-14 |
 | ~~a3-m05v1~~ | ~~Pangea antes del quiebre (variación)~~ | **CANCELADA por v3** | Al caer `a3-a2`, `a3-m05` ya no se reutiliza en pantalla y puede ser firstFrame directo de `a3-a5` |
 | a3-m14v1 | Grieta real, polvo asentándose (variación) | pendiente | Stage 5; `ref a3-m14`, styleBlock false; firstFrame de a3-c0 |
 | a3-m15v1 | Aéreo hacia el humedal (variación) | pendiente | Stage 5; `ref a3-m15`, styleBlock false; firstFrame de a3-a5y |
