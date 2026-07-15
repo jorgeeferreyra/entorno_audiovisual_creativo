@@ -30,6 +30,13 @@ Espejo del roadmap de [TECH.md](TECH.md) § 5. Un stage se marca `[x]` solo cuan
 
 Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 
+### 2026-07-14 — Stage 8: primer clip `a1-a1` (Kling-FLF)
+
+- **Stage in flight:** Stage 8 — Clips.
+- **Done this session:** generado `a1-a1` FLF m01→m01a vía **Kling-FLF** (~5.1s) → `assets/arco-1/clips/a1-a1-firma-es-grieta.mp4`. Tooling: mode Kling `std|pro` (gateway rechazaba `standard`); frames locales como Base64/data-URI (Minimax ya no sube `purpose=image`; localhost no sirve).
+- **Next step:** (1) dirección revisa morph firma→grieta en el mp4; (2) siguiente clip del cutlist que genere video (`a3-a5` ya existe degradado; o `a2-a1b` / `a3-b3` / `a3-c2` / `a3-c3` / `a3-c1`).
+- **New blockers / questions raised:** ninguno si el morph se ve bien.
+
 ### 2026-07-14 — Animatic aprobado + uniformes promovidos
 
 - **Stage in flight:** Stage 8 — Clips.
@@ -472,7 +479,7 @@ Nueva entrada arriba al cierre de cada sesión. No editar entradas pasadas.
 
 | ID | Bloque | Herramienta | Estado | Nota |
 |---|---|---|---|---|
-| a3-a1 | A | U2V | aprobado (**fuera reel v3**) | Intro/cuaderno queda como fuente o marco para otras salidas; no borrar |
+| a1-a1 | A1 | U2V-FLF | **generado — pendiente aprobación** | Kling-FLF m01→m01a; `assets/arco-1/clips/a1-a1-firma-es-grieta.mp4` (~5.1s); cutlist lo recorta a ~3.5s |
 | a3-a2 | A | U2V | aprobado (**fuera reel v3**) | Establishing Pangea cae; `a3-a5` contiene el firstFrame de Pangea |
 | a3-a3 | A | U2V | aprobado (**fuera reel v3**) | Ritual madre cae del reel; sigue útil para destacadas/fuente |
 | a3-a4 | A | U2V | **fuera reel v3** | El huevo close-up cae del reel; no regenerar para `la-grieta` v3 salvo necesidad de destacada |

@@ -15,6 +15,37 @@ function fetchWithTimeout(url: string, init: RequestInit, timeoutMs = 30_000): P
 
 type ProgressCallback = (progress: number, status: string) => void;
 
+/** Gateways (qingyuntop) usan std|pro; mapear aliases oficiales. */
+function normalizeKlingMode(mode?: string, fallback: 'std' | 'pro' = 'std'): string {
+  const raw = mode || fallback;
+  if (raw === 'standard') return 'std';
+  if (raw === 'professional') return 'pro';
+  return raw;
+}
+
+/**
+ * Kling acepta URL pública o Base64 crudo (sin prefijo data:).
+ * Localhost / data-URI → Base64; URL remota → tal cual.
+ */
+async function toKlingImagePayload(input: string): Promise<string> {
+  if (!input) return input;
+  if (input.startsWith('data:')) {
+    const i = input.indexOf(',');
+    return i >= 0 ? input.slice(i + 1) : input;
+  }
+  const isLocal =
+    input.includes('localhost') ||
+    input.includes('127.0.0.1') ||
+    input.startsWith('/api/serve-file');
+  if (!isLocal) return input;
+
+  const url = input.startsWith('http') ? input : `http://localhost:3000${input.startsWith('/') ? '' : '/'}${input}`;
+  const res = await fetchWithTimeout(url, { method: 'GET' }, 60_000);
+  if (!res.ok) throw new Error(`Kling: no pude leer frame local (${res.status}): ${url.slice(0, 80)}`);
+  const buf = Buffer.from(await res.arrayBuffer());
+  return buf.toString('base64');
+}
+
 export class KlingService {
   private apiKey: string;
   private baseURL: string;
@@ -48,22 +79,24 @@ export class KlingService {
       }
 
       const hasRealImage = imageUrl && !imageUrl.startsWith('data:') && imageUrl.startsWith('http');
+      const imagePayload = imageUrl ? await toKlingImagePayload(imageUrl) : '';
+      const hasImage = !!imagePayload;
 
-      console.log(`[Kling] Starting video generation: ${hasRealImage ? 'image-to-video' : 'text-to-video'}`);
+      console.log(`[Kling] Starting video generation: ${hasImage ? 'image-to-video' : 'text-to-video'}`);
       console.log(`[Kling] Prompt: ${prompt.slice(0, 100)}...`);
 
       const body: Record<string, any> = {
         model_name: 'kling-v1',
         prompt: prompt,
-        mode: options?.mode || 'standard',
+        mode: normalizeKlingMode(options?.mode, 'std'),
         duration: String(Math.min(options?.duration || 5, 10)),
       };
 
       // v12.14.0 横竖屏:Kling 支持 aspect_ratio('16:9'|'9:16'|'1:1');竖屏短剧必须传,否则默认 16:9
       if (options?.aspectRatio) body.aspect_ratio = options.aspectRatio;
 
-      if (hasRealImage) {
-        body.image = imageUrl;
+      if (hasImage) {
+        body.image = imagePayload;
       }
 
       // v12.15.0(Phase 2.1):多参 Elements —— 给 Kling 喂角色(frontal+多角度)+ 场景参考图。
@@ -85,7 +118,7 @@ export class KlingService {
       }
 
       // Kling API: POST /v1/videos/image2video or /v1/videos/text2video
-      const endpoint = hasRealImage
+      const endpoint = hasImage
         ? `${this.baseURL}/v1/videos/image2video`
         : `${this.baseURL}/v1/videos/text2video`;
 
@@ -140,22 +173,26 @@ export class KlingService {
     if (!firstFrameUrl || !lastFrameUrl) {
       throw new Error('Kling FLF: 首帧 + 尾帧都必须有');
     }
-    if (firstFrameUrl.startsWith('data:') || lastFrameUrl.startsWith('data:')) {
-      throw new Error('Kling FLF: 不接受 data URI, 请先落盘成 http URL');
-    }
+
+    const first = await toKlingImagePayload(firstFrameUrl);
+    const last = await toKlingImagePayload(lastFrameUrl);
 
     console.log('[Kling-FLF] 首尾帧融合视频生成');
-    console.log(`[Kling-FLF] First: ${firstFrameUrl.slice(0, 80)}`);
-    console.log(`[Kling-FLF] Last:  ${lastFrameUrl.slice(0, 80)}`);
+    console.log(`[Kling-FLF] First: ${firstFrameUrl.startsWith('data:') ? 'data-URI→b64' : firstFrameUrl.slice(0, 80)}`);
+    console.log(`[Kling-FLF] Last:  ${lastFrameUrl.startsWith('data:') ? 'data-URI→b64' : lastFrameUrl.slice(0, 80)}`);
     console.log(`[Kling-FLF] Prompt: ${prompt.slice(0, 100)}...`);
 
+    // FLF en gateways (qingyuntop) y en Kling reciente exige mode pro/std
+    // (no "standard"/"professional"). Con first+last, pro es el valor seguro.
+    const mode = normalizeKlingMode(options?.mode || process.env.KELING_FLF_MODE || 'pro', 'pro');
+
     const body: Record<string, any> = {
-      model_name: 'kling-v1',
+      model_name: process.env.KELING_FLF_MODEL || 'kling-v1-6',
       prompt,
-      mode: options?.mode || 'standard',
+      mode,
       duration: String(Math.min(options?.duration || 5, 10)),
-      image: firstFrameUrl,
-      image_tail: lastFrameUrl,
+      image: first,
+      image_tail: last,
     };
 
     const response = await fetchWithTimeout(

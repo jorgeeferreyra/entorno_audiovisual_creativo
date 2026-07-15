@@ -166,13 +166,12 @@ export async function uploadImageToMinimax(localPath: string): Promise<string> {
 }
 
 /**
- * Resuelve un frame (first/last) a una URL que cualquier provider de video del
- * registry pueda consumir, de forma agnóstica del motor:
- *   1. URL remota http(s) válida (no localhost, no data:) → tal cual, sin re-subir.
- *   2. Si no → upload a wind-comic (URL http pública que el gateway acepta en todos
- *      los motores; no requiere ninguna key de motor específica).
- *   3. Si el upload falla → data-URI con warning ruidoso (solo la verán los providers
- *      que aceptan data-URI). Nunca fallo silencioso.
+ * Resuelve un frame (first/last) a una URL/payload que los providers de video
+ * puedan consumir:
+ *   1. URL remota http(s) pública (no localhost, no data:) → tal cual.
+ *   2. Si no → data-URI del archivo local.
+ *      Minimax I2V acepta data:image/...; Kling convierte a Base64 crudo en service.
+ *      (Minimax /v1/files/upload ya no admite purpose=image — solo audio/video.)
  */
 export async function resolveFrameUrl(
   localPath: string,
@@ -182,17 +181,10 @@ export async function resolveFrameUrl(
     remoteUrl &&
     /^https?:\/\//.test(remoteUrl) &&
     !remoteUrl.startsWith('data:') &&
-    !remoteUrl.includes('localhost')
+    !remoteUrl.includes('localhost') &&
+    !remoteUrl.includes('127.0.0.1')
   ) {
     return remoteUrl;
   }
-  try {
-    return await uploadImageToWindComic(localPath);
-  } catch (e) {
-    console.warn(
-      '[wind-mcp] upload de frame a wind-comic falló, uso data-URI (solo la verán providers que la acepten):',
-      e instanceof Error ? e.message : e,
-    );
-    return fileToDataUri(localPath);
-  }
+  return fileToDataUri(localPath);
 }

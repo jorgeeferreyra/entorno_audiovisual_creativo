@@ -144,7 +144,8 @@ registerVideoProvider({
         input.prompt,
         {
           duration: input.durationSec,
-          mode: input.mode || 'standard',
+          // FLF: pro (no "standard") — ver kling.service generateFirstLastFrame
+          mode: input.mode || 'professional',
           onProgress: input.onProgress,
         },
       );
